@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/04/build-blog-with-hexo-on-windows-7/</loc>
+    
+    <lastmod>2017-03-04T06:39:22.977Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2017-03-04T06:18:11.426Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2017-03-04T05:57:12.896Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/02/tale-deploy/</loc>
+    
+    <lastmod>2017-03-02T15:41:49.089Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2017-02-25T15:58:45.012Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/02/21/hello-world/</loc>
+    
+    <lastmod>2017-02-21T14:02:53.922Z</lastmod>
+    
+  </url>
+  
+</urlset>
