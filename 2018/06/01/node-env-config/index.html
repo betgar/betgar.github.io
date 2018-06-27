@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Node环境配置 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="node">
+    <meta name="description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 LTS 此">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node环境配置">
+<meta property="og:url" content="https://betgar.github.io/2018/06/01/node-env-config/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 LTS 此">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T00:25:16.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node环境配置">
+<meta name="twitter:description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 LTS 此">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Node环境配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Node环境配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-31T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-06-01
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Node环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">Node环境配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nvm-for-windows"><span class="post-toc-number">2.</span> <span class="post-toc-text">nvm for windows</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvm安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">nvm安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nrm管理下载源"><span class="post-toc-number">3.</span> <span class="post-toc-text">nrm管理下载源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nrm的安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">nrm的安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python-安装"><span class="post-toc-number">4.</span> <span class="post-toc-text">python 安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python依赖-net-framework-4-5"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">python依赖.net framework 4.5</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#chrome-driver安装"><span class="post-toc-number">5.</span> <span class="post-toc-text">chrome driver安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue项目使用sass"><span class="post-toc-number">6.</span> <span class="post-toc-text">vue项目使用sass</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装依赖"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">安装依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置webpack"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">配置webpack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-node-env-config"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Node环境配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-01 00:00:00" datetime="2018-05-31T16:00:00.000Z"  itemprop="datePublished">2018-06-01</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Node环境配置"><a href="#Node环境配置" class="headerlink" title="Node环境配置"></a>Node环境配置</h2><blockquote>
+<p>Node环境及配置参考</p>
+</blockquote>
+<h2 id="nvm-for-windows"><a href="#nvm-for-windows" class="headerlink" title="nvm for windows"></a>nvm for windows</h2><blockquote>
+<p><code>nvm</code>是一个Node的版本管理模块，使用它可以随时切换Node环境。</p>
+<p>注意: 安装 node 前保证自己电脑中的node已<strong>卸载干净</strong></p>
+</blockquote>
+<h3 id="nvm安装"><a href="#nvm安装" class="headerlink" title="nvm安装"></a>nvm安装</h3><blockquote>
+<p> <a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">nvm-windows</a></p>
+</blockquote>
+<ul>
+<li><p>查看当前版本</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm  --version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前已安装 node 的版本</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装某版本 node， 根据 <a href="https://github.com/nodejs/LTS" target="_blank" rel="noopener">LTS</a> 此处安装 v6.11.1</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 8.11.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用某版本 node </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use 8.11.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查本地是否存在 node </p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="nrm管理下载源"><a href="#nrm管理下载源" class="headerlink" title="nrm管理下载源"></a>nrm管理下载源</h2><blockquote>
+<p><code>nrm</code> 是为了解决切换 <code>npm</code> 源的问题，因为如果直接通过 <code>npm</code> 手动设置 registry 非常麻烦，并且不容易记忆，因此，才有了 <code>nrm</code> 的出现。<code>npm</code>的官方源对广大中国开发者来说较卡，因此推荐 <code>cnpm</code> 或者 <code>taobao</code>。 </p>
+</blockquote>
+<p><code>nrm</code> 是为了解决切换<code>npm</code> 源的问题，因为如果直接通过 npm 手动设置 registry 非常麻烦，并且不容易记忆，因此，才有了<code>nrm</code>的出现。 <code>npm</code>的官方源对广大中国开发者来说较卡，因此推荐 <code>cnpm</code> 或者 <code>taobao</code>。</p>
+<h3 id="nrm的安装"><a href="#nrm的安装" class="headerlink" title="nrm的安装"></a>nrm的安装</h3><p>有了<code>npm</code>后，一切都变得非常简单，全局安装 <code>nrm</code>, 使用<code>taobao</code>源下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>查询当前有哪些可用源</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm ls</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换淘宝源</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试源延迟毫秒数 (也与当前网络环境有关)</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm test</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="python-安装"><a href="#python-安装" class="headerlink" title="python 安装"></a>python 安装</h2><blockquote>
+<p><code>node-gyp</code>模块需要安装python(<code>python</code> (<code>v2.7</code> recommended, <code>v3.x.x</code> is <strong>not</strong> supported)</p>
+</blockquote>
+<h3 id="python依赖-net-framework-4-5"><a href="#python依赖-net-framework-4-5" class="headerlink" title="python依赖.net framework 4.5"></a>python依赖.net framework 4.5</h3><blockquote>
+<p>解决方式1：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># run as Administrator</span></span><br><span class="line">npm install --global --production windows-build-tools</span><br></pre></td></tr></table></figure>
+<h2 id="chrome-driver安装"><a href="#chrome-driver安装" class="headerlink" title="chrome driver安装"></a>chrome driver安装</h2><blockquote>
+<p>使用淘宝源</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br></pre></td></tr></table></figure>
+<h2 id="vue项目使用sass"><a href="#vue项目使用sass" class="headerlink" title="vue项目使用sass"></a>vue项目使用sass</h2><blockquote>
+<p>如果使用<code>vue-cli</code>创建项目，并且使用<code>.vue</code>单文件，使用<code>scss</code>来写<code>CSS</code>需要安装两个依赖。</p>
+<p><code>vue-cli</code>默认没有安装<code>node-sass</code>和<code>sass-loader</code>。</p>
+</blockquote>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install node-sass --save-dev</span><br><span class="line">npm install sass-loader --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="配置webpack"><a href="#配置webpack" class="headerlink" title="配置webpack"></a>配置webpack</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.base.config.js 中添加</span></span><br><span class="line"> &#123;</span><br><span class="line">     test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">         loaders: [<span class="string">"style"</span>, <span class="string">"css"</span>, <span class="string">"sass"</span>]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://github.com/QC-L/learning-node.js/blob/master/docs/01.Node.js%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE.md" target="_blank" rel="noopener">Node.js简介以及环境配置</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T00:25:16.966Z" itemprop="dateUpdated">2018-06-27 08:25:16</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/06/01/node-env-config/" target="_blank" rel="external">https://betgar.github.io/2018/06/01/node-env-config/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/06/01/node-env-config/&title=《Node环境配置》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/06/01/node-env-config/&title=《Node环境配置》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/06/01/node-env-config/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node环境配置》 — 个人博客&url=https://betgar.github.io/2018/06/01/node-env-config/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/06/01/node-env-config/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/04/npm-common-commands/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">npm常用命令</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/06/01/node-env-config/&title=《Node环境配置》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/06/01/node-env-config/&title=《Node环境配置》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/06/01/node-env-config/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Node环境配置》 — 个人博客&url=https://betgar.github.io/2018/06/01/node-env-config/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/06/01/node-env-config/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACF0lEQVR42u3aMXLDMAwEwPz/00rrxswBkDwxuaoyHlniuriAAH9+4ut6uV4/Wd+Z3JN8ftuFgYHxtYxreU1e8O4Ja8D6W29XgoGBcQAjWcT6/vzOd4zJEzAwMDDWj14XjnmgY2BgYDzNmIMxMDAw1ow8EJMCMW/YzcMaAwPjBEavcfaZvx+Zb2BgYHwV4ypevSZatT1XXhUGBsbWjDzges2y6nJ768HAwDiHkRywqIbyJHDLG2YMDIwjGdVmWbKIauwm38XAwNibMTk2Ud3E5uFbHgBgYGBszegdcVgHa7W4zA9hRGUiBgbG1oxeIywPxAmmHL4YGBibMvISsNqqmxywKP+IGBgY2zHyRVSDr7f17bXqMDAwzmHk29R8bFC9p/cuDAyMcxi9YcBdY4DqYQsMDIxzGL0orA5E72rkFc6MYGBgbMRIhpH5OLNXIN5QOGJgYGzNyB+Ut/h7JeBd7TkMDIxdGZPlTnj526M4xsDAOIbxdKM/CdneoBQDA+NkRt6+zxeXb5sL5SMGBsYBjGpczkcIvSLyj00sBgbGdoyreN1b5E3CtzCjwMDA+HJGLyJ7BV91OFouDTEwMLZmzI9N9II7f3IU1hgYGAcwqqcz8gZZcyQZRz8GBgZGTiqMG+MBQ+FdGBgYGMUCbhK1608+9H8DAwPjXzLyYUD1OMUTI1IMDIzTGPnWMb+nF+LVkMXAwDiA8QvtU7JQDkyvfAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

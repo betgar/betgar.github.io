@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>npm常用命令 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="npm">
+    <meta name="description" content="npm常用命令 总结一下npm常用的命令。  123456789101112131415npm -vnpm install -g npm@latestnpm install -g npm@nextnpm install -g npm@versionnpm updatenpm outdatednpm uninstall lodash# 如需从 package.json 文件中删除依赖，需要在命令后添">
+<meta name="keywords" content="npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm常用命令">
+<meta property="og:url" content="https://betgar.github.io/2018/06/04/npm-common-commands/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="npm常用命令 总结一下npm常用的命令。  123456789101112131415npm -vnpm install -g npm@latestnpm install -g npm@nextnpm install -g npm@versionnpm updatenpm outdatednpm uninstall lodash# 如需从 package.json 文件中删除依赖，需要在命令后添">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T00:35:42.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm常用命令">
+<meta name="twitter:description" content="npm常用命令 总结一下npm常用的命令。  123456789101112131415npm -vnpm install -g npm@latestnpm install -g npm@nextnpm install -g npm@versionnpm updatenpm outdatednpm uninstall lodash# 如需从 package.json 文件中删除依赖，需要在命令后添">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">npm常用命令</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">npm常用命令</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-06-04T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-06-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#npm常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">npm常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm生命周期的命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">npm生命周期的命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm-default-hook"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">npm default hook</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm-shortcut-commands"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">npm shortcut commands</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm-config"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">npm config</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#npm-scripts"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">npm scripts</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量前缀：npm-package"><span class="post-toc-number">1.5.1.1.</span> <span class="post-toc-text">变量前缀：npm_package_</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量前缀：-npm-package-（bash变量）"><span class="post-toc-number">1.5.1.2.</span> <span class="post-toc-text">变量前缀：$npm_package （bash变量）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变量：npm-config"><span class="post-toc-number">1.5.1.3.</span> <span class="post-toc-text">变量：npm_config_</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#环境变量覆盖package-json的config对象"><span class="post-toc-number">1.5.1.4.</span> <span class="post-toc-text">环境变量覆盖package.json的config对象</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#package-json"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">package.json</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#package-lock-json"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">package.lock.json</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-npm-common-commands"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">npm常用命令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-06-04 08:00:00" datetime="2018-06-04T00:00:00.000Z"  itemprop="datePublished">2018-06-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="npm常用命令"><a href="#npm常用命令" class="headerlink" title="npm常用命令"></a>npm常用命令</h1><blockquote>
+<p>总结一下npm常用的命令。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">npm install -g npm@latest</span><br><span class="line">npm install -g npm@next</span><br><span class="line">npm install -g npm@version</span><br><span class="line">npm update</span><br><span class="line">npm outdated</span><br><span class="line"></span><br><span class="line">npm uninstall lodash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如需从 package.json 文件中删除依赖，需要在命令后添加参数 --save</span></span><br><span class="line">npm uninstall --save lodash  	</span><br><span class="line"></span><br><span class="line"><span class="comment"># package.json 文件中依赖devDependency，就是--save-dev 参数保存的</span></span><br><span class="line"><span class="comment"># 必须通过 --save-dev 参数可以将其卸载。</span></span><br><span class="line">npm uninstall --save-dev lodash</span><br></pre></td></tr></table></figure>
+<h2 id="npm生命周期的命令"><a href="#npm生命周期的命令" class="headerlink" title="npm生命周期的命令"></a>npm生命周期的命令</h2><blockquote>
+<p>install: 安装依赖。</p>
+</blockquote>
+<p><code>npm run install</code>的默认值是<code>node-gyp rebuild</code>，前提是项目根目录下有<code>binding.gyp</code>文件。 </p>
+<blockquote>
+<p>build：构建项目。</p>
+</blockquote>
+<p>npm 脚本有<code>pre</code>和<code>post</code>两个钩子。举例来说，<code>build</code>脚本命令的钩子就是<code>prebuild</code>和<code>postbuild</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"scripts"</span>: &#123;</span><br><span class="line">      <span class="string">"prebuild"</span>: <span class="string">"echo I run before the build script"</span>,</span><br><span class="line">      <span class="string">"build"</span>: <span class="string">"cross-env NODE_ENV=production webpack"</span>,</span><br><span class="line">      <span class="string">"postbuild"</span>: <span class="string">"echo I run after the build script"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>rebuild：重新构建。</p>
+<p>test：测试。</p>
+</blockquote>
+<blockquote>
+<p>start：开发阶段启动服务。</p>
+</blockquote>
+<p>  上面代码中，<code>npm run start</code>的默认值是<code>node server.js</code>，前提是项目根目录下有<code>server.js</code>这个脚本。</p>
+<blockquote>
+<p>restart：重新启动。</p>
+</blockquote>
+<p><code>npm restart</code> 是一个复合命令，实际上会执行三个脚本命令：<code>stop</code>、<code>restart</code>、<code>start</code>。具体的执行顺序如下。 </p>
+<blockquote>
+<ol>
+<li>prerestart</li>
+<li>prestop</li>
+<li>stop</li>
+<li>poststop</li>
+<li>restart</li>
+<li>prestart</li>
+<li>start</li>
+<li>poststart</li>
+<li>postrestart </li>
+</ol>
+</blockquote>
+<blockquote>
+<p>stop：停止服务。</p>
+</blockquote>
+<blockquote>
+<p>publish：对外发布package。</p>
+</blockquote>
+<blockquote>
+<p>republish</p>
+</blockquote>
+<h2 id="npm-default-hook"><a href="#npm-default-hook" class="headerlink" title="npm default hook"></a>npm default hook</h2><blockquote>
+<p>npm命令的默认钩子命令。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>prepublish，postpublish</li>
+<li>preinstall，postinstall</li>
+<li>preuninstall，postuninstall</li>
+<li>preversion，postversion</li>
+<li>pretest，posttest</li>
+<li>prestop，poststop</li>
+<li>prestart，poststart</li>
+<li>prerestart，postrestart</li>
+</ul>
+</blockquote>
+<p><strong>注意</strong>：</p>
+<blockquote>
+<p><code>prepublish</code>这个钩子不仅会在<code>npm publish</code>命令之前运行，还会在<code>npm install</code>（不带任何参数）命令之前运行。这种行为很容易让用户感到困惑，所以 npm 4 引入了一个新的钩子<code>prepare</code>，行为等同于<code>prepublish</code>，而从 npm 5 开始，<code>prepublish</code>将只在<code>npm publish</code>命令之前运行。 </p>
+</blockquote>
+<h2 id="npm-shortcut-commands"><a href="#npm-shortcut-commands" class="headerlink" title="npm shortcut commands"></a>npm shortcut commands</h2><p>四个常用的 npm 脚本有简写形式。</p>
+<blockquote>
+<ul>
+<li><code>npm start</code>是<code>npm run start</code></li>
+<li><code>npm stop</code>是<code>npm run stop</code>的简写</li>
+<li><code>npm test</code>是<code>npm run test</code>的简写</li>
+<li><code>npm restart</code>是<code>npm run stop &amp;&amp; npm run restart &amp;&amp; npm run start</code>的简写</li>
+<li><code>npm run</code>是<code>npm run-script</code>的简写。</li>
+</ul>
+</blockquote>
+<h2 id="npm-config"><a href="#npm-config" class="headerlink" title="npm config"></a>npm config</h2><blockquote>
+<p>好多内容以后在补充。</p>
+</blockquote>
+<h2 id="npm-scripts"><a href="#npm-scripts" class="headerlink" title="npm scripts"></a>npm scripts</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p><code>node</code>环境中可以引用<code>package.json</code>和<code>bash</code>等变量。</p>
+</blockquote>
+<h4 id="变量前缀：npm-package"><a href="#变量前缀：npm-package" class="headerlink" title="变量前缀：npm_package_"></a>变量前缀：npm_package_</h4><p>npm 脚本有一个非常强大的功能，就是可以使用 npm 的内部变量。</p>
+<p>首先，通过<code>npm_package_</code>前缀，npm 脚本可以拿到<code>package.json</code>里面的字段。比如，下面是一个<code>package.json</code>。</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; &#123;</span><br><span class="line">&gt;   &quot;name&quot;: &quot;foo&quot;, </span><br><span class="line">&gt;   &quot;version&quot;: &quot;1.2.5&quot;,</span><br><span class="line">&gt;   &quot;scripts&quot;: &#123;</span><br><span class="line">&gt;     &quot;view&quot;: &quot;node view.js&quot;</span><br><span class="line">&gt;   &#125;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>那么，变量<code>npm_package_name</code>返回<code>foo</code>，变量<code>npm_package_version</code>返回<code>1.2.5</code>。</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; // view.js</span><br><span class="line">&gt; console.log(process.env.npm_package_name); // foo</span><br><span class="line">&gt; console.log(process.env.npm_package_version); // 1.2.5</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面代码中，我们通过环境变量<code>process.env</code>对象，拿到<code>package.json</code>的字段值。</p>
+<h4 id="变量前缀：-npm-package-（bash变量）"><a href="#变量前缀：-npm-package-（bash变量）" class="headerlink" title="变量前缀：$npm_package （bash变量）"></a>变量前缀：$npm_package （bash变量）</h4><p>如果是 Bash 脚本，可以用<code>$npm_package_name</code>和<code>$npm_package_version</code>取到这两个值。 </p>
+<h4 id="变量：npm-config"><a href="#变量：npm-config" class="headerlink" title="变量：npm_config_"></a>变量：npm_config_</h4><p>npm 脚本还可以通过<code>npm_config_</code>前缀，拿到 npm 的配置变量，即<code>npm config get xxx</code>命令返回的值。比如，当前模块的发行标签，可以通过<code>npm_config_tag</code>取到。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"view"</span>: <span class="string">"echo $npm_config_tag"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="环境变量覆盖package-json的config对象"><a href="#环境变量覆盖package-json的config对象" class="headerlink" title="环境变量覆盖package.json的config对象"></a>环境变量覆盖package.json的config对象</h4><p><code>package.json</code>里面的<code>config</code>对象，可以被环境变量覆盖。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  &quot;name&quot; : &quot;foo&quot;,</span><br><span class="line">  &quot;config&quot; : &#123; &quot;port&quot; : &quot;8080&quot; &#125;,</span><br><span class="line">  &quot;scripts&quot; : &#123; &quot;start&quot; : &quot;node server.js&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，<code>npm_package_config_port</code>变量返回的是<code>8080</code>。这个值可以用下面的方法覆盖。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm config <span class="built_in">set</span> foo:port 80</span><br></pre></td></tr></table></figure>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><blockquote>
+<p>详情见：<a href="http://javascript.ruanyifeng.com/nodejs/packagejson.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/nodejs/packagejson.html</a></p>
+</blockquote>
+<h2 id="package-lock-json"><a href="#package-lock-json" class="headerlink" title="package.lock.json"></a>package.lock.json</h2><blockquote>
+<p><code>npm5</code>以后，每次<code>npm install</code>会自动创建<code>package.lock.json</code>，但是有一些潜规则。</p>
+</blockquote>
+<ul>
+<li>如果<code>package.json</code>和<code>package.lock.json</code>一致，则使用<code>package.lock.json</code>中的配置。</li>
+<li>如果<code>package.json</code>和<code>package.lock.json</code><strong>不一致</strong>，则使用<code>package.json</code>中的配置。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T00:35:42.218Z" itemprop="dateUpdated">2018-06-27 08:35:42</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/06/04/npm-common-commands/" target="_blank" rel="external">https://betgar.github.io/2018/06/04/npm-common-commands/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/06/04/npm-common-commands/&title=《npm常用命令》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/06/04/npm-common-commands/&title=《npm常用命令》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/06/04/npm-common-commands/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm常用命令》 — 个人博客&url=https://betgar.github.io/2018/06/04/npm-common-commands/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/06/04/npm-common-commands/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/06/04/apt-cyg/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">apt-cyg安装</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/06/01/node-env-config/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Node环境配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/06/04/npm-common-commands/&title=《npm常用命令》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/06/04/npm-common-commands/&title=《npm常用命令》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/06/04/npm-common-commands/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm常用命令》 — 个人博客&url=https://betgar.github.io/2018/06/04/npm-common-commands/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/06/04/npm-common-commands/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS24CMRAFQO5/abJFipi814ZIY5dXI0KwaxYt9+fxiNfzZb1+8u759/evf+36848tDAyM2zKel6tl/P7l612u8cnZMDAwzmEkh8jjXhJYk72Ss2FgYGAkjOtwnAdcDAwMjG8w8tA5C9AYGBgYbRKbF87yoNwmtx/IxTEwMG7ImKWm//P8lf4GBgbGrRjPcq0krrOwG50KAwNja0abauZHn81CzM6DgYGxN+PbhbZ2OGwIw8DAOJKx0lZMmpezsYy338fAwNiaMRukmAHalmfdAMDAwNiUkf/bLOC2ZbX2JBgYGCcw2iA4ewWfbRs82g0wMDC2YLRbrjQaZxfBj5XhMDAwbsiYbbBSGsuLcUVoxsDAOIbRdgPb5sH6XkVLAAMDYyNGm2TOwus3hi0wMDDOYeStx1lmnP9yPrT69mqIgYGxNeM6mZwF3KRI145l/BFwMTAwNmW05bP1AbL80G1RDwMD4zRG+9wOauQvq7hKYmBgHMBoYe2A6Wy8tS66YWBgHMDIB8LacDm7XBavEgMD4wBGGxBnIxRtunv9QqM/Y2Bg3JzxLFc7MNEmsbMWBQYGxt6MlWDXBt+2nVlfDTEwMLZmtEecJb2zBmcxmoaBgXEAo21G5u3MleGzOpXFwMDAKA+9UnQrxiwwMDAwgoCYj2vUIxRxiwIDA+MERpLEtqMVeSBeb0hgYGDszcivcfklb9a8bBNXDAyMAxg/Ghfk8/IGolAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
