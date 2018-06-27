@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>解析URI中的query string | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="qs">
+    <meta name="description" content="解析URI中的query string 解析URL中的query string成集合. 前端可以配合使用$.param生成序列化字符串。  JavaScript解析URI中的query string原生解析 查找指定name的参数值，只会匹配第一个找到的。  123456789function getParameterByName(name, url) &amp;#123;    if (!url) ur">
+<meta name="keywords" content="qs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解析URI中的query string">
+<meta property="og:url" content="https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="解析URI中的query string 解析URL中的query string成集合. 前端可以配合使用$.param生成序列化字符串。  JavaScript解析URI中的query string原生解析 查找指定name的参数值，只会匹配第一个找到的。  123456789function getParameterByName(name, url) &amp;#123;    if (!url) ur">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:57:23.787Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解析URI中的query string">
+<meta name="twitter:description" content="解析URI中的query string 解析URL中的query string成集合. 前端可以配合使用$.param生成序列化字符串。  JavaScript解析URI中的query string原生解析 查找指定name的参数值，只会匹配第一个找到的。  123456789function getParameterByName(name, url) &amp;#123;    if (!url) ur">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">解析URI中的query string</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">解析URI中的query string</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-24T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-03-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解析URI中的query-string"><span class="post-toc-number">1.</span> <span class="post-toc-text">解析URI中的query string</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript解析URI中的query-string"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">JavaScript解析URI中的query string</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原生解析"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">原生解析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#qs-js库解析query-string"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">qs.js库解析query string</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java解析编码过的字符串"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Java解析编码过的字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-parse-uri-string-into-key-value-collection-in-java"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">解析URI中的query string</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-24 20:00:00" datetime="2018-03-24T12:00:00.000Z"  itemprop="datePublished">2018-03-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="解析URI中的query-string"><a href="#解析URI中的query-string" class="headerlink" title="解析URI中的query string"></a>解析URI中的query string</h1><blockquote>
+<p>解析URL中的query string成集合.</p>
+<p>前端可以配合使用$.param生成序列化字符串。</p>
+</blockquote>
+<h2 id="JavaScript解析URI中的query-string"><a href="#JavaScript解析URI中的query-string" class="headerlink" title="JavaScript解析URI中的query string"></a>JavaScript解析URI中的query string</h2><h3 id="原生解析"><a href="#原生解析" class="headerlink" title="原生解析"></a>原生解析</h3><blockquote>
+<p>查找指定name的参数值，只会匹配第一个找到的。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getParameterByName</span>(<span class="params">name, url</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!url) url = <span class="built_in">window</span>.location.href;</span><br><span class="line">    name = name.replace(<span class="regexp">/[\[\]]/g</span>, <span class="string">"\\$&amp;"</span>);</span><br><span class="line">    <span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[?&amp;]"</span> + name + <span class="string">"(=([^&amp;#]*)|&amp;|#|$)"</span>),</span><br><span class="line">        results = regex.exec(url);</span><br><span class="line">    <span class="keyword">if</span> (!results) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (!results[<span class="number">2</span>]) <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(results[<span class="number">2</span>].replace(<span class="regexp">/\+/g</span>, <span class="string">" "</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="qs-js库解析query-string"><a href="#qs-js库解析query-string" class="headerlink" title="qs.js库解析query string"></a><code>qs.js</code>库解析query string</h3><blockquote>
+<p><code>qs.js</code>支持解析 query string，也支持序列化query string，而且<code>qs</code>支持解析query string中的<code>Object</code>和<code>Aarry</code>，前提是按照<code>qs</code>的支持的格式书写。</p>
+</blockquote>
+<blockquote>
+<p>parse</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = qs.parse(<span class="string">'a=c'</span>);</span><br><span class="line">assert.deepEqual(obj, &#123; <span class="attr">a</span>: <span class="string">'c'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>stringifying</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = qs.stringify(obj);</span><br><span class="line">assert.equal(str, <span class="string">'a=c'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Java解析编码过的字符串"><a href="#Java解析编码过的字符串" class="headerlink" title="Java解析编码过的字符串"></a>Java解析编码过的字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, List&lt;String&gt;&gt; splitQuery(URL url, String charset) <span class="keyword">throws</span> UnsupportedEncodingException &#123;</span><br><span class="line">  <span class="keyword">final</span> Map&lt;String, List&lt;String&gt;&gt; queryPairs = <span class="keyword">new</span> LinkedHashMap&lt;String, List&lt;String&gt;&gt;();</span><br><span class="line">  <span class="keyword">final</span> String[] pairs = url.getQuery().split(<span class="string">"&amp;"</span>);</span><br><span class="line">  <span class="keyword">for</span> (String pair : pairs) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> idx = pair.indexOf(<span class="string">"="</span>);</span><br><span class="line">    <span class="keyword">final</span> String key = idx &gt; <span class="number">0</span> ? URLDecoder.decode(pair.substring(<span class="number">0</span>, idx), charset) : pair;</span><br><span class="line">    <span class="keyword">if</span> (!queryPairs.containsKey(key)) &#123;</span><br><span class="line">      queryPairs.put(key, <span class="keyword">new</span> LinkedList&lt;String&gt;());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> String value = idx &gt; <span class="number">0</span> &amp;&amp; pair.length() &gt; idx + <span class="number">1</span> ? URLDecoder.decode(pair.substring(idx + <span class="number">1</span>), <span class="string">"UTF-8"</span>) : <span class="keyword">null</span>;</span><br><span class="line">    queryPairs.get(key).add(value);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> queryPairs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>JDK 8 version</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Map&lt;String, List&lt;String&gt;&gt; splitQuery(URL url) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Strings.isNullOrEmpty(url.getQuery())) &#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.emptyMap();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Arrays.stream(url.getQuery().split(<span class="string">"&amp;"</span>))</span><br><span class="line">            .map(<span class="keyword">this</span>::splitQueryParameter)</span><br><span class="line">            .collect(Collectors.groupingBy(SimpleImmutableEntry::getKey, LinkedHashMap::<span class="keyword">new</span>, mapping(Map.Entry::getValue, toList())));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> SimpleImmutableEntry&lt;String, String&gt; <span class="title">splitQueryParameter</span><span class="params">(String it)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> idx = it.indexOf(<span class="string">"="</span>);</span><br><span class="line">    <span class="keyword">final</span> String key = idx &gt; <span class="number">0</span> ? it.substring(<span class="number">0</span>, idx) : it;</span><br><span class="line">    <span class="keyword">final</span> String value = idx &gt; <span class="number">0</span> &amp;&amp; it.length() &gt; idx + <span class="number">1</span> ? it.substring(idx + <span class="number">1</span>) : <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SimpleImmutableEntry&lt;&gt;(key, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>common-httpclients.jar</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.hc.client5.http.utils.URLEncodedUtils</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  String url = <span class="string">"http://www.example.com/something.html?one=1&amp;two=2&amp;three=3&amp;three=3a"</span>;</span><br><span class="line">  List&lt;NameValuePair&gt; params = URLEncodedUtils.parse(<span class="keyword">new</span> URI(url), <span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (NameValuePair param : params) &#123;</span><br><span class="line">    System.out.println(param.getName() + <span class="string">" : "</span> + param.getValue());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Spring Framework</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  String uri = <span class="string">"http://youhost.com/test?param1=abc&amp;param2=def&amp;param2=ghi"</span>;</span><br><span class="line">  MultiValueMap&lt;String, String&gt; parameters =</span><br><span class="line">          UriComponentsBuilder.fromUriString(uri).build().getQueryParams();</span><br><span class="line">  List&lt;String&gt; param1 = parameters.get(<span class="string">"param1"</span>);</span><br><span class="line">  List&lt;String&gt; param2 = parameters.get(<span class="string">"param2"</span>);</span><br><span class="line">  System.out.println(<span class="string">"param1: "</span> + param1.get(<span class="number">0</span>));</span><br><span class="line">  System.out.println(<span class="string">"param2: "</span> + param2.get(<span class="number">0</span>) + <span class="string">","</span> + param2.get(<span class="number">1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://stackoverflow.com/questions/13592236/parse-a-uri-string-into-name-value-collection" target="_blank" rel="noopener">Parse a URI String into Name-Value Collection</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:57:23.787Z" itemprop="dateUpdated">2018-06-27 21:57:23</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/03/24/parse-uri-string-into-key-value-collection-in-java/" target="_blank" rel="external">https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qs/">qs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/&title=《解析URI中的query string》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/&title=《解析URI中的query string》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解析URI中的query string》 — 个人博客&url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/11/plsql-forall/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">plsql-forall</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/13/how-to-use-base64-between-oracle-and-java/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在Oracle和Java中使用Base64</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/&title=《解析URI中的query string》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/&title=《解析URI中的query string》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解析URI中的query string》 — 个人博客&url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/03/24/parse-uri-string-into-key-value-collection-in-java/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADKklEQVR42u3a207DMBAFwP7/T8MrCCU9Zx2kxpk8oRQcjyOx3cvrFV9fP67zO0efnq98vsLf62iFiy9sbGzsm7CTBySM2UFcdUDtYWFjY2Pvx84fc35nFk7Oj+yIlOzz8D42Njb249nXBrbZgSaHhY2NjY2dh5NZ6pJUe2aFLWxsbOynsRNGXo6fBaH8KcnRXFZLw8bGxv54dl70+fyf/6W/jY2Njf3B7K/ymiUwbdIyC6iFAhsbG3sjdptatEuvNxXynbSNZGxsbOw92LMS/4zaFp6WikHnO8HGxsbeiF1EubixOgtas8bAVQM92NjY2Pdl58X3JKgk5ae23Zt8Wh8iNjY29mPYOX4WllYCYTvuc1hFw8bGxt6IvRLY8jAzS3LaIPom+cHGxsbeiJ2nEO1W8tJPW9bPX8Obl4GNjY29BTsPVMngzsrm2vDWPgsbGxt7b/Ys8UgGgGa/s5IaDfvY2NjY2Ddnn2+rLQOthKt2+HKY3mBjY2Nvx54NwcxaBevBctZg+HUHGxsbeyN2+y19PfHIr+Q1tFRsbGzs/djDf/flJtqVr20SHMZtbGxs7C3Ys0CVB4+EuhJ18xfzWjljbGxs7A9mzx5z1bDmLKRdkLRgY2Njb8TOA0zx5T5o2a4gk7ZE0QzGxsbGvjm73VYLWC8/JYGwPiBsbGzsjdhtvSVJWtq0IR/cmQ3lRC8GGxsb+7bs+h99WWxaDzwrjYTDlbGxsbEfxr6qlZv/bfv09rixsbGxd2LPgkSyaN4AWE972teDjY2NvR87L+vkX/qvKlElz23XwcbGxn4COwlUsxJP3kL4v6EfbGxs7L3Zs5JQ/ciFZCPZCTY2NvYz2edbnIWTdhxnZYSoTm+wsbGxt2CvjNG0RzPbaNvoTVoa2NjY2Dux2w21wzGzclWbDq2HSWxsbOy7s/NifX5m7VDObGAoD2DDyhM2Njb2rdizTbSN3llLeOXoD+9gY2NjP5i9UrKfNWhnh/KmSYyNjY39YPZ5ejArPOVjPe0IJjY2NvZz2G1xf32YMl951h5YGtzBxsbGvhW7HabJD6sNYG0oao8DGxsbezv2N529Xcn2c3lmAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Oracle中被锁定的表 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Oracle">
+    <meta name="description" content="Oracle 中被锁定的表 查询oracle中被锁定的表  12345678-- 相关表SELECT * FROM V$LOCK;SELECT * FROM V$SQLAREA;SELECT * FROM V$SESSION;SELECT * FROM V$PROCESS ;SELECT * FROM V$LOCKED_OBJECT;SELECT * FROM ALL_OBJECTS;SELECT">
+<meta name="keywords" content="Oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle中被锁定的表">
+<meta property="og:url" content="https://betgar.github.io/2017/04/18/query-oracle-table-locked/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Oracle 中被锁定的表 查询oracle中被锁定的表  12345678-- 相关表SELECT * FROM V$LOCK;SELECT * FROM V$SQLAREA;SELECT * FROM V$SESSION;SELECT * FROM V$PROCESS ;SELECT * FROM V$LOCKED_OBJECT;SELECT * FROM ALL_OBJECTS;SELECT">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:53:40.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle中被锁定的表">
+<meta name="twitter:description" content="Oracle 中被锁定的表 查询oracle中被锁定的表  12345678-- 相关表SELECT * FROM V$LOCK;SELECT * FROM V$SQLAREA;SELECT * FROM V$SESSION;SELECT * FROM V$PROCESS ;SELECT * FROM V$LOCKED_OBJECT;SELECT * FROM ALL_OBJECTS;SELECT">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Oracle中被锁定的表</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Oracle中被锁定的表</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-18T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-04-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle/">Oracle</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Oracle-中被锁定的表"><span class="post-toc-number">1.</span> <span class="post-toc-text">Oracle 中被锁定的表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询锁定的对象"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">查询锁定的对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#杀死锁定表的会话-Session"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">杀死锁定表的会话(Session)</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-query-oracle-table-locked"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Oracle中被锁定的表</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-04-18 20:00:00" datetime="2017-04-18T12:00:00.000Z"  itemprop="datePublished">2017-04-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle/">Oracle</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Oracle-中被锁定的表"><a href="#Oracle-中被锁定的表" class="headerlink" title="Oracle 中被锁定的表"></a>Oracle 中被锁定的表</h1><blockquote>
+<p>查询oracle中被锁定的表</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 相关表</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> V$<span class="keyword">LOCK</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> V$SQLAREA;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> V$<span class="keyword">SESSION</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> V$PROCESS ;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> V$LOCKED_OBJECT;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ALL_OBJECTS;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> V$SESSION_WAIT;</span><br></pre></td></tr></table></figure>
+<h2 id="查询锁定的对象"><a href="#查询锁定的对象" class="headerlink" title="查询锁定的对象"></a>查询锁定的对象</h2><blockquote>
+<p>查询数据库中锁定的对象</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 可以根据操作系统的用户名查询</span></span><br><span class="line"><span class="keyword">SELECT</span> B.OWNER, B.OBJECT_NAME, A.SESSION_ID, A.LOCKED_MODE, A.PROCESS,</span><br><span class="line">       A.OS_USER_NAME</span><br><span class="line">  <span class="keyword">FROM</span> V$LOCKED_OBJECT A, DBA_OBJECTS B</span><br><span class="line"> <span class="keyword">WHERE</span> B.OBJECT_ID = A.OBJECT_ID</span><br><span class="line">   <span class="comment">-- AND A.OS_USER_NAME = '操作系统用户名称';</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 查询Session和SERIAL#序号</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SESSION_ID会话id</span></span><br><span class="line"><span class="keyword">SELECT</span> B.USERNAME, B.SID, B.SERIAL#, LOGON_TIME</span><br><span class="line">  <span class="keyword">FROM</span> V$LOCKED_OBJECT A, V$<span class="keyword">SESSION</span> B</span><br><span class="line"> <span class="keyword">WHERE</span> A.SESSION_ID = B.SID</span><br><span class="line">   <span class="keyword">AND</span> A.SESSION_ID <span class="keyword">IN</span> (<span class="number">404</span>) <span class="comment">-- 会话id</span></span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> B.LOGON_TIME;</span><br></pre></td></tr></table></figure>
+<h2 id="杀死锁定表的会话-Session"><a href="#杀死锁定表的会话-Session" class="headerlink" title="杀死锁定表的会话(Session)"></a>杀死锁定表的会话(Session)</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询被锁定的表</span></span><br><span class="line"><span class="comment">-- OS_USER_NAME操作系统用户名称</span></span><br><span class="line"><span class="keyword">SELECT</span> B.OWNER, B.OBJECT_NAME, A.SESSION_ID, A.LOCKED_MODE, A.PROCESS,</span><br><span class="line">       A.OS_USER_NAME</span><br><span class="line">  <span class="keyword">FROM</span> V$LOCKED_OBJECT A, DBA_OBJECTS B</span><br><span class="line"> <span class="keyword">WHERE</span> B.OBJECT_ID = A.OBJECT_ID</span><br><span class="line">   <span class="comment">-- AND A.OS_USER_NAME = 'os';</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询Session和SERIAL#序号</span></span><br><span class="line"><span class="keyword">SELECT</span> B.USERNAME, B.SID, B.SERIAL#, LOGON_TIME</span><br><span class="line">  <span class="keyword">FROM</span> V$LOCKED_OBJECT A, V$<span class="keyword">SESSION</span> B</span><br><span class="line"> <span class="keyword">WHERE</span> A.SESSION_ID = B.SID</span><br><span class="line">   <span class="keyword">AND</span> A.SESSION_ID <span class="keyword">IN</span> (<span class="number">404</span>)</span><br><span class="line"> <span class="keyword">ORDER</span> <span class="keyword">BY</span> B.LOGON_TIME;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">-- 根据Session和SERIAL#序号杀死锁定的会话</span></span><br><span class="line"> <span class="keyword">ALTER</span> <span class="keyword">SYSTEM</span> <span class="keyword">KILL</span> <span class="keyword">SESSION</span> <span class="string">'404,6797'</span>;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:53:40.169Z" itemprop="dateUpdated">2018-06-27 21:53:40</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/04/18/query-oracle-table-locked/" target="_blank" rel="external">https://betgar.github.io/2017/04/18/query-oracle-table-locked/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/&title=《Oracle中被锁定的表》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/&title=《Oracle中被锁定的表》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/04/18/query-oracle-table-locked/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle中被锁定的表》 — 个人博客&url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/07/building-stateful-plugins-with-jquery-ui-widget/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">使用jQuery UI widget编写有状态的插件</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/14/the-rules-of-badminton/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">羽毛球赛规则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/&title=《Oracle中被锁定的表》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/&title=《Oracle中被锁定的表》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/04/18/query-oracle-table-locked/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle中被锁定的表》 — 个人博客&url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/04/18/query-oracle-table-locked/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3aQW7DMAwEwPz/0+61QFt7SdoFLI1OAWJLmhwYktLnE4/jxzj/9q8nvz9/vsrniYGBgfFaRrKJHJDPP/n2l7UwMDA2YJyHxXzqv7ZyvuL5WlHIxsDAwAhIPTwGBgbGE4x7C9H8R8HAwMCoBsSkfM1X6aWhGBgY+zB6YfF/Pj9yvoGBgfEqxlEc52linsbls0W7wsDAWJqRB7jkCDMvbqs/U7QfDAyMDRh5udjbdK/dVkgWMTAwFmX0ANUic34h7AKMgYGxNKM63aS4vSv4lsMuBgbGQozq9Ys8pFaDb28PGBgYazMmDfpJoJywMTAw9mRMWmm99lzeaBv9h2BgYLyckSjnJWg1WJdTSQwMjKUZo3Kx+G71UkUS7ptbwcDAeBUjCax5iKyWslEYTRqCGBgY2zDyRLBapvYK3cIzGBgYGzDyTVePBPIitnoAgIGBgdErX6tJZN5ouwjuGBgYSzMmRwLVFn/vXkSeXGJgYKzN6G0lb40lKeARj0LvEAMDYznG5NCxV77mbb5oJxgYGFsy8tEL09UVL97CwMBYlHEURy/UTtp2heYaBgbGooxesHviskW1b9b8k8DAwHgtI78SkQTEfJ5J+oiBgbEnoxf4qjNMksiLtzAwMDDywNcKrDfMjIGBgRGnhvPLGUmRfNv/BgYGxqsY1Wtbc/bkMAADA2M3RvU6RfXosXdFIz8ewMDAWJrxBY7v+gjdzBYxAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

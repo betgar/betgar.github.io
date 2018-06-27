@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>在Oracle和Java中使用Base64 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Base64">
+    <meta name="description" content="在Oracle和Java中使用Base64Oracle UTL_RAW：处理二进制的数据包。 UTL_ENCODE：处理编码包。   UTL_ENCODE.BASE64_ENCODE使用 步骤：  先用UTL_RAW.CAST_TO_RAW把varchar2转换为raw类型. 使用UTL_ENCODE.BASE64_ENCODE编码. 使用UTL_RAW.CAST_TO_VARCHAR2从raw(">
+<meta name="keywords" content="Base64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Oracle和Java中使用Base64">
+<meta property="og:url" content="https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="在Oracle和Java中使用Base64Oracle UTL_RAW：处理二进制的数据包。 UTL_ENCODE：处理编码包。   UTL_ENCODE.BASE64_ENCODE使用 步骤：  先用UTL_RAW.CAST_TO_RAW把varchar2转换为raw类型. 使用UTL_ENCODE.BASE64_ENCODE编码. 使用UTL_RAW.CAST_TO_VARCHAR2从raw(">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:50:06.850Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Oracle和Java中使用Base64">
+<meta name="twitter:description" content="在Oracle和Java中使用Base64Oracle UTL_RAW：处理二进制的数据包。 UTL_ENCODE：处理编码包。   UTL_ENCODE.BASE64_ENCODE使用 步骤：  先用UTL_RAW.CAST_TO_RAW把varchar2转换为raw类型. 使用UTL_ENCODE.BASE64_ENCODE编码. 使用UTL_RAW.CAST_TO_VARCHAR2从raw(">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在Oracle和Java中使用Base64</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在Oracle和Java中使用Base64</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-13T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-03-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Base64/">Base64</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在Oracle和Java中使用Base64"><span class="post-toc-number">1.</span> <span class="post-toc-text">在Oracle和Java中使用Base64</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Oracle"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Oracle</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Java"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Java</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-how-to-use-base64-between-oracle-and-java"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在Oracle和Java中使用Base64</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-13 20:00:00" datetime="2018-03-13T12:00:00.000Z"  itemprop="datePublished">2018-03-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Base64/">Base64</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="在Oracle和Java中使用Base64"><a href="#在Oracle和Java中使用Base64" class="headerlink" title="在Oracle和Java中使用Base64"></a>在Oracle和Java中使用Base64</h1><h2 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h2><blockquote>
+<p>UTL_RAW：处理二进制的数据包。</p>
+<p>UTL_ENCODE：处理编码包。</p>
+</blockquote>
+<ul>
+<li><p>UTL_ENCODE.BASE64_ENCODE使用</p>
+<p>步骤：</p>
+<ol>
+<li>先用UTL_RAW.CAST_TO_RAW把varchar2转换为raw类型.</li>
+<li>使用UTL_ENCODE.BASE64_ENCODE编码.</li>
+<li><p>使用UTL_RAW.CAST_TO_VARCHAR2从raw(二进制类型)转换为varchar2类型转换.</p>
+<p><strong>注意：</strong> raw类型也可以进行传递，但是Java中要使用Byte进行解析。</p>
+</li>
+</ol>
+<p>​</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> utl_raw.cast_to_varchar2(utl_encode.base64_encode(utl_raw.cast_to_raw(<span class="string">'&#123;"count": 1000&#125;'</span>)))</span><br><span class="line">  <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UTL_ENCODE.BASE64_DECODE使用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> utl_raw.cast_to_varchar2(utl_encode.base64_decode(utl_raw.cast_to_raw(<span class="string">'e1wiY291bnRcIjogMTAwMH0='</span>))) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定字符编码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UTL_ENCODE.TEXT_ENCODE(string, charset);</span><br><span class="line">UTL_ENCODE.TEXT_DECODE(string, charset);</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><blockquote>
+<p>BASE64Decoder</p>
+<p>BASE64Encoder</p>
+<p>EncodeUtil：工具类</p>
+</blockquote>
+<ul>
+<li><p>BASE64Encoder使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encodeString</span><span class="params">(String plainText, String charSet)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        BASE64Encoder encoder = <span class="keyword">new</span> BASE64Encoder();</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> encoder.encode(plainText.getBytes(charSet));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(UnsupportedEncodingException e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> EncodeException(<span class="string">"E0208.0013"</span>, EcpI18nUtil.localizedString(<span class="string">"E0208.0013"</span>, <span class="string">"\u4E0D\u652F\u6301\u7684\u5B57\u7B26\u96C6"</span>), e, <span class="keyword">new</span> Object[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BASE64Decoder使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decodeString</span><span class="params">(String encodedText, String charSet)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       BASE64Decoder decoder = <span class="keyword">new</span> BASE64Decoder();</span><br><span class="line">       <span class="keyword">try</span></span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">new</span> String(decoder.decodeBuffer(encodedText), charSet);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">catch</span>(Exception e)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> EncodeException(<span class="string">"E0208.0013"</span>, EcpI18nUtil.localizedString(<span class="string">"E0208.0013"</span>, <span class="string">"\u89E3\u7801\u5931\u8D25"</span>), e, <span class="keyword">new</span> Object[<span class="number">0</span>]);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Java中byte和String相互转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// String -&gt; byte</span></span><br><span class="line">String str = <span class="string">"count"</span>;</span><br><span class="line"><span class="keyword">byte</span>[] bytes = str.getBytes(<span class="string">"GBK"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// byte -&gt; String</span></span><br><span class="line">String str2 = <span class="keyword">new</span> String(bytes, <span class="string">'GBK'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符集</p>
+<blockquote>
+<p> 编码和解码都可以指定字符集。如果<strong>字符串</strong>中有<strong>中文</strong> 编码之后解码会出现乱码，因为Ecp工具类默认使用GBK字符集<strong>编码</strong>和<strong>解码</strong>。</p>
+</blockquote>
+</li>
+<li><p>注意</p>
+<blockquote>
+<p>如果希望<strong>服务端Java</strong>编码之后可以在<strong>数据库过程</strong>中进行解码（反之亦然），请不要在关键业务数据中出现<strong>中文</strong> 。</p>
+</blockquote>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:50:06.850Z" itemprop="dateUpdated">2018-06-27 21:50:06</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/03/13/how-to-use-base64-between-oracle-and-java/" target="_blank" rel="external">https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Base64/">Base64</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/&title=《在Oracle和Java中使用Base64》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/&title=《在Oracle和Java中使用Base64》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Oracle和Java中使用Base64》 — 个人博客&url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/24/parse-uri-string-into-key-value-collection-in-java/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">解析URI中的query string</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/02/26/sqlstyle.guide/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SQL style guide</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/&title=《在Oracle和Java中使用Base64》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/&title=《在Oracle和Java中使用Base64》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在Oracle和Java中使用Base64》 — 个人博客&url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/03/13/how-to-use-base64-between-oracle-and-java/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQW7DMAwEwPz/0+01QBtnSYqpC4xPQZvYGh0kecnHI76+nq6ff0muyT2f//vYuPDw8PAGQ7++9fVf8iH2hp5PLh4eHt5neMntrh+TDCVfvfMxvLHg4eHh3YDXQ/bY19sSHh4e3v/izYOMU5sEHh4e3l/x8gg1D2erC3oScCxmLXh4eHi1alS0uN/n80p9Dw8PD29cVc+LYfmiPzl8l0eLh4eHt8Crlu3P7jx5YWw0Tjw8PLyjvF5MMG/Myg/rSVPXy/vg4eHhrfGqMWjeUpD8dn6If/lEPDw8vAXe9bCS8lWvGNaboLwMhoeHh7fN6wW1+Xeq4Hzqm5kHHh4e3gKveuzuBRCT5qo8mMDDw8M7y8uPyPlSXo1lrwdaLX2V3xLw8PDwirzesKptBNUAoho3ROPBw8PDO8qrLsfVECE5BOfTlEQeeHh4eJ/h9Ri95oNqM0H+/ZdZCx4eHt4aL1lwq/FrMpT5BEU9EXh4eHhHeXmAeyrOmIQdhV/h4eHhLfDypX9S6JpMXC9hwMPDw9vm9Rqq8mN3PrhqE0P0MoCHh4d3iJcv99UHVH9V3RiiKcPDw8Nb4+XNTNUW1eqJvjcFB1IWPDw8vFYAUT3y5g0EX5dXtaWgF53g4eHhbfB6G0M58xiXzZrFMzw8PLyjvEmompB6EzSJRY5lxnh4eHhxP2d+CO61RiVbxeSY/svGgIeHh7fGqxacTm0J8wLYy0nHw8PDO8qbbAnJgTgvrVUnNJosPDw8vAXeqW2gF1Vsf8bDw8Pb4+Uv/9UtYV74T+7/BomHh4e3xjtV1E9g1SkoJCt4eHh4t+dNDta9ICPfqPDw8PDuw6uGqhNSL1zGw8PD+wyv95gEXA0Reo1cbzYGPDw8vKO86gt/cosE38OM6nh4eHh4U943HV4/pGekliYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

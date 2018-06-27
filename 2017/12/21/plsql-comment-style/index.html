@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>PL/SQL注释风格 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="PLSQL">
+    <meta name="description" content="PL/SQL注释风格PL/SQL Comment Style 常常纠结程序的编程风格和注释的风格。PL/SQL中的编程风格也是各种流派，所以我就看了下Oracle内置函数的编程风格和注释风格，自己总结了下，记录下来，当作参考。  Document Style12345678910111213141516------------------  主题(大写)----  正文开始--  啦啦啦啦--">
+<meta name="keywords" content="PLSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PL&#x2F;SQL注释风格">
+<meta property="og:url" content="https://betgar.github.io/2017/12/21/plsql-comment-style/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="PL/SQL注释风格PL/SQL Comment Style 常常纠结程序的编程风格和注释的风格。PL/SQL中的编程风格也是各种流派，所以我就看了下Oracle内置函数的编程风格和注释风格，自己总结了下，记录下来，当作参考。  Document Style12345678910111213141516------------------  主题(大写)----  正文开始--  啦啦啦啦--">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:26:36.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PL&#x2F;SQL注释风格">
+<meta name="twitter:description" content="PL/SQL注释风格PL/SQL Comment Style 常常纠结程序的编程风格和注释的风格。PL/SQL中的编程风格也是各种流派，所以我就看了下Oracle内置函数的编程风格和注释风格，自己总结了下，记录下来，当作参考。  Document Style12345678910111213141516------------------  主题(大写)----  正文开始--  啦啦啦啦--">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">PL/SQL注释风格</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">PL/SQL注释风格</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-21T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-12-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PLSQL/">PLSQL</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PL-SQL注释风格"><span class="post-toc-number">1.</span> <span class="post-toc-text">PL/SQL注释风格</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PL-SQL-Comment-Style"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">PL/SQL Comment Style</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Document-Style"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Document Style</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Procedure-Example"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Procedure Example</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DBMS-ALERT-Example"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">DBMS_ALERT Example</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释模版"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">注释模版</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-plsql-comment-style"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">PL/SQL注释风格</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-21 20:00:00" datetime="2017-12-21T12:00:00.000Z"  itemprop="datePublished">2017-12-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PLSQL/">PLSQL</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="PL-SQL注释风格"><a href="#PL-SQL注释风格" class="headerlink" title="PL/SQL注释风格"></a>PL/SQL注释风格</h1><h2 id="PL-SQL-Comment-Style"><a href="#PL-SQL-Comment-Style" class="headerlink" title="PL/SQL Comment Style"></a>PL/SQL Comment Style</h2><blockquote>
+<p>常常纠结程序的编程风格和注释的风格。PL/SQL中的编程风格也是各种流派，所以我就看了下Oracle内置函数的编程风格和注释风格，自己总结了下，记录下来，当作参考。</p>
+</blockquote>
+<h3 id="Document-Style"><a href="#Document-Style" class="headerlink" title="Document Style"></a>Document Style</h3><figure class="highlight pl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">----------------</span><br><span class="line">--  主题(大写)</span><br><span class="line">--</span><br><span class="line">--  正文开始</span><br><span class="line">--  啦啦啦啦</span><br><span class="line">--  第一段落结束.</span><br><span class="line">-- </span><br><span class="line">--  第二段开始</span><br><span class="line">--  啦啦啦</span><br><span class="line">--  第二段结束。</span><br><span class="line"></span><br><span class="line">-----------------</span><br><span class="line">-- 主题<span class="number">1</span></span><br><span class="line">-- </span><br><span class="line">-- 正文开始</span><br><span class="line">-- 正文结束。</span><br></pre></td></tr></table></figure>
+<h3 id="Procedure-Example"><a href="#Procedure-Example" class="headerlink" title="Procedure Example"></a>Procedure Example</h3><blockquote>
+<p>存储过程栗子</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">procedure waitany(name out varchar2,</span><br><span class="line">                    message out varchar2,</span><br><span class="line">                    status out integer,</span><br><span class="line">                    timeout in number default maxwait);</span><br><span class="line">--  描述过程的作用...</span><br><span class="line">--   接着说...</span><br><span class="line">--  输入参数：</span><br><span class="line">--    第一个参数：...</span><br><span class="line">--      第一个参数参数描述...</span><br><span class="line">--    第N个参数: ....</span><br><span class="line">--  输出参数(返回值)：</span><br><span class="line">--    第一个参数： ...</span><br><span class="line">--  异常处理：...</span><br><span class="line">--    处理描述...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">procedure waitany(name out varchar2,</span><br><span class="line">                    message out varchar2,</span><br><span class="line">                    status out integer,</span><br><span class="line">                    timeout in number default maxwait);</span><br><span class="line">  --  Wait for an alert to occur for any of the alerts for which this</span><br><span class="line">  --    session is registered.  Although probably unusual, the same session</span><br><span class="line">  --    that waits for the alert may also first signal the alert.  In this</span><br><span class="line">  --    case remember to commit after the signal and prior to the wait.</span><br><span class="line">  --    Otherwise a lock request exception (status 4) will occur.  This</span><br><span class="line">  --    call always performs a commit.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    timeout</span><br><span class="line">  --      The maximum time to wait for an alert.  If no alert occurs before</span><br><span class="line">  --      timeout seconds, then this call will return with status of 1.</span><br><span class="line">  --  Output parameters:</span><br><span class="line">  --    name</span><br><span class="line">  --      The name of the alert that occurred, in uppercase.</span><br><span class="line">  --    message</span><br><span class="line">  --      The message associated with the alert.  This is the message</span><br><span class="line">  --      provided by the &apos;signal&apos; call.  Note that if multiple signals</span><br><span class="line">  --      on this alert occurred before the waitany call, then the message</span><br><span class="line">  --      will correspond to the most recent signal call.  Messages from</span><br><span class="line">  --      prior signal calls will be discarded.</span><br><span class="line">  --    status</span><br><span class="line">  --      0 - alert occurred</span><br><span class="line">  --      1 - timeout occurred</span><br><span class="line">  --  Errors raised:</span><br><span class="line">  --    -20000, ORU-10024: there are no alerts registered.</span><br><span class="line">  --       Cause: You must register an alert before waiting.</span><br><span class="line">  --</span><br></pre></td></tr></table></figure>
+<h3 id="DBMS-ALERT-Example"><a href="#DBMS-ALERT-Example" class="headerlink" title="DBMS_ALERT Example"></a>DBMS_ALERT Example</h3><blockquote>
+<p>oracle中的DBMS_ALERT栗子。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br></pre></td><td class="code"><pre><span class="line">create or replace package sys.dbms_alert is</span><br><span class="line"></span><br><span class="line">  ------------</span><br><span class="line">  --  OVERVIEW</span><br><span class="line">  --</span><br><span class="line">  --  This package provides support for the asynchronous (as opposed to</span><br><span class="line">  --  polling) notification of database events.  By appropriate use of</span><br><span class="line">  --  this package and database triggers, an application can cause itself</span><br><span class="line">  --  to be notified whenever values of interest in the database are</span><br><span class="line">  --  changed.</span><br><span class="line">  --</span><br><span class="line">  --  For example, suppose a graphics tool is displaying a graph of some</span><br><span class="line">  --  data from a database table.  The graphics tool can, after reading and</span><br><span class="line">  --  graphing the data, wait on a database alert (&apos;dbms_alert.waitone&apos;)</span><br><span class="line">  --  covering the data just read.  The tool will automatically wake up when</span><br><span class="line">  --  the data is changed by any other user.  All that is required is that a</span><br><span class="line">  --  trigger be placed on the database table which then performs a signal</span><br><span class="line">  --  (&apos;dbms_alert.signal&apos;) whenever the trigger is fired.</span><br><span class="line">  --</span><br><span class="line">  --  Alerts are transaction based.  This means that the waiting session</span><br><span class="line">  --  does not get alerted until the transaction signalling the alert commits.</span><br><span class="line">  --</span><br><span class="line">  --  There can be any number of concurrent signallers of a given alert, and</span><br><span class="line">  --  there can be any number of concurrent waiters on a given alert.</span><br><span class="line">  --</span><br><span class="line">  --  A waiting application will be blocked in the database and cannot do</span><br><span class="line">  --  any other work.</span><br><span class="line">  --</span><br><span class="line">  --  Most of the calls in the package, except for &apos;signal&apos;, do commits.</span><br><span class="line">  --</span><br><span class="line"></span><br><span class="line">  -----------</span><br><span class="line">  --  EXAMPLE</span><br><span class="line">  --</span><br><span class="line">  --  Suppose the application wishes to graph average salaries, say by</span><br><span class="line">  --  department, for all employees.  So the application needs to know</span><br><span class="line">  --  whenever &apos;emp&apos; is changed.  The application would look like this:</span><br><span class="line">  --</span><br><span class="line">  --      dbms_alert.register(&apos;emp_table_alert&apos;);</span><br><span class="line">  --    readagain:</span><br><span class="line">  --      &lt;read the emp table and graph it&gt;</span><br><span class="line">  --      dbms_alert.waitone(&apos;emp_table_alert&apos;, :message, :status);</span><br><span class="line">  --      if status = 0 then goto readagain; else &lt;error condition&gt;</span><br><span class="line">  --</span><br><span class="line">  --  The &apos;emp&apos; table would have a trigger similar to the following:</span><br><span class="line">  --</span><br><span class="line">  --    create trigger emptrig after insert or update or delete on emp</span><br><span class="line">  --    begin</span><br><span class="line">  --      dbms_alert.signal(&apos;emp_table_alert&apos;, &apos;message_text&apos;);</span><br><span class="line">  --    end;</span><br><span class="line">  --</span><br><span class="line">  --  When the application is no longer interested in the alert, it does</span><br><span class="line">  --    dbms_alert.remove(&apos;emp_table_alert&apos;);</span><br><span class="line">  --  This is important since it reduces the amount of work required by</span><br><span class="line">  --  the alert signaller.</span><br><span class="line">  --</span><br><span class="line">  --  If a session exits (or dies) while there exist registered alerts,</span><br><span class="line">  --  they will eventually be cleaned up by future users of this package.</span><br><span class="line">  --</span><br><span class="line">  --  The above example guarantees that the application will always see</span><br><span class="line">  --  the latest data, although it may not see every intermediate value.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  --------------</span><br><span class="line">  --  VARIATIONS</span><br><span class="line">  --</span><br><span class="line">  --  The application can register for multiple events and can then wait for</span><br><span class="line">  --  any of them to occur using the &apos;waitany&apos; call.</span><br><span class="line">  --</span><br><span class="line">  --  An application can also supply an optional &apos;timeout&apos; parameter to the</span><br><span class="line">  --  &apos;waitone&apos; or &apos;waitany&apos; calls.  A &apos;timeout&apos; of 0 returns immediately</span><br><span class="line">  --  if there is no pending alert.</span><br><span class="line">  --</span><br><span class="line">  --  The signalling session can optionally pass a message which will be</span><br><span class="line">  --  received by the waiting session.</span><br><span class="line">  --</span><br><span class="line">  --  Alerts may be signalled more often than the corresponding application</span><br><span class="line">  --  &apos;wait&apos; calls.  In such cases the older alerts are discaded.  The</span><br><span class="line">  --  application always gets the latest alert (based on transaction commit</span><br><span class="line">  --  times).</span><br><span class="line">  --</span><br><span class="line">  --  If the application does not require transaction based alerts, then the</span><br><span class="line">  --  &apos;dbms_pipe&apos; package may provide a useful alternative</span><br><span class="line">  --</span><br><span class="line">  --  If the transaction is rolled back after the call to &apos;dbms_alert.signal&apos;,</span><br><span class="line">  --  no alert will occur.</span><br><span class="line">  --</span><br><span class="line">  --  It is possible to receive an alert, read the data, and find that no</span><br><span class="line">  --  data has changed.  This is because the data changed after the *prior*</span><br><span class="line">  --  alert, but before the data was read for that *prior* alert.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  --------------------------</span><br><span class="line">  --  IMPLEMENTATION DETAILS</span><br><span class="line">  --</span><br><span class="line">  --  In most cases the implementation is event-driven, i.e., there are no</span><br><span class="line">  --  polling loops.  There are two cases where polling loops can occur:</span><br><span class="line">  --</span><br><span class="line">  --    1) Parallel mode.  If your database is running parallel mode then</span><br><span class="line">  --       a polling loop is required to check for alerts from another</span><br><span class="line">  --       instance.  The polling loop defaults to one second and is settable</span><br><span class="line">  --       by the &apos;set_defaults&apos; call.</span><br><span class="line">  --    2) Waitany call.  If you use the &apos;waitany&apos; call, and a signalling</span><br><span class="line">  --       session does a signal but does not commit within one second of the</span><br><span class="line">  --       signal, then a polling loop is required so that this uncommitted</span><br><span class="line">  --       alert does not camouflage other alerts.  The polling loop begins</span><br><span class="line">  --       at a one second interval and exponentially backs off to 30 second</span><br><span class="line">  --       intervals.</span><br><span class="line">  --</span><br><span class="line">  --  This package uses the dbms_lock package (for synchronization between</span><br><span class="line">  --  signallers and waiters) and the dbms_pipe package (for asynchronous</span><br><span class="line">  --  event dispatching).</span><br><span class="line"></span><br><span class="line">  -------------------------------------------------------</span><br><span class="line">  --  INTERACTION WITH MULTI-THREADED AND PARALLEL SERVER</span><br><span class="line">  --</span><br><span class="line">  --  When running with the parallel server AND multi-threaded server, a</span><br><span class="line">  --  multi-threaded (dispatcher) &quot;shared server&quot; will be bound to a</span><br><span class="line">  --  session (and therefore not shareable) during the time a session has</span><br><span class="line">  --  any alerts &quot;registered&quot;, OR from the time a session &quot;signals&quot; an</span><br><span class="line">  --  alert until the time the session commits.  Therefore, applications</span><br><span class="line">  --  which register for alerts should use &quot;dedicated servers&quot; rather than</span><br><span class="line">  --  connecting through the dispatcher (to a &quot;shared server&quot;) since</span><br><span class="line">  --  registration typically lasts for a long time, and applications which</span><br><span class="line">  --  cause &quot;signals&quot; should have relatively short transactions so as not</span><br><span class="line">  --  to tie up &quot;shared servers&quot; for too long.</span><br><span class="line"></span><br><span class="line">  ------------</span><br><span class="line">  --  SECURITY</span><br><span class="line">  --</span><br><span class="line">  --  Security on this package may be controlled by granting execute on</span><br><span class="line">  --  this package to just those users or roles that you trust.  You may</span><br><span class="line">  --  wish to write a cover package on top of this one which restricts</span><br><span class="line">  --  the alertnames used.  Execute privilege on this cover package can</span><br><span class="line">  --  then be granted rather than on this package.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  -------------</span><br><span class="line">  --  RESOURCES</span><br><span class="line">  --</span><br><span class="line">  --  This package uses one database pipe and two locks for each alert a</span><br><span class="line">  --  session has registered.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  ---------------------</span><br><span class="line">  --  SPECIAL CONSTANTS</span><br><span class="line">  --</span><br><span class="line">  maxwait constant integer :=  86400000; -- 1000 days</span><br><span class="line">  --  The maximum time to wait for an alert (essentially forever).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  ----------------------------</span><br><span class="line">  --  PROCEDURES AND FUNCTIONS</span><br><span class="line">  --</span><br><span class="line">  procedure set_defaults(sensitivity in number);</span><br><span class="line">  --  Set various defaults for this package.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    sensitivity</span><br><span class="line">  --      In case a polling loop is required (see &quot;Implementation Details&quot;</span><br><span class="line">  --      above), this is the time to sleep between polls.  Deafult is 5 sec.</span><br><span class="line">  --</span><br><span class="line">  procedure register(name in varchar2, cleanup in boolean default TRUE);</span><br><span class="line">  --  Register interest in an alert.  A session may register interest in</span><br><span class="line">  --    an unlimited number of alerts.  Alerts should be de-registered when</span><br><span class="line">  --    the session no longer has any interest (see &apos;remove&apos;).  This call</span><br><span class="line">  --    always performs a &apos;commit&apos;.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    name</span><br><span class="line">  --      The name of the alert in which this session is interested.</span><br><span class="line">  --      WARNING:  Alert names beginning with &apos;ORA$&apos; are reserved for use for</span><br><span class="line">  --      products provided by Oracle Corporation.  Name must be 30 bytes</span><br><span class="line">  --      or less.  The name is case-insensitive.</span><br><span class="line">  --    cleanup</span><br><span class="line">  --      This specifies whether we should perform cleanup of any orphaned</span><br><span class="line">  --      pipes that may exist and are used by the dbms_alert package. This</span><br><span class="line">  --      cleanup is only performed on the first call to &quot;register&quot; for each</span><br><span class="line">  --      package instantiation. The default for the parameter is TRUE.</span><br><span class="line">  --</span><br><span class="line">  procedure remove(name in varchar2);</span><br><span class="line">  --  Remove alert from registration list.  Do this when the session is no</span><br><span class="line">  --    longer interested in an alert.  Removing an alert is important</span><br><span class="line">  --    since it will reduce the amount of work done by signalers of the alert.</span><br><span class="line">  --    If a session dies without removing the alert, that alert will</span><br><span class="line">  --    eventually (but not immediately) be cleaned up.  This call always</span><br><span class="line">  --    performs a commit.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    name</span><br><span class="line">  --      The name of the alert to be removed from registration list. The</span><br><span class="line">  --      name is case-insensitive.</span><br><span class="line">  --</span><br><span class="line">  procedure removeall;</span><br><span class="line">  --  Remove all alerts for this session from registration list.  Do this</span><br><span class="line">  --    when the session is no longer interested in any alerts.  Removing</span><br><span class="line">  --    alerts is important since it will reduce the amount of work done</span><br><span class="line">  --    by signalers of the alert.  If a session dies without removing all</span><br><span class="line">  --    of its alerts, the alerts will eventually (but not immediately)</span><br><span class="line">  --    be cleaned up.  This call always performs a commit.</span><br><span class="line">  --</span><br><span class="line">  --    This procedure is called automatically upon first reference to this</span><br><span class="line">  --    package during a session.  Therefore no alerts from prior sessions</span><br><span class="line">  --    which may have terminated abnormally can affect this session.</span><br><span class="line">  procedure waitany(name out varchar2,</span><br><span class="line">                    message out varchar2,</span><br><span class="line">                    status out integer,</span><br><span class="line">                    timeout in number default maxwait);</span><br><span class="line">  --  Wait for an alert to occur for any of the alerts for which this</span><br><span class="line">  --    session is registered.  Although probably unusual, the same session</span><br><span class="line">  --    that waits for the alert may also first signal the alert.  In this</span><br><span class="line">  --    case remember to commit after the signal and prior to the wait.</span><br><span class="line">  --    Otherwise a lock request exception (status 4) will occur.  This</span><br><span class="line">  --    call always performs a commit.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    timeout</span><br><span class="line">  --      The maximum time to wait for an alert.  If no alert occurs before</span><br><span class="line">  --      timeout seconds, then this call will return with status of 1.</span><br><span class="line">  --  Output parameters:</span><br><span class="line">  --    name</span><br><span class="line">  --      The name of the alert that occurred, in uppercase.</span><br><span class="line">  --    message</span><br><span class="line">  --      The message associated with the alert.  This is the message</span><br><span class="line">  --      provided by the &apos;signal&apos; call.  Note that if multiple signals</span><br><span class="line">  --      on this alert occurred before the waitany call, then the message</span><br><span class="line">  --      will correspond to the most recent signal call.  Messages from</span><br><span class="line">  --      prior signal calls will be discarded.</span><br><span class="line">  --    status</span><br><span class="line">  --      0 - alert occurred</span><br><span class="line">  --      1 - timeout occurred</span><br><span class="line">  --  Errors raised:</span><br><span class="line">  --    -20000, ORU-10024: there are no alerts registered.</span><br><span class="line">  --       Cause: You must register an alert before waiting.</span><br><span class="line">  --</span><br><span class="line">  procedure waitone(name in varchar2,</span><br><span class="line">                    message out varchar2,</span><br><span class="line">                    status out integer,</span><br><span class="line">                    timeout in number default maxwait);</span><br><span class="line">  --  Wait for specified alert to occur. If the alert was signalled since</span><br><span class="line">  --    the register or last waitone/waitany, then this call will return</span><br><span class="line">  --    immediately.  The same session that waits for the alert may also</span><br><span class="line">  --    first signal the alert.  In this case remember to commit after the</span><br><span class="line">  --    signal and prior to the wait.  Otherwise a lock request exception</span><br><span class="line">  --    (status 4) will occur.  This call always performs a commit.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    name</span><br><span class="line">  --      The name of the alert to wait for. The name is case-insensitive.</span><br><span class="line">  --    timeout</span><br><span class="line">  --      The maximum time to wait for this alert.  If no alert occurs before</span><br><span class="line">  --      timeout seconds, then this call will return with status of 1.</span><br><span class="line">  --      If the named alert has not been registered then the this call</span><br><span class="line">  --      will return after the timeout period expires.</span><br><span class="line">  --  Output parameters:</span><br><span class="line">  --    message</span><br><span class="line">  --      The message associated with the alert.  This is the message</span><br><span class="line">  --      provided by the &apos;signal&apos; call.  Note that if multiple signals</span><br><span class="line">  --      on this alert occurred before the waitone call, then the message</span><br><span class="line">  --      will correspond to the most recent signal call.  Messages from</span><br><span class="line">  --      prior signal calls will be discarded.  The message may be up to</span><br><span class="line">  --      1800 bytes.</span><br><span class="line">  --    status</span><br><span class="line">  --      0 - alert occurred</span><br><span class="line">  --      1 - timeout occurred</span><br><span class="line">  --</span><br><span class="line">  procedure signal(name in varchar2,</span><br><span class="line">                   message in varchar2);</span><br><span class="line">  --  Signal an alert.</span><br><span class="line">  --  Input parameters:</span><br><span class="line">  --    name</span><br><span class="line">  --      Name of the alert to signal.  The effect of the signal call only</span><br><span class="line">  --      occurs when the transaction in which it is made commits.  If the</span><br><span class="line">  --      transaction rolls back, then the effect of the signal call is as</span><br><span class="line">  --      if it had never occurred.  All sessions that have registered</span><br><span class="line">  --      interest in this alert will be notified.  If the interested sessions</span><br><span class="line">  --      are currently waiting, they will be awakened.  If the interested</span><br><span class="line">  --      sessions are not currently waiting, then they will be notified the</span><br><span class="line">  --      next time they do a wait call.  Multiple sessions may concurrently</span><br><span class="line">  --      perform signals on the same alert.  However the first session</span><br><span class="line">  --      will block concurrent sessions until the first session commits.</span><br><span class="line">  --      Name must be 30 bytes or less. It is case-insensitive.  This call</span><br><span class="line">  --      does not perform a commit.</span><br><span class="line">  --    message</span><br><span class="line">  --      Message to associate with this alert.  This will be passed to</span><br><span class="line">  --      the waiting session.  The waiting session may be able to avoid</span><br><span class="line">  --      reading the database after the alert occurs by using the</span><br><span class="line">  --      information in this message.  The message must be 1800 bytes or less.</span><br><span class="line"></span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<h3 id="注释模版"><a href="#注释模版" class="headerlink" title="注释模版"></a>注释模版</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE PROCEDURE TEST_PA_COMMENT_STYLE(I_COMP_ID    IN VARCHAR2, -- 1</span><br><span class="line">                                                  I_MODE_IDS   IN VARCHAR2, -- 2</span><br><span class="line">                                                  I_OBJ_TYPES  IN VARCHAR2, -- 3</span><br><span class="line">                                                  I_OBJECTS    IN VARCHAR2, -- 4</span><br><span class="line">                                                  I_DATE_POINT IN VARCHAR2 -- 5</span><br><span class="line">                                                  ) IS</span><br><span class="line">  -------------------------------</span><br><span class="line">  -- TEST_PA_COMMENT_STYLE：                                                      </span><br><span class="line">  -- 功能：</span><br><span class="line">  --   根据对方数据添加“清理关键字”, </span><br><span class="line">  --   根据“借方”或者“借方”给对方添加关键字.    </span><br><span class="line">  -- 编写人：LJN</span><br><span class="line">  -- 编写日期：2017-12-26</span><br><span class="line">  -- 内部提交(commit): NO</span><br><span class="line">  --</span><br><span class="line">  -- 策略(vpd)：</span><br><span class="line">  --   时间和单位</span><br><span class="line">  --</span><br><span class="line">  -- 中间表（temporary table）：</span><br><span class="line">  --   1. GT_GET_GLDX_SES</span><br><span class="line">  --   2. GT_GET_KMTMP_SES</span><br><span class="line"></span><br><span class="line">  -----------------------</span><br><span class="line">  -- 输入（IN）参数说明：</span><br><span class="line">  -- I_OBJ_TYPES：</span><br><span class="line">  --   单位id</span><br><span class="line">  -- I_MODE_IDS: </span><br><span class="line">  --   清理方式id，多个逗号分隔.</span><br><span class="line">  -- I_OBJ_TYPES：</span><br><span class="line">  --   管理对象类型id，多个逗号分隔.</span><br><span class="line">  -- I_OBJECTS：</span><br><span class="line">  --   管理对象id.</span><br><span class="line">  -- I_DATE_POINT：</span><br><span class="line">  --   时间点；格式YYYY-MM-DD.</span><br><span class="line"></span><br><span class="line">  ---------------</span><br><span class="line">  -- 输出(out)参数：</span><br><span class="line">  --</span><br><span class="line"></span><br><span class="line">  ---------------</span><br><span class="line">  -- 异常说明：</span><br><span class="line">  --   E_IN_PARAM_EMPTY_EX</span><br><span class="line">  --     参数为空异常</span><br><span class="line"></span><br><span class="line">  -----------</span><br><span class="line">  -- 变量声明</span><br><span class="line">  --   V_SQL：</span><br><span class="line">  --     SQL语句.</span><br><span class="line"></span><br><span class="line">  ----------</span><br><span class="line">  -- 子程序</span><br><span class="line">  --   FU_ADD_QUOTES_STR</span><br><span class="line">  --     添加英文引号</span><br><span class="line">  --   FU_BUILD_IN_CONDITION</span><br><span class="line">  --     构建IN条件</span><br><span class="line"></span><br><span class="line">  -----------</span><br><span class="line">  -- 异常定义</span><br><span class="line">  --   V_ERR_MSG</span><br><span class="line">  --     错误消息.</span><br><span class="line"></span><br><span class="line">  V_SQL VARCHAR2(8000);</span><br><span class="line">  V_ERR_MSG  VARCHAR2(4000);</span><br><span class="line">  V_ERR_CODE BINARY_INTEGER;</span><br><span class="line">  E_PARAM_EMPTY_CODE CONSTANT BINARY_INTEGER DEFAULT - 20001;</span><br><span class="line"></span><br><span class="line">  ---------------</span><br><span class="line">  -- 参数为空异常.</span><br><span class="line">  E_IN_PARAM_EMPTY_EX EXCEPTION;</span><br><span class="line">  PRAGMA EXCEPTION_INIT(E_IN_PARAM_EMPTY_EX, -20001);</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  FUNCTION FU_ADD_QUOTES_STR(I_STR       IN VARCHAR2, -- 1</span><br><span class="line">                             I_SEPARATOR IN VARCHAR2 DEFAULT &apos;,&apos; -- 2</span><br><span class="line">                             ) RETURN VARCHAR2 IS</span><br><span class="line">    V_ID_STR    VARCHAR2(50);</span><br><span class="line">    V_INDEX1    NUMBER(5) DEFAULT 0;</span><br><span class="line">    V_INDEX2    NUMBER(5) DEFAULT 1;</span><br><span class="line">    V_CONDITION VARCHAR2(4000);</span><br><span class="line">    V_ID        VARCHAR2(4000);</span><br><span class="line">    O_STR       VARCHAR2(4000);</span><br><span class="line">  </span><br><span class="line">  BEGIN</span><br><span class="line">    V_ID_STR := I_STR;</span><br><span class="line">    IF V_ID_STR IS NOT NULL THEN</span><br><span class="line">      V_INDEX1 := INSTR(V_ID_STR, I_SEPARATOR);</span><br><span class="line">      WHILE V_INDEX1 &gt; -1 LOOP</span><br><span class="line">        V_INDEX1 := INSTR(V_ID_STR, I_SEPARATOR, V_INDEX2);</span><br><span class="line">        IF V_INDEX1 = 0 THEN</span><br><span class="line">          V_ID     := SUBSTR(V_ID_STR, V_INDEX2);</span><br><span class="line">          V_INDEX1 := -1;</span><br><span class="line">        ELSE</span><br><span class="line">          V_ID     := SUBSTR(V_ID_STR, V_INDEX2, V_INDEX1 - V_INDEX2);</span><br><span class="line">          V_INDEX2 := V_INDEX1 + 1;</span><br><span class="line">        END IF;</span><br><span class="line">        IF V_CONDITION IS NOT NULL THEN</span><br><span class="line">          V_CONDITION := V_CONDITION || &apos;,&apos;;</span><br><span class="line">        END IF;</span><br><span class="line">        V_CONDITION := V_CONDITION || &apos;&apos;&apos;&apos; || V_ID || &apos;&apos;&apos;&apos;;</span><br><span class="line">      END LOOP;</span><br><span class="line">    END IF;</span><br><span class="line">    O_STR := V_CONDITION;</span><br><span class="line">    RETURN(O_STR);</span><br><span class="line">  END FU_ADD_QUOTES_STR;</span><br><span class="line">  -- END FU_ADD_QUOTES_STR</span><br><span class="line"></span><br><span class="line">  FUNCTION FU_BUILD_IN_CONDITION(I_NUM_STR   IN VARCHAR2, -- 1</span><br><span class="line">                                 I_CONDT_STR IN VARCHAR2, -- 2</span><br><span class="line">                                 I_SEPARATOR IN VARCHAR2 DEFAULT &apos;,&apos; --3</span><br><span class="line">                                 ) RETURN VARCHAR2 IS</span><br><span class="line">  </span><br><span class="line">    V_CONDITION VARCHAR2(4000);</span><br><span class="line">    O_STR       VARCHAR2(4000);</span><br><span class="line">  </span><br><span class="line">  BEGIN</span><br><span class="line">    V_CONDITION := FU_ADD_QUOTES_STR(I_NUM_STR, I_SEPARATOR);</span><br><span class="line">    O_STR       := I_CONDT_STR || &apos; IN (&apos; || V_CONDITION || &apos;)&apos;;</span><br><span class="line">    RETURN(O_STR);</span><br><span class="line">  END FU_BUILD_IN_CONDITION;</span><br><span class="line"></span><br><span class="line">BEGIN</span><br><span class="line">  ------------</span><br><span class="line">  -- 参数处理</span><br><span class="line">  -- 单位ID</span><br><span class="line">  IF I_COMP_ID IS NULL THEN</span><br><span class="line">    RAISE E_IN_PARAM_EMPTY_EX;</span><br><span class="line">  END IF;</span><br><span class="line"></span><br><span class="line">  -- 清理方式ID</span><br><span class="line">  IF I_MODE_IDS IS NULL THEN</span><br><span class="line">    RAISE E_IN_PARAM_EMPTY_EX;</span><br><span class="line">  END IF;</span><br><span class="line">  -------------</span><br><span class="line">  -- 处理临时表</span><br><span class="line">  EXECSQL(&apos;DELETE FROM GT_GET_KMTMP_SES&apos;);</span><br><span class="line">  EXECSQL(&apos;DELETE FROM GT_GET_GLDX_SES&apos;);</span><br><span class="line">  EXECSQL(&apos;DELETE FROM HZ_LS_KMHZBQUERY_SEC&apos;);</span><br><span class="line">  ------------</span><br><span class="line">  -- 科目</span><br><span class="line">  --   GT_GET_KMTMP_SES</span><br><span class="line"></span><br><span class="line">  -- 确定清理方式科目设置层级 及科目方向(ITEMCODE科目方向, LEAF清理层次)</span><br><span class="line">  V_SQL := &apos;INSERT INTO HZ_LS_KMHZBQUERY_SEC (IID, ITEMCODE, LEAF)&apos; ||</span><br><span class="line">           &apos; SELECT &apos;;</span><br><span class="line">  --SELECT * FROM XTQLMODE X WHERE X.DWDH=&apos;0001&apos; AND NVL(X.TYBZ, 0) = 0 AND X.QLMODEID IN ();</span><br><span class="line"></span><br><span class="line">  ------------</span><br><span class="line">  -- 对象类型</span><br><span class="line"></span><br><span class="line">  -----------</span><br><span class="line">  -- 管理对象</span><br><span class="line"></span><br><span class="line">  ---------——---------</span><br><span class="line">  -- 查询出未清理数据：</span><br><span class="line">  --   1. qlbz=0</span><br><span class="line"></span><br><span class="line">EXCEPTION</span><br><span class="line">  ------------</span><br><span class="line">  -- 参数为空</span><br><span class="line">  WHEN E_IN_PARAM_EMPTY_EX THEN</span><br><span class="line">    V_ERR_CODE := SQLCODE;</span><br><span class="line">    V_ERR_MSG  := &apos;参数为空.&apos;;</span><br><span class="line">    DBMS_STANDARD.RAISE_APPLICATION_ERROR(V_ERR_CODE, V_ERR_MSG);</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);</span><br><span class="line">  WHEN OTHERS THEN</span><br><span class="line">    V_ERR_CODE := SQLCODE;</span><br><span class="line">    V_ERR_MSG  := SQLERRM(SQLCODE);</span><br><span class="line">    ROLLBACK; -- OTHERS中必须显式回滚</span><br><span class="line">  </span><br><span class="line">    -------------</span><br><span class="line">    -- 打印异常栈</span><br><span class="line">    DBMS_STANDARD.RAISE_APPLICATION_ERROR(V_ERR_CODE, V_ERR_MSG);</span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);</span><br><span class="line">    RAISE; -- 继续抛异常</span><br><span class="line">END TEST_PA_COMMENT_STYLE;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:26:36.005Z" itemprop="dateUpdated">2018-06-27 21:26:36</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/12/21/plsql-comment-style/" target="_blank" rel="external">https://betgar.github.io/2017/12/21/plsql-comment-style/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PLSQL/">PLSQL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/12/21/plsql-comment-style/&title=《PL/SQL注释风格》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/12/21/plsql-comment-style/&title=《PL/SQL注释风格》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/12/21/plsql-comment-style/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PL/SQL注释风格》 — 个人博客&url=https://betgar.github.io/2017/12/21/plsql-comment-style/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/12/21/plsql-comment-style/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/28/excel-function-concatenate/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">excel的concatenate函数</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/24/object-to-primitive-conversions-in-javascript/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript中Object类型转换到原始类型</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/12/21/plsql-comment-style/&title=《PL/SQL注释风格》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/12/21/plsql-comment-style/&title=《PL/SQL注释风格》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/12/21/plsql-comment-style/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《PL/SQL注释风格》 — 个人博客&url=https://betgar.github.io/2017/12/21/plsql-comment-style/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/12/21/plsql-comment-style/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3a0WrDQAwEwP7/T7uvhSburs4p+Dz3VEKINS4InaSvr/gcP87558evs/JrFx8MDIzbMo7TkwR3/uB3v3MeQx4bBgbGcxjJ49sHn3+SPCuJDQMDA+M8aSaPTDAYGBgYn0i4K+kyLxwxMDAw2kvsVQ275HzwLo6BgXFDRh7E///9kfkGBgbGrRizJJg03VYabXVUGBgYWzPaq2YOm+1CzOLBwMB4AqMdPebl3WxUMINhYGDsylhpsSWFYFI+zlp+UYWLgYGxBaMdKOYtuXYkmVxxl7qDGBgYt2XMRomzqiwvK+syEQMD4wGMlbCuWr/I46kzPQYGxs0Z7UhyNrxcb8/V12wMDIyNGMkYMi8WryoKzyN52zXEwMDYlJE3ttpVibb1ljfa6moXAwNjU8asiZZ8PhtFFAMDDAyMTRnt4DC/GbdpOse8+A4GBsamjDzcJBFfW1AWaxkYGBhbM5Jw24vobI1sdol98T/BwMB4AGO22lWscJWX2GIGi4GB8TDG7AH5wsRKg++POhcDA2NrxsqSRD4eqAu+vHjFwMB4AKO9fLYNsmJhonwuBgbG3oyjPHnTvx0bLL0mDAyMrRmzZJenzpUysS1bMTAw9mYk6TIZN86acXnCrbuGGBgY2zHaZYi8mBuOJGdXWQwMDIx4SWK93VYvcGBgYGAst9vyVJu/sssSLgYGxk0YeRBtWpwtjSWvGAMD4zmMvJhb//6s6Z83/jAwMLZjfANrM2qYquRBWwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

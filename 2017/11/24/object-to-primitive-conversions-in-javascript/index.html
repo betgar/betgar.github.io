@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JavaScript中Object类型转换到原始类型 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaScript">
+    <meta name="description" content="Object-to-Primitive Conversions in JavaScript 这是一篇转载的文章。  Like most object-oriented programming languages, JavaScript provides built-in ways to convert between objects and primitive values, by way of">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中Object类型转换到原始类型">
+<meta property="og:url" content="https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Object-to-Primitive Conversions in JavaScript 这是一篇转载的文章。  Like most object-oriented programming languages, JavaScript provides built-in ways to convert between objects and primitive values, by way of">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:25:10.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中Object类型转换到原始类型">
+<meta name="twitter:description" content="Object-to-Primitive Conversions in JavaScript 这是一篇转载的文章。  Like most object-oriented programming languages, JavaScript provides built-in ways to convert between objects and primitive values, by way of">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript中Object类型转换到原始类型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript中Object类型转换到原始类型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-24T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-11-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Object-to-Primitive-Conversions-in-JavaScript"><span class="post-toc-number">1.</span> <span class="post-toc-text">Object-to-Primitive Conversions in JavaScript</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Types-and-Primitives"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Types and Primitives</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#How-It-Works"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">How It Works</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bad-Stuff"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Bad Stuff</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#How-About-Performance"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">How About Performance?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Conclusions"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Conclusions</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-object-to-primitive-conversions-in-javascript"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript中Object类型转换到原始类型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-24 20:00:00" datetime="2017-11-24T12:00:00.000Z"  itemprop="datePublished">2017-11-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Object-to-Primitive-Conversions-in-JavaScript"><a href="#Object-to-Primitive-Conversions-in-JavaScript" class="headerlink" title="Object-to-Primitive Conversions in JavaScript"></a>Object-to-Primitive Conversions in JavaScript</h2><blockquote>
+<p>这是一篇转载的文章。</p>
+</blockquote>
+<p>Like most object-oriented programming languages, JavaScript provides built-in ways to convert between objects and primitive values, by way of the special toString and valueOf methods. This article will cover the basics of these methods, but then dive into the details of how this stuff really works, bad stuff, performance, and browser support.</p>
+<h3 id="Types-and-Primitives"><a href="#Types-and-Primitives" class="headerlink" title="Types and Primitives"></a>Types and Primitives</h3><p>To understand this article, you’ll need to understand the difference between primitive and non-primitive values in JavaScript. There are 5 primitive types, which are associated with the various primitive values.</p>
+<ul>
+<li>Null: The value null.</li>
+</ul>
+<ul>
+<li>Undefined: The value undefined.</li>
+</ul>
+<ul>
+<li>Number: All numbers, such as 0 and 3.14. Also NaN, and Infinity.</li>
+</ul>
+<ul>
+<li>Boolean: The values true and false.</li>
+</ul>
+<ul>
+<li>String: All strings, such as “foo” and “”.</li>
+</ul>
+<p>All other values are non-primitive, including arrays, functions, and plain old objects. For completeness, here are the results of the typeof operator, applied to these values:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// "object"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>; <span class="comment">// "undefined"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">0</span>; <span class="comment">// "number" (typeof NaN is also "number")</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>; <span class="comment">// "boolean"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"foo"</span>; <span class="comment">// "string"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125;; <span class="comment">// "object"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;; <span class="comment">// "function"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> []; <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure>
+<p><strong>Note</strong>: <code>typeof null</code> should <em>not</em> be <code>&quot;object&quot;</code>. This is a mistake from the first versions of JavaScript, but it’s really too late to fix. A more sensible type would have been <code>&quot;null&quot;</code>, but this is what we’re stuck with.<br>If you’ve got that down, then we’re ready to move on to the basics of toString and valueOf. If you’re already familiar with the basics, feel free to skip ahead to “How it Works”.</p>
+<p>Basic Usage</p>
+<p>We’ll be using a simple example population object that holds a country name and a population. Lets code that up.</p>
+<p>function population(country, pop) {<br>    return {<br>        country: country,<br>        pop: pop<br>    };<br>}</p>
+<p>var america_pop = population(“USA”, 350e6);<br>var mexico_pop = population(“Mexico”, 200e6);<br>var canada_pop = population(“Canada”, 200e6);</p>
+<p>alert(america_pop); // [object Object]</p>
+<p>var north_america_pop = america_pop + mexico_pop + canada_pop;</p>
+<p>alert(north_america_pop); // [object Object][object Object][object Object]<br>This works, but the calls to alert are not very useful. What we’d really like is for the first alert to show ‘[Population “USA” 350000000]’ and the second to show “750000000”. So, let’s code that up next.</p>
+<p>toString</p>
+<p>All objects inherit the method toString from Object.prototype, which returns “[object Object]”. However, we can easily override this by providing toString as a method of our object, or its prototype. In this example, we’ll attach it directly to each instance, but feel free to use the prototype instead.</p>
+<p>function population(country, pop) {<br>    return {<br>        country: country,<br>        pop: pop,</p>
+<pre><code>    toString: function () {
+        return &quot;[Population &quot; + 
+            &quot;\&quot;&quot; + country + &quot;\&quot; &quot; +
+            pop +
+        &quot;]&quot;;
+    }
+}
+</code></pre><p>}</p>
+<p>var america_pop = population(“USA”, 350e6);<br>alert(america_pop); // [Population “USA” 350000000]<br><strong>Note</strong>: I’m using <strong>closure</strong> on the <code>country</code> parameter, rather than using <code>this.country</code>. This only works due to how the constructor is set up. If you placed <code>toString</code> on the prototype, you would need to use <code>this.country</code>.<br>valueOf</p>
+<p>All JavaScript objects also inherit the method valueOf from Object.prototype. By default, this method simply returns the object itself, but is generally overridden to convert an object to a Number, or another primitive value, so it can be used by operators like +. We can do the same thing as above to complete our basic example.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">population</span>(<span class="params">country, pop</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">    	country: country,</span><br><span class="line">    	pop: pop,</span><br><span class="line">    	</span><br><span class="line">    	toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    		<span class="keyword">return</span> <span class="string">"[Population "</span> + </span><br><span class="line">    			<span class="string">"\""</span> + country + <span class="string">"\" "</span> +</span><br><span class="line">    			pop +</span><br><span class="line">    		<span class="string">"]"</span>;</span><br><span class="line">    	&#125;,</span><br><span class="line">    	</span><br><span class="line">    	valueOf: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    		<span class="keyword">return</span> pop;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> america_pop = population(<span class="string">"USA"</span>, <span class="number">350e6</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mexico_pop = population(<span class="string">"Mexico"</span>, <span class="number">200e6</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> canada_pop = population(<span class="string">"Canada"</span>, <span class="number">200e6</span>);</span><br><span class="line"></span><br><span class="line">alert(america_pop); <span class="comment">// [Population "USA" 350000000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> north_america_pop = america_pop + mexico_pop + canada_pop;</span><br><span class="line"></span><br><span class="line">alert(north_america_pop); <span class="comment">// 750000000</span></span><br></pre></td></tr></table></figure>
+<p>Here we’ve defined the valueOf function of our population object to return the population, which should be a Number.</p>
+<h3 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h3><p>As with most things in JavaScript, the process by which toString gets called is not as simple as you’d think. Let’s explore what happens when alert(america_pop) is called.</p>
+<p>alert calls GetValue on the reference. This returns the object it points at.<br>alert calls ToString on the value (this is not the same as the object’s toString)<br>ToString calls ToPrimitive on the value, passing the hint String.<br>ToPrimitive calls the object’s internal [[DefaultValue]] method with the hint String.<br>[[DefaultValue]] calls the toString property of the object, with the object as this.<br>The result of toString is a primitive value, so it is returned, all the way up the chain to the ToString method.<br>Since the result is of type String, ToString returns all the way to alert.<br>alert displays the value.<br>While this is a lot, it’s pretty straightforward. However, he key mechanism that needs more explaining is the ToPrimitive function. This function is used to take an arbitrary value and get a corresponding primitive value instead. If the input is already a primitive value then the value will be returned without conversion. However, if the value is non-primitive, then it will call the internal [[DefaultValue]] method to find a default value for the object.</p>
+<p>[[DefaultValue]] is an internal property of every object. It’s a method that takes an optional hint, which should be either Number or String. If a hint is not provided, it will default to Number unless the object is a Date, in which case it defaults to String (this is silly). After this has been figured out, it will call toString and valueOf, in order, to find a primitive value. This is where the hint comes into play. If the hint is Number, then valueOf will be tried first, but if it’s String then toString will be tried first. Here’s the ensuing process:</p>
+<p>If the first method exists, and is callable, call it and get the result, otherwise skip to 3.<br>If the result of 1 is a primitive, return it.<br>If the second method exists, and is callable, call it and get the result, otherwise skip to 5.<br>If the result of 3 is a primitive, return it.<br>Throw a TypeError exception.<br>The value that is returned by [[DefaultValue]] is guaranteed to be primitive. If it was not, a TypeError would have been thrown. This also implies that toString and valueOf should return primitives on order to be useful in this context.</p>
+<p>Confusion About the + Operator</p>
+<p>Here’s an example with a (possibly) unexpected result:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line"></span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">"foo"</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(foo + <span class="string">"bar"</span>); <span class="comment">// 5bar</span></span><br><span class="line"></span><br><span class="line">alert([foo, <span class="string">"bar"</span>].join(<span class="string">""</span>)); <span class="comment">// foobar</span></span><br></pre></td></tr></table></figure>
+<p>In this context, we’re using the + operator to do string concatenation. But, foo was not converted to a string using toString, it was turned into a number using valueOf, then used for string concatenation. This probably isn’t what we want, but it is how it works. It’s a side-effect of the overloading of the + operator for arithmetic and string concatenation. The +operator has a well-defined process:</p>
+<ol>
+<li><p>Evaluate the left-hand side, and get the value.</p>
+</li>
+<li><p>Evaluate the right-hand side, and get the value.</p>
+</li>
+<li>Call ToPrimitive on both the left-hand and right-hand sides (without a hint)</li>
+<li>If either primitive value is a String, then skip to 7.</li>
+<li>Call ToNumber on both values.</li>
+<li>Return the sum of the values.</li>
+<li>Call ToString on both values.</li>
+<li>Return the concatenation of both values.</li>
+</ol>
+<p>Since no hint is passed to the ToPrimitive calls, the hint will be defaulted to Number (unless it’s a Date, which defaults to String). This means that our valueOf function will be called, instead of toString. It’s not until after the primitive values are retrieved that the interpreter decides whether it is going to do string concatenation or arithmetic. That’s why our example above returns “5bar” instead of “foobar”.</p>
+<h3 id="Bad-Stuff"><a href="#Bad-Stuff" class="headerlink" title="Bad Stuff"></a>Bad Stuff</h3><p>There is one really bad feature of all this, which is that ToPrimitive does not enforce any type-checking on the return values, other than that they are primitive. This means you can write code like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line"></span><br><span class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">"foo"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alert(foo.toString() + <span class="number">1</span>); <span class="comment">// 6 (bad!)</span></span><br><span class="line"></span><br><span class="line">alert(foo + <span class="number">1</span>); <span class="comment">// "foo1" (no good!)</span></span><br><span class="line"></span><br><span class="line">alert(+foo); <span class="comment">// NaN (the worst!)</span></span><br></pre></td></tr></table></figure>
+<p>The valueOf method can be forgiven for not type-checking, because it is more generic. You’d expect it to be able to return any suitable primitive value. However, the toString method has no such excuse. This is simply a bad feature. You can, of course, mitigate by using String(foo) instead of foo.toString(), which will call toString and then convert that result to a string. But you should not have to do this, or worry about this. Please do not make objects with toString methods that do not return strings.</p>
+<h3 id="How-About-Performance"><a href="#How-About-Performance" class="headerlink" title="How About Performance?"></a>How About Performance?</h3><p>After understanding the complexity that goes into these implicit conversion, I got curious about how that affects performance. So I decided to test the time it takes to perform an [].join(obj) over 1,000,000 iterations in the major browsers. I did one test with the object being implicitly cast to a string, and one where I called the toString method manually (i.e. [].join(obj.toString())). As expected, the explicit call was faster in most cases.</p>
+<p>Firefox 3.6.2: 874ms vs. 320ms - almost 3x faster.<br>Chrome 5: 94ms vs. 47ms - 2x faster.<br>Opera 10.50: 155ms vs 182ms - a little slower.<br>Safari 4: 409ms vs 280ms - almost 2x faster.<br>Internet Explorer 8: 2856ms vs 2786ms - about the same.<br>Internet Explorer 9 (preview): 645ms vs 633ms - about the same.<br><strong><em>Note 1</em></strong>: The Firefox, Chrome, Opera, and Safari tests were all run on a Macbook Pro running OS X 10.5. The IE tests were run on a desktop running Windows 7. <a href="http://www.bcherry.net/playground/defaultvalues" target="_blank" rel="noopener">Run the tests yourself here.</a><strong><em>Note 2</em></strong>: I chose to use the <code>[].join</code> method because doing so was most likely to avoid any dead-code elimination optimizations in modern browsers. I’ve had trouble with this before, in Firefox. I <em>did</em> try testing with the <code>String()</code> constructor, with similar results in most browsers. Opera was an exception where using the explicit <code>toString</code> was close to <strong>5x faster</strong>. In Firefox, the explicit cast was a bit faster, but both cases were about 100x faster than the <code>[].join</code> method (and other browsers), which means the code-path was probably being removed by the dead code eliminator.<br>The takeaway from this performance test is that it’s always best to call your object’s type-conversion methods directly, rather than relying on the interpreter to do the complex series of method calls and comparisons needed to do it automatically. The Opera 10.50 result is very strange, but it’s not particularly slower, so I wouldn’t worry about it. The gains made in other browsers more than make up for the outlier Opera result.</p>
+<p>How About Browser Support?</p>
+<p>Like many things in the ECMAScript specification, these processes are complex, and I doubted that all browsers would implement them exactly as specified. So, in that test suite from earlier, I added compliance checks. I was quite surprised to see that all major browsers, including versions of Internet Explorer going back to at least IE 5.5, implement these mechanisms correctly. This is even the case with the awkward handling when developers do things like make toString return a number instead of a string. All browsers handle the code according to the specification. This is great news.</p>
+<p>But the specification unhelpfully introduced ambiguity in one particular area: the absence of a hint for the ToPrimitive function. Here’s the exact wording:</p>
+<p>All native ECMAScript objects except Date objects handle the absence of a hint as if the hint Number were given; Date objects handle the absence of a hint as if the hint String were given. Host objects may handle the absence of a hint in some other manner.</p>
+<p>That the standard explicitly allows browsers to deviate here worried me. Included in that test suite was a check that, in the absence of a hint, Date objects will default to String and Boolean objects will default to Number. All browsers passed this check as well, which means that browser support for all of this functionality seems to be consistent and correct.</p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>I hope this was useful in understanding how these mechanisms work in JavaScript. There are three important things to take away from this article:</p>
+<p>Implement toString and valueOf on your commonly-reused objects. They can help you write clearer, more concise code, and make debugging easier too.<br>All browsers implement object-to-primitive conversion according to the specification, so you can safely consult it for more detail.<br>When performance is important, always try to call your type-conversion methods directly, instead of relying on JavaScript’s implicit calls.<br>You can find the test suite used for this article here if you’re interested in trying to replicate my results. Please let me know if you find contradictory results to what I posted here.</p>
+<p>Thanks for reading! If you have questions or feedback then leave a comment below or contact me directly.</p>
+<p>filed under javascript</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:25:10.234Z" itemprop="dateUpdated">2018-06-27 21:25:10</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/11/24/object-to-primitive-conversions-in-javascript/" target="_blank" rel="external">https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/&title=《JavaScript中Object类型转换到原始类型》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/&title=《JavaScript中Object类型转换到原始类型》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript中Object类型转换到原始类型》 — 个人博客&url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/21/plsql-comment-style/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PL/SQL注释风格</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/23/how-to-use-oracle-reference/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">怎么使用Oracle手册</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/&title=《JavaScript中Object类型转换到原始类型》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/&title=《JavaScript中Object类型转换到原始类型》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript中Object类型转换到原始类型》 — 个人博客&url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/11/24/object-to-primitive-conversions-in-javascript/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3a204DMQwFQP7/p8srqHT3+BIo0uSpou02E6TYsv3xEa/Hl/Xq3Vevr7/1/O7jaT0/eXnh4eHhDbZ+/ejkk6/Yk4O4/vzNTvDw8PCO8SbXfRVfZVy/vnkyHh4e3hvw8oS4erkn+TAeHh7ef+RNku9qAv3HcQ8PDw/vkpdsKPnhpKbaKxMfr7Xg4eHh1SquhW29w+sj/T08PDy8cVe91+KqXvrJfpq7xcPDwzvA621xkhb3/tI7IDw8PLwTvF7JNWmMVQ+ldwQ3owl4eHh4B3jVhlOveJqnyNVNF0q3eHh4eKu83sBTHkKqYabX6Lrp7+Hh4eGt8rYa/JOeVHU/o14fHh4e3pjXu5rz0kN+ifd+vdAAw8PDw1vl5WWFXmtq0uLqBQ88PDy8c7zrRlSvATYp0fYGv24OGg8PD2+Vd73dfKCq10KbhJNRSMDDw8Nr8XqDUPPPV0NC3k779kw8PDy8A7yt1ld1sGA3YBwfGsDDw8OL2/nJ6pUzTpSGb4oReHh4eEu8arE1T20nCfGknvDtmXh4eHiHefm1Oy9hJENX+Wde/joeHh7eMV71ws0HC5Jn7jbhmn0zPDw8vJhXTZR7RYekrdVsaMWpOR4eHt45XvW6z7/VK0ZUg00UA/Hw8PCWeEkzrDcm1SvI5ke2NkaAh4eHF/Oqm+uVA6oJdzVgFP5jeHh4eEu8ahKct/x7A1uTEvMPgQEPDw/vAG/eDJsPZvXWTXjAw8PDW+U9iqtXVkhKDElqXh7GwsPDwzvAq16+J0aytgq40egVHh4e3hJvHgx2r+nksArBBg8PD+8Yr9deqpaAqwGjWowovI2Hh4f367ykBZUXfLdScDw8PLz35FXZk3S5d2R4eHh4v8NLihHJ45IrOx/YyscFFmoteHh4eJ0p0/Kmq6Na1wfau9UXFh4eHl7K+wRz7jXKJJhHTQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

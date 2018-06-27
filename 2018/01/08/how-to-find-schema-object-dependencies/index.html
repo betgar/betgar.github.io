@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Oracle 管理用户对象依赖关系 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Oracle,PLSQL">
+    <meta name="description" content="Oracle 管理用户对象依赖关系 背景： 项目组使用很多的procedure作为取数接口，现在需要重构底层取数过程，但是无法找出“底层取数procedure”被哪些“逻辑对象”（procedure, function…etc.）依赖。无法评估影响的范围，Java服务端可以通过调用层次分析出，但是直接在数据库端，进行调用时就很难分析。 通过查找官方文档，找到两个方法，现在分享给大家。 方法：  u">
+<meta name="keywords" content="Oracle,PLSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle 管理用户对象依赖关系">
+<meta property="og:url" content="https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Oracle 管理用户对象依赖关系 背景： 项目组使用很多的procedure作为取数接口，现在需要重构底层取数过程，但是无法找出“底层取数procedure”被哪些“逻辑对象”（procedure, function…etc.）依赖。无法评估影响的范围，Java服务端可以通过调用层次分析出，但是直接在数据库端，进行调用时就很难分析。 通过查找官方文档，找到两个方法，现在分享给大家。 方法：  u">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:58:38.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle 管理用户对象依赖关系">
+<meta name="twitter:description" content="Oracle 管理用户对象依赖关系 背景： 项目组使用很多的procedure作为取数接口，现在需要重构底层取数过程，但是无法找出“底层取数procedure”被哪些“逻辑对象”（procedure, function…etc.）依赖。无法评估影响的范围，Java服务端可以通过调用层次分析出，但是直接在数据库端，进行调用时就很难分析。 通过查找官方文档，找到两个方法，现在分享给大家。 方法：  u">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Oracle 管理用户对象依赖关系</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Oracle 管理用户对象依赖关系</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-08T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-01-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle/">Oracle</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Oracle-管理用户对象依赖关系"><span class="post-toc-number">1.</span> <span class="post-toc-text">Oracle 管理用户对象依赖关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#utldtree"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">utldtree</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#utldtree创建的objects"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">utldtree创建的objects:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#utldtree生成依赖关系步骤"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">utldtree生成依赖关系步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#生成依赖关系"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">生成依赖关系</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查询依赖关系结果1"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">查询依赖关系结果1</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查询依赖关系结果2"><span class="post-toc-number">1.1.2.3.</span> <span class="post-toc-text">查询依赖关系结果2</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DBMS-UTILITY-get-dependency"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">DBMS_UTILITY.get_dependency</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态语句中的object依赖无法分析"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">动态语句中的object依赖无法分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#附录-utldtree-sql（utldtree-is-stand-for-utility-deep-tree）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">附录-utldtree.sql（utldtree is stand for utility deep tree）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">引用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-how-to-find-schema-object-dependencies"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Oracle 管理用户对象依赖关系</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-08 20:00:00" datetime="2018-01-08T12:00:00.000Z"  itemprop="datePublished">2018-01-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle/">Oracle</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Oracle-管理用户对象依赖关系"><a href="#Oracle-管理用户对象依赖关系" class="headerlink" title="Oracle 管理用户对象依赖关系"></a>Oracle 管理用户对象依赖关系</h2><blockquote>
+<p>背景：</p>
+<p>项目组使用很多的procedure作为取数接口，现在需要重构底层取数过程，但是无法找出“底层取数procedure”被哪些“逻辑对象”（procedure, function…etc.）依赖。无法评估影响的范围，Java服务端可以通过调用层次分析出，但是直接在数据库端，进行调用时就很难分析。</p>
+<p>通过查找官方文档，找到两个方法，现在分享给大家。</p>
+<p>方法：</p>
+<ol>
+<li>utldtree.sql</li>
+<li>DBMS_UTILITY.get_dependency(type, schema, object_name);</li>
+</ol>
+</blockquote>
+<h3 id="utldtree"><a href="#utldtree" class="headerlink" title="utldtree"></a>utldtree</h3><blockquote>
+<p>utldtree.sql是Oracle 提供的一个分析依赖的sql文件。</p>
+<p>路径：%ORACLE_CLIENT%\RDBMS\ADMIN</p>
+<p>因为没有包含在数据库标准包中，所以需要<strong>自己手动在数据库中执行utldtree</strong>下。</p>
+</blockquote>
+<h4 id="utldtree创建的objects"><a href="#utldtree创建的objects" class="headerlink" title="utldtree创建的objects:"></a>utldtree创建的objects:</h4><blockquote>
+<p>序列：deptree_seq</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; create sequence deptree_seq cache 200</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>表：deptree_temptab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; create table deptree_temptab</span><br><span class="line">&gt; (</span><br><span class="line">&gt; object_id            number,</span><br><span class="line">&gt; referenced_object_id number,</span><br><span class="line">&gt; nest_level           number,</span><br><span class="line">&gt; seq#                 number      </span><br><span class="line">&gt; )</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>视图：deptree，ideptree</p>
+<p>过程：deptree_fill</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; create or replace procedure deptree_fill (type char, schema char, name char)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="utldtree生成依赖关系步骤"><a href="#utldtree生成依赖关系步骤" class="headerlink" title="utldtree生成依赖关系步骤"></a>utldtree生成依赖关系步骤</h4><h5 id="生成依赖关系"><a href="#生成依赖关系" class="headerlink" title="生成依赖关系"></a>生成依赖关系</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 1.生成依赖关系</span><br><span class="line">-- 说明：每一次调用会“清空”表DEPTREE_TEMPTAB</span><br><span class="line">-- 参数说明：</span><br><span class="line">--  type：对象类型（table,view,procedure...）</span><br><span class="line">--  schema：当前用户名称</span><br><span class="line">--  name：对象名称（待查询的被人依赖的对象）</span><br><span class="line"></span><br><span class="line">CALL DEPTREE_FILL(&apos;PROCEDURE&apos;, &apos;FMIS0200&apos;, &apos;GET_ZWCS_DATA_KM&apos;);</span><br></pre></td></tr></table></figure>
+<h5 id="查询依赖关系结果1"><a href="#查询依赖关系结果1" class="headerlink" title="查询依赖关系结果1"></a>查询依赖关系结果1</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 2. 查询依赖关系结果</span><br><span class="line">-- 说明：</span><br><span class="line">--   这个视图附带嵌套层次</span><br><span class="line"></span><br><span class="line">SELECT * FROM DEPTREE D ORDER BY D.SEQ#;</span><br></pre></td></tr></table></figure>
+<h5 id="查询依赖关系结果2"><a href="#查询依赖关系结果2" class="headerlink" title="查询依赖关系结果2"></a>查询依赖关系结果2</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 3. 查询依赖关系结果</span><br><span class="line">-- 说明：</span><br><span class="line">--   步骤：3和2一样，只是展示方式不同</span><br><span class="line"></span><br><span class="line">SELECT * FROM IDEPTREE;</span><br></pre></td></tr></table></figure>
+<h3 id="DBMS-UTILITY-get-dependency"><a href="#DBMS-UTILITY-get-dependency" class="headerlink" title="DBMS_UTILITY.get_dependency"></a>DBMS_UTILITY.get_dependency</h3><blockquote>
+<p>oracle 11g R1开始提供管理object dependencies关系.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-- sql window 执行sql语句</span><br><span class="line">-- 参数说明：</span><br><span class="line">--   type：对象类型</span><br><span class="line">--   schema：模式名称（用户名称）</span><br><span class="line">--   name：object的对象名称</span><br><span class="line">call dbms_utility.get_dependency(&apos;PROCEDURE&apos;, &apos;LALAL&apos;, &apos;TEST&apos;);</span><br><span class="line"></span><br><span class="line">-- output tab页面查看结果</span><br><span class="line">/*</span><br><span class="line">DEPENDENCIES ON LALAL.TEST</span><br><span class="line">------------------------------------------------------------------</span><br><span class="line">...</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<h3 id="动态语句中的object依赖无法分析"><a href="#动态语句中的object依赖无法分析" class="headerlink" title="动态语句中的object依赖无法分析"></a>动态语句中的object依赖无法分析</h3><blockquote>
+<p>动态的SQL语句中的依赖关系是无法分析出来。所以建议少用动态语句。</p>
+<p>动态语句解决方法：ASK TOM上提供了间接的方法。</p>
+<p>在创建procedure或者function中在declare部分，创建一个显示依赖。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> CREATE or replace PROCEDURE testproc IS </span><br><span class="line"> 	i PLS_INTEGER; </span><br><span class="line"> 	var_table varchar2(7):=&apos;TESTTAB&apos;; </span><br><span class="line">	-- 创建一个“直接”依赖，但是在过程中没有使用dummy变量。</span><br><span class="line"> 	cursor dummy is select * from TESTTAB; </span><br><span class="line"> BEGIN </span><br><span class="line">    -- 动态语句依赖的object(table对象)</span><br><span class="line"> 	execute immediate &apos;SELECT COUNT(*) FROM &apos;||var_table||&apos;&apos; INTO i; </span><br><span class="line"> 	dbms_output.put_line(TO_CHAR(i)); </span><br><span class="line"> END testproc; </span><br><span class="line"> / </span><br><span class="line">-- 查询依赖</span><br><span class="line">exec dbms_utility.get_dependency(&apos;TABLE&apos;, &apos;DWHADMIN&apos;,&apos;TESTTAB&apos;);</span><br></pre></td></tr></table></figure>
+<p>虽然“动态语句依赖”在依赖关系中无法分析，但是在procedure的declare部分显示依赖了TESTTAB，所以使用Oracle的依赖管理还是可以找到“依赖关系”。</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; -- 声明“游标”，oracle是只会分配“游标的储存空间”</span><br><span class="line">&gt; -- 不会真正执行sql语句取数，如果你怕影响性能，可以加上where条件，取数为0条记录即可。</span><br><span class="line">&gt; -- 详情可以查看where does the Cursor stores the rows?</span><br><span class="line">&gt; cursor dummy is select * from TESTTAB; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>显示依赖，但是不使用dummy变量，这是不好的实践。好的实践是要消灭动态SQL语句，因为动态带来了极大的维护成本。</p>
+</blockquote>
+<h3 id="附录-utldtree-sql（utldtree-is-stand-for-utility-deep-tree）"><a href="#附录-utldtree-sql（utldtree-is-stand-for-utility-deep-tree）" class="headerlink" title="附录-utldtree.sql（utldtree is stand for utility deep tree）"></a>附录-utldtree.sql（utldtree is stand for utility deep tree）</h3><blockquote>
+<p>使用command window 执行它。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">Rem </span><br><span class="line">Rem $Header: utldtree.sql,v 1.2 1992/10/26 16:24:44 RKOOI Stab $ </span><br><span class="line">Rem </span><br><span class="line">Rem  Copyright (c) 1991 by Oracle Corporation </span><br><span class="line">Rem    NAME</span><br><span class="line">Rem      deptree.sql - Show objects recursively dependent on given object</span><br><span class="line">Rem    DESCRIPTION</span><br><span class="line">Rem      This procedure, view and temp table will allow you to see all</span><br><span class="line">Rem      objects that are (recursively) dependent on the given object.</span><br><span class="line">Rem      Note: you will only see objects for which you have permission.</span><br><span class="line">Rem      Examples:</span><br><span class="line">Rem        execute deptree_fill(&apos;procedure&apos;, &apos;scott&apos;, &apos;billing&apos;);</span><br><span class="line">Rem        select * from deptree order by seq#;</span><br><span class="line">Rem</span><br><span class="line">Rem        execute deptree_fill(&apos;table&apos;, &apos;scott&apos;, &apos;emp&apos;);</span><br><span class="line">Rem        select * from deptree order by seq#;</span><br><span class="line">Rem</span><br><span class="line">Rem        execute deptree_fill(&apos;package body&apos;, &apos;scott&apos;, &apos;accts_payable&apos;);</span><br><span class="line">Rem        select * from deptree order by seq#;</span><br><span class="line">Rem</span><br><span class="line">Rem        A prettier way to display this information than</span><br><span class="line">Rem		select * from deptree order by seq#;</span><br><span class="line">Rem	   is</span><br><span class="line">Rem             select * from ideptree;</span><br><span class="line">Rem        This shows the dependency relationship via indenting.  Notice</span><br><span class="line">Rem        that no order by clause is needed with ideptree.</span><br><span class="line">Rem    RETURNS</span><br><span class="line">Rem </span><br><span class="line">Rem    NOTES</span><br><span class="line">Rem      Run this script once for each schema that needs this utility.</span><br><span class="line">Rem      </span><br><span class="line">Rem    MODIFIED   (MM/DD/YY)</span><br><span class="line">Rem     rkooi      10/26/92 -  owner -&gt; schema for SQL2 </span><br><span class="line">Rem     glumpkin   10/20/92 -  Renamed from DEPTREE.SQL </span><br><span class="line">Rem     rkooi      09/02/92 -  change ORU errors </span><br><span class="line">Rem     rkooi      06/10/92 -  add rae errors </span><br><span class="line">Rem     rkooi      01/13/92 -  update for sys vs. regular user </span><br><span class="line">Rem     rkooi      01/10/92 -  fix ideptree </span><br><span class="line">Rem     rkooi      01/10/92 -  Better formatting, add ideptree view </span><br><span class="line">Rem     rkooi      12/02/91 -  deal with cursors </span><br><span class="line">Rem     rkooi      10/19/91 -  Creation </span><br><span class="line"></span><br><span class="line">drop sequence deptree_seq</span><br><span class="line">/</span><br><span class="line">create sequence deptree_seq cache 200 /* cache 200 to make sequence faster */</span><br><span class="line">/</span><br><span class="line">drop table deptree_temptab</span><br><span class="line">/</span><br><span class="line">create table deptree_temptab</span><br><span class="line">(</span><br><span class="line">  object_id            number,</span><br><span class="line">  referenced_object_id number,</span><br><span class="line">  nest_level           number,</span><br><span class="line">  seq#                 number      </span><br><span class="line">)</span><br><span class="line">/</span><br><span class="line">create or replace procedure deptree_fill (type char, schema char, name char) is</span><br><span class="line">  obj_id number;</span><br><span class="line">begin</span><br><span class="line">  delete from deptree_temptab;</span><br><span class="line">  commit;</span><br><span class="line">  select object_id into obj_id from all_objects</span><br><span class="line">    where owner        = upper(deptree_fill.schema)</span><br><span class="line">    and   object_name  = upper(deptree_fill.name)</span><br><span class="line">    and   object_type  = upper(deptree_fill.type);</span><br><span class="line">  insert into deptree_temptab</span><br><span class="line">    values(obj_id, 0, 0, 0);</span><br><span class="line">  insert into deptree_temptab</span><br><span class="line">    select object_id, referenced_object_id,</span><br><span class="line">        level, deptree_seq.nextval</span><br><span class="line">      from public_dependency</span><br><span class="line">      connect by prior object_id = referenced_object_id</span><br><span class="line">      start with referenced_object_id = deptree_fill.obj_id;</span><br><span class="line">exception</span><br><span class="line">  when no_data_found then</span><br><span class="line">    raise_application_error(-20000, &apos;ORU-10013: &apos; ||</span><br><span class="line">      type || &apos; &apos; || schema || &apos;.&apos; || name || &apos; was not found.&apos;);</span><br><span class="line">end;</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">drop view deptree</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">set echo on</span><br><span class="line"></span><br><span class="line">REM This view will succeed if current user is sys.  This view shows </span><br><span class="line">REM which shared cursors depend on the given object.  If the current</span><br><span class="line">REM user is not sys, then this view get an error either about lack</span><br><span class="line">REM of privileges or about the non-existence of table x$kglxs.</span><br><span class="line"></span><br><span class="line">set echo off</span><br><span class="line">create view sys.deptree</span><br><span class="line">  (nested_level, type, schema, name, seq#)</span><br><span class="line">as</span><br><span class="line">  select d.nest_level, o.object_type, o.owner, o.object_name, d.seq#</span><br><span class="line">  from deptree_temptab d, dba_objects o</span><br><span class="line">  where d.object_id = o.object_id (+)</span><br><span class="line">union all</span><br><span class="line">  select d.nest_level+1, &apos;CURSOR&apos;, &apos;&lt;shared&gt;&apos;, &apos;&quot;&apos;||c.kglnaobj||&apos;&quot;&apos;, d.seq#+.5</span><br><span class="line">  from deptree_temptab d, x$kgldp k, x$kglob g, obj$ o, user$ u, x$kglob c,</span><br><span class="line">      x$kglxs a</span><br><span class="line">    where d.object_id = o.obj#</span><br><span class="line">    and   o.name = g.kglnaobj</span><br><span class="line">    and   o.owner# = u.user#</span><br><span class="line">    and   u.name = g.kglnaown</span><br><span class="line">    and   g.kglhdadr = k.kglrfhdl</span><br><span class="line">    and   k.kglhdadr = a.kglhdadr   /* make sure it is not a transitive */</span><br><span class="line">    and   k.kgldepno = a.kglxsdep   /* reference, but a direct one */</span><br><span class="line">    and   k.kglhdadr = c.kglhdadr</span><br><span class="line">    and   c.kglhdnsp = 0 /* a cursor */</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">set echo on</span><br><span class="line"></span><br><span class="line">REM This view will succeed if current user is not sys.  This view</span><br><span class="line">REM does *not* show which shared cursors depend on the given object.</span><br><span class="line">REM If the current user is sys then this view will get an error </span><br><span class="line">REM indicating that the view already exists (since prior view create</span><br><span class="line">REM will have succeeded).</span><br><span class="line"></span><br><span class="line">set echo off</span><br><span class="line">create view deptree</span><br><span class="line">  (nested_level, type, schema, name, seq#)</span><br><span class="line">as</span><br><span class="line">  select d.nest_level, o.object_type, o.owner, o.object_name, d.seq#</span><br><span class="line">  from deptree_temptab d, all_objects o</span><br><span class="line">  where d.object_id = o.object_id (+)</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">drop view ideptree</span><br><span class="line">/</span><br><span class="line">create view ideptree (dependencies)</span><br><span class="line">as</span><br><span class="line">  select lpad(&apos; &apos;,3*(max(nested_level))) || max(nvl(type, &apos;&lt;no permission&gt;&apos;)</span><br><span class="line">    || &apos; &apos; || schema || decode(type, NULL, &apos;&apos;, &apos;.&apos;) || name)</span><br><span class="line">  from deptree</span><br><span class="line">  group by seq# /* So user can omit sort-by when selecting from ideptree */</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:128114400346342023" target="_blank" rel="noopener">how to find the dependencies of table?</a></p>
+<p><a href="https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:213366500346264333" target="_blank" rel="noopener">where does the Cursor stores the rows?</a></p>
+<p>6-schema object dependencies (Oracle Database Concepts, 11g Release 1)</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:58:38.564Z" itemprop="dateUpdated">2018-06-27 21:58:38</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/01/08/how-to-find-schema-object-dependencies/" target="_blank" rel="external">https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PLSQL/">PLSQL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/&title=《Oracle 管理用户对象依赖关系》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/&title=《Oracle 管理用户对象依赖关系》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle 管理用户对象依赖关系》 — 个人博客&url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/08/how-to-use-utldtree/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">NPM的正确使用姿势</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/28/excel-function-concatenate/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">excel的concatenate函数</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/&title=《Oracle 管理用户对象依赖关系》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/&title=《Oracle 管理用户对象依赖关系》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle 管理用户对象依赖关系》 — 个人博客&url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aQWoDMQwF0N7/0i10lY0zX5JFSnlehWGS+HnA0kj++orH9+94/fx65XRncuX0OfnlawMPDw+vNfXTON3z/hcSTLJ8+XyOi46Hh4e3xrsbDPJ7TlPvhRA8PDy8v8arhpP3S5MsHx4eHt7/4CVbeZKOV4sLeHh4eH+Nl7z894JEEirycsNirQUPDw8v5k025U99Xu/v4eHh4bW66nlbKyk9TJavN/Dw8PA2eL1iQbWVVd3cb30LDw8Pb4OXvMYnG30yoV5JovcYjnEPDw8P7xIv3/rnf5kHnhx5XCA8PDy8BV5+FCD5+3ky3Tsi8BCE8PDw8K7y8lZ9EgbyNDpPrEfpPh4eHt4aL2k+VQNDb9OvtsEelh4PDw9vgZcnxHkjf5TdF0NIucuHh4eHN+ZVt/JeySApvM5z4MLU8fDw8Aa8W+2uyYGAaourPHM8PDy8ZV512+2VDOaNt3xWeHh4eBu8vGLxHY/eAYJmibaIx8PDw5vzks29d3yqV+DojULcw8PDwxvw3sOSbbe3oknwyEvMx+/i4eHhrfEmm28SNqopdTWoHGeLh4eHt8arTqJ3T694MQoVeHh4eAu86hGB6rGnfKITZDkdx8PDwxt8924poTehyYGth+t4eHh4C7z8D3qtrLy5lWMmxwvw8PDw5rz8iEC+9W8UFKInk6fUeHh4eJd4d9tXk0JGvtAPv4aHh4e3wOslypMC62QhesuKh4eHd5c3P3TV2/TzRUxCwuKZMjw8PLz0jb58xKpaqpgk03lowcPDw9vjTVpTvUZXcn+1DHF8DHh4eHhrvOQlvxckqtMaJcenwICHh4f3IV5+5VaSXU30R4EBDw8Pb5k3Ly7kQaVX6sXDw8Pb5k2KEXkSnN9TDVEPKTUeHh7eVd68AdYLEpPUvMnAw8PDm/J+ADyS7gPcAzWUAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

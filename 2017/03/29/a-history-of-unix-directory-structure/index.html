@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>UNIX文件系统的历史 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="FHS">
+    <meta name="description" content="Filesystem Hierarchy Standard 阮一峰译文 Rob Landley原文 On Tuesday 30 November 2010 15:58:00 David Collier wrote:  I see that busybox spreads it’s links over these 4 directories. Is there a simple rule whic">
+<meta name="keywords" content="FHS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UNIX文件系统的历史">
+<meta property="og:url" content="https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Filesystem Hierarchy Standard 阮一峰译文 Rob Landley原文 On Tuesday 30 November 2010 15:58:00 David Collier wrote:  I see that busybox spreads it’s links over these 4 directories. Is there a simple rule whic">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:11:43.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UNIX文件系统的历史">
+<meta name="twitter:description" content="Filesystem Hierarchy Standard 阮一峰译文 Rob Landley原文 On Tuesday 30 November 2010 15:58:00 David Collier wrote:  I see that busybox spreads it’s links over these 4 directories. Is there a simple rule whic">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">UNIX文件系统的历史</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">UNIX文件系统的历史</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-29T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-03-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/FHS/">FHS</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Rob"><span class="post-toc-number">1.</span> <span class="post-toc-text">Rob</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-a-history-of-unix-directory-structure"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">UNIX文件系统的历史</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-29 20:00:00" datetime="2017-03-29T12:00:00.000Z"  itemprop="datePublished">2017-03-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/FHS/">FHS</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><a href="http://www.pathname.com/fhs/" target="_blank" rel="noopener">Filesystem Hierarchy Standard</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2012/02/a_history_of_unix_directory_structure.html" target="_blank" rel="noopener">阮一峰译文</a></p>
+<p><a href="http://lists.busybox.net/pipermail/busybox/2010-December/074114.html" target="_blank" rel="noopener">Rob Landley原文</a></p>
+<p>On Tuesday 30 November 2010 15:58:00 David Collier wrote:</p>
+<blockquote>
+<p>I see that busybox spreads it’s links over these 4 directories.</p>
+<p>Is there a simple rule which decides which directory each link lives<br>in…..</p>
+<p>For instance I see kill is in /bin and killall in /usr/bin…. I don’t<br>have a grip on what might be the logic for that.</p>
+</blockquote>
+<p>You know how Ken Thompson and Dennis Ritchie created Unix on a PDP-7 in 1969?<br>Well around 1971 they upgraded to a PDP-11 with a pair of RK05 disk packs (1.5<br>megabytes each) for storage.</p>
+<p>When the operating system grew too big to fit on the first RK05 disk pack (their<br>root filesystem) they let it leak into the second one, which is where all the<br>user home directories lived (which is why the mount was called /usr).  They<br>replicated all the OS directories under there (/bin, /sbin, /lib, /tmp…) and<br>wrote files to those new directories because their original disk was out of<br>space.  When they got a third disk, they mounted it on /home and relocated all<br>the user directories to there so the OS could consume all the space on both<br>disks and grow to THREE WHOLE MEGABYTES (ooooh!).</p>
+<p>Of course they made rules about “when the system first boots, it has to come up<br>enough to be able to mount the second disk on /usr, so don’t put things like<br>the mount command /usr/bin or we’ll have a chicken and egg problem bringing<br>the system up.”  Fairly straightforward.  Also fairly specific to v6 unix of 35<br>years ago.</p>
+<p>The /bin vs /usr/bin split (and all the others) is an artifact of this, a<br>1970’s implementation detail that got carried forward for decades by<br>bureaucrats who never question <em>why</em> they’re doing things.  It stopped making<br>any sense before Linux was ever invented, for multiple reasons:</p>
+<p>1) Early system bringup is the provice of initrd and initramfs, which deals<br>with the “this file is needed before that file” issues.  We’ve already <em>got</em> a<br>temporary system that boots the main system.</p>
+<p>2) shared libraries (introduced by the Berkeley guys) prevent you from<br>independently upgrading the /lib and /usr/bin parts.  They two partitions have<br>to <em>match</em> or they won’t work.  This wasn’t the case in 1974, back then they<br>had a certain level of independence because everything was statically linked.</p>
+<p>3) Cheap retail hard drives passed the 100 megabyte mark around 1990, and<br>partition resizing software showed up somewhere around there (partition magic<br>3.0 shipped in 1997).</p>
+<p>Of course once the split existed, some people made other rules to justify it.<br>Root was for the OS stuff you got from upstream and /usr was for your site-<br>local files.  Then / was for the stuff you got from AT&amp;T and /usr was for the<br>stuff that your distro like IBM AIX or Dec Ultrix or SGI Irix added to it, and<br>/usr/local was for your specific installation’s files.  Then somebody decided<br>/usr/local wasn’t a good place to install new packages, so let’s add /opt!<br>I’m still waiting for /opt/local to show up…</p>
+<p>Of course given 30 years to fester, this split made some interesting distro-<br>specific rules show up and go away again, such as “/tmp is cleared between<br>reboots but /usr/tmp isn’t”.  (Of course on Ubuntu /usr/tmp doesn’t exist and<br>on Gentoo /usr/tmp is a symlink to /var/tmp which now has the “not cleared<br>between reboots” rule.  Yes all this predated tmpfs.  It has to do with read-<br>only root filesystems, /usr is always going to be read only in that case and<br>/var is where your writable space is, / is <em>mostly</em> read only except for bits<br>of /etc which they tried to move to /var but really symlinking /etc to<br>/var/etc happens more often than not…)</p>
+<p>Standards bureaucracies like the Linux Foundation (which consumed the Free<br>Standards Group in its’ ever-growing accretion disk years ago) happily<br>document and add to this sort of complexity without ever trying to understand<br>why it was there in the first place.  ‘Ken and Dennis leaked their OS into the<br>equivalent of home because an RK05 disk pack on the PDP-11 was too small” goes<br>whoosh over their heads.</p>
+<p>I’m pretty sure the busybox install just puts binaries wherever other versions<br>of those binaries have historically gone.  There’s no actual REASON for any of<br>it anymore.  Personally, I symlink /bin /sbin and /lib to their /usr<br>equivalents on systems I put together.  Embedded guys try to understand and<br>simplify…</p>
+<h2 id="Rob"><a href="#Rob" class="headerlink" title="Rob"></a>Rob</h2><p>GPLv3: as worthy a successor as The Phantom Menace, as timely as Duke Nukem<br>Forever, and as welcome as New Coke.</p>
+<p>On Thursday 09 December 2010 16:45, Rob Landley wrote:</p>
+<blockquote>
+<p>The /bin vs /usr/bin split (and all the others) is an artifact of this, a<br>1970’s implementation detail that got carried forward for decades by<br>bureaucrats who never question <em>why</em> they’re doing things.  It stopped making<br>any sense before Linux was ever invented, for multiple reasons:<br>…</p>
+</blockquote>
+<blockquote>
+<p>I’m pretty sure the busybox install just puts binaries wherever other versions<br>of those binaries have historically gone.  There’s no actual REASON for any of<br>it anymore.  Personally, I symlink /bin /sbin and /lib to their /usr<br>equivalents on systems I put together.  Embedded guys try to understand and<br>simplify…</p>
+</blockquote>
+<p>Another simplification:</p>
+<p>I symlink [/usr]/sbin to bin. If a program shouldn’t be runnable by a non-root,<br>it can easily be arranged by suitable mode in the binary. No need to have<br>separate directory for that.</p>
+<p>–<br>vda</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:11:43.597Z" itemprop="dateUpdated">2018-06-27 21:11:43</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/03/29/a-history-of-unix-directory-structure/" target="_blank" rel="external">https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FHS/">FHS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/&title=《UNIX文件系统的历史》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/&title=《UNIX文件系统的历史》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《UNIX文件系统的历史》 — 个人博客&url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/29/the-linux-command-line-learn-note/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Linux命令学习笔记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/04/fuel-ux-spinner/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">fuel-ux-spinner源码</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/&title=《UNIX文件系统的历史》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/&title=《UNIX文件系统的历史》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《UNIX文件系统的历史》 — 个人博客&url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/03/29/a-history-of-unix-directory-structure/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQXICMQwEQP7/afKABGdGtgmp6j1RYbN278ESkh6P+Hq+uNb3r//3+xPW96xX3Lrw8PDwDm19vcVXmPVWXm032frsleHh4eHd4+VbmS3//e/Jc9r94OHh4X0yL0+R21ewzorx8PDw/iNvVixo71w/Hw8PD+8TeHkJdVZsXQeAfMWLtRY8PDy8mJd3kT7n85X+Hh4eHt52V/39bf5ZQHq5Ezw8PLwLvLa5lT80T4iTsm+eLuPh4eHd5s2O+zzlnbXEkoZZVMzFw8PDu8ZrGfmY1GzsYPZao/o0Hh4e3jYvLwfkZdZ2rCqnti00PDw8vL/itXfulDba0DLs4+Hh4eEd4uUHelEOKDfXBoai/YaHh4d3gTc7dtu2Vj4K0LbBilCBh4eHt8FrB6ryoYF2JGtWgPjlfjw8PLy38NpNzErAO4WMJNg89icd8PDw8OIyxIFRp/j4npV32yQeDw8P7yyv/dnfpsj5VvIEunhleHh4eBd4O0fzrDyRjwXkoahA4uHh4W3zZoEhb/nvBKFZ+v5DGRcPDw/vKC9f+FTBoh3VmqX1eHh4ePd4eXEhLwTk6W/b+qpDCB4eHt413qlm1c54QR4MioQeDw8P7wJv/8f/OiFOyr7DEkNQ5sDDw8N7D+9USyw56NuNJs9vhw/w8PDwZrzZ8vnW8yR7p8ARxSs8PDy8a7w2MCTHdFvamCXcUWDAw8PDO8RLDtmdkm4eWnYuPDw8vNu8Z3nlQwDt6Op+x/+Hb/Hw8PAu8GYHbt7ab8sK7ZBB3e7Cw8PDO8RrC6ktpj2sTwUkPDw8vNu8pN01a4/tBIz8ddRf4+Hh4b2RVy9QAs6+Sjw8PLxP4M2S6VlpOH/CxbiHh4eHt1HnbMezZi2xfJXDtRY8PDy8mLf/g3929LevbJag4+Hh4R3lfQEtYRbbxcIo1AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

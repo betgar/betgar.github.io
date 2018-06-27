@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>NPM的正确使用姿势 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="npm">
+    <meta name="description" content="NPM的正确使用姿势 node package manager是node的包管理器，使用NPM来管理node的模块。 但是因为中国的独特的网络环境，所以给使用NPM带来很多不变。  安装cnpm cnpm是npm的一个模块，它是淘宝（阿里）推出的一个为中国大陆开发者的工具，强烈建议使用cnpm安装项目依赖的插件，它可以帮你简化因为“网络环境”带来的问题。  1npm install -g cnpm">
+<meta name="keywords" content="npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NPM的正确使用姿势">
+<meta property="og:url" content="https://betgar.github.io/2017/03/04/use-npm-with-right-posture/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="NPM的正确使用姿势 node package manager是node的包管理器，使用NPM来管理node的模块。 但是因为中国的独特的网络环境，所以给使用NPM带来很多不变。  安装cnpm cnpm是npm的一个模块，它是淘宝（阿里）推出的一个为中国大陆开发者的工具，强烈建议使用cnpm安装项目依赖的插件，它可以帮你简化因为“网络环境”带来的问题。  1npm install -g cnpm">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:10:00.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NPM的正确使用姿势">
+<meta name="twitter:description" content="NPM的正确使用姿势 node package manager是node的包管理器，使用NPM来管理node的模块。 但是因为中国的独特的网络环境，所以给使用NPM带来很多不变。  安装cnpm cnpm是npm的一个模块，它是淘宝（阿里）推出的一个为中国大陆开发者的工具，强烈建议使用cnpm安装项目依赖的插件，它可以帮你简化因为“网络环境”带来的问题。  1npm install -g cnpm">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">NPM的正确使用姿势</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">NPM的正确使用姿势</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-04T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-03-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#NPM的正确使用姿势"><span class="post-toc-number">1.</span> <span class="post-toc-text">NPM的正确使用姿势</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装cnpm"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装cnpm</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置npm的registry"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置npm的registry</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置cnpm的registry"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">配置cnpm的registry</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cnpm使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">cnpm使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">引用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-use-npm-with-right-posture"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">NPM的正确使用姿势</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-04 20:00:00" datetime="2017-03-04T12:00:00.000Z"  itemprop="datePublished">2017-03-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="NPM的正确使用姿势"><a href="#NPM的正确使用姿势" class="headerlink" title="NPM的正确使用姿势"></a>NPM的正确使用姿势</h2><blockquote>
+<p>node package manager是node的包管理器，使用NPM来管理node的模块。</p>
+<p>但是因为中国的独特的网络环境，所以给使用NPM带来很多不变。</p>
+</blockquote>
+<h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h3><blockquote>
+<p>cnpm是npm的一个模块，它是淘宝（阿里）推出的一个为中国大陆开发者的工具，强烈建议使用cnpm安装项目依赖的插件，它可以帮你简化因为“网络环境”带来的问题。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm</span><br></pre></td></tr></table></figure>
+<h3 id="配置npm的registry"><a href="#配置npm的registry" class="headerlink" title="配置npm的registry"></a>配置npm的registry</h3><blockquote>
+<p>国内访问npm的registry很慢，而且有时候还会出现错误，所以配置成淘宝的镜像。</p>
+<p><strong>注意</strong> ：如果你决定使用cnpm安装依赖模块，可以不用配置npm的registry</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 配置全局的（永久生效）</span><br><span class="line">npm config set registry="https://registry.npm.taobao.org"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 临时（一次性）</span><br><span class="line">npm install module_name --registry="https://registry.npm.taobao.org"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 如果公司屏蔽了taobao</span><br><span class="line">npm config set registry="https://r.cnpmjs.org"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看registry是否生效</span><br><span class="line">npm config get registry</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看默认的npm所有配置</span><br><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+<h3 id="配置cnpm的registry"><a href="#配置cnpm的registry" class="headerlink" title="配置cnpm的registry"></a>配置cnpm的registry</h3><blockquote>
+<p>如果你的网络屏蔽了taobao，那就使用<a href="https://r.cnpmjs.org" target="_blank" rel="noopener">https://r.cnpmjs.org</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 如果没有taobao访问限制，不需要这步配置</span><br><span class="line">cnpm config set registry="https://r.cnpmjs.org"</span><br></pre></td></tr></table></figure>
+<h3 id="cnpm使用"><a href="#cnpm使用" class="headerlink" title="cnpm使用"></a>cnpm使用</h3><blockquote>
+<p>因为cnpm的配置和npm的是完全独立，所以如果你希望单独配置cache，请重新配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> # &lt;path&gt; 是真实路径</span><br><span class="line"><span class="meta">&gt;</span> cnpm config set cache="&lt;path&gt;"</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<p>现在就可以使用cnpm代替npm操作，但是如果你需要发布一个模块，请切换使用npm来publish。因为cnpm是只读的，所以只能用来方便下载。</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><a href="https://github.com/cnpm/cnpm" title="cnpm github" target="_blank" rel="noopener">cnpm-github</a></p>
+<p><a href="https://npm.taobao.org/" title="cnpm China mirror" target="_blank" rel="noopener">China-mirror</a> </p>
+<p><a href="https://cnpmjs.org/" title="cnpmjs" target="_blank" rel="noopener">cnpmjs</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:10:00.711Z" itemprop="dateUpdated">2018-06-27 21:10:00</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/03/04/use-npm-with-right-posture/" target="_blank" rel="external">https://betgar.github.io/2017/03/04/use-npm-with-right-posture/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/&title=《NPM的正确使用姿势》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/&title=《NPM的正确使用姿势》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NPM的正确使用姿势》 — 个人博客&url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/04/fuel-ux-spinner/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">fuel-ux-spinner源码</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/&title=《NPM的正确使用姿势》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/&title=《NPM的正确使用姿势》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《NPM的正确使用姿势》 — 个人博客&url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/03/04/use-npm-with-right-posture/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3ay24bMRAEQP//TydATgkcrbpnSMcBak+CtA8WDSzHPfz4iI8fv47P3/x+vDrz1d0+X/t8TnLn4YGHh4c3Gvrz7dpBv5qaFvPq2uR8PDw8vNu858XgxufnSWnv8/J7PDw8vH/KSwrrpPx9XjxePREPDw/vf+TlwURSlJ9dYPDw8PC+npcMbv/6TpA573DWgoeHhzepdaMG2Hf4fLG/h4eHh7foqidHvpkgb2udGi0eHh7eDV7Sgtpvh7pRZBcLBh4eHt4X8vLFoH19z2KI/M8QLQx4eHh4C96snf/cgsoL6/pFXy48eHh4eGd57RDbQnwTWLTbv7L1AQ8PD2/LuxFMtBOUF9AH2Hh4eHiHeJtmVVsKt8OdxSIvC2s8PDy8Q7x8YRjetNwW0AYQx0pqPDw8vJKXtMHaKWg3UZ29Px4eHt493j6QzcvlNthNpvjN1ODh4eEd5eWwTRyQD/pUSIGHh4d3j9fGELOWVb7ZNA956ygZDw8P7xoveeG2L/382MS7b87Ew8PDO8QbdskWSWlbds/i4D/+Y8DDw8M7ymtb/nkIm/w6iyfawBcPDw/vHq/dbtWWvKt9DWVY/LGZYzw8PLz1DqUkjGi3aiVLSDtxERIPDw/vEG8Wy7bt/7ZEbjddRWEEHh4e3iFe3gabBalnF4NN8IGHh4d3g7ePA3LeJrY4wMDDw8Nb8NqWUv5SbheMWYTxJpLAw8PDu8ZLItGEmocFebDbLid4eHh493ibxz9Pwb6p1pbsfxkDHh4e3gXeJhrYFMTJ4/dsPDw8vHu8ZDFISuekFG4bXbPIAw8PD+9reLMW1CzGze/WBhB4eHh435/XXjtbhPINW8MGGB4eHt41XrvJYNNgyyOPNwEHHh4e3jXebINU+yrfPDd/Oh4eHt5tXtsAm/06a2jN2nJ4eHh413g/AdFOxTqEd6RTAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

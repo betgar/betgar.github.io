@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Oracle 绑定变量(bind variable) | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Oracle,PLSQL">
+    <meta name="description" content="Oracle 绑定变量(bind variable) 转载： http://www.ecdoer.com/post/oracle-dynamic-sql.html  【动态SQL定义】动态SQL是指在PL/SQL块中，可以根据不同参数拼接不同的SQL字符串，即执行前不能确定该SQL是什么（如表名、字段名或条件值未知）。 【动态SQL与静态SQL区别】1）静态SQL是确定的，在执行前已经完成编译（随">
+<meta name="keywords" content="Oracle,PLSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle 绑定变量(bind variable)">
+<meta property="og:url" content="https://betgar.github.io/2018/04/16/oracle-bind-variable/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Oracle 绑定变量(bind variable) 转载： http://www.ecdoer.com/post/oracle-dynamic-sql.html  【动态SQL定义】动态SQL是指在PL/SQL块中，可以根据不同参数拼接不同的SQL字符串，即执行前不能确定该SQL是什么（如表名、字段名或条件值未知）。 【动态SQL与静态SQL区别】1）静态SQL是确定的，在执行前已经完成编译（随">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:55:53.605Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle 绑定变量(bind variable)">
+<meta name="twitter:description" content="Oracle 绑定变量(bind variable) 转载： http://www.ecdoer.com/post/oracle-dynamic-sql.html  【动态SQL定义】动态SQL是指在PL/SQL块中，可以根据不同参数拼接不同的SQL字符串，即执行前不能确定该SQL是什么（如表名、字段名或条件值未知）。 【动态SQL与静态SQL区别】1）静态SQL是确定的，在执行前已经完成编译（随">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Oracle 绑定变量(bind variable)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Oracle 绑定变量(bind variable)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-16T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-04-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PLSQL/">PLSQL</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Oracle-绑定变量-bind-variable"><span class="post-toc-number">1.</span> <span class="post-toc-text">Oracle 绑定变量(bind variable)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#【动态SQL定义】"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">【动态SQL定义】</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#【动态SQL与静态SQL区别】"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">【动态SQL与静态SQL区别】</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#【动态SQL用途】"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">【动态SQL用途】</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#【动态SQL语法】"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">【动态SQL语法】</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#【动态SQL举例】"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">【动态SQL举例】</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#【绑定变量】"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">【绑定变量】</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-oracle-bind-variable"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Oracle 绑定变量(bind variable)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-16 20:00:00" datetime="2018-04-16T12:00:00.000Z"  itemprop="datePublished">2018-04-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PLSQL/">PLSQL</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Oracle-绑定变量-bind-variable"><a href="#Oracle-绑定变量-bind-variable" class="headerlink" title="Oracle 绑定变量(bind variable)"></a>Oracle 绑定变量(bind variable)</h1><blockquote>
+<p>转载： <a href="http://www.ecdoer.com/post/oracle-dynamic-sql.html" target="_blank" rel="noopener">http://www.ecdoer.com/post/oracle-dynamic-sql.html</a></p>
+</blockquote>
+<h2 id="【动态SQL定义】"><a href="#【动态SQL定义】" class="headerlink" title="【动态SQL定义】"></a>【动态SQL定义】</h2><p>动态SQL是指在PL/SQL块中，可以根据不同参数拼接不同的SQL字符串，即执行前不能确定该SQL是什么（如表名、字段名或条件值未知）。</p>
+<h2 id="【动态SQL与静态SQL区别】"><a href="#【动态SQL与静态SQL区别】" class="headerlink" title="【动态SQL与静态SQL区别】"></a>【动态SQL与静态SQL区别】</h2><p>1）静态SQL是确定的，在执行前已经完成编译（随PL/SQL块一起完成了编译），执行时数据库直接执行编译好的SQL；而动态SQL是不确定的，是在程序运行时才编译并执行（不随PL/SQL块编译时编译）。</p>
+<p>2）静态SQL一次编译，多次调用，使用相同的执行计划。动态SQL每次运行均要先对其编译，即多次调用则需要多次编译。</p>
+<p>3）静态SQL使用相同的执行计划，对于确定的任务而言，静态SQL更具有高效性，但缺乏灵活性；动态SQL使用了不同的执行计划，效率不如静态SQL，但能够解决复杂的问题。</p>
+<p>4）动态SQL容易产生SQL注入，为数据库安全带来隐患。</p>
+<h2 id="【动态SQL用途】"><a href="#【动态SQL用途】" class="headerlink" title="【动态SQL用途】"></a>【动态SQL用途】</h2><p>1）处理PL/SQL块中不能处理的DDL或DCL语句；</p>
+<p>2）处理PL/SQL块中带参数具有不确定性的SQL（如表名、字段名或条件值作为变量）；</p>
+<p>3）PL/SQL中静态SQL出现性能瓶颈；</p>
+<h2 id="【动态SQL语法】"><a href="#【动态SQL语法】" class="headerlink" title="【动态SQL语法】"></a>【动态SQL语法】</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">execute</span> <span class="keyword">immediate</span> <span class="string">'sql'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--区别于静态SQL变量赋值的INTO位置，select col into var from table;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">execute</span> <span class="keyword">immediate</span> <span class="string">'sql_select'</span> <span class="keyword">into</span> var_1, var_2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">execute</span> <span class="keyword">immediate</span> <span class="string">'sql'</span> <span class="keyword">using</span> bind_var_1,bind_var_2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">execute</span> <span class="keyword">immediate</span> <span class="string">'sql_select'</span> <span class="keyword">into</span> var_1, var_2 <span class="keyword">using</span> bind_var_1,bind_var_2;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- returning子句在insert之后返回新加的值，update之后返回修改后的值，delete返回删除前的值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">execute</span> <span class="keyword">immediate</span> <span class="string">'sql_dml'</span> <span class="keyword">returning</span> <span class="keyword">into</span> var_1;</span><br><span class="line"></span><br><span class="line"><span class="comment">--批量动态SQL，即在动态SQL中使用BULK子句，或使用游标变量时在fetch中使用BULK，或在FORALL语句中使用BULK子句来实现</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">execute</span> <span class="keyword">immediate</span> <span class="string">'sql'</span> <span class="keyword">bulk</span> <span class="keyword">collect</span> <span class="keyword">into</span> var_array;</span><br><span class="line"></span><br><span class="line"><span class="comment">--动态REF游标，不同于静态游标声明方式</span></span><br><span class="line"></span><br><span class="line">open cursor_name for ‘sql’ using bind_var_1;</span><br></pre></td></tr></table></figure>
+<h2 id="【动态SQL举例】"><a href="#【动态SQL举例】" class="headerlink" title="【动态SQL举例】"></a>【动态SQL举例】</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*动态SQL执行DDL语句（不能跟using）*/</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  sql_statement varchar2(<span class="number">100</span>);</span><br><span class="line">  table_name    varchar2(20);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  table_name := <span class="string">'emp'</span>;</span><br><span class="line">  sql_statement := '<span class="keyword">truncate</span> <span class="keyword">table</span> <span class="string">' || table_name;</span></span><br><span class="line"><span class="string">  execute immediate sql_statement;</span></span><br><span class="line"><span class="string">end;</span></span><br></pre></td></tr></table></figure>
+<p>–注：变量不能放在引号内，否则会解析成文本而不是变量，但若在DML语句的绑定变量，则需要在引号内，拼SQL时一定要注意关键字后的空格，如truncate table之后是有一个空格的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*动态SELECT语句（不能跟returning）*/</span></span><br><span class="line"><span class="comment">/*SELECT中表名是变量*/</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  sql_stat varchar2(<span class="number">100</span>);</span><br><span class="line">  v_tab    varchar2(20);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  v_tab := <span class="string">'emp'</span>;</span><br><span class="line">  sql_stat := '<span class="keyword">select</span> sal <span class="keyword">from</span> <span class="string">'|| v_tab || '</span> <span class="keyword">where</span> empno = <span class="number">1</span><span class="string">';</span></span><br><span class="line"><span class="string">  dbms_output.put_line(sql_stat);</span></span><br><span class="line"><span class="string">  execute immediate sql_stat;</span></span><br><span class="line"><span class="string">end;</span></span><br><span class="line"><span class="string">--注：注意from后面和where前面是有空格的</span></span><br><span class="line"><span class="string">/*SELECT INTO变量赋值*/</span></span><br><span class="line"><span class="string">declare</span></span><br><span class="line"><span class="string">  sql_stat varchar2(100);</span></span><br><span class="line"><span class="string">  v_sal    number(6, 2);</span></span><br><span class="line"><span class="string">begin</span></span><br><span class="line"><span class="string">  sql_stat := '</span><span class="keyword">select</span> sal <span class="keyword">from</span> emp <span class="keyword">where</span> empno = :<span class="number">1</span><span class="string">';</span></span><br><span class="line"><span class="string">  execute immediate sql_stat</span></span><br><span class="line"><span class="string">    into v_sal</span></span><br><span class="line"><span class="string">    using 1;</span></span><br><span class="line"><span class="string">  dbms_output.put_line(v_sal);</span></span><br><span class="line"><span class="string">end;</span></span><br></pre></td></tr></table></figure>
+<p>–注：INTO的位置，不像静态SQL一样在字段名后，而是在execute immediate时才加，且关键字在using之前；另外，注意区分有returning子句的，returning子句在SQL文本和execute immediate子句中均有出现，但此时INTO的位置在using之后。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*动态SQL执行DML语句（含returning子句）*/</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  v_sal    <span class="built_in">number</span>(<span class="number">6</span>, <span class="number">2</span>);</span><br><span class="line">  sql_stat varchar2(100);</span><br><span class="line">  v_eno    number(2);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  v_eno    := <span class="number">1</span>;</span><br><span class="line">  sql_stat := '<span class="keyword">update</span> emp <span class="keyword">set</span> sal = sal * (<span class="number">1</span> + :<span class="keyword">percent</span> / <span class="number">100</span>) <span class="keyword">where</span> empno = :<span class="number">2</span> <span class="keyword">returning</span> sal <span class="keyword">into</span> :<span class="number">3</span><span class="string">';</span></span><br><span class="line"><span class="string">  execute immediate sql_stat</span></span><br><span class="line"><span class="string">    using &amp;1, v_eno</span></span><br><span class="line"><span class="string">    returning into v_sal;</span></span><br><span class="line"><span class="string">  commit;</span></span><br><span class="line"><span class="string">  dbms_output.put_line('</span><span class="keyword">new</span> salary: <span class="string">' || v_sal);</span></span><br><span class="line"><span class="string">end;</span></span><br></pre></td></tr></table></figure>
+<p>–注：动态SQL内的结尾不加分号“;”，但PL/SQL的语句结尾加“;”，且冒号后的占位符是字母或数字完全没有影响，using的变量值可以是绑定变量、或变量或常量均可。如：占位符:percent对应绑定变量&amp;1，虽然名字完全不同，但也不影响，另外，占位符:2对应了变量v_eno，也是完全不同。即，按顺序占位，与占位符名无关。按顺序绑定变量，与绑定变量名无关。给占位符或绑定变量命名只是为了程序的可读性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span></span><br><span class="line">  <span class="keyword">type</span> cur_totalvaue_type <span class="keyword">is</span> <span class="keyword">ref</span> <span class="keyword">cursor</span>;</span><br><span class="line">  cur_totalvaue     cur_totalvaue_type;</span><br><span class="line">  sql_stat          VARCHAR2(100);</span><br><span class="line">  record_totalvalue t_threeyear_hour%rowtype;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  sql_stat := <span class="string">'select * from t_threeyear_hour t where t.time = :1'</span>;</span><br><span class="line">  open cur_totalvaue for sql_stat</span><br><span class="line">    using to_date('20130209', 'yyyymmdd');</span><br><span class="line">  loop</span><br><span class="line">    fetch cur_totalvaue</span><br><span class="line">      into record_totalvalue;</span><br><span class="line">    exit when cur_totalvaue%NOTFOUND;</span><br><span class="line">    dbms_output.put_line(record_totalvalue.time || ' is ' || record_totalvalue.totalvalue);</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br><span class="line">  close cur_totalvaue;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="comment">/*批量动态SQL（BULK COLLECT INTO ）*/</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  <span class="keyword">type</span> ename_table_type <span class="keyword">is</span> <span class="keyword">table</span> <span class="keyword">of</span> emp.ename%<span class="keyword">type</span> <span class="keyword">index</span> <span class="keyword">by</span> binary_integer;</span><br><span class="line">  type sal_table_type is table of emp.sal%type index by binary_integer;</span><br><span class="line">  ename_table ename_table_type;</span><br><span class="line">  sal_table   sal_table_type;</span><br><span class="line">  sql_stat    varchar2(120);</span><br><span class="line">  v_percent   number := &amp;percent;</span><br><span class="line">  v_dno       number := &amp;dno;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  sql_stat := <span class="string">'update emp set sal = sal * (1 + :percent / 100)'</span> ||</span><br><span class="line">              <span class="string">' where deptno = :dno'</span> ||</span><br><span class="line">              <span class="string">' returning ename, sal into :name, :salary'</span>;</span><br><span class="line">  <span class="keyword">execute</span> <span class="keyword">immediate</span> sql_stat</span><br><span class="line">    <span class="keyword">using</span> v_percent, v_dno</span><br><span class="line">    <span class="keyword">returning</span> <span class="keyword">bulk</span> <span class="keyword">collect</span></span><br><span class="line">    <span class="keyword">into</span> ename_table, sal_table;</span><br><span class="line">  for i in 1 .. ename_table.count loop</span><br><span class="line">    dbms_output.put_line('employee ' || ename_table(i) || ' salary is: ' || sal_table(i));</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="comment">/*动态游标+BULK*/</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  <span class="keyword">type</span> cur_emp_type <span class="keyword">is</span> <span class="keyword">ref</span> <span class="keyword">cursor</span>;</span><br><span class="line">  cur_emp cur_emp_type;</span><br><span class="line">  type ename_table_type is table of emp.ename%type index by binary_integer;</span><br><span class="line">  ename_table ename_table_type;</span><br><span class="line">  sql_stat    varchar2(120);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  sql_stat := <span class="string">'select ename from emp where deptno = :dno'</span>;</span><br><span class="line">  open cur_emp for sql_stat</span><br><span class="line">    using &amp;dno;</span><br><span class="line">  fetch cur_emp bulk collect</span><br><span class="line">    into ename_table;</span><br><span class="line">  for i in 1 .. ename_table.count loop</span><br><span class="line">    dbms_output.put_line('employee name is ' || ename_table(i));</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">loop</span>;</span><br><span class="line">  close cur_emp;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="comment">/*FORALL+BULK（仅支持DML）*/</span></span><br><span class="line"><span class="keyword">declare</span></span><br><span class="line">  <span class="keyword">type</span> ename_table_type <span class="keyword">is</span> <span class="keyword">table</span> <span class="keyword">of</span> tb2.ename%<span class="keyword">type</span>;</span><br><span class="line">  type sal_table_type is table of tb2.sal%type;</span><br><span class="line">  ename_table ename_table_type;</span><br><span class="line">  sal_table   sal_table_type;</span><br><span class="line">  sql_stat    varchar2(100);</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  ename_table := ename_table_type(<span class="string">'blake'</span>, <span class="string">'ford'</span>, <span class="string">'miller'</span>); <span class="comment">--为复合类型赋值</span></span><br><span class="line">  sql_stat    := '<span class="keyword">update</span> tb2 <span class="keyword">set</span> sal = sal * <span class="number">1.1</span> <span class="keyword">where</span> ename = :<span class="number">1</span> <span class="keyword">returning</span> sal <span class="keyword">into</span> :<span class="number">2</span><span class="string">';</span></span><br><span class="line"><span class="string">  forall i in 1 .. ename_table.count</span></span><br><span class="line"><span class="string">  execute immediate sql_stat using ename_table(i)</span></span><br><span class="line"><span class="string">  returning bulk collect into sal_table;</span></span><br><span class="line"><span class="string">  for j in 1 .. ename_table.count loop</span></span><br><span class="line"><span class="string">    dbms_output.put_line('</span>the <span class="keyword">new</span> salary <span class="keyword">is</span> <span class="string">' || sal_table(j) || '</span> <span class="keyword">for</span> <span class="string">' || ename_table(j));</span></span><br><span class="line"><span class="string">  end loop;</span></span><br><span class="line"><span class="string">end;</span></span><br></pre></td></tr></table></figure>
+<h2 id="【绑定变量】"><a href="#【绑定变量】" class="headerlink" title="【绑定变量】"></a>【绑定变量】</h2><p>Oracle会自动把循环中带参数SQL语句转换为采用绑定变量方式执行，以减少硬解析和latch竞争。所以，很多时候我们并不需要专门去注意在PL/SQL块中使用绑定变量，Oracle会自动帮我们完成这个动作。至于SQLPLUS中使用绑定变量，其实我们日常也较少使用SQLPLUSE，故也无需专门注意该问题。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- sqlplus中使用绑定变量</span></span><br><span class="line"></span><br><span class="line">variable x number(4);</span><br><span class="line"></span><br><span class="line">exec :x := 1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp t <span class="keyword">where</span> empno = :x;</span><br></pre></td></tr></table></figure>
+<p>–注：必须先使用关键字variable声明变量，再使用exec给绑定变量赋值（变量前带冒号），最后使用绑定变量。</p>
+<p><strong>绑定变量效率高的原因</strong></p>
+<p>Oracle中，对于一个提交的sql语句，存在两种可选的解析过程，一种叫做硬解析，一种叫做软解析。当一个sql语句提交后，oracle会首先检查一下共享缓冲池（shared pool）里有没有与之完全相同的语句，如果有的话只须执行软分析即可，否则就得进行硬分析。</p>
+<p>硬解析需要经解析，制定执行路径、优化访问计划等许多的步骤。硬解释不仅仅耗费大量的cpu，更重要的是会占据重要闩（latch）资源，严重的影响系统规模扩大（即限制了系统的并发行），而且引起的问题不能通过增加内存条和cpu的数量来解决。之所以这样是因为闩是为了顺序访问以及修改一些内存区域而设置的，这些内存区域是不能被同时修改。</p>
+<p>若Oracle在shared pool中查找相同SQL语句的过程中，SQL语句使用了绑定变量（bind variable），那么就是比较SQL语句的静态部分，前面我们已经知道，静态部分是有限的，很容易就能够缓存在内存里，从而找到相同的SQL语句的概率很高。如果没有使用绑定变量，则就是比较SQL语句的静态部分和动态部分，而动态部分的变化是无限的，因此这样的SQL语句很难被缓存在shared pool里。毕竟内存是有限的，不可能把所有的动态部分都缓存在sharedpool里，即便能够缓存，管理这样一个无限大的shared pool也是不可能完成的任务。不使用绑定变量导致的直接结果就是，找到相同的SQL语句的概率很低，导致必须完整的解析SQL语句，也就导致消耗更多的资源。</p>
+<p><strong>绑定变量的使用环境 </strong></p>
+<p>由于在OLTP中，SQL语句大多是比较简单或者操作的结果集都很小。当一个表上创建了索引，那么这种极小结果集的操作使用索引最合适，并且几乎所有的SQL的执行计划的索引都会被选择，因为这种情况下，索引可能只需要扫描几个数据块就可以定位到数据，而全表扫描将会相当耗资源。因此，这种情况下，即使每个用户的谓词条件不一样，执行计划也是一样的，就是都用索引来访问数据，基本不会出现全表扫描的情况。在这种执行计划几乎唯一的情况下，使用绑定变量来代替谓词常量是合适的。</p>
+<p>注意，在OLTP中使用绑定变量一定要注意，变量的类型要与表字段类型一样，否则若造成了隐式转换，索引将失效而采用全表扫描，此时会造成系统性能的极大下降。</p>
+<p>在OLAP系统中，SQL的操作就复杂很多，OLAP数据库上大多数时候运行的一些报表SQL，这些SQL经常会用到聚合查询（如：groupby），而且结果集也是非常庞大，在这种情况下，索引并不是必然的选择，甚至有时候全表扫描的性能会更优于索引，即使相同的SQL，如果谓词不同，执行计划都可能不同。让Oracle对每条SQL做硬分析，确切的知道谓词条件的值，这对执行计划的选择至关重要，这样做的原因是为了得到一个最优的执行计划。在OLAP系统中，系统的资源基本上是用于做大的SQL查询，和查询比起来SQL解析消耗的资源显得微不足道，SQL硬分析的代价是可以忽略的。因此让Oracle确切地知道谓词的数值至关重要，它直接决定了SQL执行计划的选择，所以在OLAP系统完全没有必要绑定变量，那样很可能带来负面影响，比如导致SQL选择错误的执行，这个代价有时是灾难性的。</p>
+<p>【文章参考】</p>
+<p><a href="http://blog.csdn.net/leshami/article/details/6118010" target="_blank" rel="noopener">http://blog.csdn.net/leshami/article/details/6118010</a></p>
+<p><a href="http://czmmiao.iteye.com/blog/1489625" target="_blank" rel="noopener">http://czmmiao.iteye.com/blog/1489625</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:55:53.605Z" itemprop="dateUpdated">2018-06-27 21:55:53</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/04/16/oracle-bind-variable/" target="_blank" rel="external">https://betgar.github.io/2018/04/16/oracle-bind-variable/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PLSQL/">PLSQL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/04/16/oracle-bind-variable/&title=《Oracle 绑定变量(bind variable)》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/04/16/oracle-bind-variable/&title=《Oracle 绑定变量(bind variable)》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/04/16/oracle-bind-variable/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle 绑定变量(bind variable)》 — 个人博客&url=https://betgar.github.io/2018/04/16/oracle-bind-variable/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/04/16/oracle-bind-variable/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/17/qem-manual/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">qem-manual(使用手册)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/11/plsql-forall/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">plsql-forall</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/04/16/oracle-bind-variable/&title=《Oracle 绑定变量(bind variable)》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/04/16/oracle-bind-variable/&title=《Oracle 绑定变量(bind variable)》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/04/16/oracle-bind-variable/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Oracle 绑定变量(bind variable)》 — 个人博客&url=https://betgar.github.io/2018/04/16/oracle-bind-variable/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/04/16/oracle-bind-variable/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aMXKEMAwF0L3/pTdNijTAlwSZwX5UO5vF5lEokqXPJ76+f66j78+v6mqfJy4MDIzXMpLtq389eqz5yodUDAyMDRhHEez88/k65w93714YGBgYycbzkI2BgYHxRMCdV89J4oiBgYGRh8v80Xvlay+UY2Bg7MDohcX/+fxIfwMDA+NVjG/xSkJqNZWctEV/78XAwFiakQe4JNVLvq8evRWGPzAwMBZl5IEv2T5pXk5eTTlvxcDAWIJRvbm5QVwMj478MDAwNmDcdSjfK1lvaI5iYGBswOglc3nwrRau5V0wMDA2YFTTwTyBe2IgAwMDYx/GE8Ne+S6jRPDvyhgYGEsz8qXz8YukPVANqREbAwNjA0a1eVnNyqpDFeVCGgMDY1HGfMyrelevAr34BgMDY2lG3hiopo/VJmgVE2W4GBgYyzHy1mO1qXlbByNPEDEwMJZjVFubk7Rv/oLyMhgDA2MlRi/g9obDkt/3yloMDIzdGL0itvfLvNy9eJUYGBjbMJLAOhkd6x3n3dDlwMDAWIgxH4zID+CqVfXFwRwGBsaijG/xqgbHatugScXAwFiaUT0Uqx7W58MW+WrlFiYGBsYSjDzI9orV6jhFM1hjYGBswOgNW+Sh866076KUxcDAwJiMbRXHMgpjFhgYGBjFNue8JZAPit32fwMDA+MljEkzIG8S3BVeMTAwdmPkpWOyXHJMNllz1NTEwMB4H+MHB7KJh2WPlLkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

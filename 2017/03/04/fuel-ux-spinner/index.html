@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>fuel-ux-spinner源码 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Bootstrap,spinner">
+    <meta name="description" content="fuel-ux-spinner源码 之前使用到了bootstrap的一个插件，但是没有api，所以直接把源码拷贝出来备份一下。  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172">
+<meta name="keywords" content="Bootstrap,spinner">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fuel-ux-spinner源码">
+<meta property="og:url" content="https://betgar.github.io/2017/03/04/fuel-ux-spinner/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="fuel-ux-spinner源码 之前使用到了bootstrap的一个插件，但是没有api，所以直接把源码拷贝出来备份一下。  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:58:08.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fuel-ux-spinner源码">
+<meta name="twitter:description" content="fuel-ux-spinner源码 之前使用到了bootstrap的一个插件，但是没有api，所以直接把源码拷贝出来备份一下。  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">fuel-ux-spinner源码</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">fuel-ux-spinner源码</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-04T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-03-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#fuel-ux-spinner源码"><span class="post-toc-number">1.</span> <span class="post-toc-text">fuel-ux-spinner源码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-fuel-ux-spinner"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">fuel-ux-spinner源码</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-03-04 20:00:00" datetime="2017-03-04T12:00:00.000Z"  itemprop="datePublished">2017-03-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="fuel-ux-spinner源码"><a href="#fuel-ux-spinner源码" class="headerlink" title="fuel-ux-spinner源码"></a>fuel-ux-spinner源码</h1><blockquote>
+<p>之前使用到了bootstrap的一个插件，但是没有api，所以直接把源码拷贝出来备份一下。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Fuel UX Spinner</span></span><br><span class="line"><span class="comment"> * https://github.com/ExactTarget/fuelux</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2012 ExactTarget</span></span><br><span class="line"><span class="comment"> * Licensed under the MIT license.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Spinner = <span class="function"><span class="keyword">function</span>(<span class="params">element, options</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.$element = $(element),</span><br><span class="line">        <span class="keyword">this</span>.options = $.extend(&#123;&#125;, $.fn.spinner.defaults, options),</span><br><span class="line">        <span class="keyword">this</span>.$input = <span class="keyword">this</span>.$element.find(<span class="string">".spinner-input"</span>),</span><br><span class="line">        <span class="keyword">this</span>.$element.on(<span class="string">"keyup"</span>, <span class="keyword">this</span>.$input, $.proxy(<span class="keyword">this</span>.change, <span class="keyword">this</span>)),</span><br><span class="line">        <span class="keyword">this</span>.options.hold ? (<span class="keyword">this</span>.$element.on(<span class="string">"mousedown"</span>, <span class="string">".spinner-up"</span>, $.proxy(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.startSpin(!<span class="number">0</span>)</span><br><span class="line">        &#125;, <span class="keyword">this</span>)),</span><br><span class="line">        <span class="keyword">this</span>.$element.on(<span class="string">"mouseup"</span>, <span class="string">".spinner-up, .spinner-down"</span>, $.proxy(<span class="keyword">this</span>.stopSpin, <span class="keyword">this</span>)),</span><br><span class="line">        <span class="keyword">this</span>.$element.on(<span class="string">"mouseout"</span>, <span class="string">".spinner-up, .spinner-down"</span>, $.proxy(<span class="keyword">this</span>.stopSpin, <span class="keyword">this</span>)),</span><br><span class="line">        <span class="keyword">this</span>.$element.on(<span class="string">"mousedown"</span>, <span class="string">".spinner-down"</span>, $.proxy(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.startSpin(!<span class="number">1</span>)</span><br><span class="line">        &#125;, <span class="keyword">this</span>))) : (<span class="keyword">this</span>.$element.on(<span class="string">"click"</span>, <span class="string">".spinner-up"</span>, $.proxy(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.step(!<span class="number">0</span>)</span><br><span class="line">        &#125;, <span class="keyword">this</span>)),</span><br><span class="line">        <span class="keyword">this</span>.$element.on(<span class="string">"click"</span>, <span class="string">".spinner-down"</span>, $.proxy(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.step(!<span class="number">1</span>)</span><br><span class="line">        &#125;, <span class="keyword">this</span>))),</span><br><span class="line">        <span class="keyword">this</span>.switches = &#123;</span><br><span class="line">            count: <span class="number">1</span>,</span><br><span class="line">            enabled: !<span class="number">0</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">this</span>.switches.speed = <span class="string">"medium"</span> === <span class="keyword">this</span>.options.speed ? <span class="number">300</span> : <span class="string">"fast"</span> === <span class="keyword">this</span>.options.speed ? <span class="number">100</span> : <span class="number">500</span>,</span><br><span class="line">        <span class="keyword">this</span>.lastValue = <span class="literal">null</span>,</span><br><span class="line">        <span class="keyword">this</span>.render(),</span><br><span class="line">        <span class="keyword">this</span>.options.disabled &amp;&amp; <span class="keyword">this</span>.disable()</span><br><span class="line">    &#125;;</span><br><span class="line">    Spinner.prototype = &#123;</span><br><span class="line">        <span class="keyword">constructor</span>: Spinner,</span><br><span class="line">        render: function() &#123;</span><br><span class="line">            <span class="keyword">var</span> inputValue = <span class="keyword">this</span>.$input.val();</span><br><span class="line">            inputValue ? <span class="keyword">this</span>.value(inputValue) : <span class="keyword">this</span>.$input.val(<span class="keyword">this</span>.options.value),</span><br><span class="line">            <span class="keyword">this</span>.$input.attr(<span class="string">"maxlength"</span>, (<span class="keyword">this</span>.options.max + <span class="string">""</span>).split(<span class="string">""</span>).length)</span><br><span class="line">        &#125;,</span><br><span class="line">        change: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> value = <span class="keyword">this</span>.$input.val();</span><br><span class="line">            value / <span class="number">1</span> ? <span class="keyword">this</span>.options.value = value / <span class="number">1</span> : (value = value.replace(<span class="regexp">/[^0-9]/g</span>, <span class="string">""</span>),</span><br><span class="line">            <span class="keyword">this</span>.$input.val(value),</span><br><span class="line">            <span class="keyword">this</span>.options.value = value / <span class="number">1</span>),</span><br><span class="line">            <span class="keyword">this</span>.triggerChangedEvent()</span><br><span class="line">        &#125;,</span><br><span class="line">        stopSpin: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            clearTimeout(<span class="keyword">this</span>.switches.timeout),</span><br><span class="line">            <span class="keyword">this</span>.switches.count = <span class="number">1</span>,</span><br><span class="line">            <span class="keyword">this</span>.triggerChangedEvent()</span><br><span class="line">        &#125;,</span><br><span class="line">        triggerChangedEvent: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> value = <span class="keyword">this</span>.value();</span><br><span class="line">            value !== <span class="keyword">this</span>.lastValue &amp;&amp; (<span class="keyword">this</span>.lastValue = value,</span><br><span class="line">            <span class="keyword">this</span>.$element.trigger(<span class="string">"changed"</span>, value),</span><br><span class="line">            <span class="keyword">this</span>.$element.trigger(<span class="string">"change"</span>))</span><br><span class="line">        &#125;,</span><br><span class="line">        startSpin: <span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="keyword">this</span>.options.disabled) &#123;</span><br><span class="line">                <span class="keyword">var</span> i = <span class="keyword">this</span>.switches.count;</span><br><span class="line">                <span class="number">1</span> === i ? (<span class="keyword">this</span>.step(t),</span><br><span class="line">                i = <span class="number">1</span>) : i = <span class="number">3</span> &gt; i ? <span class="number">1.5</span> : <span class="number">8</span> &gt; i ? <span class="number">2.5</span> : <span class="number">4</span>,</span><br><span class="line">                <span class="keyword">this</span>.switches.timeout = setTimeout($.proxy(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">this</span>.iterator(t)</span><br><span class="line">                &#125;, <span class="keyword">this</span>), <span class="keyword">this</span>.switches.speed / i),</span><br><span class="line">                <span class="keyword">this</span>.switches.count++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        iterator: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.step(e),</span><br><span class="line">            <span class="keyword">this</span>.startSpin(e)</span><br><span class="line">        &#125;,</span><br><span class="line">        step: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> t = <span class="keyword">this</span>.options.value</span><br><span class="line">              , i = e ? <span class="keyword">this</span>.options.max : <span class="keyword">this</span>.options.min;</span><br><span class="line">            <span class="keyword">if</span> (e ? i &gt; t : t &gt; i) &#123;</span><br><span class="line">                <span class="keyword">var</span> s = t + (e ? <span class="number">1</span> : <span class="number">-1</span>) * <span class="keyword">this</span>.options.step;</span><br><span class="line">                (e ? s &gt; i : i &gt; s) ? <span class="keyword">this</span>.value(i) : <span class="keyword">this</span>.value(s)</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.options.cycle) &#123;</span><br><span class="line">                <span class="keyword">var</span> n = e ? <span class="keyword">this</span>.options.min : <span class="keyword">this</span>.options.max;</span><br><span class="line">                <span class="keyword">this</span>.value(n)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> !<span class="built_in">isNaN</span>(<span class="built_in">parseFloat</span>(value)) &amp;&amp; <span class="built_in">isFinite</span>(value) ? (value = <span class="built_in">parseFloat</span>(value),</span><br><span class="line">            <span class="keyword">this</span>.options.value = value,</span><br><span class="line">            <span class="keyword">this</span>.$input.val(value),</span><br><span class="line">            <span class="keyword">this</span>) : <span class="keyword">this</span>.options.value</span><br><span class="line">        &#125;,</span><br><span class="line">        disable: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.options.disabled = !<span class="number">0</span>,</span><br><span class="line">            <span class="keyword">this</span>.$input.attr(<span class="string">"disabled"</span>, <span class="string">""</span>),</span><br><span class="line">            <span class="keyword">this</span>.$element.find(<span class="string">"button"</span>).addClass(<span class="string">"disabled"</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        enable: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.options.disabled = !<span class="number">1</span>,</span><br><span class="line">            <span class="keyword">this</span>.$input.removeAttr(<span class="string">"disabled"</span>),</span><br><span class="line">            <span class="keyword">this</span>.$element.find(<span class="string">"button"</span>).removeClass(<span class="string">"disabled"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    $.fn.spinner = <span class="function"><span class="keyword">function</span>(<span class="params">i, s</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> n, a = <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> a = $(<span class="keyword">this</span>)</span><br><span class="line">              , o = a.data(<span class="string">"spinner"</span>)</span><br><span class="line">              , r = <span class="string">"object"</span> == <span class="keyword">typeof</span> i &amp;&amp; i;</span><br><span class="line">            o || a.data(<span class="string">"spinner"</span>, o = <span class="keyword">new</span> Spinner(<span class="keyword">this</span>,r)),</span><br><span class="line">            <span class="string">"string"</span> == <span class="keyword">typeof</span> i &amp;&amp; (n = o[i](s))</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">void</span> <span class="number">0</span> === n ? a : n</span><br><span class="line">    &#125;</span><br><span class="line">    ,</span><br><span class="line">    $.fn.spinner.defaults = &#123;</span><br><span class="line">        value: <span class="number">1</span>,</span><br><span class="line">        min: <span class="number">1</span>,</span><br><span class="line">        max: <span class="number">999</span>,</span><br><span class="line">        step: <span class="number">1</span>,</span><br><span class="line">        hold: !<span class="number">0</span>,</span><br><span class="line">        speed: <span class="string">"medium"</span>,</span><br><span class="line">        disabled: !<span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    $.fn.spinner.Constructor = Spinner,</span><br><span class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"body"</span>).on(<span class="string">"mousedown.spinner.data-api"</span>, <span class="string">".spinner"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> t = $(<span class="keyword">this</span>);</span><br><span class="line">            t.data(<span class="string">"spinner"</span>) || t.spinner(t.data())</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;(<span class="built_in">window</span>.jQuery);</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:58:08.808Z" itemprop="dateUpdated">2018-06-27 21:58:08</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/03/04/fuel-ux-spinner/" target="_blank" rel="external">https://betgar.github.io/2017/03/04/fuel-ux-spinner/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spinner/">spinner</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/&title=《fuel-ux-spinner源码》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/&title=《fuel-ux-spinner源码》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/03/04/fuel-ux-spinner/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《fuel-ux-spinner源码》 — 个人博客&url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/29/a-history-of-unix-directory-structure/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">UNIX文件系统的历史</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/04/use-npm-with-right-posture/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">NPM的正确使用姿势</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/&title=《fuel-ux-spinner源码》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/&title=《fuel-ux-spinner源码》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/03/04/fuel-ux-spinner/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《fuel-ux-spinner源码》 — 个人博客&url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/03/04/fuel-ux-spinner/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS27DMAwFwNz/0i7QbWHnkXTaWhqvAjexNCnAiJ/XK76O7yt/ndw5++vP+7ddGBgYj2Ucl1e+wNlnzzZ9vXq+NwwMjH0YSZDtYc42d71KvjcMDAyMyZHu+p3JpzAwMDB6jDxBTULz9deBgYGBMTnMJQlnHr5/NRfHwMB4IOMTjYG7Xv9xfwMDA+MfMI7iNWk95psr7woDA2NpRnLUqy48L8lV18LAwNiBUU1NewlqnrLmKXH5f4KBgfFARq9w3wu71TJZoaiHgYGxAaM65lUdjKi2S0edDQwMjG0YeXvyelt5kO2NoL0JuBgYGAsxqs3FSVktP27myTAGBsY+jPxBvWR10hx9E5oxMDCWZiSpbO/wN3lmNbnFwMDYgdEbvKgW/fPCXHVdDAyMPRn5kW6e4vaGLTAwMPZhVBuQkyGMu46MhcYABgbGEoxeSE0KcEnIrgblcuKKgYGxBGOeduYDGZPy3Js9Y2BgLM2YFN/zVmUv+Fa/RAwMjFUZSclsnpROxjIiHgYGxmaMTwxM9MYpCj8GGBgYSzPydDEvrlXbDPn7ywAMDIwlGEfxykv5SYm/GlJPn4OBgbE0oxcQe2X9SaP0hl8PDAyMhzPyR1fv91LfZisUAwNjA8YkyDbn0VpJb2HYAgMDY0tGb4SiGpqrR0wMDAyMauFsPmDR2w8GBsYOjMlRr1eAy0c6kh1iYGCszbi3MZAf7CZDHmUABgbGUxlfvuZGvHbF4owAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

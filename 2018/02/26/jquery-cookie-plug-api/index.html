@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>jQuery cookie插件使用例子 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="jQuery,cookie">
+    <meta name="description" content="jQuery cookie插件使用例子 记录一下jQuery-cookie的使用方法。  使用 jQuery.cookie使用非常的简单，只有一个构造函数。  构造函数1234567891011121314/* @param &amp;#123;string&amp;#125; name - cookie键. * @param &amp;#123;string&amp;#125; value - cookie值. * @para">
+<meta name="keywords" content="jQuery,cookie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery cookie插件使用例子">
+<meta property="og:url" content="https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="jQuery cookie插件使用例子 记录一下jQuery-cookie的使用方法。  使用 jQuery.cookie使用非常的简单，只有一个构造函数。  构造函数1234567891011121314/* @param &amp;#123;string&amp;#125; name - cookie键. * @param &amp;#123;string&amp;#125; value - cookie值. * @para">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:48:23.194Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery cookie插件使用例子">
+<meta name="twitter:description" content="jQuery cookie插件使用例子 记录一下jQuery-cookie的使用方法。  使用 jQuery.cookie使用非常的简单，只有一个构造函数。  构造函数1234567891011121314/* @param &amp;#123;string&amp;#125; name - cookie键. * @param &amp;#123;string&amp;#125; value - cookie值. * @para">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">jQuery cookie插件使用例子</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">jQuery cookie插件使用例子</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-26T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/">jQuery</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/cookie/">cookie</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jQuery-cookie插件使用例子"><span class="post-toc-number">1.</span> <span class="post-toc-text">jQuery cookie插件使用例子</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构造函数"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">构造函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建cookie"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">创建cookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#读取cookie"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">读取cookie</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#source-code"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">source-code</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-jquery-cookie-plug-api"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">jQuery cookie插件使用例子</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-26 20:00:00" datetime="2018-02-26T12:00:00.000Z"  itemprop="datePublished">2018-02-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/">jQuery</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/cookie/">cookie</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="jQuery-cookie插件使用例子"><a href="#jQuery-cookie插件使用例子" class="headerlink" title="jQuery cookie插件使用例子"></a>jQuery cookie插件使用例子</h1><blockquote>
+<p>记录一下jQuery-cookie的使用方法。</p>
+</blockquote>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<p>jQuery.cookie使用非常的简单，只有一个构造函数。</p>
+</blockquote>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @param &#123;string&#125; name - cookie键.</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; value - cookie值.</span></span><br><span class="line"><span class="comment"> * @param &#123;Object&#125; options - cookie的控制参数</span></span><br><span class="line"><span class="comment"> * @param &#123;Number|Date&#125; options.expires  </span></span><br><span class="line"><span class="comment"> *               期望什么时候cookie过期，从当前时间计算（浏览器时间）。</span></span><br><span class="line"><span class="comment"> *               如果expires为null或者被忽略，则cookie在当前session有效，退出浏览器失效。</span></span><br><span class="line"><span class="comment"> *                            </span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; options.path - 设置cookie的页面路径；默认设置页面。</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; options.domain - cookie的域地址 (default: 默认创建cookie页面).</span></span><br><span class="line"><span class="comment"> * @param &#123;Boolean&#125; options.secure - 设置给cookie之后，传递cookie给服务端</span></span><br><span class="line"><span class="comment"> *									需要使用安全协议(例如:https)</span></span><br><span class="line"><span class="comment"> * @type undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">$.cookie(<span class="string">'the_cookie'</span>, <span class="string">'the_value'</span>, &#123;<span class="attr">expires</span>: <span class="number">7</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">domain</span>: <span class="string">'jquery.com'</span>, <span class="attr">secure</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="创建cookie"><a href="#创建cookie" class="headerlink" title="创建cookie"></a>创建cookie</h3><blockquote>
+<p>设置cookie</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set the value of a cookie.</span></span><br><span class="line">$.cookie(<span class="string">'the_cookie'</span>, <span class="string">'the_value'</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用options</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a cookie with all available options.</span></span><br><span class="line">$.cookie(<span class="string">'the_cookie'</span>, <span class="string">'the_value'</span>, &#123;<span class="attr">expires</span>: <span class="number">7</span>, <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">domain</span>: <span class="string">'jquery.com'</span>, <span class="attr">secure</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除cookie</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Delete a cookie by passing null as value.</span></span><br><span class="line">$.cookie(<span class="string">'the_cookie'</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意版本</span></span><br><span class="line">$.removeCookie(<span class="string">'the_cookie'</span>, options);</span><br></pre></td></tr></table></figure>
+<h3 id="读取cookie"><a href="#读取cookie" class="headerlink" title="读取cookie"></a>读取cookie</h3><blockquote>
+<p>获取cookie</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">'the_cookie'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="source-code"><a href="#source-code" class="headerlink" title="source-code"></a>source-code</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*!</span></span><br><span class="line"><span class="comment"> * jQuery Cookie Plugin v1.4.1</span></span><br><span class="line"><span class="comment"> * https://github.com/carhartl/jquery-cookie</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Copyright 2013 Klaus Hartl</span></span><br><span class="line"><span class="comment"> * Released under the MIT license</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">factory</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</span><br><span class="line">		<span class="comment">// AMD</span></span><br><span class="line">		define([<span class="string">'jquery'</span>], factory);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> exports === <span class="string">'object'</span>) &#123;</span><br><span class="line">		<span class="comment">// CommonJS</span></span><br><span class="line">		factory(<span class="built_in">require</span>(<span class="string">'jquery'</span>));</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Browser globals</span></span><br><span class="line">		factory(jQuery);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> pluses = <span class="regexp">/\+/g</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">encode</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> config.raw ? s : <span class="built_in">encodeURIComponent</span>(s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">decode</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> config.raw ? s : <span class="built_in">decodeURIComponent</span>(s);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">stringifyCookieValue</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> encode(config.json ? <span class="built_in">JSON</span>.stringify(value) : <span class="built_in">String</span>(value));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">parseCookieValue</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (s.indexOf(<span class="string">'"'</span>) === <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// This is a quoted cookie as according to RFC2068, unescape...</span></span><br><span class="line">			s = s.slice(<span class="number">1</span>, <span class="number">-1</span>).replace(<span class="regexp">/\\"/g</span>, <span class="string">'"'</span>).replace(<span class="regexp">/\\\\/g</span>, <span class="string">'\\'</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// Replace server-side written pluses with spaces.</span></span><br><span class="line">			<span class="comment">// If we can't decode the cookie, ignore it, it's unusable.</span></span><br><span class="line">			<span class="comment">// If we can't parse the cookie, ignore it, it's unusable.</span></span><br><span class="line">			s = <span class="built_in">decodeURIComponent</span>(s.replace(pluses, <span class="string">' '</span>));</span><br><span class="line">			<span class="keyword">return</span> config.json ? <span class="built_in">JSON</span>.parse(s) : s;</span><br><span class="line">		&#125; <span class="keyword">catch</span>(e) &#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params">s, converter</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> value = config.raw ? s : parseCookieValue(s);</span><br><span class="line">		<span class="keyword">return</span> $.isFunction(converter) ? converter(value) : value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> config = $.cookie = <span class="function"><span class="keyword">function</span> (<span class="params">key, value, options</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Write</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (value !== <span class="literal">undefined</span> &amp;&amp; !$.isFunction(value)) &#123;</span><br><span class="line">			options = $.extend(&#123;&#125;, config.defaults, options);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">typeof</span> options.expires === <span class="string">'number'</span>) &#123;</span><br><span class="line">				<span class="keyword">var</span> days = options.expires, t = options.expires = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">				t.setTime(+t + days * <span class="number">864e+5</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">return</span> (<span class="built_in">document</span>.cookie = [</span><br><span class="line">				encode(key), <span class="string">'='</span>, stringifyCookieValue(value),</span><br><span class="line">				options.expires ? <span class="string">'; expires='</span> + options.expires.toUTCString() : <span class="string">''</span>, <span class="comment">// use expires attribute, max-age is not supported by IE</span></span><br><span class="line">				options.path    ? <span class="string">'; path='</span> + options.path : <span class="string">''</span>,</span><br><span class="line">				options.domain  ? <span class="string">'; domain='</span> + options.domain : <span class="string">''</span>,</span><br><span class="line">				options.secure  ? <span class="string">'; secure'</span> : <span class="string">''</span></span><br><span class="line">			].join(<span class="string">''</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Read</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> result = key ? <span class="literal">undefined</span> : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// To prevent the for loop in the first place assign an empty array</span></span><br><span class="line">		<span class="comment">// in case there are no cookies at all. Also prevents odd result when</span></span><br><span class="line">		<span class="comment">// calling $.cookie().</span></span><br><span class="line">		<span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie ? <span class="built_in">document</span>.cookie.split(<span class="string">'; '</span>) : [];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = cookies.length; i &lt; l; i++) &#123;</span><br><span class="line">			<span class="keyword">var</span> parts = cookies[i].split(<span class="string">'='</span>);</span><br><span class="line">			<span class="keyword">var</span> name = decode(parts.shift());</span><br><span class="line">			<span class="keyword">var</span> cookie = parts.join(<span class="string">'='</span>);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (key &amp;&amp; key === name) &#123;</span><br><span class="line">				<span class="comment">// If second argument (value) is a function it's a converter...</span></span><br><span class="line">				result = read(cookie, value);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Prevent storing a cookie that we couldn't decode.</span></span><br><span class="line">			<span class="keyword">if</span> (!key &amp;&amp; (cookie = read(cookie)) !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">				result[name] = cookie;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	config.defaults = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">	$.removeCookie = <span class="function"><span class="keyword">function</span> (<span class="params">key, options</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> ($.cookie(key) === <span class="literal">undefined</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Must not alter options, thus extending a fresh object...</span></span><br><span class="line">		$.cookie(key, <span class="string">''</span>, $.extend(&#123;&#125;, options, &#123; <span class="attr">expires</span>: <span class="number">-1</span> &#125;));</span><br><span class="line">		<span class="keyword">return</span> !$.cookie(key);</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:48:23.194Z" itemprop="dateUpdated">2018-06-27 21:48:23</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2018/02/26/jquery-cookie-plug-api/" target="_blank" rel="external">https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/&title=《jQuery cookie插件使用例子》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/&title=《jQuery cookie插件使用例子》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jQuery cookie插件使用例子》 — 个人博客&url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/02/26/sqlstyle.guide/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">SQL style guide</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/08/how-to-use-utldtree/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">NPM的正确使用姿势</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/&title=《jQuery cookie插件使用例子》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/&title=《jQuery cookie插件使用例子》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jQuery cookie插件使用例子》 — 个人博客&url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/02/26/jquery-cookie-plug-api/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aS27DMAxF0ex/0+20QFvlPlIOIOp6FKSp7OMBwd/rha+vHxf5ze+LnEbu0rpkyJBxLIPcfn0D8l/8fH6CDBkybmP893Dr36zPWT8cuRd5NhkyZMggR9dCdvpZhgwZMtKAm4ZjEqZJaJYhQ8bNDBIuCWn9QPx6sBaXIUPGgYxaWPzM50fmGzJkyDiKUQuCZMC5K1ijp5IhQ8ZoRtr05+UlKXr52ADdRYYMGaMZfN2BNMjWp/FClzQEUZooQ4aMwxm7UsB+yG69PhkyZFzASAeKhNqJhOkLkiFDxmxGbQBZW8ggCWhaDMuQIeNmRu24tHHG00EUfGXIkHEBI22i1cIub+rFIwQZMmQMZfRLVn4z/tc4lsqQIWM0gzS84hRta+IYrFnIkCFjKIMXmbU22a6B6JtvZMiQMZrB4zEvRPmLWIPT8aoMGTJuY5AErlPcPpc4ypAhYx4jbdPXSl8eQPkQ4o+uoQwZMoYy0hDZCaBPr3rIkCFjNiMNtWnoJMnfhvRRhgwZFzDI7WspI1+naJXNMmTIuICRFpa1Ba9akYzOlyFDxlBGrUxNv0n31NIRhQwZMmYzOsGOr3MRcG3MEMNkyJBxLIMHWV5k8hFCnMnKkCHjYkbav6rh+2nfm1JWhgwZMkCRSdYj+iVusLUhQ4aMKxm83c8L3XSZY0PAlSFDxoGMWkONN9fSEx6sxWXIkHEgg5eOfI0s3d0iAXfDUFOGDBnnMb4BhFv6CPhsZrcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>nbtstat | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="cmd">
+    <meta name="description" content="nbtstat计算机名称和MAC互转背景 因为个人部署了一个小博客，发布一些经验总结方便自己（顺便方便一下大家）。因为个人的电脑IP地址是动态的，所以经常导致之前分享的地址不能使用，所以经过研究，发下了一个一劳永逸的好办法，唯一要求只需要你记得计算机名称(computer name)。 如果电脑处于休眠状态还需要你记得MAC地址（最好记住这个）。 MAC : D43D7ED1CE05  个人计算机">
+<meta name="keywords" content="cmd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nbtstat">
+<meta property="og:url" content="https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="nbtstat计算机名称和MAC互转背景 因为个人部署了一个小博客，发布一些经验总结方便自己（顺便方便一下大家）。因为个人的电脑IP地址是动态的，所以经常导致之前分享的地址不能使用，所以经过研究，发下了一个一劳永逸的好办法，唯一要求只需要你记得计算机名称(computer name)。 如果电脑处于休眠状态还需要你记得MAC地址（最好记住这个）。 MAC : D43D7ED1CE05  个人计算机">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-27T13:15:29.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nbtstat">
+<meta name="twitter:description" content="nbtstat计算机名称和MAC互转背景 因为个人部署了一个小博客，发布一些经验总结方便自己（顺便方便一下大家）。因为个人的电脑IP地址是动态的，所以经常导致之前分享的地址不能使用，所以经过研究，发下了一个一劳永逸的好办法，唯一要求只需要你记得计算机名称(computer name)。 如果电脑处于休眠状态还需要你记得MAC地址（最好记住这个）。 MAC : D43D7ED1CE05  个人计算机">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">nbtstat</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">nbtstat</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-10T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-04-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/cmd/">cmd</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nbtstat计算机名称和MAC互转"><span class="post-toc-number">1.</span> <span class="post-toc-text">nbtstat计算机名称和MAC互转</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.0.0.1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#个人计算机名称"><span class="post-toc-number">1.0.0.2.</span> <span class="post-toc-text">个人计算机名称</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过计算机名称查询MAC和IP地址"><span class="post-toc-number">1.0.0.3.</span> <span class="post-toc-text">通过计算机名称查询MAC和IP地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过IP查询计算机名称和MAC地址"><span class="post-toc-number">1.0.0.4.</span> <span class="post-toc-text">通过IP查询计算机名称和MAC地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看帮助"><span class="post-toc-number">1.0.0.5.</span> <span class="post-toc-text">查看帮助</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-how-to-use-nbtstat-command-get-ip-address"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">nbtstat</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-04-10 20:00:00" datetime="2017-04-10T12:00:00.000Z"  itemprop="datePublished">2017-04-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/cmd/">cmd</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="nbtstat计算机名称和MAC互转"><a href="#nbtstat计算机名称和MAC互转" class="headerlink" title="nbtstat计算机名称和MAC互转"></a>nbtstat计算机名称和MAC互转</h1><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><blockquote>
+<p>因为个人部署了一个小博客，发布一些经验总结方便自己（顺便方便一下大家）。因为个人的电脑IP地址是动态的，所以经常导致之前分享的地址不能使用，所以经过研究，发下了一个一劳永逸的好办法，唯一要求只需要你记得计算机名称(computer name)。</p>
+<p>如果电脑处于休眠状态还需要你记得MAC地址（最好记住这个）。</p>
+<p>MAC : D43D7ED1CE05</p>
+</blockquote>
+<h4 id="个人计算机名称"><a href="#个人计算机名称" class="headerlink" title="个人计算机名称"></a>个人计算机名称</h4><blockquote>
+<p>JN</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MAC地址：D43D7ED1CE05</span><br></pre></td></tr></table></figure>
+<h4 id="通过计算机名称查询MAC和IP地址"><a href="#通过计算机名称查询MAC和IP地址" class="headerlink" title="通过计算机名称查询MAC和IP地址"></a>通过计算机名称查询MAC和IP地址</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbtstat -a LIJN</span><br></pre></td></tr></table></figure>
+<h4 id="通过IP查询计算机名称和MAC地址"><a href="#通过IP查询计算机名称和MAC地址" class="headerlink" title="通过IP查询计算机名称和MAC地址"></a>通过IP查询计算机名称和MAC地址</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbtstat -A 10.11.4.11</span><br></pre></td></tr></table></figure>
+<h4 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nbtstat /?    # 帮助</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-06-27T13:15:29.022Z" itemprop="dateUpdated">2018-06-27 21:15:29</time>
+</span><br>
+
+
+        
+        评论功能暂时没有搞好，搞好再开放。原文链接：<a href="/2017/04/10/how-to-use-nbtstat-command-get-ip-address/" target="_blank" rel="external">https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmd/">cmd</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/&title=《nbtstat》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/&title=《nbtstat》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nbtstat》 — 个人博客&url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/14/the-rules-of-badminton/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">羽毛球赛规则</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/29/the-linux-command-line-learn-note/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Linux命令学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/&title=《nbtstat》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/&title=《nbtstat》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nbtstat》 — 个人博客&url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2017/04/10/how-to-use-nbtstat-command-get-ip-address/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQXbkMAgFwL7/pTMHmLH1ATHpRXnl13YslRYSAT6f+Pp5uP5+5+n+6f2nN5+efjYuPDw8vEtTfx948nu+BO/Llyw6Hh4e3h4v+Vx1sPcD4H2Jq/N5/B0PDw/va3i9ILh3GOThNR4eHt4386rgCeyXzz08PDy8QTIiD6mThEI1Qbyea8HDw8OLeXkV6XvuV+p7eHh4eOOqenWzTrb+fD7Votc/ZouHh4e3wMs33Atha5I4GI+Lh4eHt83Ly/yTMlVvOZKD53CPh4eHt8Cbb/p58J0nf/NgPTpg8PDw8K7y8hbSpPRVTS4kC9RLRuDh4eFt83qbex6OV9sUesnicgEMDw8Pr8V7n0S+9VfLXdWDJFnQQzICDw8P7yovTytM0qn5FKPpzjMueHh4eC1erwBWDXCrzVvJokRHER4eHt4Cb/K5Xvm/dwD0AnQ8PDy83+JVg+xe80E19dDMteDh4eGNedV2q176tZeMmDd74eHh4e3xqqWvasLicitVPls8PDy8ZV4PdmtRJoH44yh4eHh4/4XXa2malMQmy3RoWcDDw8Nb4PX+oIrJGwh6h8HhKR4eHt5VXq9RYD7FJCBOWgoO38TDw8Nb4CWJ0UlSYDLpyZFwOAPx8PDwrvKqZf45oJdKzktxeHh4eBu8asvUZFvPm67yw+DwPh4eHt4yLxlm0giVpxXyI+EwZzw8PLw1Xm/4vDDWa7qqNmM9tg7g4eHhXeL9FK/qAL1SWbU89vgUDw8Pb4E3mW6vJSsJ0G/d4+Hh4e3xksMgTzE0a26D8tsBiYeHh7fG6xX1ewnfaiKj2pKFh4eH9/28amGsWtaqzq05MB4eHt4a71ZAXF2yZnIZDw8Pb403GT4Jl5ONPp904ft4eHh4C7zJP/w9dg9zoY6Hh4eHN+X9Ac+dfYKMt+7yAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
