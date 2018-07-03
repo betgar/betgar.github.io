@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="npm常用命令 总结一下npm常用的命令。  123456789101112131415npm -vnpm install -g npm@latestnpm install -g npm@nextnpm install -g npm@versionnpm updatenpm outdatednpm uninstall lodash# 如需从 package.json 文件中删除依赖，需要在命令后添">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-28T11:24:48.112Z">
+<meta property="og:updated_time" content="2018-06-27T12:27:46.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm常用命令">
 <meta name="twitter:description" content="npm常用命令 总结一下npm常用的命令。  123456789101112131415npm -vnpm install -g npm@latestnpm install -g npm@nextnpm install -g npm@versionnpm updatenpm outdatednpm uninstall lodash# 如需从 package.json 文件中删除依赖，需要在命令后添">
@@ -317,7 +317,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-28T11:24:48.112Z" itemprop="dateUpdated">2018-06-28 19:24:48</time>
+    最后更新时间：<time datetime="2018-06-27T12:27:46.538Z" itemprop="dateUpdated">2018-06-27 20:27:46</time>
 </span><br>
 
 
@@ -425,25 +425,32 @@
 
 
 
-<section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
     <script>
-        var gitment = new Gitment({
-            owner: 'betgar',
-            repo: 'betgar.github.io',
-            oauth: {
-                client_id: '3e033b31cfec452ce1ca',
-                client_secret: '8f6c943bd722e45d0accc98de334b62a75e7911b',
-            },
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
         })
-        gitment.render('comments')
     </script>
-</section>
-
-
-
+    <!-- Valine Comments end -->
 
 
 
@@ -581,7 +588,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '死鬼去哪里了！';
+            document.title = 'I will be back！';
             clearTimeout(titleTime);
         } else {
             document.title = 'Welcome back!';

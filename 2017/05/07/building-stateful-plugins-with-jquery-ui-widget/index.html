@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="使用jQuery UI widget编写有状态的插件 jQuery最好的设计在于两个方面，一是它的API，另外一个是它的插件系统。这也是jQuery这些年异军突起的原因，虽然现在遇到了新的危机，Vue，Angular，React的出现给在现代的浏览器开放带来了新的开发体验。 这两年前端库或者框架更新太快，但是如果你是一个真正的实践者，时间长了你慢慢发现其实很多的前端开发框架都是当时编程思想的不同实">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-28T11:24:48.019Z">
+<meta property="og:updated_time" content="2018-06-27T13:59:36.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用jQuery UI widget编写有状态的插件">
 <meta name="twitter:description" content="使用jQuery UI widget编写有状态的插件 jQuery最好的设计在于两个方面，一是它的API，另外一个是它的插件系统。这也是jQuery这些年异军突起的原因，虽然现在遇到了新的危机，Vue，Angular，React的出现给在现代的浏览器开放带来了新的开发体验。 这两年前端库或者框架更新太快，但是如果你是一个真正的实践者，时间长了你慢慢发现其实很多的前端开发框架都是当时编程思想的不同实">
@@ -310,7 +310,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-28T11:24:48.019Z" itemprop="dateUpdated">2018-06-28 19:24:48</time>
+    最后更新时间：<time datetime="2018-06-27T13:59:36.801Z" itemprop="dateUpdated">2018-06-27 21:59:36</time>
 </span><br>
 
 
@@ -418,25 +418,32 @@
 
 
 
-<section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
     <script>
-        var gitment = new Gitment({
-            owner: 'betgar',
-            repo: 'betgar.github.io',
-            oauth: {
-                client_id: '3e033b31cfec452ce1ca',
-                client_secret: '8f6c943bd722e45d0accc98de334b62a75e7911b',
-            },
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
         })
-        gitment.render('comments')
     </script>
-</section>
-
-
-
+    <!-- Valine Comments end -->
 
 
 
@@ -574,7 +581,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '死鬼去哪里了！';
+            document.title = 'I will be back！';
             clearTimeout(titleTime);
         } else {
             document.title = 'Welcome back!';

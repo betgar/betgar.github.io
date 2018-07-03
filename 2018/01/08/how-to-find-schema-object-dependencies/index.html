@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="Oracle 管理用户对象依赖关系 背景： 项目组使用很多的procedure作为取数接口，现在需要重构底层取数过程，但是无法找出“底层取数procedure”被哪些“逻辑对象”（procedure, function…etc.）依赖。无法评估影响的范围，Java服务端可以通过调用层次分析出，但是直接在数据库端，进行调用时就很难分析。 通过查找官方文档，找到两个方法，现在分享给大家。 方法：  u">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-28T11:24:48.034Z">
+<meta property="og:updated_time" content="2018-06-27T13:58:38.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle 管理用户对象依赖关系">
 <meta name="twitter:description" content="Oracle 管理用户对象依赖关系 背景： 项目组使用很多的procedure作为取数接口，现在需要重构底层取数过程，但是无法找出“底层取数procedure”被哪些“逻辑对象”（procedure, function…etc.）依赖。无法评估影响的范围，Java服务端可以通过调用层次分析出，但是直接在数据库端，进行调用时就很难分析。 通过查找官方文档，找到两个方法，现在分享给大家。 方法：  u">
@@ -263,7 +263,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-28T11:24:48.034Z" itemprop="dateUpdated">2018-06-28 19:24:48</time>
+    最后更新时间：<time datetime="2018-06-27T13:58:38.564Z" itemprop="dateUpdated">2018-06-27 21:58:38</time>
 </span><br>
 
 
@@ -371,25 +371,32 @@
 
 
 
-<section class="comments" id="comments">
-    <div id="gitment_thread"></div>
-    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
-    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
     <script>
-        var gitment = new Gitment({
-            owner: 'betgar',
-            repo: 'betgar.github.io',
-            oauth: {
-                client_id: '3e033b31cfec452ce1ca',
-                client_secret: '8f6c943bd722e45d0accc98de334b62a75e7911b',
-            },
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
         })
-        gitment.render('comments')
     </script>
-</section>
-
-
-
+    <!-- Valine Comments end -->
 
 
 
@@ -527,7 +534,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '死鬼去哪里了！';
+            document.title = 'I will be back！';
             clearTimeout(titleTime);
         } else {
             document.title = 'Welcome back!';
