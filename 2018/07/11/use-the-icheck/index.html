@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>use-the-icheck | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="jQuery,iCheck">
+    <meta name="description" content="iCheck使用 注意：使用iCheck时需要自己引用相关的皮肤，官方提供了几套皮肤，每一套还有不同的颜色，使用之前一定要引入相关css，不然会出现checkbox无法显示的窘境。  初始化iCheck 具体的请参考官方文档。   引入样式CSS和JavaScript 123&amp;lt;script src=&quot;your-path/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;lin">
+<meta name="keywords" content="jQuery,iCheck">
+<meta property="og:type" content="article">
+<meta property="og:title" content="use-the-icheck">
+<meta property="og:url" content="https://betgar.github.io/2018/07/11/use-the-icheck/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="iCheck使用 注意：使用iCheck时需要自己引用相关的皮肤，官方提供了几套皮肤，每一套还有不同的颜色，使用之前一定要引入相关css，不然会出现checkbox无法显示的窘境。  初始化iCheck 具体的请参考官方文档。   引入样式CSS和JavaScript 123&amp;lt;script src=&quot;your-path/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;lin">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-12T00:42:16.305Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="use-the-icheck">
+<meta name="twitter:description" content="iCheck使用 注意：使用iCheck时需要自己引用相关的皮肤，官方提供了几套皮肤，每一套还有不同的颜色，使用之前一定要引入相关css，不然会出现checkbox无法显示的窘境。  初始化iCheck 具体的请参考官方文档。   引入样式CSS和JavaScript 123&amp;lt;script src=&quot;your-path/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;lin">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">use-the-icheck</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">use-the-icheck</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-11T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-07-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/">jQuery</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#iCheck使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">iCheck使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化iCheck"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">初始化iCheck</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#全选功能实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">全选功能实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态添加checkbox事件代理"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">动态添加checkbox事件代理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取checked状态的checkbox"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">获取checked状态的checkbox</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-use-the-icheck"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">use-the-icheck</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-11 20:00:00" datetime="2018-07-11T12:00:00.000Z"  itemprop="datePublished">2018-07-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/">jQuery</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="iCheck使用"><a href="#iCheck使用" class="headerlink" title="iCheck使用"></a>iCheck使用</h1><blockquote>
+<p>注意：使用<code>iCheck</code>时需要自己引用相关的皮肤，官方提供了几套皮肤，每一套还有不同的颜色，使用之前一定要引入相关<code>css</code>，不然会出现<code>checkbox</code><strong>无法显示</strong>的窘境。</p>
+</blockquote>
+<h2 id="初始化iCheck"><a href="#初始化iCheck" class="headerlink" title="初始化iCheck"></a>初始化iCheck</h2><blockquote>
+<p>具体的请参考官方文档。</p>
+</blockquote>
+<ul>
+<li><p>引入样式<code>CSS</code>和<code>JavaScript</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"your-path/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"your-path/minimal/red.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"your-path/icheck.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加HTML</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"iCheck"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"iCheck"</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化<code>iCheck</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 例子1： 指定皮肤样式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    $(document).ready(function()&#123;</span></span><br><span class="line"><span class="undefined">      $('input').iCheck(&#123;</span></span><br><span class="line"><span class="undefined">        checkboxClass: 'icheckbox_minimal', // 指定的皮肤样式</span></span><br><span class="line"><span class="undefined">        radioClass: 'iradio_minimal',</span></span><br><span class="line"><span class="undefined">        increaseArea: '20%' // optional</span></span><br><span class="line"><span class="undefined">      &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 例子2： 指定皮肤样式和颜色 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    $(document).ready(function()&#123;</span></span><br><span class="line"><span class="undefined">      $('input').iCheck(&#123;</span></span><br><span class="line"><span class="undefined">        checkboxClass: 'icheckbox_minimal-red',</span></span><br><span class="line"><span class="undefined">        radioClass: 'iradio_minimal-red',</span></span><br><span class="line"><span class="undefined">        increaseArea: '20%' // optional</span></span><br><span class="line"><span class="undefined">      &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 例子3： html上指定皮肤 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">checked</span> <span class="attr">class</span>=<span class="string">"minimal"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="全选功能实现"><a href="#全选功能实现" class="headerlink" title="全选功能实现"></a>全选功能实现</h2><blockquote>
+<p>实现一个全选功能。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-6 col-sm-6 col-md-6 col-lg-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">class</span>=<span class="string">"js-all"</span>&gt;</span>checkbox2</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span> <span class="attr">data-role</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-6 col-sm-6 col-md-6 col-lg-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>checkbox1</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-6 col-sm-6 col-md-6 col-lg-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>checkbox2</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> checkAll = $(<span class="string">'input.js-all'</span>);</span><br><span class="line">    <span class="keyword">var</span> checkboxes = $(<span class="string">'input[type="checkbox"]'</span>, <span class="string">'[data-role="checkbox"]'</span>);</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'input'</span>).iCheck();</span><br><span class="line">	<span class="comment">// 全部选中或者不选.</span></span><br><span class="line">    checkAll.on(<span class="string">'ifChecked ifUnchecked'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;        </span><br><span class="line">        <span class="keyword">if</span> (event.type == <span class="string">'ifChecked'</span>) &#123;</span><br><span class="line">            checkboxes.iCheck(<span class="string">'check'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            checkboxes.iCheck(<span class="string">'uncheck'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">	<span class="comment">// 改变全选checkbox状态.</span></span><br><span class="line">    checkboxes.on(<span class="string">'ifChanged'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(checkboxes.filter(<span class="string">':checked'</span>).length == checkboxes.length) &#123;</span><br><span class="line">            checkAll.prop(<span class="string">'checked'</span>, <span class="literal">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            checkAll.prop(<span class="string">'checked'</span>, <span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        checkAll.iCheck(<span class="string">'update'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="动态添加checkbox事件代理"><a href="#动态添加checkbox事件代理" class="headerlink" title="动态添加checkbox事件代理"></a>动态添加checkbox事件代理</h2><blockquote>
+<p>动态添加checkbox事件不生效问题，应该使用<strong>事件代理</strong>。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span> <span class="attr">data-role</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-6 col-sm-6 col-md-6 col-lg-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>checkbox1</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-6 col-sm-6 col-md-6 col-lg-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>checkbox2</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里动态添加checkbox 时, js需要修改为事件代理模式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果所有&lt;div class="row" data-role="checkbox"&gt;</span></span><br><span class="line"><span class="comment">// 内所有的checkbox都选中，或者不全选需要动态的改变“全选”checkbox状态</span></span><br><span class="line"><span class="comment">// 因为有动态加入的checkbox，所以这里需要修改成代理事件</span></span><br><span class="line"><span class="keyword">var</span> $checkboxContainer = $(<span class="string">'.row[data-role="checkbox"]'</span>);</span><br><span class="line">$checkboxContainer.on(<span class="string">'ifChanged'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// checkboxes需要动态获取</span></span><br><span class="line">    <span class="keyword">var</span> checkboxes = $(<span class="string">'input[type="checkbox"]'</span>, $checkboxContainer);</span><br><span class="line">    <span class="keyword">if</span>(checkboxes.filter(<span class="string">':checked'</span>).length == checkboxes.length) &#123;</span><br><span class="line">        checkAll.prop(<span class="string">'checked'</span>, <span class="literal">true</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        checkAll.prop(<span class="string">'checked'</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    checkAll.iCheck(<span class="string">'update'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="获取checked状态的checkbox"><a href="#获取checked状态的checkbox" class="headerlink" title="获取checked状态的checkbox"></a>获取checked状态的checkbox</h2><blockquote>
+<p><code>iCheckbox</code>是没有提供获取<code>checked</code>状态的<strong>方法</strong>，所以你要使用<code>jQuery</code>提供的<code>prop</code>方法。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> checkboxes = $(<span class="string">'input[type="checkbox"]'</span>, $checkboxContainer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取选中的checkbox</span></span><br><span class="line"><span class="keyword">var</span> allChecked = checkboxes.filter(<span class="string">':checked'</span>);</span><br><span class="line"><span class="comment">// 获取checked状态</span></span><br><span class="line">$.each(checkboxes, <span class="function"><span class="keyword">function</span> (<span class="params">checkbox, i</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log($(<span class="keyword">this</span>).prop(<span class="string">'checked'</span>)); <span class="comment">// true | false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://icheck.fronteed.com/" target="_blank" rel="noopener">http://icheck.fronteed.com/</a></p>
+<p><a href="http://github.com/fronteed/iCheck/" target="_blank" rel="noopener">http://github.com/fronteed/iCheck/</a></p>
+<p><a href="https://stackoverflow.com/questions/17820080/function-select-all-and-icheck" target="_blank" rel="noopener">https://stackoverflow.com/questions/17820080/function-select-all-and-icheck</a></p>
+<p><a href="https://github.com/fronteed/iCheck/issues/44" target="_blank" rel="noopener">https://github.com/fronteed/iCheck/issues/44</a></p>
+<p><a href="https://www.cnblogs.com/xcsn/p/6307610.html" target="_blank" rel="noopener">https://www.cnblogs.com/xcsn/p/6307610.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-12T00:42:16.305Z" itemprop="dateUpdated">2018-07-12 08:42:16</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/07/11/use-the-icheck/" target="_blank" rel="external">https://betgar.github.io/2018/07/11/use-the-icheck/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iCheck/">iCheck</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/11/use-the-icheck/&title=《use-the-icheck》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/11/use-the-icheck/&title=《use-the-icheck》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/11/use-the-icheck/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《use-the-icheck》 — 个人博客&url=https://betgar.github.io/2018/07/11/use-the-icheck/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/11/use-the-icheck/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/03/software-for-daily/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">个人装机软件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/11/use-the-icheck/&title=《use-the-icheck》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/11/use-the-icheck/&title=《use-the-icheck》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/11/use-the-icheck/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《use-the-icheck》 — 个人博客&url=https://betgar.github.io/2018/07/11/use-the-icheck/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/11/use-the-icheck/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aW07EMBAEQO5/6eUAELZ7nEWKXflCUURcQRrm9fUVX68fV/LM1fPt/dsuDAyMxzKS17fPzO7M3ouBgXEO4yqCXT2T37k6XPKu5GwYGBgYOWkWuDEwMDA+F3BXasy/34KBgYGxUsS2iePfYfSu4hkDA+MERh4u///nj8w3MDAwHsV4ldc6b/0Mv5wKAwNja0Ye4O5apEhWN9rzYGBgnMDIB5NtiZsfKP8EdSaLgYHxcEa+HrFedq4shL0BY2BgbM1oX9COENrQmQTfG74TBgbGAxl1iRiEy5URad7gw8DAOIGRJ2SzwjVJPVcacxgYGOcwkpA3Wx1rx5zDVBIDA2NrRjt6nDX928Rx9o8BAwNjb0YbKGetsXzMkJzq8u+AgYGxNWM2nkyWw9b/G0RIDAyMTRmzdDBv3LftvCTRvNwZwcDA2JqRN+VnzbJ8/atdNSuyTgwMjI0YbZmaH3Fl2Pmm9MXAwNiakSdzxepD/FHyplsUjjEwMA5gzNr0eRsub+rNCmYMDIxzGLNmWX6sdpxZhHgMDIzDGLPlsPyVK8nl5VswMDA2ZbzKazZUmA0nilEBBgbG1oyVYJc3y2bhuE03MTAw9mbkKxHJl2jDdPsbMDAwTmbkgS9J7/IEtE373tTiGBgYGCPArOlWh2wMDAyM5VbXrG1XFMMYGBgHMJLUrV1gzRPBZLHjtlocAwPjgYw8XLZ3VtLNdvkMAwNjU8Y3eygD8S61gXcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'I will be back！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
