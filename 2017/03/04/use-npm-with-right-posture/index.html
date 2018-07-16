@@ -494,23 +494,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 
 
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'I will be back！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = 'Welcome back!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
 
 
 </body>
