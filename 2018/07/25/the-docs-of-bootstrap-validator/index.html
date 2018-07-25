@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Bootstrap-validator的使用 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Bootstrap,Validation">
+    <meta name="description" content="Bootstrap-validator的使用 翻译官方的文档。 这个插件遵循Bootstrap核心jQuery插件提出的约定，所以一定要检查这些插件，以便更好地理解这个插件的目标和设计。   例子 使用这个简单的插件为表单添加验证。   123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta name="keywords" content="Bootstrap,Validation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap-validator的使用">
+<meta property="og:url" content="https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Bootstrap-validator的使用 翻译官方的文档。 这个插件遵循Bootstrap核心jQuery插件提出的约定，所以一定要检查这些插件，以便更好地理解这个插件的目标和设计。   例子 使用这个简单的插件为表单添加验证。   123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-25T05:59:01.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bootstrap-validator的使用">
+<meta name="twitter:description" content="Bootstrap-validator的使用 翻译官方的文档。 这个插件遵循Bootstrap核心jQuery插件提出的约定，所以一定要检查这些插件，以便更好地理解这个插件的目标和设计。   例子 使用这个简单的插件为表单添加验证。   123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Bootstrap-validator的使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Bootstrap-validator的使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-25T12:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-07-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/Validation/">Validation</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bootstrap-validator的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">Bootstrap-validator的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例子"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">例子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">用法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#标记"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">标记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标准属性验证器"><span class="post-toc-number">1.3.0.1.</span> <span class="post-toc-text">标准属性验证器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#跨浏览器兼容性"><span class="post-toc-number">1.3.0.2.</span> <span class="post-toc-text">跨浏览器兼容性</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证字段"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">验证字段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选项"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">选项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#各个表单字段的错误消息"><span class="post-toc-number">1.4.1.1.</span> <span class="post-toc-text">各个表单字段的错误消息</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#validator-options"><span class="post-toc-number">1.4.2.1.</span> <span class="post-toc-text">.validator(options)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#validator-39-update-39"><span class="post-toc-number">1.4.2.2.</span> <span class="post-toc-text">.validator(&#39;update&#39;)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#validator-39-validate-39"><span class="post-toc-number">1.4.2.3.</span> <span class="post-toc-text">.validator(&#39;validate&#39;)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#validator-39-destroy-39"><span class="post-toc-number">1.4.2.4.</span> <span class="post-toc-text">.validator(&#39;destroy&#39;)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#有条件地处理提交事件"><span class="post-toc-number">1.4.3.1.</span> <span class="post-toc-text">有条件地处理提交事件</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-docs-of-bootstrap-validator"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Bootstrap-validator的使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-25 20:00:00" datetime="2018-07-25T12:00:00.000Z"  itemprop="datePublished">2018-07-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/Validation/">Validation</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Bootstrap-validator的使用"><a href="#Bootstrap-validator的使用" class="headerlink" title="Bootstrap-validator的使用"></a>Bootstrap-validator的使用</h1><blockquote>
+<p>翻译官方的<a href="http://1000hz.github.io/bootstrap-validator/" target="_blank" rel="noopener">文档</a>。</p>
+<p>这个插件遵循Bootstrap核心jQuery插件提出的<a href="http://getbootstrap.com/javascript/#js-overview" target="_blank" rel="noopener">约定</a>，所以一定要检查这些插件，以便更好地理解这个插件的目标和设计。 </p>
+</blockquote>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><blockquote>
+<p>使用这个简单的插件为表单添加验证。 </p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">data-toggle</span>=<span class="string">"validator"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputName"</span> <span class="attr">class</span>=<span class="string">"control-label"</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputName"</span> <span class="attr">placeholder</span>=<span class="string">"Cina Saffary"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group has-feedback"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputTwitter"</span> <span class="attr">class</span>=<span class="string">"control-label"</span>&gt;</span>Twitter<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span>@<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">pattern</span>=<span class="string">"^[_A-z0-9]&#123;1,&#125;$"</span> <span class="attr">maxlength</span>=<span class="string">"15"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputTwitter"</span> <span class="attr">placeholder</span>=<span class="string">"1000hz"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon form-control-feedback"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"help-block with-errors"</span>&gt;</span>Hey look, this one has feedback icons!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputEmail"</span> <span class="attr">class</span>=<span class="string">"control-label"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputEmail"</span> <span class="attr">placeholder</span>=<span class="string">"Email"</span> <span class="attr">data-error</span>=<span class="string">"Bruh, that email address is invalid"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"help-block with-errors"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputPassword"</span> <span class="attr">class</span>=<span class="string">"control-label"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-inline row"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">data-minlength</span>=<span class="string">"6"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputPassword"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"help-block"</span>&gt;</span>Minimum of 6 characters<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group col-sm-6"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputPasswordConfirm"</span> <span class="attr">data-match</span>=<span class="string">"#inputPassword"</span> <span class="attr">data-match-error</span>=<span class="string">"Whoops, these don't match"</span> <span class="attr">placeholder</span>=<span class="string">"Confirm"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"help-block with-errors"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"radio"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"underwear"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">        Boxers</span><br><span class="line">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"radio"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"underwear"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">        Briefs</span><br><span class="line">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"terms"</span> <span class="attr">data-error</span>=<span class="string">"Before you wreck yourself"</span> <span class="attr">required</span>&gt;</span></span><br><span class="line">        Check yourself</span><br><span class="line">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"help-block with-errors"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><blockquote>
+<p>可以通过data-api或JavaScript在标记中启用表单验证。通过添加<code>data-toggle=&quot;validator&quot;</code>到表单元素自动启用表单验证。 </p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">data-toggle</span>=<span class="string">"validator"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或者通过JavaScript激活验证： </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#myForm'</span>).validator()</span><br></pre></td></tr></table></figure>
+<h2 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h2><p>按照Bootstrap的<a href="http://getbootstrap.com/css/#forms" target="_blank" rel="noopener">示例</a>进行适当的表单标记。重要的是每个输入字段都在其自己的单独<code>.form-group</code>容器中，以便正确显示错误消息。</p>
+<p>验证规则通过以下标准HTML5属性在表单输入上指定：</p>
+<ul>
+<li><code>type=&quot;email&quot;</code></li>
+<li><code>type=&quot;url&quot;</code></li>
+<li><code>type=&quot;number&quot;</code>，通过附加约束<code>max</code>，<code>min</code>和<code>step</code>属性</li>
+<li><code>pattern=&quot;Reg(ular )?Exp(ression)?&quot;</code>（用于输入类型的<code>text</code>，<code>search</code>，<code>tel</code>，<code>url</code>或<code>email</code>）</li>
+<li><code>required</code></li>
+</ul>
+<p>以及以下非标准属性：</p>
+<ul>
+<li><code>data-match=&quot;#inputToMatch&quot;</code> 确保两个字段匹配，例如密码确认</li>
+<li><code>data-minlength=&quot;5&quot;</code> 强制执行最少量的字符</li>
+<li><code>data-remote=&quot;/path/to/remote/validator&quot;</code>发出AJAX请求以确定该字段是否有效。请务必为输入提供<code>name</code>属性，因为请求将被发送到<code>/path/to/remote/validator?&lt;name&gt;=&lt;value&gt;</code>。<code>200 OK</code>如果字段有效，则远程端点应返回a ，<code>4xx</code>否则返回。这是使用Express 的<a href="https://github.com/1000hz/validator-remote-example" target="_blank" rel="noopener">参考服务器实现</a>。</li>
+</ul>
+<blockquote>
+<h4 id="标准属性验证器"><a href="#标准属性验证器" class="headerlink" title="标准属性验证器"></a>标准属性验证器</h4><p>标准HTML5属性的验证规则由浏览器使用<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation" target="_blank" rel="noopener">HTML5约束验证API</a>完全处理。因此，此插件无法控制有资格作为有效电子邮件地址或URL的内容。如果您发现需要对这些字段进行更严格的验证，则可以使用该<code>pattern</code>属性进一步限制可接受的范围。</p>
+<p>但请注意，您不要过于严格，这可能会导致漏报和糟糕的用户体验。例如，根据标准，您会对哪种<a href="https://en.wikipedia.org/wiki/Email_address#Valid_email_addresses" target="_blank" rel="noopener">电子邮件地址</a>被视为有效感到惊讶。</p>
+</blockquote>
+<blockquote>
+<h4 id="跨浏览器兼容性"><a href="#跨浏览器兼容性" class="headerlink" title="跨浏览器兼容性"></a>跨浏览器兼容性</h4><p>由于此插件依赖于HTML5约束验证API，因此不支持Internet Explorer 9及更早版本。如果您需要支持这些浏览器，则必须添加像Ryan Seddon的<a href="https://github.com/ryanseddon/H5F" target="_blank" rel="noopener">H5F</a>这样的<a href="https://github.com/ryanseddon/H5F" target="_blank" rel="noopener">polyfill</a>。</p>
+</blockquote>
+<p>要显示错误消息，请在输入字段后面包含容器<code>help-block</code>和<code>with-errors</code>类。 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">role</span>=<span class="string">"form"</span> <span class="attr">data-toggle</span>=<span class="string">"validator"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputEmail"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">id</span>=<span class="string">"inputEmail"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"help-block with-errors"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="验证字段"><a href="#验证字段" class="headerlink" title="验证字段"></a>验证字段</h2><p>默认情况下，验证程序仅验证插件初始化时存在的字段。如果表单具有动态字段集，则需要调用<code>$(...).validator(&#39;update&#39;)</code>以通知插件要验证的字段集已更改。</p>
+<p>用于确定验证哪些字段的默认选择器是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.fn.validator.Constructor.INPUT_SELECTOR = <span class="string">':input:not([type="hidden"], [type="submit"], [type="reset"], button)'</span></span><br></pre></td></tr></table></figure>
+<p>如果需要更改此默认行为，可以在代码中覆盖此值。或者，您可以添加<code>data-validate=&quot;true&quot;</code>/ <code>data-validate=&quot;false&quot;</code>到特定输入以强制将其包含/排除在已验证字段集中。</p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>选项可以通过数据属性或JavaScript传递。对于数据属性，请将选项名称附加到<code>data-</code>，如<code>data-delay=&quot;&quot;</code>。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>delay</td>
+<td>number</td>
+<td>500</td>
+<td>在表单字段上显示错误之前要等待的毫秒数。</td>
+</tr>
+<tr>
+<td>html</td>
+<td>boolean</td>
+<td>false</td>
+<td>将HTML插入错误消息中。如果为false，则使用jQuery的文本方法将内容插入DOM。如果您担心XSS攻击，请使用文本。</td>
+</tr>
+<tr>
+<td>disable</td>
+<td>boolean</td>
+<td>true</td>
+<td>禁用提交按钮，直到表单有效并且所有必填字段都已完成。</td>
+</tr>
+<tr>
+<td>focus</td>
+<td>boolean</td>
+<td>true</td>
+<td>在验证表单时，滚动并聚焦第一个字段并显示错误。例如，如果页面顶部有一个固定的导航栏，并且需要调整窗口顶部和焦点字段之间的填充量，则可以覆盖以下变量：<code>$.fn.validator.Constructor.FOCUS_OFFSET</code>默认为20（px）。</td>
+</tr>
+<tr>
+<td>feedback</td>
+<td>object</td>
+<td>glyphicon classes</td>
+<td>覆盖用于表单反馈图标的类。默认为Bootstrap的glyphicons：<code>feedback: {   success: &#39;glyphicon-ok&#39;,   error: &#39;glyphicon-remove&#39; }</code></td>
+</tr>
+<tr>
+<td>custom</td>
+<td>object</td>
+<td>{}</td>
+<td>添加要运行的自定义验证程序。验证器应该是接收jQuery元素作为参数的函数，如果字段无效则返回错误消息。这是一个自定义验证器的示例，它检查输入是否等于某个指定值：<code>custom: {   equals: function($el) {     var matchValue = $el.data(&quot;equals&quot;) // foo     if ($el.val() !== matchValue) {       return &quot;Hey, that&#39;s not valid! It&#39;s gotta be &quot; + matchValue     }   } }</code>通过将其名称作为数据属性引用，将验证器添加到输入中就像完成其他操作一样：<code>&lt;input data-equals=&quot;foo&quot;&gt;</code>。在这种情况下，如果用户输入除以外的任何内容，该字段将显示错误<code>foo</code>。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// feedback</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    feedback: &#123;   </span><br><span class="line">        success: <span class="string">'glyphicon-ok'</span>,   </span><br><span class="line">        error: <span class="string">'glyphicon-remove'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// custom</span></span><br><span class="line">&#123;</span><br><span class="line">    custom: &#123;   </span><br><span class="line">        equals: <span class="function"><span class="keyword">function</span>(<span class="params">$el</span>) </span>&#123;     </span><br><span class="line">            <span class="keyword">var</span> matchValue = $el.data(<span class="string">"equals"</span>) <span class="comment">// foo     </span></span><br><span class="line">            <span class="keyword">if</span> ($el.val() !== matchValue) &#123;       </span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Hey, that's not valid! It's gotta be "</span> + matchValue     </span><br><span class="line">            &#125;   </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="各个表单字段的错误消息"><a href="#各个表单字段的错误消息" class="headerlink" title="各个表单字段的错误消息"></a>各个表单字段的错误消息</h4><p>可以通过使用数据属性来指定单个表单字段的错误消息。您可以在字段中的每个类型的验证，即指定一个错误信息<code>data-pattern-error=&quot;&quot;</code>，<code>data-required-error=&quot;&quot;</code>，<code>data-match-error=&quot;&quot;</code>，等…或者使用<code>data-error=&quot;&quot;</code>用于衬垫的错误消息，以显示该字段的任何错误。</p>
+</blockquote>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="validator-options"><a href="#validator-options" class="headerlink" title=".validator(options)"></a><code>.validator(options)</code></h4><p>将验证器附加到表单集合。</p>
+<h4 id="validator-39-update-39"><a href="#validator-39-update-39" class="headerlink" title=".validator(&#39;update&#39;)"></a><code>.validator(&#39;update&#39;)</code></h4><p>更新将验证的输入集合。如果需要验证的字段集已更改，请调用此方法。</p>
+<h4 id="validator-39-validate-39"><a href="#validator-39-validate-39" class="headerlink" title=".validator(&#39;validate&#39;)"></a><code>.validator(&#39;validate&#39;)</code></h4><p>立即验证整个表格。</p>
+<h4 id="validator-39-destroy-39"><a href="#validator-39-destroy-39" class="headerlink" title=".validator(&#39;destroy&#39;)"></a><code>.validator(&#39;destroy&#39;)</code></h4><p>销毁形式验证器并清理留下的数据。</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>所有事件都在表单元素上触发，并提供对事件所属的表单字段的引用<code>event.relatedTarget</code>。</p>
+<table>
+<thead>
+<tr>
+<th>事件类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate.bs.validator</td>
+<td>验证表单字段时，此事件立即触发。</td>
+</tr>
+<tr>
+<td>invalid.bs.validator</td>
+<td>当表单字段变为无效时会触发此事件。通过提供字段错误<code>event.detail</code>。</td>
+</tr>
+<tr>
+<td>valid.bs.validator</td>
+<td>当表单字段变为有效时，将触发此事件。之前的字段错误通过提供<code>event.detail</code>。</td>
+</tr>
+<tr>
+<td>validated.bs.validator</td>
+<td>在验证表单字段后触发此事件。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h4 id="有条件地处理提交事件"><a href="#有条件地处理提交事件" class="headerlink" title="有条件地处理提交事件"></a>有条件地处理提交事件</h4><p>当表单无效时，<code>.preventDefault()</code>将在提交事件上调用。因此，如果您想要挂钩提交事件并根据表单是否有效而有条件地执行某些操作，则可以检查事件是否有效<code>.isDefaultPrevented()</code>。在表单上初始化插件后，请确保您的提交处理程序已绑定。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#form'</span>).validator().on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.isDefaultPrevented()) &#123;</span><br><span class="line">    <span class="comment">// handle the invalid form...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// everything looks good!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-25T05:59:01.449Z" itemprop="dateUpdated">2018-07-25 13:59:01</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/07/25/the-docs-of-bootstrap-validator/" target="_blank" rel="external">https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Validation/">Validation</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/&title=《Bootstrap-validator的使用》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/&title=《Bootstrap-validator的使用》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Bootstrap-validator的使用》 — 个人博客&url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/23/bootstrap-form-layout/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Bootstrap 表单布局</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/&title=《Bootstrap-validator的使用》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/&title=《Bootstrap-validator的使用》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Bootstrap-validator的使用》 — 个人博客&url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/25/the-docs-of-bootstrap-validator/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3awW4bMQwE0Pz/T6fXBs3aM+TKdoG3p8A1ZD0XkOghv77i5/uvJ3n96j1Xz7/vf/z3zQ8eHh7eYutXH5y//nhDm60nn/vLOnh4eHjHeMlysw+7emfCyPdz+ToeHh7ex/CSUrs93JN6GA8PD+9/5BXlbACbkfDw8PA+gdfGCvm2rkgz8MGsBQ8PD29yehcR6nv/PtLfw8PDw1t31Wflch7X5vsZ7hYPDw/vAG9TLrfR6uzob8tlPDw8vNfwZq2pPHjdjGHNIgw8PDy81/BaWF52b4rjWcg7TJrx8PDwFnVm22RqhwDakYK8tXb5WwEPDw/vJl5bmLZhxIad7KTOhvHw8PBu4uWHcntMt+2x/HJqry48PDy8e3lJsTsbFGhbX21rrY4k8PDw8Na8/Od93oia4WcrP/kS8fDw8F7C2x/c7ejA7Ek+HQ8PD+8cbxY9bBr8sy+xHrrCw8PDO8bLF5pFq5vAor0kij4bHh4e3k28FrkZ3poFH8V/Eh4eHt4xXrvFJBpoS/C7LoMfq+Hh4eEd480O5Tau3a/Zhhp4eHh4p3n5WFUbvM4ujCJ0uPpXPDw8vJfw7gpzk+Bg0yS7YegKDw8Pb8TLN3EiqJ2V2sXQFR4eHt5hXt6USkrw2ZFdDFTFzTM8PDy8E7y8+TSLffNrpl1zN5OFh4eHdw+v3W4+DjXbw2wQAQ8PD++9vDYymMWv7dBV8eDh4eEdgOVPHqEm4UVLyteMZsrw8PDwRrzZ0snV0jarkq9m1dPDw8PDu5V3Okhtr4fNZfPL3vDw8PCO8fLjvj2y2xh3E6bg4eHhfSavjYBnba1ZEf+kAYaHh4f3Vl47SJq0wdoxgii6xcPDwzvGa4/sx5try/H862hDCjw8PLwTvPYH/2yUanast+xVfw8PDw/vOe8PFVfaTx43xuoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
