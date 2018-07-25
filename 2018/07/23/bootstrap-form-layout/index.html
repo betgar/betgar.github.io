@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Bootstrap 表单布局 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Bootstrap">
+    <meta name="description" content="Bootstrap 表单布局 bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构嵌套层次还有很多疑问。 所以又翻了一遍官网和资料，总结一下。 本文部分内容翻译自这里.  基本原则Bootstrap表单控件自动获得一些全局样式，如所有textual &amp;lt;input&amp;gt;，&amp;lt;textarea&amp;gt;以及&amp;lt;select&amp;gt;带类的元素.form-control的宽">
+<meta name="keywords" content="Bootstrap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap 表单布局">
+<meta property="og:url" content="https://betgar.github.io/2018/07/23/bootstrap-form-layout/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Bootstrap 表单布局 bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构嵌套层次还有很多疑问。 所以又翻了一遍官网和资料，总结一下。 本文部分内容翻译自这里.  基本原则Bootstrap表单控件自动获得一些全局样式，如所有textual &amp;lt;input&amp;gt;，&amp;lt;textarea&amp;gt;以及&amp;lt;select&amp;gt;带类的元素.form-control的宽">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-25T02:27:28.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bootstrap 表单布局">
+<meta name="twitter:description" content="Bootstrap 表单布局 bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构嵌套层次还有很多疑问。 所以又翻了一遍官网和资料，总结一下。 本文部分内容翻译自这里.  基本原则Bootstrap表单控件自动获得一些全局样式，如所有textual &amp;lt;input&amp;gt;，&amp;lt;textarea&amp;gt;以及&amp;lt;select&amp;gt;带类的元素.form-control的宽">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Bootstrap 表单布局</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Bootstrap 表单布局</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-23T11:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-07-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bootstrap-表单布局"><span class="post-toc-number">1.</span> <span class="post-toc-text">Bootstrap 表单布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本原则"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">基本原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单垂直布局-vertical-form"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">表单垂直布局(vertical form)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单水平布局-horizontal-form"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">表单水平布局(horizontal form)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内联表单-inline-form"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">内联表单(inline form )</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态表单"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">静态表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单元素校验状态"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">表单元素校验状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bootstrap表格样式class"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">bootstrap表格样式class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单元素标签样式"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">表单元素标签样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单样式class"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">表单样式class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-inline"><span class="post-toc-number">1.6.2.1.</span> <span class="post-toc-text">.form-inline</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-horizontal"><span class="post-toc-number">1.6.2.2.</span> <span class="post-toc-text">.form-horizontal</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#control-label"><span class="post-toc-number">1.6.2.3.</span> <span class="post-toc-text">.control-label</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control"><span class="post-toc-number">1.6.2.4.</span> <span class="post-toc-text">.form-control</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control-static"><span class="post-toc-number">1.6.2.5.</span> <span class="post-toc-text">.form-control-static</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-group"><span class="post-toc-number">1.6.2.6.</span> <span class="post-toc-text">.form-group</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#input-group-input-groups-less"><span class="post-toc-number">1.6.2.7.</span> <span class="post-toc-text">.input-group (input-groups.less)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#radio和-checkbox"><span class="post-toc-number">1.6.2.8.</span> <span class="post-toc-text">.radio和.checkbox</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control的add-on系列"><span class="post-toc-number">1.6.2.9.</span> <span class="post-toc-text">form-control的add-on系列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#help-block"><span class="post-toc-number">1.6.2.10.</span> <span class="post-toc-text">.help-block</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lt-legend-gt-和-lt-fieldset-gt-的使用"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">&lt;legend&gt;和&lt;fieldset&gt;的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lt-legend-gt-的使用"><span class="post-toc-number">1.6.3.1.</span> <span class="post-toc-text">&lt;legend&gt;的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lt-fieldset-gt-使用"><span class="post-toc-number">1.6.3.2.</span> <span class="post-toc-text">&lt;fieldset&gt;使用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-bootstrap-form-layout"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Bootstrap 表单布局</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-23 19:00:00" datetime="2018-07-23T11:00:00.000Z"  itemprop="datePublished">2018-07-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Bootstrap-表单布局"><a href="#Bootstrap-表单布局" class="headerlink" title="Bootstrap 表单布局"></a>Bootstrap 表单布局</h1><blockquote>
+<p>bootstrap已经使用很久了，但是对于表单布局，尤其是<code>HTML</code>结构嵌套层次还有很多疑问。</p>
+<p>所以又翻了一遍官网和资料，总结一下。</p>
+<p>本文部分内容翻译自<a href="http://stacktips.com/tutorials/bootstrap/vertical-horizontal-and-inline-form-example-in-bootstrap" target="_blank" rel="noopener">这里</a>.</p>
+</blockquote>
+<h3 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h3><p>Bootstrap表单控件自动获得一些全局样式，如所有textual <code>&lt;input&gt;</code>，<code>&lt;textarea&gt;</code>以及<code>&lt;select&gt;</code>带类的元素<code>.form-control</code>的宽度为100％。表单布局的基本规则如下;</p>
+<ul>
+<li>始终使用<code>&lt;form role=&quot;form&quot;&gt;</code>，有助于改善使用屏幕阅读器的人的可访问性</li>
+<li>用于最佳间距包装标签和表格控件 <code>&lt;div class=&quot;form-group&quot;&gt;</code></li>
+<li>将类<code>.form-control</code>添加到所有文本<code>&lt;input&gt;,&lt;textarea&gt;</code>和<code>&lt;select&gt;</code>元素</li>
+</ul>
+<h2 id="表单垂直布局-vertical-form"><a href="#表单垂直布局-vertical-form" class="headerlink" title="表单垂直布局(vertical form)"></a>表单垂直布局(vertical form)</h2><blockquote>
+<p>垂直布局也是<code>Bootstrap</code>的默认布局，因为我们的浏览器默认的<strong>普通流</strong>就是从左到右(LTR)，从上到下。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>My first Bootstrap page <span class="tag">&lt;/<span class="name">title</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initialscale=1"</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"CSS/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"CSS/bootstrap-theme.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"JS/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span> </span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">style</span>=<span class="string">"max-width:600px;margin:60px auto;"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"name"</span>&gt;</span>First name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"name"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"fname"</span> <span class="attr">placeholder</span>=<span class="string">"Enter name"</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="表单水平布局-horizontal-form"><a href="#表单水平布局-horizontal-form" class="headerlink" title="表单水平布局(horizontal form)"></a>表单水平布局(horizontal form)</h2><blockquote>
+<p>水平形式与垂直形式布局的不同之处在于标记量和表单的表示形式。在此表单中，布局标签浮动到输入字段的左侧。标签和输入字段都出现在同一行上。除默认规则外，水平表单的规则，</p>
+<p>所有你需要做的就是添加<code>.form-horizontal</code>类的<code>&lt;form&gt;</code> 元素，<code>.control-label</code>类的所有<code>&lt;label&gt;</code>元素。使用Bootstrap的预定义网格类来对齐标签和表单控件。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">style</span>=<span class="string">"max-width:600px;padding:40px 20px;background:#ebeff2"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>Signup<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"name"</span> <span class="attr">class</span> =<span class="string">"control-label col-sm-3"</span>&gt;</span>First name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"name"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"name"</span> <span class="attr">placeholder</span>=<span class="string">"Enter name"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"address"</span> <span class="attr">class</span> =<span class="string">"control-label col-sm-3"</span>&gt;</span>Second name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"address"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"address"</span> <span class="attr">placeholder</span>=<span class="string">"Enter address"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"email"</span> <span class="attr">class</span> =<span class="string">"control-label col-sm-3"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"Enter email"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"pwd"</span> <span class="attr">class</span> =<span class="string">"control-label col-sm-3"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">	      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"pwd"</span> <span class="attr">placeholder</span>=<span class="string">"Enter password"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-offset-2 col-sm-8"</span>&gt;</span></span><br><span class="line">	     <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>Register<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意：<code>label</code>元素在<strong>水平布局</strong>中必须添加<code>.control-label</code>样式。</li>
+</ul>
+<h2 id="内联表单-inline-form"><a href="#内联表单-inline-form" class="headerlink" title="内联表单(inline form )"></a>内联表单(inline form )</h2><blockquote>
+<p>Bootstrap的内联表单布局可用于将表单控件并排放置在紧凑的布局中。在内联形式中，所有元素都是直线，左对齐，标签位于旁边。为此，您需要将<code>.form-inline</code>类添加到<code>&lt;form&gt;</code>元素。 </p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-inline"</span> <span class="attr">role</span>=<span class="string">"form"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"name"</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"name"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"name"</span> <span class="attr">placeholder</span>=<span class="string">"Enter name"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"email"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"Enter email"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"pwd"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"pwd"</span> <span class="attr">placeholder</span>=<span class="string">"Enter password"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>Register<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><code>.form-group</code>类用于封装组中的多个控件 - 就像我们对标签和相应的文本框所做的那样。</li>
+<li><code>.control-label</code>和<code>.form-control</code>类分别用于设置标签和表单元素的样式。</li>
+<li>使用<code>.input-group</code>类可以相邻地关联多个控件。</li>
+<li>禁用或只读状态可用于控件 - Bootstrap将自动关联必要的样式，但是，所有控件都必须添加.form-control类。</li>
+<li>为了控制大小，可以使用<code>.input-lg</code>，<code>.input-sm</code>类。要控制组的大小，可以使用<code>.form-group-lg</code>或<code>.form-group-sm</code>类。</li>
+<li>要显示任何帮助文本，可以在单独的标签中使用<code>.help-block</code>类。这将以新的一行显示文本。</li>
+</ul>
+<hr>
+<h2 id="静态表单"><a href="#静态表单" class="headerlink" title="静态表单"></a>静态表单</h2><blockquote>
+<p>经常需要静态展示表单信息，所以顺便总结一下静态表单的展示。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"form-control-static"</span>&gt;</span>email@example.com<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputPassword"</span> <span class="attr">class</span>=<span class="string">"col-sm-2 control-label"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-10"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputPassword"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://v3.bootcss.com/css/#forms-controls-static" target="_blank" rel="noopener">参考这里</a></p>
+</blockquote>
+<h2 id="表单元素校验状态"><a href="#表单元素校验状态" class="headerlink" title="表单元素校验状态"></a>表单元素校验状态</h2><blockquote>
+<p>涉及<code>.input-group-addon</code>  <code>.has-feedback</code> <code>.form-control-feedback</code>  <code>.has-success</code>  <code>.help-block</code>等。</p>
+<p>这里有一个<code>bootstrap-validation</code><a href="http://1000hz.github.io/bootstrap-validator/" target="_blank" rel="noopener">校验库</a>就是使用这些<code>class</code>样式实现的.</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group has-success has-feedback"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"control-label col-sm-3"</span> <span class="attr">for</span>=<span class="string">"inputSuccess3"</span>&gt;</span>Input with success<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputSuccess3"</span> <span class="attr">aria-describedby</span>=<span class="string">"inputSuccess3Status"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-ok form-control-feedback"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"inputSuccess3Status"</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>(success)<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group has-success has-feedback"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"control-label col-sm-3"</span> <span class="attr">for</span>=<span class="string">"inputGroupSuccess2"</span>&gt;</span>Input group with success<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span>@<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputGroupSuccess2"</span> <span class="attr">aria-describedby</span>=<span class="string">"inputGroupSuccess2Status"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-ok form-control-feedback"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"inputGroupSuccess2Status"</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>(success)<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://v3.bootcss.com/css/#forms-control-validation" target="_blank" rel="noopener">例子参考这里</a></p>
+</blockquote>
+<h2 id="bootstrap表格样式class"><a href="#bootstrap表格样式class" class="headerlink" title="bootstrap表格样式class"></a>bootstrap表格样式class</h2><blockquote>
+<p>总结一下bootstrap表格样式class的id，以下内容来自bootstrap的<code>forms.less</code>文件。</p>
+</blockquote>
+<h3 id="表单元素标签样式"><a href="#表单元素标签样式" class="headerlink" title="表单元素标签样式"></a>表单元素标签样式</h3><blockquote>
+<p><code>Bootstrap</code>内部对如下的标签进行过样式的修饰。</p>
+</blockquote>
+<p>fieldset  </p>
+<p>legend </p>
+<p>label </p>
+<p>input[type=”search”] </p>
+<p>input[type=”radio”]</p>
+<p>input[type=”checkbox”]</p>
+<p>input[type=”file”]  </p>
+<p>input[type=”range”] </p>
+<p>select[multiple]</p>
+<p>select[size]</p>
+<p>output </p>
+<p>select</p>
+<p>textarea</p>
+<p>input[type=”text”]</p>
+<p>input[type=”password”]</p>
+<p>input[type=”datetime”]</p>
+<p>input[type=”datetime-local”]</p>
+<p>input[type=”date”]</p>
+<p>input[type=”month”]</p>
+<p>input[type=”time”]</p>
+<p>input[type=”week”]</p>
+<p>input[type=”number”]</p>
+<p>input[type=”email”]</p>
+<p>input[type=”url”]</p>
+<p>input[type=”search”]</p>
+<p>input[type=”tel”]</p>
+<p>input[type=”color”]</p>
+<h3 id="表单样式class"><a href="#表单样式class" class="headerlink" title="表单样式class"></a>表单样式class</h3><h4 id="form-inline"><a href="#form-inline" class="headerlink" title=".form-inline"></a><code>.form-inline</code></h4><h4 id="form-horizontal"><a href="#form-horizontal" class="headerlink" title=".form-horizontal"></a><code>.form-horizontal</code></h4><h4 id="control-label"><a href="#control-label" class="headerlink" title=".control-label"></a><code>.control-label</code></h4><h4 id="form-control"><a href="#form-control" class="headerlink" title=".form-control"></a><code>.form-control</code></h4><ul>
+<li>focus </li>
+<li>disabled </li>
+<li>readonly </li>
+</ul>
+<h4 id="form-control-static"><a href="#form-control-static" class="headerlink" title=".form-control-static"></a><code>.form-control-static</code></h4><blockquote>
+<p>静态表单展示使用</p>
+</blockquote>
+<h4 id="form-group"><a href="#form-group" class="headerlink" title=".form-group"></a><code>.form-group</code></h4><ul>
+<li><code>.form-group-sm</code></li>
+<li><code>.form-group-lg</code></li>
+</ul>
+<h4 id="input-group-input-groups-less"><a href="#input-group-input-groups-less" class="headerlink" title=".input-group (input-groups.less)"></a><code>.input-group</code> (input-groups.less)</h4><ul>
+<li><code>.input-group-addon</code></li>
+<li><p><code>.input-group-btn</code></p>
+</li>
+<li><p><code>.input-sm</code></p>
+</li>
+<li><p><code>.input-lg</code></p>
+</li>
+<li><code>.input-group-lg</code></li>
+<li><code>.input-group-sm</code></li>
+</ul>
+<blockquote>
+<p><a href="https://v3.bootcss.com/css/#forms-control-sizes" target="_blank" rel="noopener">参考这里</a></p>
+</blockquote>
+<h4 id="radio和-checkbox"><a href="#radio和-checkbox" class="headerlink" title=".radio和.checkbox"></a><code>.radio</code>和<code>.checkbox</code></h4><ul>
+<li><code>.radio</code></li>
+<li><code>.radio-inline</code></li>
+<li><code>.checkbox</code></li>
+<li><code>.checkbox-inline</code></li>
+</ul>
+<blockquote>
+<p><a href="https://v3.bootcss.com/css/#%E5%A4%9A%E9%80%89%E5%92%8C%E5%8D%95%E9%80%89%E6%A1%86" target="_blank" rel="noopener">参考这里</a></p>
+</blockquote>
+<h4 id="form-control的add-on系列"><a href="#form-control的add-on系列" class="headerlink" title="form-control的add-on系列"></a>form-control的add-on系列</h4><ul>
+<li><code>.has-feedback</code></li>
+<li><code>.form-control-feedback</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group has-success has-feedback"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"control-label"</span> <span class="attr">for</span>=<span class="string">"inputGroupSuccess1"</span>&gt;</span>Input group with success<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span>@<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputGroupSuccess1"</span> <span class="attr">aria-describedby</span>=<span class="string">"inputGroupSuccess1Status"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-ok form-control-feedback"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"inputGroupSuccess1Status"</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>(success)<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://v3.bootcss.com/css/#forms-control-validation" target="_blank" rel="noopener">参考这里</a></p>
+</blockquote>
+<h4 id="help-block"><a href="#help-block" class="headerlink" title=".help-block"></a><code>.help-block</code></h4><blockquote>
+<p><code>.help-block</code>主要给表单做一些说明性的文字</p>
+</blockquote>
+<h3 id="lt-legend-gt-和-lt-fieldset-gt-的使用"><a href="#lt-legend-gt-和-lt-fieldset-gt-的使用" class="headerlink" title="&lt;legend&gt;和&lt;fieldset&gt;的使用"></a><code>&lt;legend&gt;</code>和<code>&lt;fieldset&gt;</code>的使用</h3><h4 id="lt-legend-gt-的使用"><a href="#lt-legend-gt-的使用" class="headerlink" title="&lt;legend&gt;的使用"></a><code>&lt;legend&gt;</code>的使用</h4><blockquote>
+<p><code>&lt;legend&gt;</code>：主要用来添加表单<strong>标题说明</strong>的.</p>
+</blockquote>
+<h4 id="lt-fieldset-gt-使用"><a href="#lt-fieldset-gt-使用" class="headerlink" title="&lt;fieldset&gt;使用"></a><code>&lt;fieldset&gt;</code>使用</h4><blockquote>
+<p><code>&lt;fieldset&gt;</code>标签平时使用比较少，主要用在，当表单元素比较多，不同的表单元素需要进行<strong>分组</strong>，这时比较方便，而且对于<strong>分组表单元素</strong>进行统一的<strong>禁用</strong>时。</p>
+<p>注意：<a href="https://v3.bootcss.com/css/#forms-control-disabled" target="_blank" rel="noopener">浏览器兼容性问题</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="tag">&lt;<span class="name">fieldset</span> <span class="attr">disabled</span>=<span class="string">"disabled"</span>&gt;</span>内部的表单元素都被禁用<span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p> <a href="https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&amp;file=disabled-fieldsets" target="_blank" rel="noopener">例子参考这里</a>：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example of Bootstrap 3 Disabled Fieldsets<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .bs-example&#123;</span></span><br><span class="line"><span class="undefined">    	margin: 20px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bs-example"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">legend</span>&gt;</span>登录信息<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fieldset</span> <span class="attr">disabled</span>=<span class="string">"disabled"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputEmail"</span> <span class="attr">class</span>=<span class="string">"control-label col-xs-2"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-10"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputEmail"</span> <span class="attr">placeholder</span>=<span class="string">"Email"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputPassword"</span> <span class="attr">class</span>=<span class="string">"control-label col-xs-2"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-10"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"inputPassword"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-offset-2 col-xs-10"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> Remember me<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-offset-2 col-xs-10"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://stacktips.com/tutorials/bootstrap/vertical-horizontal-and-inline-form-example-in-bootstrap" target="_blank" rel="noopener">http://stacktips.com/tutorials/bootstrap/vertical-horizontal-and-inline-form-example-in-bootstrap</a></p>
+<p><a href="https://v3.bootcss.com/css/#forms" target="_blank" rel="noopener">https://v3.bootcss.com/css/#forms</a></p>
+<p><a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" rel="noopener">https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/</a></p>
+<p><a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-forms.php" target="_blank" rel="noopener">https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-forms.php</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-25T02:27:28.906Z" itemprop="dateUpdated">2018-07-25 10:27:28</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/07/23/bootstrap-form-layout/" target="_blank" rel="external">https://betgar.github.io/2018/07/23/bootstrap-form-layout/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/&title=《Bootstrap 表单布局》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/&title=《Bootstrap 表单布局》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/23/bootstrap-form-layout/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Bootstrap 表单布局》 — 个人博客&url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/12/the-bootstrap-responsive-nested-rule-of-html/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Bootstrap响应式的HTML标签嵌套规则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/&title=《Bootstrap 表单布局》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/&title=《Bootstrap 表单布局》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/23/bootstrap-form-layout/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Bootstrap 表单布局》 — 个人博客&url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/23/bootstrap-form-layout/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACN0lEQVR42u3aS27DMAxFUe9/0y5QdNAitX0f6QQwdTUKEkPWyYDgR9uG1/69Xr/5/X36DHn+5iVDhozHMvbTdfQM3+HoWLX3Hu4pQ4aMBRjnQZYflIRLAuNnkyFDhozO5zRwk/RRhgwZMvh259/UkryPBlwZMmQ8kMETPl7Kpungh2pxGTJkPJCRDgY++fmN8w0ZMmQ8hLGHi6eGpJXWP8/PbjJkyBjNIK2xfiDmCWUaXTeSmcqQIWMco/aCDiYdLRyeTYYMGUMZ6ab8xWmTjofXiwxXhgwZ4xhpAK1d4SKlb21sUOwRypAh44GM9BoEb8ZxZC25vGi3yZAhYxAjLSA7SRtPH/klMxkyZKzA6AdHsgM/XJo4ypAhYzYjDY68HE2ba2mKedE1lCFDxjgGHxmSo/ArX50i9p+AK0OGjNGMTthNhwqkqZeWxDJkyJjNIEGtPxclA4balQ4ZMmSszEgPnbbq3nIVTIYMGQsw+MiQBOhgdtoeMMiQIWMdRvEaVuliWfpnob9PhgwZQxnvS/7SS2AyZMiQwRmdYjKO9GGz73BnGTJkjGakxSRJAfmQgB+dhG8ZMmRMZezhSo/IC9e09fbnVxkyZIxm8JU2znjOxq9cBONMGTJkjGOkbf1OgO6UyhdvkSFDxgIMPgwg4TWom3ERi+pvGTJkLM9IgyAfKtQGA8WAK0OGjOUZaQF82z4yZMhYgJEWsbxA7TTvglJZhgwZoxm10pGEzruSvxsAMmTIeCrjC75Oo4mXhKx/AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
