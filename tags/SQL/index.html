@@ -261,7 +261,7 @@
 
         
 
-            <a href="/tags/Validation/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">Validation</a>
+            <a href="/tags/layout/" style="-webkit-order:12;order:12" class="tags-list-item waves-effect waves-button waves-light">layout</a>
 
         
     </nav>
@@ -437,6 +437,23 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'I will be back！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 

@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="Bootstrap">
-    <meta name="description" content="Bootstrap响应式的HTML嵌套规则 使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的class使用。本来要自己总结的，重新看Bootstrap官网时发现了bootlint，所以直接把内容搬了过来，进行了分类汇总。  Bootlint使用 Bootlint是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因">
+    <meta name="description" content="Bootstrap响应式的HTML嵌套规则 使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的class使用。  Bootlint使用 Bootlint是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因为不正确的HTML嵌套，Bootstrap响应式效果不会生效。 bootlint：问题代码参考地址https:/">
 <meta name="keywords" content="Bootstrap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bootstrap响应式的HTML标签嵌套规则">
 <meta property="og:url" content="https://betgar.github.io/2018/07/12/the-bootstrap-responsive-nested-rule-of-html/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="Bootstrap响应式的HTML嵌套规则 使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的class使用。本来要自己总结的，重新看Bootstrap官网时发现了bootlint，所以直接把内容搬了过来，进行了分类汇总。  Bootlint使用 Bootlint是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因">
+<meta property="og:description" content="Bootstrap响应式的HTML嵌套规则 使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的class使用。  Bootlint使用 Bootlint是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因为不正确的HTML嵌套，Bootstrap响应式效果不会生效。 bootlint：问题代码参考地址https:/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-15T23:59:22.905Z">
+<meta property="og:updated_time" content="2018-07-15T15:10:19.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bootstrap响应式的HTML标签嵌套规则">
-<meta name="twitter:description" content="Bootstrap响应式的HTML嵌套规则 使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的class使用。本来要自己总结的，重新看Bootstrap官网时发现了bootlint，所以直接把内容搬了过来，进行了分类汇总。  Bootlint使用 Bootlint是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因">
+<meta name="twitter:description" content="Bootstrap响应式的HTML嵌套规则 使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的class使用。  Bootlint使用 Bootlint是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因为不正确的HTML嵌套，Bootstrap响应式效果不会生效。 bootlint：问题代码参考地址https:/">
     
         <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
     
@@ -201,7 +201,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="Bootstrap响应式的HTML嵌套规则"><a href="#Bootstrap响应式的HTML嵌套规则" class="headerlink" title="Bootstrap响应式的HTML嵌套规则"></a>Bootstrap响应式的HTML嵌套规则</h1><blockquote>
-<p>使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的<code>class</code>使用。本来要自己总结的，重新看Bootstrap官网时发现了bootlint，所以直接把内容搬了过来，进行了分类汇总。</p>
+<p>使用Bootstrap已经很长时间了，总结一些HTML嵌套规则和Bootstrap的<code>class</code>使用。</p>
 </blockquote>
 <h2 id="Bootlint使用"><a href="#Bootlint使用" class="headerlink" title="Bootlint使用"></a>Bootlint使用</h2><blockquote>
 <p><code>Bootlint</code>是Bootstrap官方推出的一个工具，用来检测HTML结构是否符合Bootstrap响应式的规则。因为不正确的HTML嵌套，Bootstrap响应式效果不会生效。</p>
@@ -385,7 +385,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-07-15T23:59:22.905Z" itemprop="dateUpdated">2018-07-16 07:59:22</time>
+    最后更新时间：<time datetime="2018-07-15T15:10:19.391Z" itemprop="dateUpdated">2018-07-15 23:10:19</time>
 </span><br>
 
 
@@ -465,9 +465,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/07/23/bootstrap-form-layout/" id="post-prev" class="post-nav-link">
+      <a href="/2018/07/26/perfect-full-page-background-image/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Bootstrap 表单布局</h4>
+        <h4 class="title">自适应全背景图片布局</h4>
       </a>
     </div>
   
@@ -650,6 +650,23 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'I will be back！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
