@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>创建基于ES6的项目 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="babel">
+    <meta name="description" content="创建基于ES6的项目(babel) 首先感谢业界的很多大神，创造了很多的模版项目，成功的把我用成了傻逼。今天有个小的功能，使用CRC进行checksum校验，选择使用node-crc包，本来想写个小demo测试一下，结果发现crc全部使用es6语法进行构建，长期使用别人模版的我瞬间傻逼了。所以才有了这篇文章。 babel handbook 中文版  初始化项目12cd crc-demo # crc">
+<meta name="keywords" content="babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建基于ES6的项目">
+<meta property="og:url" content="https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="创建基于ES6的项目(babel) 首先感谢业界的很多大神，创造了很多的模版项目，成功的把我用成了傻逼。今天有个小的功能，使用CRC进行checksum校验，选择使用node-crc包，本来想写个小demo测试一下，结果发现crc全部使用es6语法进行构建，长期使用别人模版的我瞬间傻逼了。所以才有了这篇文章。 babel handbook 中文版  初始化项目12cd crc-demo # crc">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-26T13:59:01.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="创建基于ES6的项目">
+<meta name="twitter:description" content="创建基于ES6的项目(babel) 首先感谢业界的很多大神，创造了很多的模版项目，成功的把我用成了傻逼。今天有个小的功能，使用CRC进行checksum校验，选择使用node-crc包，本来想写个小demo测试一下，结果发现crc全部使用es6语法进行构建，长期使用别人模版的我瞬间傻逼了。所以才有了这篇文章。 babel handbook 中文版  初始化项目12cd crc-demo # crc">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">创建基于ES6的项目</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">创建基于ES6的项目</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-17T13:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-07-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/babel/">babel</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建基于ES6的项目-babel"><span class="post-toc-number">1.</span> <span class="post-toc-text">创建基于ES6的项目(babel)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化项目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">初始化项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装依赖"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装依赖</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#package-json的scripts中添加babel"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">package.json的scripts中添加babel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行index-js内容"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">执行index.js内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-create-project-based-on-es6-with-babel"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">创建基于ES6的项目</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-17 21:00:00" datetime="2018-07-17T13:00:00.000Z"  itemprop="datePublished">2018-07-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/babel/">babel</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="创建基于ES6的项目-babel"><a href="#创建基于ES6的项目-babel" class="headerlink" title="创建基于ES6的项目(babel)"></a>创建基于ES6的项目(babel)</h1><blockquote>
+<p>首先感谢业界的很多大神，创造了很多的模版项目，成功的把我用成了傻逼。今天有个小的功能，使用<code>CRC</code>进行<code>checksum</code>校验，选择使用<code>node-crc</code>包，本来想写个小demo测试一下，结果发现<code>crc</code>全部使用es6语法进行构建，长期使用别人模版的我瞬间傻逼了。所以才有了这篇文章。</p>
+<p><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md" target="_blank" rel="noopener">babel handbook 中文版</a></p>
+</blockquote>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd crc-demo # crc-demo自己的项目目录</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><ul>
+<li><p><code>babel</code>和目标运行环境依赖（es5）</p>
+<blockquote>
+<p>目标环境根据自己实际的环境定义，具体参考<a href="https://www.babeljs.cn/docs/plugins/preset-env/" target="_blank" rel="noopener">preset-env</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> rimraf 用来删除文件的</span><br><span class="line">npm install babel-cli babel-preset-es2015 rimraf --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 <code>.babelrc</code> 配置文件</p>
+<blockquote>
+<p>在crc-demo下添加<code>.babelrc</code>文件，参考<a href="https://www.babeljs.cn/docs/setup/#installation" target="_blank" rel="noopener">这里</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"presets"</span>: [</span><br><span class="line">        <span class="string">"es2015"</span> <span class="comment">// 环境和安装依赖的环境相关(babel-preset-es2015)</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="package-json的scripts中添加babel"><a href="#package-json的scripts中添加babel" class="headerlink" title="package.json的scripts中添加babel"></a><code>package.json</code>的<code>scripts</code>中添加babel</h2><blockquote>
+<p><code>src</code>目录的<code>js</code>文件会编译到<code>dist</code>中，每次编译之前都会先删除<code>dist</code>文件。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"scripts"</span>: &#123;</span><br><span class="line">        <span class="string">"build"</span>: <span class="string">"rimraf dist/ &amp;&amp; babel src --out-dir dist/ --copy-files"</span>,</span><br><span class="line">        <span class="string">"start"</span>: <span class="string">"npm run build &amp;&amp; node dist/index.js"</span></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="执行index-js内容"><a href="#执行index-js内容" class="headerlink" title="执行index.js内容"></a>执行<code>index.js</code>内容</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/weschen/p/7154284.html" target="_blank" rel="noopener">https://www.cnblogs.com/weschen/p/7154284.html</a></p>
+<p><a href="https://www.babeljs.cn/docs/plugins/preset-env/" target="_blank" rel="noopener">https://www.babeljs.cn/docs/plugins/preset-env/</a></p>
+<p><a href="https://www.babeljs.cn/docs/usage/cli/" target="_blank" rel="noopener">https://www.babeljs.cn/docs/usage/cli/</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-26T13:59:01.058Z" itemprop="dateUpdated">2018-07-26 21:59:01</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/07/17/create-project-based-on-es6-with-babel/" target="_blank" rel="external">https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/&title=《创建基于ES6的项目》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/&title=《创建基于ES6的项目》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《创建基于ES6的项目》 — 个人博客&url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/26/perfect-full-page-background-image/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">自适应全背景图片布局</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/12/the-bootstrap-responsive-nested-rule-of-html/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Bootstrap响应式的HTML标签嵌套规则</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/&title=《创建基于ES6的项目》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/&title=《创建基于ES6的项目》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《创建基于ES6的项目》 — 个人博客&url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACp0lEQVR42u3aQW7jMBAEQP//01kgpwAbyd0cUvGhdDJkh2IxgIbo4esVX1/f19Xnqzs/7/8/2v04+WgbLjw8PLylqV9d96T7Cd0vzf3ytXO4XAI8PDy8Y7y2GCSTa5cj/zaZMx4eHt4n8Oab6WSB8kXEw8PD+3xeHiu0pHlxwsPDw3uel4QRbdDQkvLfH8la8PDw8GLevAH2/OdH+3t4eHh4cUnIS0VSPNo223y2eHh4eCd49wee8hC2fbnn7a72aMIryUvw8PDwBrx562utGORhRL4ov9zBw8PDe4SXP6B9ua9t0yehCR4eHt4JXtuUOt3uysvShgQaDw8Pb9wGWxv0XKOr3YK/KSp4eHh4B3hryPYBbYurjXeLYBcPDw9vwMubTJPgYC2irf8/yYPx8PDwNvHW2lpr010LcxdbaHh4eHhbeXUzvlyOfHLtZj0qJ3h4eHgP8tom1trhqjZuaAMLPDw8vHO8/I/baCAPGuZHDX55Ch4eHt4xXtLCzxv8bdwwP5h1uX/Gw8PDO8xrt8VtqJGHETnyTXnAw8PDO8DbFekWL+vygML8KBgeHh7eXt7aZjdv7Sdxw9o40Wh4eHh4B3jJ1W6yz8UTLRgPDw/vSV57RKBes6Ux5we/8PDw8PbyJgeqJr/Jm2prTTs8PDy807w2/d1VKtrNdN0kw8PDw9vKa4ODeQAxLxV5WIyHh4d3mpcHtSdgo7wZDw8P7xHe5PH5CzqPJ5LlLrb+eHh4eAd4a5UkH26+IW7Zr3mhxMPDwwt4eSiwuGcPwGvpKx4eHt7f8tpicCLGXatjeHh4eJ/Pa489tWFBPkI0Mh4eHt6f8iblIae2ZePNNh0PDw/vGK89/DTJjNvDVaMWFx4eHt4B3iSWTUjtFNuSsKHLh4eHh5fy/gFL5rtgn0W3ZgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'I will be back！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

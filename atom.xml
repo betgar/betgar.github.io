@@ -43,6 +43,32 @@
   </entry>
   
   <entry>
+    <title>创建基于ES6的项目</title>
+    <link href="https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/"/>
+    <id>https://betgar.github.io/2018/07/17/create-project-based-on-es6-with-babel/</id>
+    <published>2018-07-17T13:00:00.000Z</published>
+    <updated>2018-07-26T13:59:01.058Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="创建基于ES6的项目-babel"><a href="#创建基于ES6的项目-babel" class="headerlink" title="创建基于ES6的项目(babel)"></a>创建基于ES6的项目(babel)</h1><blockquote><p>首先感谢业界的很多大神，创造了很多的模版项目，成功的把我用成了傻逼。今天有个小的功能，使用<code>CRC</code>进行<code>checksum</code>校验，选择使用<code>node-crc</code>包，本来想写个小demo测试一下，结果发现<code>crc</code>全部使用es6语法进行构建，长期使用别人模版的我瞬间傻逼了。所以才有了这篇文章。</p><p><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md" target="_blank" rel="noopener">babel handbook 中文版</a></p></blockquote><h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd crc-demo # crc-demo自己的项目目录</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure><h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><ul><li><p><code>babel</code>和目标运行环境依赖（es5）</p><blockquote><p>目标环境根据自己实际的环境定义，具体参考<a href="https://www.babeljs.cn/docs/plugins/preset-env/" target="_blank" rel="noopener">preset-env</a></p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> rimraf 用来删除文件的</span><br><span class="line">npm install babel-cli babel-preset-es2015 rimraf --save-dev</span><br></pre></td></tr></table></figure></li><li><p>创建 <code>.babelrc</code> 配置文件</p><blockquote><p>在crc-demo下添加<code>.babelrc</code>文件，参考<a href="https://www.babeljs.cn/docs/setup/#installation" target="_blank" rel="noopener">这里</a></p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"presets"</span>: [</span><br><span class="line">        <span class="string">"es2015"</span> <span class="comment">// 环境和安装依赖的环境相关(babel-preset-es2015)</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="package-json的scripts中添加babel"><a href="#package-json的scripts中添加babel" class="headerlink" title="package.json的scripts中添加babel"></a><code>package.json</code>的<code>scripts</code>中添加babel</h2><blockquote><p><code>src</code>目录的<code>js</code>文件会编译到<code>dist</code>中，每次编译之前都会先删除<code>dist</code>文件。</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"scripts"</span>: &#123;</span><br><span class="line">        <span class="string">"build"</span>: <span class="string">"rimraf dist/ &amp;&amp; babel src --out-dir dist/ --copy-files"</span>,</span><br><span class="line">        <span class="string">"start"</span>: <span class="string">"npm run build &amp;&amp; node dist/index.js"</span></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="执行index-js内容"><a href="#执行index-js内容" class="headerlink" title="执行index.js内容"></a>执行<code>index.js</code>内容</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/weschen/p/7154284.html" target="_blank" rel="noopener">https://www.cnblogs.com/weschen/p/7154284.html</a></p><p><a href="https://www.babeljs.cn/docs/plugins/preset-env/" target="_blank" rel="noopener">https://www.babeljs.cn/docs/plugins/preset-env/</a></p><p><a href="https://www.babeljs.cn/docs/usage/cli/" target="_blank" rel="noopener">https://www.babeljs.cn/docs/usage/cli/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;创建基于ES6的项目-babel&quot;&gt;&lt;a href=&quot;#创建基于ES6的项目-babel&quot; class=&quot;headerlink&quot; title=&quot;创建基于ES6的项目(babel)&quot;&gt;&lt;/a&gt;创建基于ES6的项目(babel)&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p
+      
+    
+    </summary>
+    
+      <category term="babel" scheme="https://betgar.github.io/categories/babel/"/>
+    
+    
+      <category term="babel" scheme="https://betgar.github.io/tags/babel/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Bootstrap响应式的HTML标签嵌套规则</title>
     <link href="https://betgar.github.io/2018/07/12/the-bootstrap-responsive-nested-rule-of-html/"/>
     <id>https://betgar.github.io/2018/07/12/the-bootstrap-responsive-nested-rule-of-html/</id>
@@ -467,34 +493,6 @@
   </entry>
   
   <entry>
-    <title>NPM的正确使用姿势</title>
-    <link href="https://betgar.github.io/2018/01/08/how-to-use-utldtree/"/>
-    <id>https://betgar.github.io/2018/01/08/how-to-use-utldtree/</id>
-    <published>2018-01-08T12:00:00.000Z</published>
-    <updated>2018-06-27T13:58:24.536Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="utldtree"><a href="#utldtree" class="headerlink" title="utldtree"></a>utldtree</h1><blockquote><p>utldtree.sql是Oracle 提供的一个分析依赖的sql文件。</p><p>路径：%ORACLE_CLIENT%\RDBMS\ADMIN</p><p>因为没有包含在数据库标准包中，所以需要<strong>自己手动在数据库中执行utldtree</strong>下。</p></blockquote><h2 id="utldtree创建的objects"><a href="#utldtree创建的objects" class="headerlink" title="utldtree创建的objects:"></a>utldtree创建的objects:</h2><blockquote><p>序列：deptree_seq</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; create sequence deptree_seq cache 200</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><p>表：deptree_temptab</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; create table deptree_temptab</span><br><span class="line">&gt; (</span><br><span class="line">&gt; object_id            number,</span><br><span class="line">&gt; referenced_object_id number,</span><br><span class="line">&gt; nest_level           number,</span><br><span class="line">&gt; seq#                 number      </span><br><span class="line">&gt; )</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><p>视图：deptree，ideptree</p><p>过程：deptree_fill</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; create or replace procedure deptree_fill (type char, schema char, name char)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><h2 id="生成依赖关系步骤"><a href="#生成依赖关系步骤" class="headerlink" title="生成依赖关系步骤"></a>生成依赖关系步骤</h2><h3 id="生成依赖关系"><a href="#生成依赖关系" class="headerlink" title="生成依赖关系"></a>生成依赖关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 1.生成依赖关系</span><br><span class="line">-- 说明：每一次调用会“清空”表DEPTREE_TEMPTAB</span><br><span class="line">-- 参数说明：</span><br><span class="line">--  type：对象类型（table,view,procedure...）</span><br><span class="line">--  schema：当前用户名称</span><br><span class="line">--  name：对象名称（待查询的被人依赖的对象）</span><br><span class="line"></span><br><span class="line">CALL DEPTREE_FILL(&apos;PROCEDURE&apos;, &apos;EXCEL&apos;, &apos;CONCAT&apos;);</span><br></pre></td></tr></table></figure><h3 id="查询依赖关系结果1"><a href="#查询依赖关系结果1" class="headerlink" title="查询依赖关系结果1"></a>查询依赖关系结果1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 2. 查询依赖关系结果</span><br><span class="line">-- 说明：</span><br><span class="line">--   这个视图附带嵌套层次</span><br><span class="line"></span><br><span class="line">SELECT * FROM DEPTREE D ORDER BY D.SEQ#;</span><br></pre></td></tr></table></figure><h3 id="查询依赖关系结果2"><a href="#查询依赖关系结果2" class="headerlink" title="查询依赖关系结果2"></a>查询依赖关系结果2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 3. 查询依赖关系结果</span><br><span class="line">-- 说明：</span><br><span class="line">--   步骤：3和2一样，只是展示方式不同</span><br><span class="line"></span><br><span class="line">SELECT * FROM IDEPTREE;</span><br></pre></td></tr></table></figure><h3 id="动态语句中的object依赖无法分析"><a href="#动态语句中的object依赖无法分析" class="headerlink" title="动态语句中的object依赖无法分析"></a>动态语句中的object依赖无法分析</h3><blockquote><p>动态的SQL语句中的依赖关系是无法分析出来。所以建议少用动态语句。</p><p>动态语句解决方法：ASK TOM上提供了间接的方法。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; </span><br><span class="line">1 CREATE or replace PROCEDURE testproc IS </span><br><span class="line">2 i PLS_INTEGER; </span><br><span class="line">3 var_table varchar2(7):=&apos;TESTTAB&apos;; </span><br><span class="line">-- 创建一个间接依赖，但是在过程中没有使用。</span><br><span class="line">4 cursor dummy is select * from TESTTAB; </span><br><span class="line">5 BEGIN </span><br><span class="line">6 execute immediate &apos;SELECT COUNT(*) FROM &apos;||var_table||&apos;&apos; INTO i; </span><br><span class="line">7 dbms_output.put_line(TO_CHAR(i)); </span><br><span class="line">8* END testproc; </span><br><span class="line">9 / </span><br><span class="line"></span><br><span class="line">Procedure created. </span><br><span class="line"></span><br><span class="line">Elapsed: 00:00:00.09 </span><br><span class="line">SQL&gt; exec dbms_utility.get_dependency(&apos;TABLE&apos;, &apos;DWHADMIN&apos;,&apos;TESTTAB&apos;);</span><br></pre></td></tr></table></figure><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:128114400346342023" target="_blank" rel="noopener">how to find the dependencies of table?</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;utldtree&quot;&gt;&lt;a href=&quot;#utldtree&quot; class=&quot;headerlink&quot; title=&quot;utldtree&quot;&gt;&lt;/a&gt;utldtree&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;utldtree.sql是Oracle 提供的一个分析依赖的sql
-      
-    
-    </summary>
-    
-      <category term="PLSQL" scheme="https://betgar.github.io/categories/PLSQL/"/>
-    
-    
-      <category term="PLSQL" scheme="https://betgar.github.io/tags/PLSQL/"/>
-    
-      <category term="utldtree" scheme="https://betgar.github.io/tags/utldtree/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Oracle 管理用户对象依赖关系</title>
     <link href="https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/"/>
     <id>https://betgar.github.io/2018/01/08/how-to-find-schema-object-dependencies/</id>
@@ -519,6 +517,34 @@
       <category term="Oracle" scheme="https://betgar.github.io/tags/Oracle/"/>
     
       <category term="PLSQL" scheme="https://betgar.github.io/tags/PLSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NPM的正确使用姿势</title>
+    <link href="https://betgar.github.io/2018/01/08/how-to-use-utldtree/"/>
+    <id>https://betgar.github.io/2018/01/08/how-to-use-utldtree/</id>
+    <published>2018-01-08T12:00:00.000Z</published>
+    <updated>2018-06-27T13:58:24.536Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="utldtree"><a href="#utldtree" class="headerlink" title="utldtree"></a>utldtree</h1><blockquote><p>utldtree.sql是Oracle 提供的一个分析依赖的sql文件。</p><p>路径：%ORACLE_CLIENT%\RDBMS\ADMIN</p><p>因为没有包含在数据库标准包中，所以需要<strong>自己手动在数据库中执行utldtree</strong>下。</p></blockquote><h2 id="utldtree创建的objects"><a href="#utldtree创建的objects" class="headerlink" title="utldtree创建的objects:"></a>utldtree创建的objects:</h2><blockquote><p>序列：deptree_seq</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; create sequence deptree_seq cache 200</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><p>表：deptree_temptab</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; create table deptree_temptab</span><br><span class="line">&gt; (</span><br><span class="line">&gt; object_id            number,</span><br><span class="line">&gt; referenced_object_id number,</span><br><span class="line">&gt; nest_level           number,</span><br><span class="line">&gt; seq#                 number      </span><br><span class="line">&gt; )</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><p>视图：deptree，ideptree</p><p>过程：deptree_fill</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; create or replace procedure deptree_fill (type char, schema char, name char)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><h2 id="生成依赖关系步骤"><a href="#生成依赖关系步骤" class="headerlink" title="生成依赖关系步骤"></a>生成依赖关系步骤</h2><h3 id="生成依赖关系"><a href="#生成依赖关系" class="headerlink" title="生成依赖关系"></a>生成依赖关系</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 1.生成依赖关系</span><br><span class="line">-- 说明：每一次调用会“清空”表DEPTREE_TEMPTAB</span><br><span class="line">-- 参数说明：</span><br><span class="line">--  type：对象类型（table,view,procedure...）</span><br><span class="line">--  schema：当前用户名称</span><br><span class="line">--  name：对象名称（待查询的被人依赖的对象）</span><br><span class="line"></span><br><span class="line">CALL DEPTREE_FILL(&apos;PROCEDURE&apos;, &apos;EXCEL&apos;, &apos;CONCAT&apos;);</span><br></pre></td></tr></table></figure><h3 id="查询依赖关系结果1"><a href="#查询依赖关系结果1" class="headerlink" title="查询依赖关系结果1"></a>查询依赖关系结果1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 2. 查询依赖关系结果</span><br><span class="line">-- 说明：</span><br><span class="line">--   这个视图附带嵌套层次</span><br><span class="line"></span><br><span class="line">SELECT * FROM DEPTREE D ORDER BY D.SEQ#;</span><br></pre></td></tr></table></figure><h3 id="查询依赖关系结果2"><a href="#查询依赖关系结果2" class="headerlink" title="查询依赖关系结果2"></a>查询依赖关系结果2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 3. 查询依赖关系结果</span><br><span class="line">-- 说明：</span><br><span class="line">--   步骤：3和2一样，只是展示方式不同</span><br><span class="line"></span><br><span class="line">SELECT * FROM IDEPTREE;</span><br></pre></td></tr></table></figure><h3 id="动态语句中的object依赖无法分析"><a href="#动态语句中的object依赖无法分析" class="headerlink" title="动态语句中的object依赖无法分析"></a>动态语句中的object依赖无法分析</h3><blockquote><p>动态的SQL语句中的依赖关系是无法分析出来。所以建议少用动态语句。</p><p>动态语句解决方法：ASK TOM上提供了间接的方法。</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; </span><br><span class="line">1 CREATE or replace PROCEDURE testproc IS </span><br><span class="line">2 i PLS_INTEGER; </span><br><span class="line">3 var_table varchar2(7):=&apos;TESTTAB&apos;; </span><br><span class="line">-- 创建一个间接依赖，但是在过程中没有使用。</span><br><span class="line">4 cursor dummy is select * from TESTTAB; </span><br><span class="line">5 BEGIN </span><br><span class="line">6 execute immediate &apos;SELECT COUNT(*) FROM &apos;||var_table||&apos;&apos; INTO i; </span><br><span class="line">7 dbms_output.put_line(TO_CHAR(i)); </span><br><span class="line">8* END testproc; </span><br><span class="line">9 / </span><br><span class="line"></span><br><span class="line">Procedure created. </span><br><span class="line"></span><br><span class="line">Elapsed: 00:00:00.09 </span><br><span class="line">SQL&gt; exec dbms_utility.get_dependency(&apos;TABLE&apos;, &apos;DWHADMIN&apos;,&apos;TESTTAB&apos;);</span><br></pre></td></tr></table></figure><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p><a href="https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:128114400346342023" target="_blank" rel="noopener">how to find the dependencies of table?</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;utldtree&quot;&gt;&lt;a href=&quot;#utldtree&quot; class=&quot;headerlink&quot; title=&quot;utldtree&quot;&gt;&lt;/a&gt;utldtree&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;utldtree.sql是Oracle 提供的一个分析依赖的sql
+      
+    
+    </summary>
+    
+      <category term="PLSQL" scheme="https://betgar.github.io/categories/PLSQL/"/>
+    
+    
+      <category term="PLSQL" scheme="https://betgar.github.io/tags/PLSQL/"/>
+    
+      <category term="utldtree" scheme="https://betgar.github.io/tags/utldtree/"/>
     
   </entry>
   
