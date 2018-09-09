@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="SQL style guideOverviewYou can use this set of guidelines, fork them or make your own - thekey here is that you pick a style and stick to it. To suggest changesor fix bugs please open an issue or pull">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-28T11:24:48.097Z">
+<meta property="og:updated_time" content="2018-06-27T13:49:13.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL style guide">
 <meta name="twitter:description" content="SQL style guideOverviewYou can use this set of guidelines, fork them or make your own - thekey here is that you pick a style and stick to it. To suggest changesor fix bugs please open an issue or pull">
@@ -362,7 +362,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-28T11:24:48.097Z" itemprop="dateUpdated">2018-06-28 19:24:48</time>
+    最后更新时间：<time datetime="2018-06-27T13:49:13.496Z" itemprop="dateUpdated">2018-06-27 21:49:13</time>
 </span><br>
 
 
@@ -442,18 +442,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/13/how-to-use-base64-between-oracle-and-java/" id="post-prev" class="post-nav-link">
+      <a href="/2018/02/26/jquery-cookie-plug-api/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">在Oracle和Java中使用Base64</h4>
+        <h4 class="title">jQuery cookie插件使用例子</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/02/26/jquery-cookie-plug-api/" id="post-next" class="post-nav-link">
+      <a href="/2018/01/08/how-to-use-utldtree/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">jQuery cookie插件使用例子</h4>
+        <h4 class="title">NPM的正确使用姿势</h4>
       </a>
     </div>
   
@@ -627,6 +627,23 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'I will be back！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Welcome back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
 
 
 
