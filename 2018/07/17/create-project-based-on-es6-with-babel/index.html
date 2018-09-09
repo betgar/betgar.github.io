@@ -210,7 +210,7 @@
 <blockquote>
 <p>目标环境根据自己实际的环境定义，具体参考<a href="https://www.babeljs.cn/docs/plugins/preset-env/" target="_blank" rel="noopener">preset-env</a></p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> rimraf 用来删除文件的</span><br><span class="line">npm install babel-cli babel-preset-es2015 rimraf --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> rimraf 用来删除文件的</span></span><br><span class="line">npm install babel-cli babel-preset-es2015 rimraf --save-dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建 <code>.babelrc</code> 配置文件</p>
 <blockquote>
@@ -315,9 +315,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/07/26/perfect-full-page-background-image/" id="post-prev" class="post-nav-link">
+      <a href="/2018/07/23/bootstrap-form-layout/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">自适应全背景图片布局</h4>
+        <h4 class="title">Bootstrap 表单布局</h4>
       </a>
     </div>
   
@@ -500,23 +500,6 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = 'I will be back！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = 'Welcome back!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 
