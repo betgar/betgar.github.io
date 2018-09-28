@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="node">
-    <meta name="description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 LTS 此">
+    <meta name="description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node，npm已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 L">
 <meta name="keywords" content="node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node环境配置">
 <meta property="og:url" content="https://betgar.github.io/2018/06/01/node-env-config/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 LTS 此">
+<meta property="og:description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node，npm已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 L">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-27T12:27:46.537Z">
+<meta property="og:updated_time" content="2018-09-28T01:06:06.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node环境配置">
-<meta name="twitter:description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 LTS 此">
+<meta name="twitter:description" content="Node环境配置 Node环境及配置参考  nvm for windows nvm是一个Node的版本管理模块，使用它可以随时切换Node环境。 注意: 安装 node 前保证自己电脑中的node，npm已卸载干净  nvm安装  nvm-windows   查看当前版本   1nvm  --version  查看当前已安装 node 的版本   1nvm ls  安装某版本 node， 根据 L">
     
         <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
     
@@ -172,7 +172,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Node环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">Node环境配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nvm-for-windows"><span class="post-toc-number">2.</span> <span class="post-toc-text">nvm for windows</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvm安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">nvm安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nrm管理下载源"><span class="post-toc-number">3.</span> <span class="post-toc-text">nrm管理下载源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nrm的安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">nrm的安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python-安装"><span class="post-toc-number">4.</span> <span class="post-toc-text">python 安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python依赖-net-framework-4-5"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">python依赖.net framework 4.5</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#chrome-driver安装"><span class="post-toc-number">5.</span> <span class="post-toc-text">chrome driver安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue项目使用sass"><span class="post-toc-number">6.</span> <span class="post-toc-text">vue项目使用sass</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装依赖"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">安装依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置webpack"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">配置webpack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Node环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">Node环境配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nvm-for-windows"><span class="post-toc-number">2.</span> <span class="post-toc-text">nvm for windows</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvm安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">nvm安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nrm管理下载源"><span class="post-toc-number">3.</span> <span class="post-toc-text">nrm管理下载源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nrm的安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">nrm的安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python-安装"><span class="post-toc-number">4.</span> <span class="post-toc-text">python 安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python依赖-net-framework-4-5"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">python依赖.net framework 4.5</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-gyp配置python"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">node-gyp配置python</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm配置python"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">npm配置python</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#verdaccio安装"><span class="post-toc-number">5.</span> <span class="post-toc-text">verdaccio安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#chrome-driver安装"><span class="post-toc-number">6.</span> <span class="post-toc-text">chrome driver安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue项目使用sass"><span class="post-toc-number">7.</span> <span class="post-toc-text">vue项目使用sass</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装依赖"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">安装依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置webpack"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">配置webpack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -201,7 +201,7 @@
 </blockquote>
 <h2 id="nvm-for-windows"><a href="#nvm-for-windows" class="headerlink" title="nvm for windows"></a>nvm for windows</h2><blockquote>
 <p><code>nvm</code>是一个Node的版本管理模块，使用它可以随时切换Node环境。</p>
-<p>注意: 安装 node 前保证自己电脑中的node已<strong>卸载干净</strong></p>
+<p>注意: 安装 node 前保证自己电脑中的<code>node</code>，<code>npm</code>已<strong>卸载干净</strong></p>
 </blockquote>
 <h3 id="nvm安装"><a href="#nvm安装" class="headerlink" title="nvm安装"></a>nvm安装</h3><blockquote>
 <p> <a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">nvm-windows</a></p>
@@ -213,7 +213,7 @@
 <li><p>查看当前已安装 node 的版本</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装某版本 node， 根据 <a href="https://github.com/nodejs/LTS" target="_blank" rel="noopener">LTS</a> 此处安装 v6.11.1</p>
+<li><p>安装某版本 node， 根据 <a href="https://github.com/nodejs/LTS" target="_blank" rel="noopener">LTS</a> 查看此处安装 8.11.1</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 8.11.1</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用某版本 node </p>
@@ -234,10 +234,10 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm ls</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>切换淘宝源</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试源延迟毫秒数 (也与当前网络环境有关)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm test</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="python-安装"><a href="#python-安装" class="headerlink" title="python 安装"></a>python 安装</h2><blockquote>
@@ -247,6 +247,38 @@
 <p>解决方式1：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># run as Administrator</span></span><br><span class="line">npm install --global --production windows-build-tools</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解决方式2：自己到微软的官网下载最新的.net framework安装。</p>
+</blockquote>
+<h3 id="node-gyp配置python"><a href="#node-gyp配置python" class="headerlink" title="node-gyp配置python"></a>node-gyp配置python</h3><blockquote>
+<p><strong>注意：</strong></p>
+<p><a href="https://github.com/nodejs/node-gyp#readme" target="_blank" rel="noopener">node-gyp官网</a></p>
+<p>因为python有v2和v3版本，并且两个版本不兼容，如果电脑上有应用软件使用python的版本不同，</p>
+<p>最好<strong>不要</strong>把python路径配置到系统<code>path</code>中。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果你使用node-gyp单独编译一些模块，则这样配置（多数情况下是通过npm调用的）</span></span><br><span class="line">node-gyp --python /path/to/python2.7</span><br></pre></td></tr></table></figure>
+<h3 id="npm配置python"><a href="#npm配置python" class="headerlink" title="npm配置python"></a>npm配置python</h3><blockquote>
+<p>如果使用npm 调用的<code>node-gyp</code>，则使用<code>npm</code>配置<code>python</code>就可以</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> python /path/to/executable/python2.7</span><br></pre></td></tr></table></figure>
+<h2 id="verdaccio安装"><a href="#verdaccio安装" class="headerlink" title="verdaccio安装"></a>verdaccio安装</h2><blockquote>
+<p>如果搭建npm私服可以参考。<a href="https://verdaccio.org/zh-CN/" target="_blank" rel="noopener">verdaccio官网</a></p>
+<p>verdaccio是用来搭建npm私服，已经安装过的模块会缓存起来，以后安装依赖是会优先查看缓存。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g verdaccio</span><br></pre></td></tr></table></figure>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">verdaccio</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><blockquote>
+<p>配置主要修改使用<code>taobao</code>源和<code>端口</code>修改</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 配置文件地址：我的window 10是.config非官网说的.local</span><br><span class="line"># C:\Users\你的用户名称\.config\verdaccio</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>修改默认端口（如果有需要）</li>
+<li>添加uplinks</li>
+<li>修改使用的proxy</li>
+</ol>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改默认的端口</span></span><br><span class="line"><span class="attr">listen:</span></span><br><span class="line">  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">:10086</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># a list of other known repositories we can talk to</span></span><br><span class="line"><span class="attr">uplinks:</span></span><br><span class="line"><span class="attr">  npmjs:</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">https://registry.npmjs.org/</span></span><br><span class="line">  <span class="comment"># 添加taobao</span></span><br><span class="line"><span class="attr">  taobao:</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">https://registry.npm.taobao.org</span></span><br><span class="line"></span><br><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="string">'@*/*'</span><span class="string">:</span></span><br><span class="line">    <span class="comment"># scoped packages</span></span><br><span class="line"><span class="attr">    access:</span> <span class="string">$all</span></span><br><span class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></span><br><span class="line">    <span class="comment"># 使用taobao</span></span><br><span class="line"><span class="attr">    proxy:</span> <span class="string">taobao</span> </span><br><span class="line"></span><br><span class="line">  <span class="string">'**'</span><span class="string">:</span></span><br><span class="line">    <span class="comment"># allow all users (including non-authenticated users) to read and</span></span><br><span class="line">    <span class="comment"># publish all packages</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment"># you can specify usernames/groupnames (depending on your auth plugin)</span></span><br><span class="line">    <span class="comment"># and three keywords: "$all", "$anonymous", "$authenticated"</span></span><br><span class="line"><span class="attr">    access:</span> <span class="string">$all</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># allow all known users to publish packages</span></span><br><span class="line">    <span class="comment"># (anyone can register by default, remember?)</span></span><br><span class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># if package is not available locally, proxy requests to 'npmjs' registry</span></span><br><span class="line"><span class="attr">    proxy:</span> <span class="string">taobao</span> <span class="comment"># 使用taobao</span></span><br></pre></td></tr></table></figure>
 <h2 id="chrome-driver安装"><a href="#chrome-driver安装" class="headerlink" title="chrome driver安装"></a>chrome driver安装</h2><blockquote>
 <p>使用淘宝源</p>
 </blockquote>
@@ -266,7 +298,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-06-27T12:27:46.537Z" itemprop="dateUpdated">2018-06-27 20:27:46</time>
+    最后更新时间：<time datetime="2018-09-28T01:06:06.245Z" itemprop="dateUpdated">2018-09-28 09:06:06</time>
 </span><br>
 
 
