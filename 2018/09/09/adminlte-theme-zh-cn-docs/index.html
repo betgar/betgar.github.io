@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>adminlte-theme-zh-cn-docs | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="adminlte">
+    <meta name="description" content="adminlte主题中文文档 文件结构  12345678910111213141516File Hierarchy of the Source Code Package      AdminLTE/      ├── dist/      │   ├── CSS/      │   ├── JS      │   ├── img      ├── build/      │   ├── less">
+<meta name="keywords" content="adminlte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="adminlte-theme-zh-cn-docs">
+<meta property="og:url" content="https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="adminlte主题中文文档 文件结构  12345678910111213141516File Hierarchy of the Source Code Package      AdminLTE/      ├── dist/      │   ├── CSS/      │   ├── JS      │   ├── img      ├── build/      │   ├── less">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://betgar.github.io/img/2018-09-09-adminlte-theme-zh-cn-docs/infobox-1.png">
+<meta property="og:image" content="https://betgar.github.io/img/2018-09-09-adminlte-theme-zh-cn-docs/infobox-2.png">
+<meta property="og:updated_time" content="2018-09-30T01:52:55.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="adminlte-theme-zh-cn-docs">
+<meta name="twitter:description" content="adminlte主题中文文档 文件结构  12345678910111213141516File Hierarchy of the Source Code Package      AdminLTE/      ├── dist/      │   ├── CSS/      │   ├── JS      │   ├── img      ├── build/      │   ├── less">
+<meta name="twitter:image" content="https://betgar.github.io/img/2018-09-09-adminlte-theme-zh-cn-docs/infobox-1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">adminlte-theme-zh-cn-docs</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">adminlte-theme-zh-cn-docs</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-09T08:52:00.000Z" itemprop="datePublished" class="page-time">
+  2018-09-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/adminlte/">adminlte</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#adminlte主题中文文档"><span class="post-toc-number">1.</span> <span class="post-toc-text">adminlte主题中文文档</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布局options"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">布局options</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#皮肤"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">皮肤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#adminlte-JavaScirpt选项"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">adminlte JavaScirpt选项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编辑app-js"><span class="post-toc-number">1.3.0.1.</span> <span class="post-toc-text">编辑app.js</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义AdminlteOptions"><span class="post-toc-number">1.3.0.2.</span> <span class="post-toc-text">定义AdminlteOptions</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主标题"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">主标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#侧边航栏"><span class="post-toc-number">1.3.1.1.</span> <span class="post-toc-text">侧边航栏</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#顶部导航布局"><span class="post-toc-number">1.3.1.2.</span> <span class="post-toc-text">顶部导航布局</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sidebar"><span class="post-toc-number">1.3.1.3.</span> <span class="post-toc-text">sidebar</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#控制边栏"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">控制边栏</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信息框"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">信息框</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一类信息框"><span class="post-toc-number">1.3.3.1.</span> <span class="post-toc-text">第一类信息框</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二类信息框"><span class="post-toc-number">1.3.3.2.</span> <span class="post-toc-text">第二类信息框</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#框"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">框</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#默认Box标记"><span class="post-toc-number">1.3.4.1.</span> <span class="post-toc-text">默认Box标记</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实心盒子"><span class="post-toc-number">1.3.4.2.</span> <span class="post-toc-text">实心盒子</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#盒子工具"><span class="post-toc-number">1.3.4.3.</span> <span class="post-toc-text">盒子工具</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Loading-States"><span class="post-toc-number">1.3.4.4.</span> <span class="post-toc-text">Loading States</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-adminlte-theme-zh-cn-docs"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">adminlte-theme-zh-cn-docs</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-09 16:52:00" datetime="2018-09-09T08:52:00.000Z"  itemprop="datePublished">2018-09-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/adminlte/">adminlte</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="adminlte主题中文文档"><a href="#adminlte主题中文文档" class="headerlink" title="adminlte主题中文文档"></a>adminlte主题中文文档</h1><blockquote>
+<p>文件结构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">File Hierarchy of the Source Code Package</span><br><span class="line"></span><br><span class="line">      AdminLTE/</span><br><span class="line">      ├── dist/</span><br><span class="line">      │   ├── CSS/</span><br><span class="line">      │   ├── JS</span><br><span class="line">      │   ├── img</span><br><span class="line">      ├── build/</span><br><span class="line">      │   ├── less/</span><br><span class="line">      │   │   ├── AdminLTE&apos;s Less files</span><br><span class="line">      │   └── Bootstrap-less/ (Only for reference. No modifications have been made)</span><br><span class="line">      │       ├── mixins/</span><br><span class="line">      │       ├── variables.less</span><br><span class="line">      │       ├── mixins.less</span><br><span class="line">      └── plugins/</span><br><span class="line">          ├── All the customized plugins CSS and JS files</span><br></pre></td></tr></table></figure>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><ul>
+<li><code>.wrapper</code>.一个div包裹着整个网站。</li>
+<li><code>.main-header</code>. 包含导航和logo。</li>
+<li><code>.sidebar-wrapper</code>. 包含用户面板和侧边栏。</li>
+<li><code>.content-wrapper</code>. 包含页面的头部和内容。</li>
+</ul>
+<h3 id="布局options"><a href="#布局options" class="headerlink" title="布局options"></a>布局<code>options</code></h3><ul>
+<li>AdminLTE 2.0提供了一组应用于主布局的选项。可以将这些类中的每一个添加到body标记中以获得所需的目标。<ul>
+<li><strong>修复：</strong>使用该类<code>.fixed</code>获取固定标题和侧边栏。</li>
+<li><strong>折叠边栏：</strong>使用该类<code>.sidebar-collapse</code>在加载时折叠侧边栏。</li>
+<li><strong>盒装布局：</strong>使用该类<code>.layout-boxed</code>获得仅延伸至1250像素的盒装布局。</li>
+<li><strong>顶部导航</strong>使用该类<code>.layout-top-nav</code>删除侧边栏并在顶部导航栏中显示您的链接。</li>
+</ul>
+</li>
+</ul>
+<h2 id="皮肤"><a href="#皮肤" class="headerlink" title="皮肤"></a>皮肤</h2><p>皮肤可以在dist / css / skins文件夹中找到。选择所需的外观文件，然后将相应的类添加到body标签以更改模板的外观。以下是可用皮肤的列表： </p>
+<table>
+<thead>
+<tr>
+<th>皮肤</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skin-blue</code></td>
+</tr>
+<tr>
+<td><code>skin-blue-light</code></td>
+</tr>
+<tr>
+<td><code>skin-yellow</code></td>
+</tr>
+<tr>
+<td><code>skin-yellow-light</code></td>
+</tr>
+<tr>
+<td><code>skin-green</code></td>
+</tr>
+<tr>
+<td><code>skin-green-light</code></td>
+</tr>
+<tr>
+<td><code>skin-purple</code></td>
+</tr>
+<tr>
+<td><code>skin-purple-light</code></td>
+</tr>
+<tr>
+<td><code>skin-red</code></td>
+</tr>
+<tr>
+<td><code>skin-red-light</code></td>
+</tr>
+<tr>
+<td><code>skin-black</code></td>
+</tr>
+<tr>
+<td><code>skin-black-light</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="adminlte-JavaScirpt选项"><a href="#adminlte-JavaScirpt选项" class="headerlink" title="adminlte JavaScirpt选项"></a>adminlte JavaScirpt选项</h2><p>可以使用以下方法之一修改AdminLTE app.js的选项。 </p>
+<h4 id="编辑app-js"><a href="#编辑app-js" class="headerlink" title="编辑app.js"></a>编辑app.js</h4><p>在主Javascript文件中，修改<code>$.AdminLTE.options</code>对象以适合您的用例。 </p>
+<h4 id="定义AdminlteOptions"><a href="#定义AdminlteOptions" class="headerlink" title="定义AdminlteOptions"></a>定义AdminlteOptions</h4><p>在初始化app.js之前初始化，例如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">var</span> AdminLTEOptions = &#123;</span><br><span class="line">        <span class="comment">//Enable sidebar expand on hover effect for sidebar mini</span></span><br><span class="line">        <span class="comment">//This option is forced to true if both the fixed layout and sidebar mini</span></span><br><span class="line">        <span class="comment">//are used together</span></span><br><span class="line">        sidebarExpandOnHover: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//BoxRefresh Plugin</span></span><br><span class="line">        enableBoxRefresh: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//Bootstrap.js tooltip</span></span><br><span class="line">        enableBSToppltip: <span class="literal">true</span></span><br><span class="line">    &#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="dist/</span>js/app.js<span class="string">" type="</span>text/javascript<span class="string">"&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 添加slimscroll.js到导航菜单，在每个页面的app.js加载之前</span></span><br><span class="line">    navbarMenuSlimscroll: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// scroll bar的width</span></span><br><span class="line">    navbarMenuSlimscrollWidth: <span class="string">"3px"</span>,</span><br><span class="line">    <span class="comment">// inner menu的height</span></span><br><span class="line">    navbarMenuHeight: <span class="string">"200px"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通用的动画速度，例如box的collapse/expend和sidebar treeview的slid up/down</span></span><br><span class="line">    <span class="comment">// 这个选项接受毫秒整数或者 fast, normal, slow</span></span><br><span class="line">    animationSpeed: <span class="number">500</span>,</span><br><span class="line">    <span class="comment">// sidebar中的push menu 触发器的选择器</span></span><br><span class="line">    sidebarToggleSelector: <span class="string">"[data-toggle='offcanvas']"</span>,</span><br><span class="line">    <span class="comment">// 激活状态的sidebar的push menu</span></span><br><span class="line">    sidebarPushMenu: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 如果设置fixed layout，激活sidebar的slimscroll</span></span><br><span class="line">    sidebarSlimScroll: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 开启 sidebar mini的expand悬浮特效</span></span><br><span class="line">    <span class="comment">// 这个选项在fixed layout和sidebar mini同时使用的时候强制设置为true</span></span><br><span class="line">    sidebarExpandOnHover: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 开启 BoxRefresh 插件</span></span><br><span class="line">    enableBoxRefresh: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 开启bootstrap.js的tooltip插件</span></span><br><span class="line">    enableBSToppltip: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// bootstrap tooltip的选择器</span></span><br><span class="line">    BSTooltipSelector: <span class="string">"[data-toggle='tooltip']"</span>,</span><br><span class="line">    <span class="comment">// 开启fast click, fastclick.js 在触控设备上创建了一个更原生的触控体验</span></span><br><span class="line">    <span class="comment">// 如果你开启了，确保在app.js加载之前加载fastclick.js</span></span><br><span class="line">    enableFastclick: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">//Control Sidebar Tree Views</span></span><br><span class="line">    <span class="comment">// 开启控制 sidebar tree views</span></span><br><span class="line">    enableControlTreeView: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 开启 控制sidebar</span></span><br><span class="line">    enableControlSidebar: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// control sidebar options</span></span><br><span class="line">    controlSidebarOptions: &#123;</span><br><span class="line">      <span class="comment">// 触发sidebar open/close事件的button选择器</span></span><br><span class="line">      toggleBtnSelector: <span class="string">"[data-toggle='control-sidebar']"</span>,</span><br><span class="line">      <span class="comment">// sidebar 选择器</span></span><br><span class="line">      selector: <span class="string">".control-sidebar"</span>,</span><br><span class="line">      <span class="comment">// 开启slide over content</span></span><br><span class="line">      slide: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 开启这个选项允许box的collapsed 和 removed效果</span></span><br><span class="line">    enableBoxWidget: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">//Box Widget plugin options</span></span><br><span class="line">    boxWidgetOptions: &#123;</span><br><span class="line">      boxWidgetIcons: &#123;</span><br><span class="line">        <span class="comment">// 折叠的图标</span></span><br><span class="line">        collapse: <span class="string">'fa-minus'</span>,</span><br><span class="line">        <span class="comment">// 展开图标</span></span><br><span class="line">        open: <span class="string">'fa-plus'</span>,</span><br><span class="line">        <span class="comment">// 移除图标</span></span><br><span class="line">        remove: <span class="string">'fa-times'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      boxWidgetSelectors: &#123;</span><br><span class="line">        <span class="comment">// 移除按钮的选择器</span></span><br><span class="line">        remove: <span class="string">'[data-widget="remove"]'</span>,</span><br><span class="line">        <span class="comment">// 折叠按钮的选择器</span></span><br><span class="line">        collapse: <span class="string">'[data-widget="collapse"]'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Direct Chat plugin options</span></span><br><span class="line">    directChat: &#123;</span><br><span class="line">      <span class="comment">// 开启direct chat插件</span></span><br><span class="line">      enable: <span class="literal">true</span>,</span><br><span class="line">      <span class="comment">// 开启或关闭聊天联系人窗口的button选择器</span></span><br><span class="line">      contactToggleSelector: <span class="string">'[data-widget="chat-pane-toggle"]'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//Define the set of colors to use globally around the website</span></span><br><span class="line">    <span class="comment">// 定一个站点的全局一个颜色集合</span></span><br><span class="line">    colors: &#123;</span><br><span class="line">      lightBlue: <span class="string">"#3c8dbc"</span>,</span><br><span class="line">      red: <span class="string">"#f56954"</span>,</span><br><span class="line">      green: <span class="string">"#00a65a"</span>,</span><br><span class="line">      aqua: <span class="string">"#00c0ef"</span>,</span><br><span class="line">      yellow: <span class="string">"#f39c12"</span>,</span><br><span class="line">      blue: <span class="string">"#0073b7"</span>,</span><br><span class="line">      navy: <span class="string">"#001F3F"</span>,</span><br><span class="line">      teal: <span class="string">"#39CCCC"</span>,</span><br><span class="line">      olive: <span class="string">"#3D9970"</span>,</span><br><span class="line">      lime: <span class="string">"#01FF70"</span>,</span><br><span class="line">      orange: <span class="string">"#FF851B"</span>,</span><br><span class="line">      fuchsia: <span class="string">"#F012BE"</span>,</span><br><span class="line">      purple: <span class="string">"#8E24AA"</span>,</span><br><span class="line">      maroon: <span class="string">"#D81B60"</span>,</span><br><span class="line">      black: <span class="string">"#222222"</span>,</span><br><span class="line">      gray: <span class="string">"#d2d6de"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//The standard screen sizes that bootstrap uses.</span></span><br><span class="line">    <span class="comment">//If you change these in the variables.less file, change</span></span><br><span class="line">    <span class="comment">//them here too.</span></span><br><span class="line">    screenSizes: &#123;</span><br><span class="line">      xs: <span class="number">480</span>,</span><br><span class="line">      sm: <span class="number">768</span>,</span><br><span class="line">      md: <span class="number">992</span>,</span><br><span class="line">      lg: <span class="number">1200</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="主标题"><a href="#主标题" class="headerlink" title="主标题"></a>主标题</h3><p>主标题包含徽标和导航栏。导航栏的构造与Bootstrap略有不同，因为它具有Bootstrap不提供的组件。导航栏可以通过两种方式构建。这是普通导航栏的示例，接下来我们将提供顶部导航布局的示例。</p>
+<h4 id="侧边航栏"><a href="#侧边航栏" class="headerlink" title="侧边航栏"></a>侧边航栏</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"main-header"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"../../index2.html"</span> <span class="attr">class</span>=<span class="string">"logo"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- LOGO --&gt;</span></span><br><span class="line">        AdminLTE</span><br><span class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Header Navbar: style can be found in header.less --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-static-top"</span> <span class="attr">role</span>=<span class="string">"navigation"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Navbar Right Menu --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-custom-menu"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Messages: style can be found in dropdown.less--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown messages-menu"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-envelope-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-success"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span>You have 4 messages<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                            <span class="comment">&lt;!-- inner menu: contains the actual data --&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="comment">&lt;!-- start message --&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pull-left"</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"dist/img/user2-160x160.jpg"</span> </span></span><br><span class="line"><span class="tag">                                                 <span class="attr">class</span>=<span class="string">"img-circle"</span> <span class="attr">alt</span>=<span class="string">"User Image"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><br><span class="line">                                            Sender Name</span><br><span class="line">                                            <span class="tag">&lt;<span class="name">small</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-clock-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 5 mins<span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Message Excerpt<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="comment">&lt;!-- end message --&gt;</span></span><br><span class="line">                                ...</span><br><span class="line">                            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>See All Messages<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Notifications: style can be found in dropdown.less --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown notifications-menu"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-bell-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-warning"</span>&gt;</span>10<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span>You have 10 notifications<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                            <span class="comment">&lt;!-- inner menu: contains the actual data --&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"ion ion-ios-people info"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                                        Notification title</span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                                ...</span><br><span class="line">                            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>View all<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- Tasks: style can be found in dropdown.less --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown tasks-menu"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-flag-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-danger"</span>&gt;</span>9<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span>You have 9 tasks<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">                            <span class="comment">&lt;!-- inner menu: contains the actual data --&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="comment">&lt;!-- Task item --&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><br><span class="line">                                            Design some buttons</span><br><span class="line">                                            <span class="tag">&lt;<span class="name">small</span> <span class="attr">class</span>=<span class="string">"pull-right"</span>&gt;</span>20%<span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress xs"</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress-bar progress-bar-aqua"</span> 												<span class="attr">style</span>=<span class="string">"width: 20%"</span> <span class="attr">role</span>=<span class="string">"progressbar"</span></span></span><br><span class="line"><span class="tag">                                                 <span class="attr">aria-valuenow</span>=<span class="string">"20"</span> <span class="attr">aria-valuemin</span>=<span class="string">"0"</span> <span class="attr">aria-</span>													<span class="attr">valuemax</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">                                                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>20% Complete<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="comment">&lt;!-- end task item --&gt;</span></span><br><span class="line">                                ...</span><br><span class="line">                            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>View all tasks<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- User Account: style can be found in dropdown.less --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown user user-menu"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"dist/img/user2-160x160.jpg"</span> </span></span><br><span class="line"><span class="tag">                             <span class="attr">class</span>=<span class="string">"user-image"</span> <span class="attr">alt</span>=<span class="string">"User Image"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"hidden-xs"</span>&gt;</span>Alexander Pierce<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- User image --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"user-header"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"dist/img/user2-160x160.jpg"</span> </span></span><br><span class="line"><span class="tag">                                 <span class="attr">class</span>=<span class="string">"img-circle"</span> <span class="attr">alt</span>=<span class="string">"User Image"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">                                Alexander Pierce - Web Developer</span><br><span class="line">                                <span class="tag">&lt;<span class="name">small</span>&gt;</span>Member since Nov. 2012<span class="tag">&lt;/<span class="name">small</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- Menu Body --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"user-body"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-4 text-center"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Followers<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-4 text-center"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Sales<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-xs-4 text-center"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Friends<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                        <span class="comment">&lt;!-- Menu Footer--&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"user-footer"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pull-left"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-flat"</span>&gt;</span>Profile<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pull-right"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"btn btn-default btn-flat"</span>&gt;</span>Sign out<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="顶部导航布局"><a href="#顶部导航布局" class="headerlink" title="顶部导航布局"></a>顶部导航布局</h4><blockquote>
+<p>要使用此主标题而不是常规标题，必须将该<code>layout-top-nav</code>类添加到body标记中。 </p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"main-header"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-static-top"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"../../index2.html"</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Admin<span class="tag">&lt;/<span class="name">b</span>&gt;</span>LTE<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"navbar-toggle collapsed"</span></span></span><br><span class="line"><span class="tag">                   <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">data-target</span>=<span class="string">"#navbar-collapse"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-bars"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">&lt;!-- Collect the nav links, forms, and other content for toggling --&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"navbar-collapse"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>(current)<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown"</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> </span></span><br><span class="line"><span class="tag">                  <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span>Dropdown <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span> <span class="attr">role</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Action<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Another action<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Something else here<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Separated link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>One more separated link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"navbar-form navbar-left"</span> <span class="attr">role</span>=<span class="string">"search"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> </span></span><br><span class="line"><span class="tag">                      <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"navbar-search-input"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown"</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span>Dropdown <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span> <span class="attr">role</span>=<span class="string">"menu"</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Action<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Another action<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Something else here<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Separated link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.navbar-collapse --&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.container-fluid --&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="sidebar"><a href="#sidebar" class="headerlink" title="sidebar"></a>sidebar</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-sidebar"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Inner sidebar --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sidebar"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- user panel (Optional) --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"user-panel"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pull-left image"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"dist/img/user2-160x160.jpg"</span> <span class="attr">class</span>=<span class="string">"img-circle"</span> <span class="attr">alt</span>=<span class="string">"User Image"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pull-left info"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">p</span>&gt;</span>User Name<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-circle text-success"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> Online<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.user-panel --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Search Form (Optional) --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">method</span>=<span class="string">"get"</span> <span class="attr">class</span>=<span class="string">"sidebar-form"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"q"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search..."</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-btn"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">"search"</span> <span class="attr">id</span>=<span class="string">"search-btn"</span></span></span><br><span class="line"><span class="tag">                            <span class="attr">class</span>=<span class="string">"btn btn-flat"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-search"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span><span class="comment">&lt;!-- /.sidebar-form --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Sidebar Menu --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"sidebar-menu"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span>HEADER<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- Optionally, you can add icons to the links --&gt;</span></span><br><span class="line">            &lt;li class="active"&gt;&lt;a href="#"&gt;&lt;span&gt;Link&lt;/span&gt;&lt;/a&gt;&lt;&lt;/li&gt;</span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>Another Link<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"treeview"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>Multilevel<span class="tag">&lt;/<span class="name">span</span>&gt;</span> </span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-angle-left pull-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"treeview-menu"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link in level 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link in level 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span><span class="comment">&lt;!-- /.sidebar-menu --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.sidebar --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.main-sidebar --&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="控制边栏"><a href="#控制边栏" class="headerlink" title="控制边栏"></a>控制边栏</h3><p>控制侧栏是右侧栏。它可以用于多种用途，并且非常容易创建。侧边栏有两种不同的显示/隐藏样式。第一个允许侧边栏在内容上滑动。第二个推送内容为侧边栏腾出空间。可以通过<a href="http://192.168.56.1:53210/documentation/#adminlte-options" target="_blank" rel="noopener">Javascript选项</a>设置这些方法中的任何一个。</p>
+<p>以下代码应放在<code>.wrapper</code>div中。我更喜欢把它放在页脚之后。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- The Right Sidebar --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">"control-sidebar control-sidebar-dark"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Content of the sidebar goes here --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- The sidebar's background --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- This div must placed right after the sidebar for it to work--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"control-sidebar-bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- The Right Sidebar --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aside</span> <span class="attr">class</span>=<span class="string">"control-sidebar control-sidebar-light"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Content of the sidebar goes here --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- The sidebar's background --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- This div must placed right after the sidebar for it to work--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"control-sidebar-bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>创建侧边栏后，您需要一个切换按钮来打开/关闭它。通过将属性添加<code>data-toggle=&quot;control-sidebar&quot;</code>到任何按钮，它将自动充当切换按钮。</p>
+<p>切换按钮示例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span> <span class="attr">data-toggle</span>=<span class="string">"control-sidebar"</span>&gt;</span>Toggle Right Sidebar<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="信息框"><a href="#信息框" class="headerlink" title="信息框"></a>信息框</h3><p>信息框用于显示统计代码段。有两种类型的信息框。</p>
+<h4 id="第一类信息框"><a href="#第一类信息框" class="headerlink" title="第一类信息框"></a>第一类信息框</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/2018-09-09-adminlte-theme-zh-cn-docs/infobox-1.png" alt="infobox" title="">
+                </div>
+                <div class="image-caption">infobox</div>
+            </figure>
+<p>标记 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info-box"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Apply any bg-* class to to the icon to color it --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"info-box-icon bg-red"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-star-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info-box-content"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"info-box-text"</span>&gt;</span>Likes<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"info-box-number"</span>&gt;</span>93,139<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.info-box-content --&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.info-box --&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="第二类信息框"><a href="#第二类信息框" class="headerlink" title="第二类信息框"></a>第二类信息框</h4><p><img src="/img/2018-09-09-adminlte-theme-zh-cn-docs/infobox-2.png" alt="infobox"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Apply any bg-* class to to the info-box to color it --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info-box bg-red"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"info-box-icon"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-comments-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info-box-content"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"info-box-text"</span>&gt;</span>Likes<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"info-box-number"</span>&gt;</span>41,410<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- The progress section is optional --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress-bar"</span> <span class="attr">style</span>=<span class="string">"width: 70%"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"progress-description"</span>&gt;</span></span><br><span class="line">            70% Increase in 30 Days</span><br><span class="line">          <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.info-box-content --&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.info-box --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>您需要更改为在这些样式之间切换的唯一方法是更改bg- <em>类的位置。对于第一个样式，将任何bg- </em>类应用于图标本身。对于其他样式，将bg- *类应用于info-box div。 </p>
+<h3 id="框"><a href="#框" class="headerlink" title="框"></a>框</h3><p>框组件是整个模板中使用最广泛的组件。您可以将它用于从显示图表到文本块的任何内容。它有许多不同的风格，我们将在下面探讨。</p>
+<h4 id="默认Box标记"><a href="#默认Box标记" class="headerlink" title="默认Box标记"></a>默认Box标记</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box”</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box-header</span> <span class="attr">with-border</span>”&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span> =<span class="string">“box-title”</span>&gt;</span>默认框示例<span class="tag">&lt;/ <span class="attr">h3</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box-tools</span> <span class="attr">pull-right</span>”&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span> 按钮，标签和许多其他东西都可以放在这里！ <span class="attr">-</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span> 这是一个标签，例如 <span class="attr">-</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span> =<span class="string">“label</span> <span class="attr">label-primary</span>”&gt;</span>标签<span class="tag">&lt;/ <span class="attr">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span> <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span>  /<span class="attr">.box-tools</span>  <span class="attr">-</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span> <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span>  /<span class="attr">.box-header</span>  <span class="attr">-</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box-body”</span>&gt;</span></span><br><span class="line">          盒子的主体</span><br><span class="line">        <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span> <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span>  /<span class="attr">.box-body</span>  <span class="attr">-</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box-footer”</span>&gt;</span></span><br><span class="line">          盒子的页脚</span><br><span class="line">        <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span> <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span>  <span class="attr">box-footer</span>  <span class="attr">-</span> &gt;</span></span><br><span class="line">      <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span> <span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span>  / <span class="attr">.box</span>  <span class="attr">-</span> &gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-default</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-primary</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-info</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-warning</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-success</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-danger</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="实心盒子"><a href="#实心盒子" class="headerlink" title="实心盒子"></a>实心盒子</h4><p>Solid Boxes是展示盒子的另一种方式。只需将box-solid类添加到box组件即可创建它们。您也可以将固定框与上下文类一起使用。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-solid</span> <span class="attr">box-default</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-solid</span> <span class="attr">box-primary</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-solid</span> <span class="attr">box-info</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-solid</span> <span class="attr">box-warning</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-solid</span> <span class="attr">box-success</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span> =<span class="string">“box</span> <span class="attr">box-solid</span> <span class="attr">box-danger</span>”&gt;</span> ... <span class="tag">&lt;/ <span class="attr">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="盒子工具"><a href="#盒子工具" class="headerlink" title="盒子工具"></a>盒子工具</h4><p>框可以包含用于部署特定事件或提供简单信息的工具。以下示例在框的标题中使用了多个AdminLTE组件。</p>
+<p>AdminLTE data-widget属性提供了可以折叠或删除的框。按钮放置在盒子工具中，盒子工具放置在盒子标题中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span> 这将导致单击时删除框 <span class="attr">-</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span> =<span class="string">“btn</span> <span class="attr">btn-box-tool</span>”<span class="attr">data-widget</span> =<span class="string">“remove”data-toggle</span> =<span class="string">“tooltip”title</span> =<span class="string">“Remove”</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span> =<span class="string">“fa</span> <span class="attr">fa-times</span>”&gt;</span> <span class="tag">&lt;/ <span class="attr">i</span>&gt;</span> <span class="tag">&lt;/ <span class="attr">button</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">！</span> <span class="attr">-</span> 这将导致单击框时折叠 <span class="attr">-</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span> =<span class="string">“btn</span> <span class="attr">btn-box-tool</span>”<span class="attr">data-widget</span> =<span class="string">“collapse”data-toggle</span> =<span class="string">“tooltip”title</span> =<span class="string">“Collapse”</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span> =<span class="string">“fa</span> <span class="attr">fa-minus</span>”&gt;</span> <span class="tag">&lt;/ <span class="attr">i</span>&gt;</span> <span class="tag">&lt;/ <span class="attr">button</span> &gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果在<code>app.js</code>加载后在文档中插入了一个框，则必须通过调用<code>.activateBox()</code>以下方法显式激活折叠/删除按钮：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="string">"#box-widget"</span>).activateBox();</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Loading-States"><a href="#Loading-States" class="headerlink" title="Loading States"></a>Loading States</h4><p>要模拟加载状态，只需将此代码放在<code>.box</code>结束标记之前。 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"overlay"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-refresh fa-spin"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-30T01:52:55.466Z" itemprop="dateUpdated">2018-09-30 09:52:55</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/09/09/adminlte-theme-zh-cn-docs/" target="_blank" rel="external">https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adminlte/">adminlte</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/&title=《adminlte-theme-zh-cn-docs》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/&title=《adminlte-theme-zh-cn-docs》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《adminlte-theme-zh-cn-docs》 — 个人博客&url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/09/12/the-quick-start-of-requirejs/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">the-quick-start-of-requirejs</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/03/AMD-best-practice/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">AMD最佳实践(requirejs)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/&title=《adminlte-theme-zh-cn-docs》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/&title=《adminlte-theme-zh-cn-docs》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《adminlte-theme-zh-cn-docs》 — 个人博客&url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/09/09/adminlte-theme-zh-cn-docs/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3a227CQAwFwPz/T1Opry3J8TpUjXfyFNGyMEGyfDuO+Hp9Xz/vk1fO799dxycuDAyMxzKS45JXktPOz29RMTAwNmDkQfb8uPNw2QnWF5+CgYGBESdt56flYRoDAwOjz8hTyWqKiYGBgdEpYjsNuA7j5locAwPjgYzOYODT938038DAwPjHjNfSlQTKPEHM//r2XRgYGKMZ/aZ/tYmWF6jVR4aBgTGV0SlWq02xc2S1zRe5MTAwRjDy4/Litl++LjbXMDAwhjKqI4FOQ7+6wPHB4SUGBsYDGWtDyjw056sYean8S9cQAwNjKKOTIOZfqxpAq009DAyMHRhJIyx5Emut/7wNV0gQMTAwxjGqixHVo6uF7lo/DQMDYyqjGuw6ITV/otX1MgwMjH0Y1SJzbSRZLWKjJBUDA2MzRlJY5ox8aSNPKAsbHxgYGCMY1eP6o4JqgtgZrGJgYExidIaL+YNIkrw83GNgYOzDyI/op2h3rYVd/A4YGBjjGNWRQI7PVzfysSgGBsaejLVFh7yhf9f9RdGLgYExmpF83SQpXAvHedgtvAsDA2Mco7+8tRZ2O8216BfAwMAYxOjsKuT1cWcp9oY1CwwMjBGMJMiuheB8mayapF5U5BgYGEMZ+dCx04bLA3H5/zEwMDAajLXkspzbYmBgYCyNFTtBOW/PYWBg7MPIi9hq+756vziJxcDAGM3o5F0d5Np6R2uQiYGB8TzGF6w5/vUN+UYCAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

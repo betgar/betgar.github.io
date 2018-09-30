@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>the-quick-start-of-requirejs | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="requirejs,AMD">
+    <meta name="description" content="requirejs的快速入门 阮一峰老师的入门系列。  RequireJS和AMD规范 Javascript模块化编程（一）：模块的写法 Javascript模块化编程（二）：AMD规范 Javascript模块化编程（三）：require.js的用法 AMD规范 AMD规范对loader，loader plugins， require有详细的规定。详情见 AMD 规范wiki，这里还有中文版。">
+<meta name="keywords" content="requirejs,AMD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="the-quick-start-of-requirejs">
+<meta property="og:url" content="https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="requirejs的快速入门 阮一峰老师的入门系列。  RequireJS和AMD规范 Javascript模块化编程（一）：模块的写法 Javascript模块化编程（二）：AMD规范 Javascript模块化编程（三）：require.js的用法 AMD规范 AMD规范对loader，loader plugins， require有详细的规定。详情见 AMD 规范wiki，这里还有中文版。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-30T01:50:16.860Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="the-quick-start-of-requirejs">
+<meta name="twitter:description" content="requirejs的快速入门 阮一峰老师的入门系列。  RequireJS和AMD规范 Javascript模块化编程（一）：模块的写法 Javascript模块化编程（二）：AMD规范 Javascript模块化编程（三）：require.js的用法 AMD规范 AMD规范对loader，loader plugins， require有详细的规定。详情见 AMD 规范wiki，这里还有中文版。">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">the-quick-start-of-requirejs</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">the-quick-start-of-requirejs</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-09-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/">requirejs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/AMD/">AMD</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#requirejs的快速入门"><span class="post-toc-number">1.</span> <span class="post-toc-text">requirejs的快速入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#AMD规范"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">AMD规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#define函数"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">define函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#require函数"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">require函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#require-String"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">require(String)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#require-Array-Function"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">require(Array, Function)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#require-toUrl-String"><span class="post-toc-number">1.1.2.3.</span> <span class="post-toc-text">require.toUrl(String)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#config配置"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">config配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#baseUrl"><span class="post-toc-number">1.1.3.1.</span> <span class="post-toc-text">baseUrl</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#paths"><span class="post-toc-number">1.1.3.2.</span> <span class="post-toc-text">paths</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#packages"><span class="post-toc-number">1.1.3.3.</span> <span class="post-toc-text">packages</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#config"><span class="post-toc-number">1.1.3.4.</span> <span class="post-toc-text">config</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#shim"><span class="post-toc-number">1.1.3.5.</span> <span class="post-toc-text">shim</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#map"><span class="post-toc-number">1.1.3.6.</span> <span class="post-toc-text">map</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#requirejs"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">requirejs</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#data-main入口"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">data-main入口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#define函数-1"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">define函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义一个对象"><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text">定义一个对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义一个函数"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text">定义一个函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#requirejs-undef"><span class="post-toc-number">1.2.2.3.</span> <span class="post-toc-text">requirejs.undef</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#requirejs-config"><span class="post-toc-number">1.2.2.4.</span> <span class="post-toc-text">requirejs.config</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#require-toUrl"><span class="post-toc-number">1.2.2.5.</span> <span class="post-toc-text">require.toUrl</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-quick-start-of-requirejs"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">the-quick-start-of-requirejs</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-12 00:00:00" datetime="2018-09-11T16:00:00.000Z"  itemprop="datePublished">2018-09-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/">requirejs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/AMD/">AMD</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="requirejs的快速入门"><a href="#requirejs的快速入门" class="headerlink" title="requirejs的快速入门"></a>requirejs的快速入门</h1><blockquote>
+<p>阮一峰老师的入门系列。</p>
+</blockquote>
+<p><a href="http://javascript.ruanyifeng.com/tool/requirejs.html" target="_blank" rel="noopener">RequireJS和AMD规范</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="noopener">Javascript模块化编程（一）：模块的写法</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html" target="_blank" rel="noopener">Javascript模块化编程（二）：AMD规范</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener">Javascript模块化编程（三）：require.js的用法</a></p>
+<h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><blockquote>
+<p><code>AMD</code>规范对<code>loader</code>，<code>loader plugins</code>， <code>require</code>有详细的规定。详情见<a href="https://github.com/amdjs/amdjs-api/wiki" target="_blank" rel="noopener"> AMD 规范wiki</a>，这里还有中文版。</p>
+</blockquote>
+<h3 id="define函数"><a href="#define函数" class="headerlink" title="define函数"></a>define函数</h3><p><code>define(id?, dependencies?, factory)</code></p>
+<blockquote>
+<p>require, exports, module 三个模块是<strong>顶级模块</strong>。</p>
+</blockquote>
+<p>例子：</p>
+<p>创建一个名为”alpha”的模块，使用了require，exports，和名为”beta”的模块:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">"alpha"</span>, [<span class="string">"require"</span>, <span class="string">"exports"</span>, <span class="string">"beta"</span>], <span class="function"><span class="keyword">function</span> (<span class="params">require, exports, beta</span>) </span>&#123;</span><br><span class="line">    exports.verb = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> beta.verb();</span><br><span class="line">        <span class="comment">//Or:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">"beta"</span>).verb();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一个返回对象的匿名模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"alpha"</span>], <span class="function"><span class="keyword">function</span> (<span class="params">alpha</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      verb: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> alpha.verb() + <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一个没有依赖性的模块可以直接定义对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(&#123;</span><br><span class="line">  add: <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一个使用了简单CommonJS转换的模块定义：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'a'</span>),</span><br><span class="line">      b = <span class="built_in">require</span>(<span class="string">'b'</span>);</span><br><span class="line"></span><br><span class="line">  exports.action = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="require函数"><a href="#require函数" class="headerlink" title="require函数"></a>require函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'require'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//the require in here is a local require.</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//the require in here is a local require.</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>); <span class="comment">// 全局require</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>全局require函数作用于全局，和define()类似。 全局require和局部require有着相同的行为，包含以下特征：</p>
+<ul>
+<li>模块ID应该认为是一个绝对的模块名称，而不是相对另一个模块的ID。</li>
+<li>只有在异步的时候，才可以使用require(id, callback?)的回调形式。因为异步加载模块的方式是先发出一个异步请求，然后等主线程代码段执行完毕才能进行异步回调来处理加载好的模块。</li>
+</ul>
+<h4 id="require-String"><a href="#require-String" class="headerlink" title="require(String)"></a>require(String)</h4><blockquote>
+<p>如果模块没有加载或者执行完成，就会抛出错误。特别需要指出的是，在同步加载的回调中，如果模块没有加载完成，禁止动态的获取模块，否则，就会抛出异常。</p>
+<p>使用define()定义模块时，依赖项中可以找到一个AMD模块：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'a'</span>);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="require-Array-Function"><a href="#require-Array-Function" class="headerlink" title="require(Array, Function)"></a>require(Array, Function)</h4><blockquote>
+<p>根据参数，<strong>同步</strong>地返回模块ID所代表的模块。</p>
+<p>参数Array是一个由模块ID组成的数组。当模块ID所以代表的模块加载完成且可用时，回调函数Function才开始执行，并且只被执行一次。各个模块按照依赖数组中的位置顺序以参数的形式传入到Function里。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">require</span>([<span class="string">'a'</span>, <span class="string">'b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//modules a and b are now available for use.</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="require-toUrl-String"><a href="#require-toUrl-String" class="headerlink" title="require.toUrl(String)"></a>require.toUrl(String)</h4><blockquote>
+<p>将形如<strong>[module ID] + ‘.extension’</strong>这种字符形式转化成URL路径。</p>
+<p>require.toUrl()方法采用通用的模块ID路径转化规则,将模块ID字符解析成URL路径.但它不支持以”.js”这种扩展形式。所以，我们必须将’.extension’添加到了解析路径里。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cart.js contents:</span></span><br><span class="line">  define (<span class="function"><span class="keyword">function</span>(<span class="params">require</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 模块ID名 './templates/a'</span></span><br><span class="line">      <span class="comment">// 扩展名 '.html'</span></span><br><span class="line">      <span class="comment">// 模板路径大致以这样的形式结尾 'modules/cart/templates/a.html'</span></span><br><span class="line">      <span class="keyword">var</span> templatePath = <span class="built_in">require</span>.toUrl(<span class="string">'./templates/a.html'</span>);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="config配置"><a href="#config配置" class="headerlink" title="config配置"></a>config配置</h3><p>公共项:</p>
+<ul>
+<li><p>模块id前缀：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">some/very/long/name</span><br></pre></td></tr></table></figure>
+<p>例如：以下都是模块id前缀:</p>
+<ul>
+<li><code>some</code></li>
+<li><code>some/very</code></li>
+<li><code>some/very/long</code></li>
+<li><code>some/very/long/name</code></li>
+</ul>
+</li>
+<li><p><strong>模块id前缀的第一个段</strong>: 模块id，从第一个 <code>/</code>作为分割，之前的字符串部分全是。 </p>
+</li>
+</ul>
+<h4 id="baseUrl"><a href="#baseUrl" class="headerlink" title="baseUrl"></a>baseUrl</h4><blockquote>
+<p>字符串类型。给id到path转换指定一个根目录 。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    baseUrl: <span class="string">'./js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="paths"><a href="#paths" class="headerlink" title="paths"></a>paths</h4><blockquote>
+<p>对象类型。给模块id前缀(module ID prefix)<strong>显式</strong>指定一个路径(path)。</p>
+<p>paths对象的属性是一个<strong>绝对</strong>的模块ID前缀(module ID prefix)，属性值可以是：</p>
+<p>字符串：字符串值是一个<strong>相对于baseUrl的路径</strong>。也可以是一个绝对路径，只要以 <code>/或者//或者http</code>开头。</p>
+<p>数组：可选。提供一个可选的容错功能。如果数组第一个路径加载失败，则可以尝试从下一个路径加载，以此类推。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 路径： js/lib/jquery.js</span></span><br><span class="line">&#123;</span><br><span class="line">    paths: &#123;</span><br><span class="line">        jquery: <span class="string">'./lib/jquery'</span></span><br><span class="line">        bootstrap: [</span><br><span class="line">            <span class="string">'https://cdn/bootstrap'</span>,</span><br><span class="line">            <span class="string">'./lib/bootstrap'</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="packages"><a href="#packages" class="headerlink" title="packages"></a>packages</h4><p>package 配置对象的值是一个数组。因为CommonJS规范和AMD规范的loader查找路径方式的差异，所以package配置对象是为了使用实现了CommonJS规范的包。</p>
+<p><strong>默认的查找规则</strong>：<code>baseUrl + &#39;module/id&#39; + .js</code>，其中<code>paths</code>配置可以用来映射<code>module/id</code>到另一个路径。</p>
+<p><strong>包的查找规则</strong>：使用了一个<code>packageName</code>。所以一个包的主模块就是<code>baseUrl + &#39;packageName&#39; + .js</code></p>
+<blockquote>
+<p><code>main.js</code>默认作为一个package的入口.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baseUrl + (packageConfig.location || &apos;packageName&apos;) + &apos;/&apos; + (packageConfig.main || &apos;main&apos;) + &apos;.js&apos;</span><br></pre></td></tr></table></figure>
+<p>对于<code>packageName/otherId</code>，规则和paths相似，但是<code>packageConfig</code>是这样实现的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baseUrl + (packageConfig.location || &apos;packageName&apos;) + &apos;/&apos; + &apos;otherId&apos; + &apos;.js&apos;</span><br></pre></td></tr></table></figure>
+<p>package 配置对象可以是：</p>
+<ul>
+<li><p>字符串：例如：<code>bootstrap/modal</code>：其中<code>bootstrap</code>是<code>packageName</code>名称，<code>boostrap/modal</code>也是一个<code>packageName</code>。依赖<code>bootstrap/modal</code>时，查找规则如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baseUrl + `bootstrap/modal` + main.js`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象: a configuration object that can have the following properties:</p>
+<ul>
+<li><strong>name</strong>: 字符串. 解析规则同<strong>上述字符串解析规则一样</strong>.</li>
+<li><strong>location</strong>: 字符串，可选.相对于<code>baseUrl</code>的路径。</li>
+<li><strong>main</strong>: 字符串. 可选.指定包入口。 默认为<code>main</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;   </span><br><span class="line">	packages: [</span><br><span class="line">    	<span class="string">'main'</span>,</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'dojo'</span>,</span><br><span class="line">            location: <span class="string">'dojo/1.7.1'</span>,</span><br><span class="line">            main:<span class="string">'main'</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><blockquote>
+<p>用来模块间传递一些信息使用的。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    config: &#123;</span><br><span class="line">        <span class="string">'some/module/id'</span>: &#123;</span><br><span class="line">            limit: <span class="number">40</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'some/module/id'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">someModule</span>) </span>&#123;</span><br><span class="line">    someModule.config().limit === <span class="number">40</span> <span class="comment">// true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="shim"><a href="#shim" class="headerlink" title="shim"></a>shim</h4><blockquote>
+<p>解决那些非<code>AMD模块</code>之间的依赖。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    shim: &#123;</span><br><span class="line">        <span class="comment">//This version just specifies the</span></span><br><span class="line">        <span class="comment">//dependency for the jQuery plugin. </span></span><br><span class="line">        <span class="comment">//Some implementations may be able to do</span></span><br><span class="line">        <span class="comment">//better error correction in older IE if</span></span><br><span class="line">        <span class="comment">//you specify the exports string value,</span></span><br><span class="line">        <span class="comment">//which in this case would be</span></span><br><span class="line">        <span class="comment">//exports: 'jQuery.fn.rotator'</span></span><br><span class="line">        <span class="string">'jquery.rotator'</span>: [<span class="string">'jquery'</span>],</span><br><span class="line"></span><br><span class="line">        underscore: &#123;</span><br><span class="line">            exports: <span class="string">'_'</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        backbone: &#123;</span><br><span class="line">            deps: [<span class="string">'jquery'</span>, <span class="string">'underscore'</span>],</span><br><span class="line">            exports: <span class="string">'Backbone'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><blockquote>
+<p>解决模块间同时依赖不同版本的问题。</p>
+<p><strong>限制</strong>： 这个功能只能用于那些，真正使用<code>define()</code>定义的AMD 模块并且是<strong>匿名模块</strong>.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    map: &#123;</span><br><span class="line">        <span class="string">'*'</span>: &#123;</span><br><span class="line">            <span class="string">'foo'</span>: <span class="string">'foo1.2'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'some/oldmodule'</span>: &#123;</span><br><span class="line">            <span class="string">'foo'</span>: <span class="string">'foo1.0'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    map: &#123;</span><br><span class="line">        <span class="string">'some/newmodule'</span>: &#123;</span><br><span class="line">            <span class="string">'foo'</span>: <span class="string">'foo1.2'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'some/oldmodule'</span>: &#123;</span><br><span class="line">            <span class="string">'foo'</span>: <span class="string">'foo1.0'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="requirejs"><a href="#requirejs" class="headerlink" title="requirejs"></a>requirejs</h2><blockquote>
+<p>路径解析：<code>baseUrl+paths</code>； </p>
+<p><code>/</code>  ,   <code>http:</code>或者<code>https:</code>，<code>.js</code>结尾的除外。</p>
+<p>requirejs加载脚本<strong>非依赖顺序加载</strong>，执行时是<strong>顺序执行</strong>。</p>
+</blockquote>
+<h3 id="data-main入口"><a href="#data-main入口" class="headerlink" title="data-main入口"></a>data-main入口</h3><h3 id="define函数-1"><a href="#define函数-1" class="headerlink" title="define函数"></a>define函数</h3><h4 id="定义一个对象"><a href="#定义一个对象" class="headerlink" title="定义一个对象"></a>定义一个对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(&#123;</span><br><span class="line">	name: <span class="string">'test'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="定义一个函数"><a href="#定义一个函数" class="headerlink" title="定义一个函数"></a>定义一个函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化工作</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        name: <span class="string">'test'</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="requirejs-undef"><a href="#requirejs-undef" class="headerlink" title="requirejs.undef"></a>requirejs.undef</h4><blockquote>
+<p>使用的场景比较少，主要在<strong>模块加载失败</strong>时使用较多</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官方的demo</span></span><br><span class="line">requirejs.config(&#123;</span><br><span class="line">    enforceDefine: <span class="literal">true</span>,</span><br><span class="line">    paths: &#123;</span><br><span class="line">        jquery: <span class="string">'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Later</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Do something with $ here</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//The errback, error callback</span></span><br><span class="line">    <span class="comment">//The error has a list of modules that failed</span></span><br><span class="line">    <span class="keyword">var</span> failedId = err.requireModules &amp;&amp; err.requireModules[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (failedId === <span class="string">'jquery'</span>) &#123;</span><br><span class="line">        <span class="comment">//undef is function only on the global requirejs object.</span></span><br><span class="line">        <span class="comment">//Use it to clear internal knowledge of jQuery. Any modules</span></span><br><span class="line">        <span class="comment">//that were dependent on jQuery and in the middle of loading</span></span><br><span class="line">        <span class="comment">//will not be loaded yet, they will wait until a valid jQuery</span></span><br><span class="line">        <span class="comment">//does load.</span></span><br><span class="line">        requirejs.undef(failedId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Set the path to jQuery to local path</span></span><br><span class="line">        requirejs.config(&#123;</span><br><span class="line">            paths: &#123;</span><br><span class="line">                jquery: <span class="string">'local/jquery'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Try again. Note that the above require callback</span></span><br><span class="line">        <span class="comment">//with the "Do something with $ here" comment will</span></span><br><span class="line">        <span class="comment">//be called if this new attempt to load jQuery succeeds.</span></span><br><span class="line">        <span class="built_in">require</span>([<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//Some other error. Maybe show message to the user.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="requirejs-config"><a href="#requirejs-config" class="headerlink" title="requirejs.config"></a>requirejs.config</h4><blockquote>
+<p><code>requirejs</code>的配置项，内容较多，参考<a href="https://requirejs.org/docs/api.html" target="_blank" rel="noopener">reqquirejs.org</a></p>
+</blockquote>
+<h4 id="require-toUrl"><a href="#require-toUrl" class="headerlink" title="require.toUrl"></a>require.toUrl</h4><blockquote>
+<p>获取模块的路径。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官方demo</span></span><br><span class="line">define([<span class="string">"require"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cssUrl = <span class="built_in">require</span>.toUrl(<span class="string">"./style.css"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-30T01:50:16.860Z" itemprop="dateUpdated">2018-09-30 09:50:16</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/09/12/the-quick-start-of-requirejs/" target="_blank" rel="external">https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMD/">AMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requirejs/">requirejs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/&title=《the-quick-start-of-requirejs》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/&title=《the-quick-start-of-requirejs》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《the-quick-start-of-requirejs》 — 个人博客&url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/09/adminlte-theme-zh-cn-docs/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">adminlte-theme-zh-cn-docs</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/&title=《the-quick-start-of-requirejs》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/&title=《the-quick-start-of-requirejs》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《the-quick-start-of-requirejs》 — 个人博客&url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/09/12/the-quick-start-of-requirejs/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3ay46kQAwEwPn/n96V9roDyrQppkcKTq1+AMGhXJ3211d8/Pl3/P9689vN64cPPDw8vNGtXx1Xp86/s3ko99T7e8bDw8M7zUsW9Pt3ZsXg/ubaIoGHh4f3abykACTvX/FmRQIPDw/vk3mry5SJwSwQwcPDw3uTl4QReUm4X9bbT1/KWvDw8PBi3k81sX5Bfw8PDw+v7Kq3C277zTYgru8WDw8P7wDvRCzbBhktrA128fDw8J7lJW37zW0lIwKzq0QRBh4eHt4BXvuzZEO8CYiT5b4OhfHw8PAO8DYRQLI1bwtJe4bozHh4eHiP8jaLb76gz4pQG5cUP8bDw8Mb8WajTrPw9/777aeRBQ8PD+8AL28mbVr7bcMsL07Rg8bDw8M7wJsNAeTd+U2RyB9TUUjw8PDwFrx84d5cLI9ok8ZYHnng4eHhvcNrm/pty3+2Bc9Hsor0Fw8PD+9RXr5Fnn2aP6ZNOIKHh4d3jtderD3DbDPdlpDLMAIPDw/vMC858qbUrLTUW+erK+Lh4eEd4M0C1k0gux8+yMMRPDw8vBO8/BnMWv6z5tlsMAsPDw/vZ3mnq1A7WDCMjPHw8PAO8GYX2zyUNvhow5HLxAUPDw/vId4seN1snTfNtrqE4OHh4b3Ia7ezsw10GzQk73/zjwEPDw/vUV5SHtpSkcS77QDBqqjg4eHhPcprg4P9iEC+oG9ii29Sajw8PLzDvBl7FgTnZx5upvHw8PAe5W2aTPkWPNkot6Xi4aYaHh4eXslrl+xZwJq/sx/wKqofHh4e3oJXz2qtqc/WtKgBhoeHh/c6bxZAbMYF2kd/2QbDw8PD+wBe3uZPMHnZqMcI8PDw8I7x8rGA2UDAZpwr32Tj4eHhvcNr/+rvm/rJpnm21X6gv4eHh4d3d/wFoR7FOpWVuPMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
