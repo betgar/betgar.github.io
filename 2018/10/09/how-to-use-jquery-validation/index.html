@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>how-to-use-jquery-validation | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Validation">
+    <meta name="description" content="jQuery Validation使用总结 注意：表单元素必须含有name属性，不然jQuery validation不工作。  options配置 jQuery.validator.defaults  1234567891011121314151617181920212223242526272829&amp;#123;        debug : false,		messages: &amp;#123;&amp;#1">
+<meta name="keywords" content="Validation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="how-to-use-jquery-validation">
+<meta property="og:url" content="https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="jQuery Validation使用总结 注意：表单元素必须含有name属性，不然jQuery validation不工作。  options配置 jQuery.validator.defaults  1234567891011121314151617181920212223242526272829&amp;#123;        debug : false,		messages: &amp;#123;&amp;#1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-12T03:57:30.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="how-to-use-jquery-validation">
+<meta name="twitter:description" content="jQuery Validation使用总结 注意：表单元素必须含有name属性，不然jQuery validation不工作。  options配置 jQuery.validator.defaults  1234567891011121314151617181920212223242526272829&amp;#123;        debug : false,		messages: &amp;#123;&amp;#1">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">how-to-use-jquery-validation</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">how-to-use-jquery-validation</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-09T08:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-10-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Validation/">Validation</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jQuery-Validation使用总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">jQuery Validation使用总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#options配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">options配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义的选择器"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">自定义的选择器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Validator实例的方法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Validator实例的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#form"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">form()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#element-element"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">element(element)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#resetForm"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">resetForm()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#showErrors-errors"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">showErrors(errors)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#numberOfInvalids-errors"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">numberOfInvalids([errors])</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#destory"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">destory()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Validator的静态方法"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Validator的静态方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validator-addMethod-name-method-message"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">$.validator.addMethod( name, method [, message ] )</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validator-format-template-argument-argumentN…"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">$.validator.format( template, argument, argumentN… )</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validator-setDefaults-options"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">$.validator.setDefaults(options)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#validator-addClassRules"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">$.validator.addClassRules()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Validator内置的方法"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Validator内置的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#required"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">required</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#minlength-length"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">minlength(length)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#maxlength-length"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">maxlength(length)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ranglength-Array"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">ranglength(Array)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#min-value"><span class="post-toc-number">1.6.5.</span> <span class="post-toc-text">min(value)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#max-value"><span class="post-toc-number">1.6.6.</span> <span class="post-toc-text">max(value)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#range-range"><span class="post-toc-number">1.6.7.</span> <span class="post-toc-text">range( range )</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#step-value"><span class="post-toc-number">1.6.8.</span> <span class="post-toc-text">step( value )</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#email"><span class="post-toc-number">1.6.9.</span> <span class="post-toc-text">email</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#url"><span class="post-toc-number">1.6.10.</span> <span class="post-toc-text">url</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#number"><span class="post-toc-number">1.6.11.</span> <span class="post-toc-text">number</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#digits"><span class="post-toc-number">1.6.12.</span> <span class="post-toc-text">digits</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#equalTo-Selector"><span class="post-toc-number">1.6.13.</span> <span class="post-toc-text">equalTo(Selector)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dateISO"><span class="post-toc-number">1.6.14.</span> <span class="post-toc-text">dateISO</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#additional-methods"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">additional-methods</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#accept-mimetype"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">accept(mimetype)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#creditcard"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">creditcard()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#phoneUS"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">phoneUS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#require-from-group"><span class="post-toc-number">1.7.4.</span> <span class="post-toc-text">require_from_group</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#extension-extension"><span class="post-toc-number">1.7.5.</span> <span class="post-toc-text">extension( [extension ] )</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重构规则-组合规则"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">重构规则(组合规则)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#错误消息"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">错误消息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跳过验证提交"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">跳过验证提交</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证事件"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">验证事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#normalizer"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">normalizer</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-how-to-use-jquery-validation"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">how-to-use-jquery-validation</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-09 16:00:00" datetime="2018-10-09T08:00:00.000Z"  itemprop="datePublished">2018-10-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Validation/">Validation</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="jQuery-Validation使用总结"><a href="#jQuery-Validation使用总结" class="headerlink" title="jQuery Validation使用总结"></a>jQuery Validation使用总结</h1><blockquote>
+<p>注意：表单元素必须含有<code>name</code>属性，不然<code>jQuery validation</code>不工作。</p>
+</blockquote>
+<h2 id="options配置"><a href="#options配置" class="headerlink" title="options配置"></a>options配置</h2><blockquote>
+<p><code>jQuery.validator.defaults</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        debug : <span class="literal">false</span>,</span><br><span class="line">		messages: &#123;&#125;,</span><br><span class="line">		groups: &#123;&#125;,</span><br><span class="line">		rules: &#123;&#125;,</span><br><span class="line">		errorClass: <span class="string">"error"</span>,</span><br><span class="line">		pendingClass: <span class="string">"pending"</span>,</span><br><span class="line">		validClass: <span class="string">"valid"</span>,</span><br><span class="line">		errorElement: <span class="string">"label"</span>,</span><br><span class="line">		focusCleanup: <span class="literal">false</span>,</span><br><span class="line">		focusInvalid: <span class="literal">true</span>,</span><br><span class="line">		errorContainer: $( [] ),</span><br><span class="line">		errorLabelContainer: $( [] ),</span><br><span class="line">		onsubmit: <span class="literal">true</span>, <span class="comment">// 提交表单时验证</span></span><br><span class="line">		ignore: <span class="string">":hidden"</span>, <span class="comment">// 需要忽略不验证的字段，可以自己写selector</span></span><br><span class="line">		ignoreTitle: <span class="literal">false</span>, <span class="comment">// 不使用表单元素的title当提示信息</span></span><br><span class="line">		onfocusin: <span class="function"><span class="keyword">function</span>(<span class="params"> element </span>) </span>&#123;</span><br><span class="line">		&#125;,</span><br><span class="line">		onfocusout: <span class="function"><span class="keyword">function</span>(<span class="params"> element </span>) </span>&#123;</span><br><span class="line">		&#125;,</span><br><span class="line">		onkeyup: <span class="function"><span class="keyword">function</span>(<span class="params"> element, event </span>) </span>&#123;</span><br><span class="line">		&#125;,</span><br><span class="line">		onclick: <span class="function"><span class="keyword">function</span>(<span class="params"> element </span>) </span>&#123;</span><br><span class="line">		&#125;,</span><br><span class="line">		highlight: <span class="function"><span class="keyword">function</span>(<span class="params"> element, errorClass, validClass </span>) </span>&#123;</span><br><span class="line">		&#125;,</span><br><span class="line">		unhighlight: <span class="function"><span class="keyword">function</span>(<span class="params"> element, errorClass, validClass </span>) </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><blockquote>
+<p><code>jQuery.validator</code>有三类方法：</p>
+<ol>
+<li><p><code>$.validator</code>的<strong>静态方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;    $.validator.format(<span class="string">'请输入至少&#123;0&#125;个字符'</span>);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li><p><code>$(&#39;选择器&#39;).validate()</code>返回的<code>$.validator</code><strong>实例方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;    <span class="keyword">var</span> validator = $(<span class="string">'form'</span>).validate();</span><br><span class="line">&gt;    validator.form();</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li><p>插件的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;    $().validate();</span><br><span class="line">&gt;    $().valid();</span><br><span class="line">&gt;    $().rules();</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h2 id="自定义的选择器"><a href="#自定义的选择器" class="headerlink" title="自定义的选择器"></a>自定义的选择器</h2><blockquote>
+<p>插件扩展了<code>selector</code>选择器。</p>
+</blockquote>
+<ul>
+<li><code>:blink</code></li>
+<li><code>:filled</code></li>
+<li><code>:unchecked</code></li>
+</ul>
+<h2 id="Validator实例的方法"><a href="#Validator实例的方法" class="headerlink" title="Validator实例的方法"></a><code>Validator</code>实例的方法</h2><blockquote>
+<p><code>Validator</code>实例的公共方法。</p>
+</blockquote>
+<h3 id="form"><a href="#form" class="headerlink" title="form()"></a>form()</h3><blockquote>
+<p>触发校验.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formValidator = $(<span class="string">'form'</span>).validate();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (formValidator.form()) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'valid form'</span>);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="element-element"><a href="#element-element" class="headerlink" title="element(element)"></a>element(element)</h3><blockquote>
+<p>校验单个表单元素</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formValidator = $(<span class="string">'form'</span>).validate();</span><br><span class="line"><span class="keyword">if</span> (formValidator.element(<span class="string">'#startDate'</span>))&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'valid element'</span>);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="resetForm"><a href="#resetForm" class="headerlink" title="resetForm()"></a>resetForm()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formValidator = $(<span class="string">'form'</span>).validate();</span><br><span class="line">formValidator.resetForm();</span><br></pre></td></tr></table></figure>
+<h3 id="showErrors-errors"><a href="#showErrors-errors" class="headerlink" title="showErrors(errors)"></a>showErrors(errors)</h3><blockquote>
+<p><code>errors</code>是<code>Object</code>类型， <code>key</code>是表单元素的<code>name</code>属性，<code>value</code>是要显示的消息</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formValidator = $(<span class="string">'form'</span>).validate();</span><br><span class="line">formValidator.showErrors(&#123;</span><br><span class="line">    firstName: <span class="string">'请输入名字'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="numberOfInvalids-errors"><a href="#numberOfInvalids-errors" class="headerlink" title="numberOfInvalids([errors])"></a>numberOfInvalids([errors])</h3><blockquote>
+<p>返回<code>校验不通过的元素个数</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> validator = $( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  invalidHandler: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $( <span class="string">"#summary"</span> ).text( validator.numberOfInvalids() + <span class="string">" field(s) are invalid"</span> );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="destory"><a href="#destory" class="headerlink" title="destory()"></a>destory()</h3><blockquote>
+<p>销毁<code>Validator</code>实例</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> validator = $( <span class="string">"#myform"</span> ).validate();</span><br><span class="line">validator.destroy();</span><br></pre></td></tr></table></figure>
+<h2 id="Validator的静态方法"><a href="#Validator的静态方法" class="headerlink" title="Validator的静态方法"></a><code>Validator</code>的静态方法</h2><h3 id="validator-addMethod-name-method-message"><a href="#validator-addMethod-name-method-message" class="headerlink" title="$.validator.addMethod( name, method [, message ] )"></a>$.validator.addMethod( name, method [, message ] )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// value: 元素值</span></span><br><span class="line"><span class="comment">// element：元素本身</span></span><br><span class="line"><span class="comment">// params：元素规则</span></span><br><span class="line">jQuery.validator.addMethod(<span class="string">"math"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">value, element, params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.optional(element) || value == params[<span class="number">0</span>] + params[<span class="number">1</span>];</span><br><span class="line">&#125;, jQuery.validator.format(<span class="string">"Please enter the correct value for &#123;0&#125; + &#123;1&#125;"</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="validator-format-template-argument-argumentN…"><a href="#validator-format-template-argument-argumentN…" class="headerlink" title="$.validator.format( template, argument, argumentN… )"></a>$.validator.format( template, argument, argumentN… )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> template = jQuery.validator.format(<span class="string">"&#123;0&#125; is not a valid value"</span>);</span><br><span class="line"><span class="comment">// later, results in 'abc is not a valid value'</span></span><br><span class="line">alert(template(<span class="string">"abc"</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="validator-setDefaults-options"><a href="#validator-setDefaults-options" class="headerlink" title="$.validator.setDefaults(options)"></a>$.validator.setDefaults(options)</h3><blockquote>
+<p>options参考<code>validate(options)</code></p>
+<p>重置全局<code>validator</code>配置</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.setDefaults(&#123;</span><br><span class="line">  debug: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="validator-addClassRules"><a href="#validator-addClassRules" class="headerlink" title="$.validator.addClassRules()"></a>$.validator.addClassRules()</h3><blockquote>
+<p>添加校验规则。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">jQuery.validator.addClassRules(<span class="string">"name"</span>, &#123;</span><br><span class="line">  required: <span class="literal">true</span>,</span><br><span class="line">  minlength: <span class="number">2</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">jQuery.validator.addClassRules(&#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">    minlength: <span class="number">2</span></span><br><span class="line">  &#125;,</span><br><span class="line">  zip: &#123;</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">    digits: <span class="literal">true</span>,</span><br><span class="line">    minlength: <span class="number">5</span>,</span><br><span class="line">    maxlength: <span class="number">5</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Validator内置的方法"><a href="#Validator内置的方法" class="headerlink" title="Validator内置的方法"></a><code>Validator</code>内置的方法</h2><h3 id="required"><a href="#required" class="headerlink" title="required"></a>required</h3><blockquote>
+<p>适用: <code>input, select, checkbox, radio</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 内部方法签名</span></span><br><span class="line">required();</span><br><span class="line">required(selector);</span><br><span class="line">required(callback);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>input</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"field"</span>&gt;</span>Required: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"left"</span> <span class="attr">id</span>=<span class="string">"field"</span> <span class="attr">name</span>=<span class="string">"field"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// boolean</span></span><br><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Select</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"fruit"</span>&gt;</span>Please select a fruit<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"fruit"</span> <span class="attr">name</span>=<span class="string">"fruit"</span> <span class="attr">title</span>=<span class="string">"Please select something!"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>Select...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>Banana<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>Apple<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span>Peach<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    fruit: &#123;</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>radio</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"gender_male"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span>  <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"gender_male"</span> <span class="attr">value</span>=<span class="string">"m"</span> <span class="attr">name</span>=<span class="string">"gender"</span> /&gt;</span></span><br><span class="line">      Male</span><br><span class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"gender_female"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span>  <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"gender_female"</span> <span class="attr">value</span>=<span class="string">"f"</span> <span class="attr">name</span>=<span class="string">"gender"</span>/&gt;</span></span><br><span class="line">      Female</span><br><span class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"gender"</span> <span class="attr">class</span>=<span class="string">"error"</span>&gt;</span>Please select your gender<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    gender: &#123;</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>checkbox</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"agree"</span>&gt;</span>Please agree to our policy<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"agree"</span> <span class="attr">title</span>=<span class="string">"Please agree to our policy!"</span> <span class="attr">name</span>=<span class="string">"agree"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    agree: &#123;</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>依赖其它元素(dependence-expression)</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"other"</span>&gt;</span>Check to make next field required<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"other"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"details"</span> <span class="attr">name</span>=<span class="string">"details"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    details: &#123;</span><br><span class="line">      required: <span class="string">"#other:checked"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>function</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>Age <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"age"</span> <span class="attr">name</span>=<span class="string">"age"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>Parent <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"parent"</span> <span class="attr">name</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    age: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      min: <span class="number">3</span></span><br><span class="line">    &#125;,</span><br><span class="line">    parent: &#123;</span><br><span class="line">      required: <span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $(<span class="string">"#age"</span>).val() &lt; <span class="number">13</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="minlength-length"><a href="#minlength-length" class="headerlink" title="minlength(length)"></a>minlength(length)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      minlength: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="maxlength-length"><a href="#maxlength-length" class="headerlink" title="maxlength(length)"></a>maxlength(length)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      maxlength: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="ranglength-Array"><a href="#ranglength-Array" class="headerlink" title="ranglength(Array)"></a>ranglength(Array)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      rangelength: [<span class="number">2</span>, <span class="number">6</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="min-value"><a href="#min-value" class="headerlink" title="min(value)"></a>min(value)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      min: <span class="number">13</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="max-value"><a href="#max-value" class="headerlink" title="max(value)"></a>max(value)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      max: <span class="number">13</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="range-range"><a href="#range-range" class="headerlink" title="range( range )"></a>range( range )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      range: [<span class="number">13</span>, <span class="number">23</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="step-value"><a href="#step-value" class="headerlink" title="step( value )"></a>step( value )</h3><blockquote>
+<p>输入的数字是step的倍数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      step: <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="email"><a href="#email" class="headerlink" title="email"></a>email</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      email: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="url"><a href="#url" class="headerlink" title="url"></a>url</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      url: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      number: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="digits"><a href="#digits" class="headerlink" title="digits"></a>digits</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      digits: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="equalTo-Selector"><a href="#equalTo-Selector" class="headerlink" title="equalTo(Selector)"></a>equalTo(Selector)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    password: <span class="string">"required"</span>,</span><br><span class="line">    password_again: &#123;</span><br><span class="line">      equalTo: <span class="string">"#password"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="dateISO"><a href="#dateISO" class="headerlink" title="dateISO"></a>dateISO</h3><blockquote>
+<p>字段是合法时间，非格式。</p>
+<p>适用：<code>input</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      dateISO: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="additional-methods"><a href="#additional-methods" class="headerlink" title="additional-methods"></a>additional-methods</h2><blockquote>
+<p>包含在<code>additional-methods.js</code> </p>
+</blockquote>
+<h3 id="accept-mimetype"><a href="#accept-mimetype" class="headerlink" title="accept(mimetype)"></a>accept(mimetype)</h3><blockquote>
+<p> 校验文件后缀</p>
+<p> 适用：<code>&lt;input type=&quot;file&quot;&gt;</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      accept: <span class="string">"audio/*"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="creditcard"><a href="#creditcard" class="headerlink" title="creditcard()"></a>creditcard()</h3><blockquote>
+<p>校验信用卡号</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      creditcard: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="phoneUS"><a href="#phoneUS" class="headerlink" title="phoneUS"></a>phoneUS</h3><blockquote>
+<p>可以参考实现电话校验</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      phoneUS: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="require-from-group"><a href="#require-from-group" class="headerlink" title="require_from_group"></a>require_from_group</h3><blockquote>
+<p>一组至少填写几个。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"myform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"mobile_phone"</span>&gt;</span>Mobile phone: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"left phone-group"</span> <span class="attr">id</span>=<span class="string">"mobile_phone"</span> <span class="attr">name</span>=<span class="string">"mobile_phone"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"home_phone"</span>&gt;</span>Home phone: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"left phone-group"</span> <span class="attr">id</span>=<span class="string">"home_phone"</span> <span class="attr">name</span>=<span class="string">"home_phone"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"work_phone"</span>&gt;</span>Work phone: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"left phone-group"</span> <span class="attr">id</span>=<span class="string">"work_phone"</span> <span class="attr">name</span>=<span class="string">"work_phone"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Validate!"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    mobile_phone: &#123;</span><br><span class="line">      require_from_group: [<span class="number">1</span>, <span class="string">".phone-group"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    home_phone: &#123;</span><br><span class="line">      require_from_group: [<span class="number">1</span>, <span class="string">".phone-group"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    work_phone: &#123;</span><br><span class="line">      require_from_group: [<span class="number">1</span>, <span class="string">".phone-group"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="extension-extension"><a href="#extension-extension" class="headerlink" title="extension( [extension ] )"></a>extension( [extension ] )</h3><blockquote>
+<p>参数：<code>string</code></p>
+<p>默认值： <code>png|jpe?g|gif</code></p>
+<p>适用：<code>&lt;input&gt;</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate(&#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      extension: <span class="string">"xls|csv"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="重构规则-组合规则"><a href="#重构规则-组合规则" class="headerlink" title="重构规则(组合规则)"></a>重构规则(组合规则)</h2><blockquote>
+<p>重构规则，可以把多个规则组合起来，一起使用。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// alias required to cRequired with new message</span></span><br><span class="line">$.validator.addMethod(<span class="string">"cRequired"</span>, $.validator.methods.required,</span><br><span class="line">  <span class="string">"Customer name required"</span>);</span><br><span class="line"><span class="comment">// alias minlength, too</span></span><br><span class="line">$.validator.addMethod(<span class="string">"cMinlength"</span>, $.validator.methods.minlength,</span><br><span class="line">  <span class="comment">// leverage parameter replacement for minlength, &#123;0&#125; gets replaced with 2</span></span><br><span class="line">  $.validator.format(<span class="string">"Customer name must have at least &#123;0&#125; characters"</span>));</span><br><span class="line"><span class="comment">// combine them both, including the parameter for minlength</span></span><br><span class="line">$.validator.addClassRules(<span class="string">"customer"</span>, &#123; <span class="attr">cRequired</span>: <span class="literal">true</span>, <span class="attr">cMinlength</span>: <span class="number">2</span> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="错误消息"><a href="#错误消息" class="headerlink" title="错误消息"></a>错误消息</h2><ul>
+<li><p>错误消息有四种提供方式: options,  data-*,  element title,  default messages</p>
+</li>
+<li><p>错误消息的优先级：options &gt; element title属性 &gt; default messages</p>
+</li>
+<li><p>可以使用<strong>统一消息</strong>，也可以指定<strong>具体的规则消息</strong></p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">required</span> <span class="attr">data-msg</span>=<span class="string">"Please fill this field"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">data-rule-minlength</span>=<span class="string">"2"</span> <span class="attr">data-rule-maxlength</span>=<span class="string">"4"</span> <span class="attr">data-msg-minlength</span>=<span class="string">"At least two chars"</span> <span class="attr">data-msg-maxlength</span>=<span class="string">"At most fours chars"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="跳过验证提交"><a href="#跳过验证提交" class="headerlink" title="跳过验证提交"></a>跳过验证提交</h2><blockquote>
+<p>添加<code>formnovalidate</code>属性。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">formnovalidate</span> <span class="attr">name</span>=<span class="string">"cancel"</span> <span class="attr">value</span>=<span class="string">"Cancel"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="验证事件"><a href="#验证事件" class="headerlink" title="验证事件"></a>验证事件</h2><blockquote>
+<p>默认情况下，<code>form</code>在用户点击<code>submit</code>按钮，或者<code>input</code>获得焦点时，按下<code>enter</code>键。</p>
+<p>另外，如果一个<code>field</code>已经高亮并且<code>invalid</code>，当用户输入任何东西，它都会被验证（使用onkeyup）.</p>
+<p>当用户在一个已经验证为<code>valid</code>的<code>field</code>中输入任何东西，在<code>field</code>失去焦点时被验证（onfoucsout）。</p>
+</blockquote>
+<h2 id="normalizer"><a href="#normalizer" class="headerlink" title="normalizer"></a>normalizer</h2><blockquote>
+<p><code>normalizer</code>: 是非常有用的一个方法，因为<code>form</code>中的组件，不可能全是原生的组件，所以提供这个方法，用来返回组件的值。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate( &#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 返回一个trim过的值</span></span><br><span class="line">        <span class="keyword">return</span> $.trim( value );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局的normalizer和local的normalizer同时使用</span></span><br><span class="line">$( <span class="string">"#myform"</span> ).validate( &#123;</span><br><span class="line">  normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $.trim( value );</span><br><span class="line">  &#125;,</span><br><span class="line">  rules: &#123;</span><br><span class="line">    username: &#123;</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    url_input: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      url: <span class="literal">true</span>,</span><br><span class="line">      normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> url = value;</span><br><span class="line">		<span class="comment">// 可以修改</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'https://'</span> + url;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-10-12T03:57:30.187Z" itemprop="dateUpdated">2018-10-12 11:57:30</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/10/09/how-to-use-jquery-validation/" target="_blank" rel="external">https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Validation/">Validation</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《how-to-use-jquery-validation》 — 个人博客&url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/12/the-quick-start-of-requirejs/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">requirejs的快速入门</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《how-to-use-jquery-validation》 — 个人博客&url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACp0lEQVR42u3aQW4jMQwEwPz/08l1gcR2NyklXqDmZHjGGpUOEk3y4yO+Pv+58u83n7+P/P0txy48PDy8xdSfD50/+Yj6aFEeLdPzJXs+Ezw8PLzbvGS45Pl20sn4+SGBh4eH9568drPOY938GTw8PLz/l7f/7z8j4eHh4b0DL08x5HfzKT4/JNrkCB4eHt5tXr7dv8/nK/U9PDw8vHX4O9tw2/aC9lApZouHh4d3gZdvuO2gB8Lc0Th4eHh4v8M7VaSflbvaVO8q+MbDw8M7xNtv6M/D5TwdnITaxTGAh4eHd4GXtz3lh8EsxdC2FCQj4+Hh4d3m5YHsbCrRhMpxikwGHh4e3jXeJjHRTnq/9b84bPDw8PB+nTdLniZ384aAPKfyw108PDy8C7x8inUlbREiF+mGPJmLh4eHd5R36poF3O2xtF9iPDw8vD1v1tg0S160ZbZkbi/ei4eHh3eUNytEzYpSm6A5n1VzGw8PD2/C2/ysbS/Ij4S28FanJPDw8PAWvLwYn69WuxyzTEnUfICHh4d3jTcbKE9D5LC23PXijXh4eHh/xEte3yZeZ8niNsTHw8PDu8GbBa9nF2WTjNiH5nh4eHgtr028btpMN9v3MKGMh4eHd4GXTKUNo/Om1TaAnn2Dh4eHd5tX/KwMoPOU7mwJHs4NDw8P7xpv+OOyAJYEx/nxg4eHh/e3vE2L1Wa7H2aX80YHPDw8vKO8z/LKt+8bZf66GQsPDw/vAm9TgkoWYn+EnGrYwsPDwzvLa0tczzf6faDctiO8QOLh4eFd481ek7dAzUab5Vfw8PDw3o2Xl6CK7bssaxXf4+Hh4b0BryW1o+Upj+g4wcPDw7vGy1+TpyHaLT5JgtRvwcPDw7vAm/3hT4pbCWM28oGaHh4eHt6E9wXcErAlPBI3aAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
