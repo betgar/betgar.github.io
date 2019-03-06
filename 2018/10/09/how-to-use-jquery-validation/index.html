@@ -14,7 +14,7 @@
     
     
     
-    <title>how-to-use-jquery-validation | 个人博客 | 一个coder的成长记录</title>
+    <title>jQuery Validation使用总结 | 个人博客 | 一个coder的成长记录</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="jQuery Validation使用总结 注意：表单元素必须含有name属性，不然jQuery validation不工作。  options配置 jQuery.validator.defaults  1234567891011121314151617181920212223242526272829&amp;#123;        debug : false,		messages: &amp;#123;&amp;#1">
 <meta name="keywords" content="Validation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="how-to-use-jquery-validation">
+<meta property="og:title" content="jQuery Validation使用总结">
 <meta property="og:url" content="https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="jQuery Validation使用总结 注意：表单元素必须含有name属性，不然jQuery validation不工作。  options配置 jQuery.validator.defaults  1234567891011121314151617181920212223242526272829&amp;#123;        debug : false,		messages: &amp;#123;&amp;#1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-12T03:57:30.187Z">
+<meta property="og:updated_time" content="2018-10-13T12:24:51.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="how-to-use-jquery-validation">
+<meta name="twitter:title" content="jQuery Validation使用总结">
 <meta name="twitter:description" content="jQuery Validation使用总结 注意：表单元素必须含有name属性，不然jQuery validation不工作。  options配置 jQuery.validator.defaults  1234567891011121314151617181920212223242526272829&amp;#123;        debug : false,		messages: &amp;#123;&amp;#1">
     
         <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
@@ -127,7 +127,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">how-to-use-jquery-validation</div>
+        <div class="flex-col header-title ellipsis">jQuery Validation使用总结</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -149,7 +149,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">how-to-use-jquery-validation</h1>
+        <h1 class="title">jQuery Validation使用总结</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-10-09T08:00:00.000Z" itemprop="datePublished" class="page-time">
@@ -183,7 +183,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">how-to-use-jquery-validation</h1>
+        <h1 class="post-card-title">jQuery Validation使用总结</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-10-09 16:00:00" datetime="2018-10-09T08:00:00.000Z"  itemprop="datePublished">2018-10-09</time>
 
@@ -377,8 +377,15 @@
 </blockquote>
 <h2 id="normalizer"><a href="#normalizer" class="headerlink" title="normalizer"></a>normalizer</h2><blockquote>
 <p><code>normalizer</code>: 是非常有用的一个方法，因为<code>form</code>中的组件，不可能全是原生的组件，所以提供这个方法，用来返回组件的值。</p>
+<p>注意：</p>
+<ol>
+<li>normalizer：不能改变组件的值，只能把改变后的值，给<code>validator</code>进行校验。</li>
+<li>参数value，是<code>validator</code>内部获取<code>element</code>的值，<strong>在使用第三方组件时，很可能不正确</strong></li>
+<li><code>this</code>时当前被校验的<code>DOMelement</code></li>
+<li>返回值必须时一个<strong>string</strong>类型</li>
+</ol>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate( &#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 返回一个trim过的值</span></span><br><span class="line">        <span class="keyword">return</span> $.trim( value );</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="string">"#myform"</span> ).validate( &#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    field: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dayjs($(<span class="keyword">this</span>).datepicker(<span class="string">'getDate'</span>)).format(<span class="string">'YYYY-MM-DD'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局的normalizer和local的normalizer同时使用</span></span><br><span class="line">$( <span class="string">"#myform"</span> ).validate( &#123;</span><br><span class="line">  normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $.trim( value );</span><br><span class="line">  &#125;,</span><br><span class="line">  rules: &#123;</span><br><span class="line">    username: &#123;</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    url_input: &#123;</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">      url: <span class="literal">true</span>,</span><br><span class="line">      normalizer: <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> url = value;</span><br><span class="line">		<span class="comment">// 可以修改</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'https://'</span> + url;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; );</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -388,7 +395,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-10-12T03:57:30.187Z" itemprop="dateUpdated">2018-10-12 11:57:30</time>
+    最后更新时间：<time datetime="2018-10-13T12:24:51.725Z" itemprop="dateUpdated">2018-10-13 20:24:51</time>
 </span><br>
 
 
@@ -420,7 +427,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《jQuery Validation使用总结》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -430,7 +437,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《jQuery Validation使用总结》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -440,7 +447,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《how-to-use-jquery-validation》 — 个人博客&url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&via=https://betgar.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jQuery Validation使用总结》 — 个人博客&url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&via=https://betgar.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -465,7 +472,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/26/install-node-on-ubuntu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Linux环境安装node,部署verdaccio私有npm仓库</h4>
+      </a>
+    </div>
   
 
   
@@ -549,7 +563,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>俊男 &copy; 2017 - 2018</span>
+        <p><span>俊男 &copy; 2017 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -567,7 +581,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《jQuery Validation使用总结》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -577,7 +591,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《how-to-use-jquery-validation》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&title=《jQuery Validation使用总结》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -587,7 +601,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《how-to-use-jquery-validation》 — 个人博客&url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&via=https://betgar.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jQuery Validation使用总结》 — 个人博客&url=https://betgar.github.io/2018/10/09/how-to-use-jquery-validation/&via=https://betgar.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Linux环境安装node,部署verdaccio私有npm仓库 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Node,ubuntu,Linux">
+    <meta name="description" content="ubuntu(16.04)安装node环境 记录一下在Linux下安装Node环境的经过.  安装步骤更改ubuntu的镜像源（非必须） 因为 网络环境的限制 更改镜像源可以加快包的下载 12345678910111213&amp;gt; ## 要注意的是不同的版本对应的仓库是不同的。&amp;gt; &amp;gt; # 备份镜像源&amp;gt; sudo cp /etc/apt/sources.list /etc/apt/">
+<meta name="keywords" content="Node,ubuntu,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux环境安装node,部署verdaccio私有npm仓库">
+<meta property="og:url" content="https://betgar.github.io/2019/02/26/install-node-on-ubuntu/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="ubuntu(16.04)安装node环境 记录一下在Linux下安装Node环境的经过.  安装步骤更改ubuntu的镜像源（非必须） 因为 网络环境的限制 更改镜像源可以加快包的下载 12345678910111213&amp;gt; ## 要注意的是不同的版本对应的仓库是不同的。&amp;gt; &amp;gt; # 备份镜像源&amp;gt; sudo cp /etc/apt/sources.list /etc/apt/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-06T04:28:59.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux环境安装node,部署verdaccio私有npm仓库">
+<meta name="twitter:description" content="ubuntu(16.04)安装node环境 记录一下在Linux下安装Node环境的经过.  安装步骤更改ubuntu的镜像源（非必须） 因为 网络环境的限制 更改镜像源可以加快包的下载 12345678910111213&amp;gt; ## 要注意的是不同的版本对应的仓库是不同的。&amp;gt; &amp;gt; # 备份镜像源&amp;gt; sudo cp /etc/apt/sources.list /etc/apt/">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux环境安装node,部署verdaccio私有npm仓库</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux环境安装node,部署verdaccio私有npm仓库</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-25T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/Node/">Node</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ubuntu-16-04-安装node环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">ubuntu(16.04)安装node环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装步骤"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更改ubuntu的镜像源（非必须）"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">更改ubuntu的镜像源（非必须）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装nvm"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">安装nvm</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装node"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">安装node</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装nrm"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">安装nrm</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装python"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">安装python</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装node-gyp"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">安装node-gyp</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装verdaccio"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">安装verdaccio</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装pm2"><span class="post-toc-number">1.1.8.</span> <span class="post-toc-text">安装pm2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装日志模块（pm2-logrotate）"><span class="post-toc-number">1.1.8.1.</span> <span class="post-toc-text">安装日志模块（pm2-logrotate）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装监控模块-pm2-server-monit"><span class="post-toc-number">1.1.8.2.</span> <span class="post-toc-text">安装监控模块(pm2-server-monit)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pm2启动verdaccio"><span class="post-toc-number">1.1.8.3.</span> <span class="post-toc-text">pm2启动verdaccio</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">链接</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-install-node-on-ubuntu"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux环境安装node,部署verdaccio私有npm仓库</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-26 00:00:00" datetime="2019-02-25T16:00:00.000Z"  itemprop="datePublished">2019-02-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/Node/">Node</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="ubuntu-16-04-安装node环境"><a href="#ubuntu-16-04-安装node环境" class="headerlink" title="ubuntu(16.04)安装node环境"></a><code>ubuntu(16.04)</code>安装<code>node</code>环境</h1><blockquote>
+<p>记录一下在<code>Linux</code>下安装<code>Node</code>环境的经过.</p>
+</blockquote>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="更改ubuntu的镜像源（非必须）"><a href="#更改ubuntu的镜像源（非必须）" class="headerlink" title="更改ubuntu的镜像源（非必须）"></a>更改<code>ubuntu</code>的镜像源（非必须）</h3><blockquote>
+<p>因为 <strong>网络环境的限制</strong> 更改镜像源可以加快包的下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">## 要注意的是不同的版本对应的仓库是不同的。</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment"># 备份镜像源</span></span><br><span class="line">&gt; sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment"># 编辑source.list</span></span><br><span class="line">&gt; sodo vim /etc/apt/sources.list</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment"># 可以使用网易源，搜狐源，阿里源</span></span><br><span class="line">&gt; <span class="comment"># 参考 https://mirrors.ustc.edu.cn/help/ubuntu.html</span></span><br><span class="line">&gt; <span class="comment"># http://mirrors.sohu.com/</span></span><br><span class="line">&gt; <span class="comment"># http://mirrors.163.com/</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装<code>nvm</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果安装之后<code>nvm</code>，再命令行上使用<code>nvm</code>出现未找到命令，只需要重新打开一个<code>终端窗口</code>重试。</p>
+</blockquote>
+<h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装<code>node</code></h3><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; nvm install node <span class="comment"># 最新版本</span></span><br><span class="line">&gt; nvm install 6.14.4 <span class="comment"># 具体版本</span></span><br><span class="line">&gt; nvm ls-remote <span class="comment"># 有哪些版本</span></span><br><span class="line">&gt; nvm use node <span class="comment"># 使用具体的哪个版本</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="安装nrm"><a href="#安装nrm" class="headerlink" title="安装nrm"></a>安装<code>nrm</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g nrm</span><br></pre></td></tr></table></figure>
+<h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装<code>python</code></h3><blockquote>
+<p>因为<code>node-gyp</code>模块只支持<code>python2.x</code>所以需要安装<code>python</code>，如果<code>linux</code>已经安装，可以使用<code>node-gyp</code>制定配置<code>python</code>地址。</p>
+</blockquote>
+<p><a href="https://tecadmin.net/install-python-2-7-on-ubuntu-and-linuxmint/" target="_blank" rel="noopener">参考再ubuntu上安装python2.7</a></p>
+<h3 id="安装node-gyp"><a href="#安装node-gyp" class="headerlink" title="安装node-gyp"></a>安装<code>node-gyp</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g node-gyp</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置python依赖</span></span><br><span class="line"><span class="comment"># 如果是直接命令调用node-gyp，就这样配置</span></span><br><span class="line">node-gyp --python /path/to/python2.7 <span class="comment"># python的地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果是通过npm工具间接调用node-gyp就这样配置</span></span><br><span class="line">npm config <span class="built_in">set</span> python /path/to/executable/python2.7</span><br></pre></td></tr></table></figure>
+<h3 id="安装verdaccio"><a href="#安装verdaccio" class="headerlink" title="安装verdaccio"></a>安装<code>verdaccio</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装verdaccio</span></span><br><span class="line">npm install --global verdaccio</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用nrm添加名为local的registry</span></span><br><span class="line">nrm add <span class="built_in">local</span> http://localhost:4873/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动verdaccio</span></span><br><span class="line">verdaccio  <span class="comment"># 这样启动不能关闭命令行，所以我们使用pm2工具</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>具体的配置看<a href="https://verdaccio.org/" target="_blank" rel="noopener">verdaccio配置</a></p>
+</blockquote>
+<h3 id="安装pm2"><a href="#安装pm2" class="headerlink" title="安装pm2"></a>安装<code>pm2</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+<h4 id="安装日志模块（pm2-logrotate）"><a href="#安装日志模块（pm2-logrotate）" class="headerlink" title="安装日志模块（pm2-logrotate）"></a>安装日志模块（pm2-logrotate）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 install pm2-logrotate</span><br></pre></td></tr></table></figure>
+<h4 id="安装监控模块-pm2-server-monit"><a href="#安装监控模块-pm2-server-monit" class="headerlink" title="安装监控模块(pm2-server-monit)"></a>安装监控模块(pm2-server-monit)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 install pm2-server-monit</span><br></pre></td></tr></table></figure>
+<h4 id="pm2启动verdaccio"><a href="#pm2启动verdaccio" class="headerlink" title="pm2启动verdaccio"></a>pm2启动verdaccio</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pm2 start <span class="built_in">which</span> verdaccio <span class="comment"># 启动之后可以关闭命令行，进程不会终止。</span></span><br><span class="line"><span class="comment"># pm2的其它功能参考文档</span></span><br><span class="line"><span class="comment"># pm2 show</span></span><br><span class="line"><span class="comment"># pm2 list</span></span><br><span class="line"><span class="comment"># pm2 stop</span></span><br><span class="line"><span class="comment"># pm2 restart</span></span><br></pre></td></tr></table></figure>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><ul>
+<li><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm官网</a></li>
+<li><a href="https://github.com/Pana/nrm" target="_blank" rel="noopener">nrm官网</a></li>
+<li><a href="https://github.com/nodejs/node-gyp" target="_blank" rel="noopener">node-gyp官网</a></li>
+<li><a href="https://github.com/verdaccio/verdaccio" target="_blank" rel="noopener">verdaccio官网</a></li>
+<li><a href="https://github.com/Unitech/pm2" target="_blank" rel="noopener">pm2官网</a></li>
+<li><a href="https://github.com/keymetrics/pm2-logrotate" target="_blank" rel="noopener">pm2-logrotate日志管理</a></li>
+<li><a href="https://github.com/keymetrics/pm2-server-monit" target="_blank" rel="noopener">pm2-server-monit监控模块</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-06T04:28:59.852Z" itemprop="dateUpdated">2019-03-06 12:28:59</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/02/26/install-node-on-ubuntu/" target="_blank" rel="external">https://betgar.github.io/2019/02/26/install-node-on-ubuntu/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/&title=《Linux环境安装node,部署verdaccio私有npm仓库》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/&title=《Linux环境安装node,部署verdaccio私有npm仓库》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux环境安装node,部署verdaccio私有npm仓库》 — 个人博客&url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/09/how-to-use-jquery-validation/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">jQuery Validation使用总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/&title=《Linux环境安装node,部署verdaccio私有npm仓库》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/&title=《Linux环境安装node,部署verdaccio私有npm仓库》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux环境安装node,部署verdaccio私有npm仓库》 — 个人博客&url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/02/26/install-node-on-ubuntu/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aW6rjMBAFwOx/05nfgWByTssZxlL5K/gaS+ULTT/0esXX++P6+/7VM5/Pfz6Z3L/twsDAeCwjWT7fVvLX/P35p8HAwDiBcRXBZr9nYTp55+V9DAwMjGDhPKSufBoMDAyMhJGkg23tmVAxMDAwknCZ4JOgvFLc3lCLY2BgPJAxC4v/5vdP5hsYGBiPYrzLqw2vsxSz3hUGBsbWjDzAzYaOSbHaJp2Xq2BgYGzNSEJhPpLMm3GzT1DksBgYGNsx1tO49WI4b/l9WRcDA2MjRh4W2zDajiRn44fX+rYwMDD+e0a+0TbJy0Nqnph+gWFgYGzKSJK8HNCOB9qRw5f/AwYGxtaMWTNupffVpoxfEk0MDIytGb8oVlfSyiS5LEaYGBgYGzFuPu4Qv7NtvQ2PWWBgYDyc0QbKfHNtmdq22DAwMM5h5Ina7OBFfjijvVP3ETEwMLZg5EVsHpTvpd42j8XAwHggY9a4z0eVLT4vYi/bbRgYGFsz2uI2Hw/Mitj6cBgGBsYBjHx4uTKqzMNxfuwMAwPjBEa7rTzIzt5TH03DwMA4gJEvOTt+MXuyoGJgYGzKeJfXLIDmRWzb8sPAwDiBsR5MZ8POfDyZjxYwMDD2ZtSNrVHgzoNm2/LDwMA4h5EHvlkimFOXSlkMDAyMhZ58OzAojllgYGBgLJNmvLoYxsDAOIDRDgNy5Oyo2Q9rcQwMjAcy8tJxtmQ+vGyDLAYGxgGMP6B8apiJGDxXAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
