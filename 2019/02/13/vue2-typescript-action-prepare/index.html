@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Vue2+TypeScript实践准备 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Vue,TypeScript">
+    <meta name="description" content="Vue2 + TypeScript实践准备 基于Vue2.5版本，Vue3.0可能有所改变.  知识准备 扎实的 JavaScript / HTML / CSS 基本功  通读Vue官方教程 (guide) 的基础篇  熟悉vue-router 和 vuex  熟悉ES6 modules  熟悉Node.js 基础  了解如何使用 / 配置 Babel 来将 ES2015 编译到 ES5 用于浏览">
+<meta name="keywords" content="Vue,TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue2+TypeScript实践准备">
+<meta property="og:url" content="https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Vue2 + TypeScript实践准备 基于Vue2.5版本，Vue3.0可能有所改变.  知识准备 扎实的 JavaScript / HTML / CSS 基本功  通读Vue官方教程 (guide) 的基础篇  熟悉vue-router 和 vuex  熟悉ES6 modules  熟悉Node.js 基础  了解如何使用 / 配置 Babel 来将 ES2015 编译到 ES5 用于浏览">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-06T04:39:11.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue2+TypeScript实践准备">
+<meta name="twitter:description" content="Vue2 + TypeScript实践准备 基于Vue2.5版本，Vue3.0可能有所改变.  知识准备 扎实的 JavaScript / HTML / CSS 基本功  通读Vue官方教程 (guide) 的基础篇  熟悉vue-router 和 vuex  熟悉ES6 modules  熟悉Node.js 基础  了解如何使用 / 配置 Babel 来将 ES2015 编译到 ES5 用于浏览">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Vue2+TypeScript实践准备</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Vue2+TypeScript实践准备</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-12T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-02-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/">Vue</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/TypeScript/">TypeScript</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Vue2-TypeScript实践准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">Vue2 + TypeScript实践准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#知识准备"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">知识准备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Node-js"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Node.js</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Node-js是什么？"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">Node.js是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm模块管理器"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">npm模块管理器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm-run"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">npm run</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#package-json文件"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">package.json文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CommonJS规范"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">CommonJS规范</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TypeScript"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">TypeScript</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础类型"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">基础类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任意值any"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">任意值any</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#空值void"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">空值void</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null和undefined"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">null和undefined</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Object"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">Object</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制类型转换"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">强制类型转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可选属性"><span class="post-toc-number">1.4.7.</span> <span class="post-toc-text">可选属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#去除null和undefined类型断言使用-标识"><span class="post-toc-number">1.4.8.</span> <span class="post-toc-text">去除null和undefined类型断言使用!标识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接口"><span class="post-toc-number">1.4.9.</span> <span class="post-toc-text">接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#类"><span class="post-toc-number">1.4.10.</span> <span class="post-toc-text">类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数"><span class="post-toc-number">1.4.11.</span> <span class="post-toc-text">函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#声明合并"><span class="post-toc-number">1.4.12.</span> <span class="post-toc-text">声明合并</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#扩充全局或者模块作用域"><span class="post-toc-number">1.4.13.</span> <span class="post-toc-text">扩充全局或者模块作用域</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vue对TypeScript的支持"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Vue对TypeScript的支持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TypeScript识别Vue组件"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">TypeScript识别Vue组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TypeScript识别JSX"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">TypeScript识别JSX</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#扩展Vue类和原型声明书写"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">扩展Vue类和原型声明书写</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vue组件声明方式1"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">Vue组件声明方式1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vue组件声明方式2"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">Vue组件声明方式2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vue组件使用注意事项"><span class="post-toc-number">1.5.6.</span> <span class="post-toc-text">Vue组件使用注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue-class-component注解的限制"><span class="post-toc-number">1.5.7.</span> <span class="post-toc-text">vue-class-component注解的限制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#data属性声明注意事项"><span class="post-toc-number">1.5.8.</span> <span class="post-toc-text">data属性声明注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TypeScript官方声明文件仓库"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">TypeScript官方声明文件仓库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入第三方库（没有声明文件）"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">引入第三方库（没有声明文件）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前端涉及的知识"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">前端涉及的知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前端基础"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">前端基础</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vue部分"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">Vue部分</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Node部分"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">Node部分</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Webpack"><span class="post-toc-number">1.7.4.</span> <span class="post-toc-text">Webpack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TypeScript-1"><span class="post-toc-number">1.7.5.</span> <span class="post-toc-text">TypeScript</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其它类库"><span class="post-toc-number">1.7.6.</span> <span class="post-toc-text">其它类库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">链接</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vue2-typescript-action-prepare"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Vue2+TypeScript实践准备</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-13 00:00:00" datetime="2019-02-12T16:00:00.000Z"  itemprop="datePublished">2019-02-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/">Vue</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/TypeScript/">TypeScript</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Vue2-TypeScript实践准备"><a href="#Vue2-TypeScript实践准备" class="headerlink" title="Vue2 + TypeScript实践准备"></a>Vue2 + TypeScript实践准备</h1><blockquote>
+<p>基于Vue2.5版本，Vue3.0可能有所改变.</p>
+</blockquote>
+<h2 id="知识准备"><a href="#知识准备" class="headerlink" title="知识准备"></a>知识准备</h2><ul>
+<li><p>扎实的 JavaScript / HTML / CSS 基本功</p>
+</li>
+<li><p>通读Vue官方教程 (guide) 的基础篇</p>
+</li>
+<li><p>熟悉vue-router 和 vuex</p>
+</li>
+<li><p>熟悉ES6 modules</p>
+</li>
+<li><p>熟悉Node.js 基础</p>
+</li>
+<li><p>了解如何使用 / 配置 Babel 来将 ES2015 编译到 ES5 用于浏览器环境</p>
+</li>
+<li><p>熟悉 Webpack</p>
+</li>
+<li><p>vue-cli 来搭建Vue项目</p>
+</li>
+</ul>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><h3 id="Node-js是什么？"><a href="#Node-js是什么？" class="headerlink" title="Node.js是什么？"></a>Node.js是什么？</h3><blockquote>
+<p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。<br>Node.js 使用了一个事件驱动、非阻塞式I/O 的模型，使其轻量又高效。</p>
+</blockquote>
+<h3 id="npm模块管理器"><a href="#npm模块管理器" class="headerlink" title="npm模块管理器"></a>npm模块管理器</h3><p><code>npm</code>有两层含义。一层含义是Node的开放式模块登记和管理系统，网址为<a href="http://npmjs.org/" target="_blank" rel="noopener">npmjs.org</a>。另一层含义是Node默认的模块管理器，是一个命令行下的软件，用来安装和管理Node模块。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line">npm install lodash-es</span><br><span class="line">npm uninstall lodash-es</span><br><span class="line">npm update lodash-es</span><br><span class="line"></span><br><span class="line">npm install lodash-es --save</span><br><span class="line">npm install lodash-es --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="npm-run"><a href="#npm-run" class="headerlink" title="npm run"></a>npm run</h3><blockquote>
+<p><code>npm</code>不仅可以用于模块管理，还可以用于执行脚本。<code>package.json</code>文件有一个<code>scripts</code>字段，可以用于指定脚本命令，供<code>npm</code>直接调用。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"scripts"</span>: &#123;</span><br><span class="line">        <span class="string">"serve"</span>: <span class="string">"vue-cli-service serve"</span>,</span><br><span class="line">        <span class="string">"build"</span>: <span class="string">"vue-cli-service build"</span>,</span><br><span class="line">        <span class="string">"lint"</span>: <span class="string">"vue-cli-service lint"</span>,</span><br><span class="line">        <span class="string">"test:unit"</span>: <span class="string">"vue-cli-service test:unit"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+<h3 id="package-json文件"><a href="#package-json文件" class="headerlink" title="package.json文件"></a>package.json文件</h3><blockquote>
+<p>每个项目的根目录下面，一般都有一个<code>package.json</code>文件，定义了这个项目所需要的各种模块，以及项目的配置信息（比如名称、版本、许可证等元数据）。<code>npm install</code>命令根据这个配置文件，自动下载所需的模块，也就是配置项目所需的运行和开发环境。</p>
+</blockquote>
+<ul>
+<li><p>name：描述的是模块的名称</p>
+</li>
+<li><p>version: 描述模块的版本号（遵循语义化版本）</p>
+</li>
+<li><p>main: 指定入口文件，默认为index.js</p>
+</li>
+<li><p>dependencies:字段指定了项目运行所依赖的模块</p>
+</li>
+<li><p>devDependencies:指定项目开发所需要的模块。</p>
+</li>
+<li>scripts: npm run 执行的命令就是这里指定的。</li>
+</ul>
+<h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><blockquote>
+<p>Node 应用由模块组成，采用 CommonJS 模块规范。</p>
+<p>每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// example.js</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> addX = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value + x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出之后才可见</span></span><br><span class="line"><span class="built_in">module</span>.exports.x = x;</span><br><span class="line"><span class="built_in">module</span>.exports.addX = addX;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用example模块</span></span><br><span class="line"><span class="keyword">var</span> example = <span class="built_in">require</span>(<span class="string">'./example.js'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(example.x); <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(example.addX(<span class="number">1</span>)); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><blockquote>
+<p>TypeScript具有类型系统，且是JavaScript的超集。 它可以编译成普通的JavaScript代码。 TypeScript支持任意浏览器，任意环境，任意系统并且是开源的。</p>
+</blockquote>
+<h3 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// boolean</span></span><br><span class="line"><span class="keyword">let</span> isDone: boolean = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数字</span></span><br><span class="line"><span class="keyword">let</span> decLiteral: number = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">let</span> hexLiteral: number = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="keyword">let</span> binaryLiteral: number = <span class="number">0b1010</span>;</span><br><span class="line"><span class="keyword">let</span> octalLiteral: number = <span class="number">0o744</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串</span></span><br><span class="line"><span class="keyword">let</span> name: string = <span class="string">"bob"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">let</span> list: number[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> list: <span class="built_in">Array</span>&lt;number&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 元组</span></span><br><span class="line"><span class="keyword">let</span> x: [string, number] = [<span class="string">'hello'</span>, <span class="number">10</span>]; <span class="comment">// OK</span></span><br><span class="line">x[<span class="number">3</span>] = <span class="string">'world'</span>; <span class="comment">// OK, 字符串可以赋值给(string | number)类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 枚举</span></span><br><span class="line">enum Color &#123;</span><br><span class="line">    Red, </span><br><span class="line">    Green, </span><br><span class="line">    Blue</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green;</span><br></pre></td></tr></table></figure>
+<h3 id="任意值any"><a href="#任意值any" class="headerlink" title="任意值any"></a>任意值any</h3><blockquote>
+<p>但是 Object 类型的变量只是允许你给它赋任意值 - 但是却不能够在<br>它上面调用任意的方法 .</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> notSure: any = <span class="number">4</span>;</span><br><span class="line">notSure.ifItExists(); <span class="comment">// okay, ifItExists might exist at runtime</span></span><br><span class="line">notSure.toFixed(); <span class="comment">// okay, toFixed exists (but the compiler doe</span></span><br><span class="line"><span class="comment">// sn't check)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> prettySure: <span class="built_in">Object</span> = <span class="number">4</span>;</span><br><span class="line">prettySure.toFixed(); <span class="comment">// Error: Property 'toFixed' doesn't exist</span></span><br><span class="line"><span class="comment">// on type 'Object'.</span></span><br></pre></td></tr></table></figure>
+<h3 id="空值void"><a href="#空值void" class="headerlink" title="空值void"></a>空值void</h3><blockquote>
+<p>void 类型像是与 any 类型相反，它表示没有任何类型 </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">warnUser</span>(<span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">	alert(<span class="string">"This is my warning message"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明一个 void 类型的变量没有什么大用，因为你只能为它赋予 undefined 和 null</span></span><br><span class="line"><span class="keyword">let</span> unusable: <span class="keyword">void</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h3><blockquote>
+<p>默认情况下 null 和 undefined 是所有类型的子类型。 就是说你可以<br>把 null 和 undefined 赋值给 number 类型的变量。 </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> u: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> n: <span class="literal">null</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：当你指定了 –strictNullChecks 标记， null 和 undefined 只能赋值给 void 和它们各自。 </p>
+</blockquote>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><blockquote>
+<p>object 表示非原始类型，也就是除 number ， string ， boolean ， symbol ， null 或 undefined 之外的类型。 </p>
+</blockquote>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> someValue: any = <span class="string">"this is a string"</span>;</span><br><span class="line"><span class="keyword">let</span> strLength: number = (&lt;string&gt;someValue).length;</span><br><span class="line">// as 语法</span><br><span class="line">let strLength: number = (someValue as string).length;</span><br></pre></td></tr></table></figure>
+<h3 id="可选属性"><a href="#可选属性" class="headerlink" title="可选属性"></a>可选属性</h3><blockquote>
+<p>可选属性使用<strong><code>?</code></strong>标识</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Vue的ComponentOptions声明的一部分</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> ComponentOptions&lt;</span><br><span class="line">  V <span class="keyword">extends</span> Vue,</span><br><span class="line">  Data=DefaultData&lt;V&gt;,</span><br><span class="line">  Methods=DefaultMethods&lt;V&gt;,</span><br><span class="line">  Computed=DefaultComputed,</span><br><span class="line">  PropsDef=PropsDefinition&lt;DefaultProps&gt;,</span><br><span class="line">  Props=DefaultProps&gt; &#123;</span><br><span class="line">  data?: Data;</span><br><span class="line">  props?: PropsDef;</span><br><span class="line">  propsData?: object;</span><br><span class="line">  computed?: Accessors&lt;Computed&gt;;</span><br><span class="line">  methods?: Methods;</span><br><span class="line">  watch?: Record&lt;<span class="built_in">string</span>, WatchOptionsWithHandler&lt;<span class="built_in">any</span>&gt; | WatchHandler&lt;<span class="built_in">any</span>&gt; | <span class="built_in">string</span>&gt;;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="去除null和undefined类型断言使用-标识"><a href="#去除null和undefined类型断言使用-标识" class="headerlink" title="去除null和undefined类型断言使用!标识"></a>去除null和undefined类型断言使用<strong><code>!</code></strong>标识</h3><blockquote>
+<p>有的时候TypeScript无法正确推导出类型时，需要手动去除<code>null</code>和<code>undefined</code></p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Login <span class="keyword">extends</span> Vue &#123;</span><br><span class="line">    <span class="meta">@Mutation</span>(UserMutationTypes.SET_USER_NAME)</span><br><span class="line">    <span class="keyword">private</span> changeUserName!: <span class="function">(<span class="params">name: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><blockquote>
+<p>在TypeScript里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。 </p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> LabelledValue &#123;</span><br><span class="line">  label: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLabel</span>(<span class="params">labelledObj: LabelledValue</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(labelledObj.label);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// let myObj = &#123;size: 10, label: "Size 10 Object"&#125;;</span></span><br><span class="line"><span class="keyword">let</span> myObj = &#123;size: <span class="number">10</span>, label: <span class="string">"Size 10 Object"</span>&#125;;</span><br><span class="line">printLabel(myObj);</span><br></pre></td></tr></table></figure>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Animal &#123;</span><br><span class="line">    move(distanceInMeters: <span class="built_in">number</span> = <span class="number">0</span>) &#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">`Animal moved <span class="subst">$&#123;distanceInMeters&#125;</span>m.`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">class</span> Dog <span class="keyword">extends</span> Animal &#123;</span><br><span class="line">    bark() &#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">'Woof! Woof!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> dog = <span class="keyword">new</span> Dog();</span><br><span class="line">dog.bark();</span><br><span class="line">dog.move(<span class="number">10</span>);</span><br><span class="line">dog.bark();</span><br></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Named function</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Anonymous function</span></span><br><span class="line"><span class="keyword">let</span> myAdd = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> x + y; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tsAdd</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + y;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tsMyAdd = <span class="function"><span class="keyword">function</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> x +y; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="声明合并"><a href="#声明合并" class="headerlink" title="声明合并"></a>声明合并</h3><blockquote>
+<p>注意每组接口里的声明顺序保持不变，但各组接口之间的顺序是后来的接口重载出<br>现在靠前位置。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">	clone(animal: Animal): Animal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">	clone(animal: Sheep): Sheep;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">    clone(animal: Dog): Dog;</span><br><span class="line">    clone(animal: Cat): Cat;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这三个接口合并成一个声明：</span></span><br><span class="line"><span class="keyword">interface</span> Cloner &#123;</span><br><span class="line">    clone(animal: Dog): Dog;</span><br><span class="line">    clone(animal: Cat): Cat;</span><br><span class="line">    clone(animal: Sheep): Sheep;</span><br><span class="line">    clone(animal: Animal): Animal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="扩充全局或者模块作用域"><a href="#扩充全局或者模块作用域" class="headerlink" title="扩充全局或者模块作用域"></a>扩充全局或者模块作用域</h3><blockquote>
+<p>不论是模块扩充还是全局声明扩充都不能向顶级作用域添加新的项目 - 它们只能为<br>已经存在的声明添加 “补丁”.</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// map.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Observable &#125; <span class="keyword">from</span> <span class="string">"./observable"</span>;</span><br><span class="line"><span class="comment">// 扩充 "./observable"</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> "./observable" &#123;</span><br><span class="line">	<span class="comment">// 使用接口合并扩充 'Observable' 类的定义</span></span><br><span class="line">    <span class="keyword">interface</span> Observable&lt;T&gt; &#123;</span><br><span class="line">    	map&lt;U&gt;<span class="function">(<span class="params">proj: (<span class="params">el: T</span>) =&gt; U</span>): <span class="params">Observable</span>&lt;<span class="params">U</span>&gt;;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"><span class="params">Observable</span>.<span class="params">prototype</span>.<span class="params">map</span> = /*...*/;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">// <span class="params">declare</span> <span class="params">global</span> 声明被增强:</span></span><br><span class="line"><span class="function"><span class="params">declare</span> <span class="params">global</span> &#123;</span></span><br><span class="line"><span class="function">    <span class="params">interface</span> <span class="params">Array</span>&lt;<span class="params">T</span>&gt; &#123;</span></span><br><span class="line"><span class="function">    	<span class="params">mapToNumbers</span><span class="params">()</span>: <span class="params">number</span>[];</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"><span class="params">Array</span>.<span class="params">prototype</span>.<span class="params">mapToNumbers</span> = <span class="params">function</span> <span class="params">()</span> &#123; /* ... */ &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Vue对TypeScript的支持"><a href="#Vue对TypeScript的支持" class="headerlink" title="Vue对TypeScript的支持"></a>Vue对TypeScript的支持</h2><blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/typescript.html" target="_blank" rel="noopener">Vue的TypeScript 支持</a></p>
+</blockquote>
+<h3 id="TypeScript识别Vue组件"><a href="#TypeScript识别Vue组件" class="headerlink" title="TypeScript识别Vue组件"></a>TypeScript识别Vue组件</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue-shim.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> "*.vue" &#123;</span><br><span class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> Vue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="TypeScript识别JSX"><a href="#TypeScript识别JSX" class="headerlink" title="TypeScript识别JSX"></a>TypeScript识别JSX</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染函数 &amp; JSX</span></span><br><span class="line">Vue.component(<span class="string">'anchored-heading'</span>, &#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(</span><br><span class="line">      <span class="string">'h'</span> + <span class="keyword">this</span>.level,   <span class="comment">// 标签名称</span></span><br><span class="line">      <span class="keyword">this</span>.$slots.default <span class="comment">// 子元素数组</span></span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    level: &#123;</span><br><span class="line">      <span class="keyword">type</span>: <span class="built_in">Number</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// shims-tsx.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> global &#123;</span><br><span class="line">  <span class="keyword">namespace</span> JSX &#123;</span><br><span class="line">    <span class="comment">// tslint:disable no-empty-interface</span></span><br><span class="line">    <span class="keyword">interface</span> Element <span class="keyword">extends</span> VNode &#123;&#125;</span><br><span class="line">    <span class="comment">// tslint:disable no-empty-interface</span></span><br><span class="line">    <span class="keyword">interface</span> ElementClass <span class="keyword">extends</span> Vue &#123;&#125;</span><br><span class="line">    <span class="keyword">interface</span> IntrinsicElements &#123;</span><br><span class="line">      [elem: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="扩展Vue类和原型声明书写"><a href="#扩展Vue类和原型声明书写" class="headerlink" title="扩展Vue类和原型声明书写"></a>扩展Vue类和原型声明书写</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子：</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> 'vue/types/vue' &#123;</span><br><span class="line">  <span class="keyword">interface</span> Vue &#123;</span><br><span class="line">    $axios: AxiosInstance</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">interface</span> VueConstructor &#123;</span><br><span class="line">    $axios: AxiosInstance</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Vue组件声明方式1"><a href="#Vue组件声明方式1" class="headerlink" title="Vue组件声明方式1"></a>Vue组件声明方式1</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"greeting"</span>&gt;</span>Hello &#123;&#123;name&#125;&#125;&#123;&#123;exclamationMarks&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"decrement"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"increment"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;<span class="regexp">/script&gt;&lt;script lang="ts"&gt;</span></span><br><span class="line"><span class="regexp">import Vue from "vue";</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default Vue.extend(&#123;</span></span><br><span class="line"><span class="regexp">    props: ['name', 'initialEnthusiasm'],</span></span><br><span class="line"><span class="regexp">    data() &#123;</span></span><br><span class="line"><span class="regexp">        return &#123;</span></span><br><span class="line"><span class="regexp">            enthusiasm: this.initialEnthusiasm,</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    methods: &#123;</span></span><br><span class="line"><span class="regexp">        increment() &#123; this.enthusiasm++; &#125;,</span></span><br><span class="line"><span class="regexp">        decrement() &#123;</span></span><br><span class="line"><span class="regexp">            if (this.enthusiasm &gt; 1) &#123;</span></span><br><span class="line"><span class="regexp">                this.enthusiasm--;</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    computed: &#123;</span></span><br><span class="line"><span class="regexp">        exclamationMarks(): string &#123;</span></span><br><span class="line"><span class="regexp">            return Array(this.enthusiasm + 1).join('!');</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-class">.greeting</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Vue组件声明方式2"><a href="#Vue组件声明方式2" class="headerlink" title="Vue组件声明方式2"></a>Vue组件声明方式2</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Component <span class="keyword">from</span> <span class="string">'vue-class-component'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @Component 修饰符注明了此类为一个 Vue 组件</span></span><br><span class="line">@Component(&#123;</span><br><span class="line">  <span class="comment">// 所有的组件选项都可以放在这里</span></span><br><span class="line">  template: <span class="string">'&lt;button @click="onClick"&gt;Click!&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">Vue</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 初始数据可以直接声明为实例的属性</span></span><br><span class="line">  message: string = <span class="string">'Hello!'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 组件方法也可以直接声明为实例的方法</span></span><br><span class="line">  onClick (): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="built_in">window</span>.alert(<span class="keyword">this</span>.message)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Vue组件使用注意事项"><a href="#Vue组件使用注意事项" class="headerlink" title="Vue组件使用注意事项"></a>Vue组件使用注意事项</h3><ul>
+<li><p>Vue组件或者ts文件中导入*.vue文件时，需要完整文件名</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Toolbar <span class="keyword">from</span> <span class="string">'@/components/toolbar.vue'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;script lang=&quot;ts&quot;&gt;</code>标签必须带lang=“ts”</p>
+</li>
+<li><p><code>&lt;script&gt;</code>导出的对象必须是Vue的实例</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> HelloDecorator <span class="keyword">extends</span> Vue &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Vue.extend(&#123;</span><br><span class="line">    <span class="comment">// ComponentOptions</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="vue-class-component注解的限制"><a href="#vue-class-component注解的限制" class="headerlink" title="vue-class-component注解的限制"></a>vue-class-component注解的限制</h3><ol>
+<li><p><code>methods</code>直接声明为<strong>类方法成员</strong>.</p>
+</li>
+<li><p><strong>计算属性</strong>声明为<strong>类属性访问器</strong>.</p>
+</li>
+<li><p><code>data</code>声明为类的字段。</p>
+</li>
+<li><p><code>data</code> ， <code>render</code>和所有的<code>Vue生命周期钩子函数</code>都能可以直接声明为类成员方法。但是你不能在Vue实例上直接调用。当你声明自定义方法时，应该避免<code>声明周期钩子函数保留的名字</code></p>
+</li>
+<li><p>其它的<code>options</code>属性，使用传递给<code>@Component</code>装饰器函数。例如：<code>components属性</code></p>
+</li>
+</ol>
+<h3 id="data属性声明注意事项"><a href="#data属性声明注意事项" class="headerlink" title="data属性声明注意事项"></a>data属性声明注意事项</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> Login <span class="keyword">extends</span> Vue &#123;</span><br><span class="line">    <span class="keyword">public</span> name: <span class="built_in">string</span> = <span class="string">'login'</span>;</span><br><span class="line">    <span class="comment">// 直接声明为类的字段</span></span><br><span class="line">    <span class="keyword">private</span> userName: <span class="built_in">string</span> = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">private</span> userPass: <span class="built_in">string</span> = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Mutation</span>(UserMutationTypes.SET_USER_NAME)</span><br><span class="line">    <span class="keyword">private</span> changeUserName!: <span class="function">(<span class="params">name: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// Vue默认的data函数返回属性</span></span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            labelPosition: <span class="string">'right'</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果data属性需要在<code>class</code>的<code>method</code>中修改时，声明为类的字段。</p>
+<p>如果data属性只在<code>template</code>中使用，可以使用<code>data函数</code>返回.</p>
+</blockquote>
+<h2 id="TypeScript官方声明文件仓库"><a href="#TypeScript官方声明文件仓库" class="headerlink" title="TypeScript官方声明文件仓库"></a>TypeScript官方声明文件仓库</h2><ul>
+<li><p><a href="https://github.com/DefinitelyTyped/DefinitelyTyped" target="_blank" rel="noopener">https://github.com/DefinitelyTyped/DefinitelyTyped</a></p>
+</li>
+<li><p>npm仓库为： @types/mockjs</p>
+</li>
+<li><p><a href="https://microsoft.github.io/TypeSearch/" target="_blank" rel="noopener">https://microsoft.github.io/TypeSearch/</a></p>
+</li>
+</ul>
+<h3 id="引入第三方库（没有声明文件）"><a href="#引入第三方库（没有声明文件）" class="headerlink" title="引入第三方库（没有声明文件）"></a>引入第三方库（没有声明文件）</h3><blockquote>
+<p>比如说我想引入<code>async-validator</code>,虽然已经在本地安装，但是typescript还是提示找不到模块。原因是typescript是从<code>node_modules/@types</code>目录下去找模块声明，有些库并没有提供typescript的声明文件，所以就需要自己去添加</p>
+<p>解决办法：在<code>src/types</code>目前下建一个<code>async-validation.d.ts</code>文件，声明这个模块即可</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> 'async-validator' &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">type</span> AsyncValidator&lt;T = object&gt; = (</span><br><span class="line">      rule: RuleConfig,</span><br><span class="line">      value: <span class="built_in">any</span>,</span><br><span class="line">      callback: ValidatorCallback,</span><br><span class="line">      source: T,</span><br><span class="line">      options: &#123;</span><br><span class="line">        messages: object;</span><br><span class="line">      &#125;,</span><br><span class="line">    ) =&gt; <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 看看*.vue模块怎么声明的</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '*.vue' &#123;</span><br><span class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> Vue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前端涉及的知识"><a href="#前端涉及的知识" class="headerlink" title="前端涉及的知识"></a>前端涉及的知识</h2><h3 id="前端基础"><a href="#前端基础" class="headerlink" title="前端基础"></a>前端基础</h3><ul>
+<li><p>JavaScript / HTML / CSS</p>
+</li>
+<li><p>ES6 的使用</p>
+</li>
+</ul>
+<h3 id="Vue部分"><a href="#Vue部分" class="headerlink" title="Vue部分"></a>Vue部分</h3><ul>
+<li><p>Vue的基础知识</p>
+</li>
+<li><p>Vuex和Vue-Router使用</p>
+</li>
+<li><p>Vue工具链的相关知识</p>
+<blockquote>
+<p>vue-loader</p>
+<p>vue-cli</p>
+<p>vetur(vs code 插件)</p>
+<p>vue.config.js</p>
+<p>vue-property-decorator</p>
+<p>vuex-class</p>
+</blockquote>
+</li>
+<li><p>Vue生态链的组件库（例如： Element UI）</p>
+</li>
+</ul>
+<h3 id="Node部分"><a href="#Node部分" class="headerlink" title="Node部分"></a>Node部分</h3><ul>
+<li>Node.js模块知识</li>
+<li>CommonJs规范(require, module, export)</li>
+<li>npm基本使用</li>
+<li>Node.js的package.json和模块知识</li>
+</ul>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><ul>
+<li><p>了解Webpack配置</p>
+</li>
+<li><p>Webpack插件</p>
+<blockquote>
+<p>css-loader, style-loader, sass-node…</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="TypeScript-1"><a href="#TypeScript-1" class="headerlink" title="TypeScript"></a>TypeScript</h3><ul>
+<li>TypeScript基本语法</li>
+<li>TypeScript类型声明文件*.d.ts写法</li>
+<li>tsconfig.json文件配置</li>
+<li>了解tslint.json</li>
+</ul>
+<h3 id="其它类库"><a href="#其它类库" class="headerlink" title="其它类库"></a>其它类库</h3><ul>
+<li>Axios.js库的使用</li>
+<li>Eslint</li>
+</ul>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://javascript.ruanyifeng.com/nodejs/npm.html" target="_blank" rel="noopener">npm模块管理器</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2016/01/npm-install.html" target="_blank" rel="noopener">npm 模块安装机制简介</a></p>
+<p>vue-cli:</p>
+<p><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">https://cli.vuejs.org/zh/</a></p>
+<p>vue-router: </p>
+<p><a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">https://router.vuejs.org/zh/</a></p>
+<p>vuex:</p>
+<p><a href="https://vuex.vuejs.org/zh/guide/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh/guide/</a></p>
+<p>vue-loader:</p>
+<p><a href="https://vue-loader.vuejs.org/zh/spec.html" target="_blank" rel="noopener">https://vue-loader.vuejs.org/zh/spec.html</a></p>
+<p>vue-class-component</p>
+<p><a href="https://github.com/vuejs/vue-class-component" target="_blank" rel="noopener">https://github.com/vuejs/vue-class-component</a></p>
+<p>vue-property-decorator</p>
+<p><a href="https://github.com/kaorun343/vue-property-decorator" target="_blank" rel="noopener">https://github.com/kaorun343/vue-property-decorator</a></p>
+<p>vuex-class</p>
+<p><a href="https://github.com/ktsn/vuex-class/" target="_blank" rel="noopener">https://github.com/ktsn/vuex-class/</a></p>
+<p>Axios.js</p>
+<p><a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a></p>
+<p>Vue的TypeScript支持</p>
+<p><a href="https://cn.vuejs.org/v2/guide/typescript.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/typescript.html</a></p>
+<p>语义化版本</p>
+<p><a href="https://semver.org/lang/zh-CN/" target="_blank" rel="noopener">https://semver.org/lang/zh-CN/</a></p>
+<p>TypeScript+ Vue起步</p>
+<p><a href="https://github.com/Microsoft/TypeScript-Vue-Starter#typescript-vue-starter" target="_blank" rel="noopener">https://github.com/Microsoft/TypeScript-Vue-Starter#typescript-vue-starter</a></p>
+<p><a href="https://github.com/SimonZhangITer/vue-typescript-dpapp-demo" target="_blank" rel="noopener">https://github.com/SimonZhangITer/vue-typescript-dpapp-demo</a></p>
+<p>vue + typescript 项目起手式</p>
+<p><a href="https://segmentfault.com/a/1190000011744210" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011744210</a></p>
+<p><a href="https://segmentfault.com/a/1190000011878086" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011878086</a></p>
+<p><a href="https://github.com/ws456999/vue-typescript-starter" target="_blank" rel="noopener">https://github.com/ws456999/vue-typescript-starter</a></p>
+<p><a href="https://www.zhihu.com/question/310485097" target="_blank" rel="noopener">https://www.zhihu.com/question/310485097</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-06T04:39:11.872Z" itemprop="dateUpdated">2019-03-06 12:39:11</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/02/13/vue2-typescript-action-prepare/" target="_blank" rel="external">https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/&title=《Vue2+TypeScript实践准备》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/&title=《Vue2+TypeScript实践准备》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Vue2+TypeScript实践准备》 — 个人博客&url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/26/install-node-on-ubuntu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Linux环境安装node,部署verdaccio私有npm仓库</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/09/how-to-use-jquery-validation/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">jQuery Validation使用总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/&title=《Vue2+TypeScript实践准备》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/&title=《Vue2+TypeScript实践准备》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Vue2+TypeScript实践准备》 — 个人博客&url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/02/13/vue2-typescript-action-prepare/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3a0U7DQAwEwP7/T5dXEEq7ts8lSJOnCqXkJkh3Zu3HI76e367kntf3J7/t+52/Px++8PDw8AZLv1rc788J5vXP8zuv1hO9UDw8PLw1Xr4pP4Nrcgy8fm6+Zjw8PLy78fLtO1pEcA8eHh7ef+TlpXay3efRBh4eHt49eUkYUYgAWht68tzFrAUPDw+vs5JyI+qvPq/09/Dw8PDGXfXqhtsbFMhL7fJq8fDw8BZ4vdGBZMTqQJlbDDguXzQeHh7eAi8JW/OSN9+yqxFGL/7Aw8PD2+MlbftkuCrZ0HvR8ASMh4eHt8HrPSYpoJ+tqzdMcInEw8PDO8o7NQpQDSN6YwTllePh4eEt8HoHw6SpXw1n81ik/DfEw8PDK/JORbR5LJuExfmqmsk0Hh4e3piXFKy9dHQCnsTNeHh4eHu8fKudBA2T46Q3ZICHh4e3x0sWncepeazQO4qScvzHb8bDw8Nb4CVfqwa4o9Go4ghXOZ/Gw8PDO8TL21T5MFavkTb5Lh4eHt7nefnSqyVyPjJVHczKhxLw8PDwTvF6gWxv160Gvvk9l/fj4eHhLfOqG30PlrfB8sPpTWcPDw8P7yivh5zgk2f1wl88PDy8T/ImDadeQtwjjQa58PDw8I7yksK3GiXkgGpBX341eHh4eB/h5WFuUhz3BgWq8XFhAgIPDw/vEG8eniakaqSbHDZvggk8PDy8j/OqBfSkIH60rnLKgoeHhzfgPYvXpP3f29Z7h8TlTBkeHh7emFfdfPNjo/oiJgMNBw4YPDw8vCKvehj0iux8TCoJbfHw8PDuwOtFtJMhrd7AVv468PDw8O7Gmze9ei2xcrGOh4eHdwNer5F/ClxOVvDw8PDWeBuAfLwgCXnzowIPDw9vmzf5h7/aysoZ82IdDw8Pb4H3BUGctnM3YsrbAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
