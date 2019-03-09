@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>npm私有仓库verdaccio的部署 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="npm,verdaccio">
+    <meta name="description" content="verdaccio 因为技术变革太快，注意知识的时效性。 verdaccio是基于node开发的一个库，用来搭建私有的npm仓库。因为npm仓库大多数是公有的免费的，私有仓库或者企业版是收费的，在单位内部或者个人一些私有的模块需要托管的时候就需要自己搭建一个私有的仓库，而verdaccio就是选择之一，最便捷的一种。  安装verdaccio 参照官方文档，而且是中文版哟~~~。 注意： node">
+<meta name="keywords" content="npm,verdaccio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm私有仓库verdaccio的部署">
+<meta property="og:url" content="https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="verdaccio 因为技术变革太快，注意知识的时效性。 verdaccio是基于node开发的一个库，用来搭建私有的npm仓库。因为npm仓库大多数是公有的免费的，私有仓库或者企业版是收费的，在单位内部或者个人一些私有的模块需要托管的时候就需要自己搭建一个私有的仓库，而verdaccio就是选择之一，最便捷的一种。  安装verdaccio 参照官方文档，而且是中文版哟~~~。 注意： node">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-09T13:44:59.479Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm私有仓库verdaccio的部署">
+<meta name="twitter:description" content="verdaccio 因为技术变革太快，注意知识的时效性。 verdaccio是基于node开发的一个库，用来搭建私有的npm仓库。因为npm仓库大多数是公有的免费的，私有仓库或者企业版是收费的，在单位内部或者个人一些私有的模块需要托管的时候就需要自己搭建一个私有的仓库，而verdaccio就是选择之一，最便捷的一种。  安装verdaccio 参照官方文档，而且是中文版哟~~~。 注意： node">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">npm私有仓库verdaccio的部署</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">npm私有仓库verdaccio的部署</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-09T03:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-03-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/verdaccio/">verdaccio</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#verdaccio"><span class="post-toc-number">1.</span> <span class="post-toc-text">verdaccio</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装verdaccio"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装verdaccio</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置verdaccio"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">配置verdaccio</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义端口号"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">自定义端口号</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加taobao源"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">添加taobao源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置packages"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">配置packages</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置npm的registry"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">配置npm的registry</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#私有模块发布和使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">私有模块发布和使用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-deploy-private-npm-registry-verdaccio"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">npm私有仓库verdaccio的部署</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-09 11:00:00" datetime="2019-03-09T03:00:00.000Z"  itemprop="datePublished">2019-03-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/verdaccio/">verdaccio</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="verdaccio"><a href="#verdaccio" class="headerlink" title="verdaccio"></a>verdaccio</h1><blockquote>
+<p><strong>因为技术变革太快，注意知识的时效性。</strong></p>
+<p><code>verdaccio</code>是基于<code>node</code>开发的一个库，用来搭建私有的<code>npm</code>仓库。因为<code>npm</code>仓库大多数是公有的免费的，私有仓库或者企业版是收费的，在单位内部或者个人一些私有的模块需要托管的时候就需要自己搭建一个私有的仓库，而<code>verdaccio</code>就是选择之一，最便捷的一种。</p>
+</blockquote>
+<h2 id="安装verdaccio"><a href="#安装verdaccio" class="headerlink" title="安装verdaccio"></a>安装verdaccio</h2><blockquote>
+<p>参照<a href="https://verdaccio.org/docs/zh-CN/installation" target="_blank" rel="noopener">官方文档</a>，而且是中文版哟~~~。</p>
+<p><strong>注意：</strong> <code>node.js</code>的版本要求</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 全局安装</span></span><br><span class="line">npm i -g verdaccio</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">verdaccio </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用forever或者pm2能够启动verdaccio到后台</span></span><br><span class="line"><span class="comment"># 后台运行</span></span><br><span class="line">forever start `<span class="built_in">which</span> verdaccio`</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">pm2 start <span class="built_in">which</span> verdaccio</span><br></pre></td></tr></table></figure>
+<h2 id="配置verdaccio"><a href="#配置verdaccio" class="headerlink" title="配置verdaccio"></a>配置verdaccio</h2><blockquote>
+<p>配置文件路径参考：<a href="https://verdaccio.org/docs/zh-CN/cli" target="_blank" rel="noopener">https://verdaccio.org/docs/zh-CN/cli</a></p>
+<p>windows: <code>C:\Users\用户名\.config\verdaccio\config.yaml</code></p>
+</blockquote>
+<h3 id="自定义端口号"><a href="#自定义端口号" class="headerlink" title="自定义端口号"></a>自定义端口号</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">listen:</span></span><br><span class="line">  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">:10086</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加taobao源"><a href="#添加taobao源" class="headerlink" title="添加taobao源"></a>添加taobao源</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">uplinks:</span></span><br><span class="line"><span class="attr">  npmjs:</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">https://registry.npmjs.org/</span></span><br><span class="line"><span class="attr">  taobao:</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">https://registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置packages"><a href="#配置packages" class="headerlink" title="配置packages"></a>配置packages</h3><blockquote>
+<p><a href="https://verdaccio.org/docs/zh-CN/packages" target="_blank" rel="noopener">官方参考</a></p>
+</blockquote>
+<ol>
+<li><p>配置私有包的规则</p>
+<blockquote>
+<p>建议私有的包都添加统一的<strong>前缀</strong>或者使用 <code>@npmuser/</code>  这样的小组范围类型。</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="string">'npmuser-*'</span><span class="string">:</span></span><br><span class="line"><span class="attr">    access:</span> <span class="string">npmuser</span></span><br><span class="line"><span class="attr">    publish:</span> <span class="string">npmuser</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样配置<code>npmuser-*</code>开头的包，发布的时候全部都发布到<code>verdaccio</code>中。而且之能<code>npmuser</code>这个用户使用。</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="string">'npmuser-*'</span><span class="string">:</span></span><br><span class="line"><span class="attr">    access:</span> <span class="string">$authenticated</span></span><br><span class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># verdaccio内置使用htpasswd插件验证，内置的小组名称有：</span></span><br><span class="line">    <span class="comment"># '$all', '$anonymous', '@all', '@anonymous', 'all', 'undefined', 'anonymous'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样配置就是<code>npmuser-*</code>包，只能登陆的用户使用。</p>
+</blockquote>
+</li>
+<li><p>配置proxy</p>
+<blockquote>
+<p>修改默认的<code>proxy</code>为<code>uplinks</code>中的<code>taobao</code></p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">packages:</span></span><br><span class="line">  <span class="string">'@*/*'</span><span class="string">:</span></span><br><span class="line">    <span class="comment"># scoped packages</span></span><br><span class="line"><span class="attr">    access:</span> <span class="string">$all</span></span><br><span class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></span><br><span class="line"><span class="attr">    proxy:</span> <span class="string">taobao</span>  <span class="comment"># 引用了uplinks中的配置</span></span><br><span class="line"></span><br><span class="line">  <span class="string">'**'</span><span class="string">:</span></span><br><span class="line"><span class="attr">    access:</span> <span class="string">$all</span></span><br><span class="line"><span class="attr">    publish:</span> <span class="string">$authenticated</span></span><br><span class="line"><span class="attr">    proxy:</span> <span class="string">taobao</span> <span class="comment"># 引用了uplinks中的配置</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="配置npm的registry"><a href="#配置npm的registry" class="headerlink" title="配置npm的registry"></a>配置<code>npm</code>的registry</h2><blockquote>
+<p>建议使用<code>nrm</code>管理<code>registry</code></p>
+<p><a href="https://betgar.github.io/2019/02/26/install-node-on-ubuntu/">详情参考这篇文章</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加本地的verdaccio</span></span><br><span class="line">nrm add <span class="built_in">local</span> http://127.0.0.1:4873</span><br><span class="line"><span class="comment"># 切换到local</span></span><br><span class="line">nrm use <span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+<h2 id="私有模块发布和使用"><a href="#私有模块发布和使用" class="headerlink" title="私有模块发布和使用"></a>私有模块发布和使用</h2><blockquote>
+<p>发布私有的模块前，要先使用<code>nrm</code>切换到<code>verdaccio</code>发布的<code>registry</code>，并且写先注册一个<code>用户</code>，然后才能发布模块</p>
+</blockquote>
+<ol>
+<li><p>切换<code>registry</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use <span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用npm注册一个账户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm adduser <span class="comment"># 注册用户</span></span><br><span class="line"><span class="comment"># 注意这个账户不是npmjs.com的账户，这个账户只是注册到自己发布的verdaccio服务中</span></span><br><span class="line"><span class="comment"># verdaccio使用htpasswd来验证用户密码</span></span><br><span class="line"><span class="comment"># verdaccio有插件可以使用自己搭建的gitlab用户来验证。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如: node项目为node-demo</span></span><br><span class="line"><span class="comment"># node-demo目录下执行</span></span><br><span class="line"><span class="comment"># 发布之前注意修改package.json中的version版本号</span></span><br><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用私有模块</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如：私有模块名称为：pvt-node</span></span><br><span class="line">npm i pvt-node</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-09T13:44:59.479Z" itemprop="dateUpdated">2019-03-09 21:44:59</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/03/09/deploy-private-npm-registry-verdaccio/" target="_blank" rel="external">https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/verdaccio/">verdaccio</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/&title=《npm私有仓库verdaccio的部署》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/&title=《npm私有仓库verdaccio的部署》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm私有仓库verdaccio的部署》 — 个人博客&url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/26/install-node-on-ubuntu/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Linux环境安装node,部署verdaccio私有npm仓库</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/&title=《npm私有仓库verdaccio的部署》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/&title=《npm私有仓库verdaccio的部署》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《npm私有仓库verdaccio的部署》 — 个人博客&url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/03/09/deploy-private-npm-registry-verdaccio/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpElEQVR42u3a0W7CMAwF0P3/T7PXSWzttR0Dk06fELRNjpEa1/HXV3w8fhzP3z9/fr7q+rg+/6/7Hzvw8PDwBlPPB76+WxKC6tSTQPxyHzw8PLw1XnK7/PGdXJsz8nDg4eHhfTKvl+ZOFhs8PDy8/8s7m0z3SHh4eHifwMtLqPOSbl5rvaYerrXg4eHhxbxeKvzezyv7e3h4eHjjXfXqBn/v0dwrAUdzwMPDw1vgTUoDSQEiSYjza5vzxMPDwzvKy1/4qy0FVXz+ayH5xsPDw1vgXT98J8lu9XGfpObJN1FJAg8PD+8QL18e8gJE75zkzMIoeHh4eEd5vUdztS1gQjq84uHh4eEdzTarBdxeq8H1uNVF6OZlAA8PD++FvHlhokptlmivQ4aHh4e3wOul19WSa3VjrDfWzQKGh4eHt8zL0+t8c6vXRNULBx4eHt57eWenOEnWq5tqeHh4eBu8SdtTtXGqGr5q0eTmH8PDw8M7xEtO6iXHCawasmYLAh4eHt4Cr/qSnwdinhz35nmzSODh4eENeL2J9sq7vRR51GqAh4eHt8ybMKol2uoS0gwZHh4e3kt4vUknw+eFibwEfPMrHh4e3gIvb7eqtkP1irPVRoRowwwPDw9vjZckwTkp+b460Wbg8PDw8F7Cq5Yk8jQ6LxkfmwMeHh7eMq83reqCMdn6KocGDw8Pb5l3tmVqju81Y+Hh4eHt8R7FIw9Bocy6kAPj4eHh7fEm60mvUSAJU35tr30BDw8Pb87LF4NqCbj3sK4uSDfhxsPDw1vjVUsJ+TLQKwFXF62o1oKHh4f3Vt6p1qu8Jas3Oh4eHt6n8fJCQ7XpKrlPlLLj4eHhrfHyYarLRrWhKtkeK5Q88PDw8BZ4vRf+XmLdm9AkHHh4eHhHed+P0+QpzQxa8gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
