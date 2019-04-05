@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="cygwin">
-    <meta name="description" content="apt-cyg 因为使用在windows下使用cygwin，为了方便安装其它包，所以需要安装apt-cyg包管理器。  使用setup-x86_64.exe安装 setup-x86_64.exe已经是cygwin的包管理器，所以其它包都可以通过它来安装。  1234# 方便使用alias cyg-get=&quot;/cygdrive/d/path/to/cygwin/setup-x86_64.exe -q">
+    <meta name="description" content="apt-cyg 因为使用在windows下使用cygwin，为了方便安装其它包，所以需要安装apt-cyg包管理器。  使用setup-x86_64.exe安装（apt-cyg） setup-x86_64.exe已经是cygwin的包管理器，所以其它包都可以通过它来安装。   别名是为了方便使用，设置只在当前的shell生效 alias cyg-get=”/cygdrive/d/path/to/c">
 <meta name="keywords" content="cygwin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="apt-cyg安装">
 <meta property="og:url" content="https://betgar.github.io/2018/06/04/apt-cyg/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="apt-cyg 因为使用在windows下使用cygwin，为了方便安装其它包，所以需要安装apt-cyg包管理器。  使用setup-x86_64.exe安装 setup-x86_64.exe已经是cygwin的包管理器，所以其它包都可以通过它来安装。  1234# 方便使用alias cyg-get=&quot;/cygdrive/d/path/to/cygwin/setup-x86_64.exe -q">
+<meta property="og:description" content="apt-cyg 因为使用在windows下使用cygwin，为了方便安装其它包，所以需要安装apt-cyg包管理器。  使用setup-x86_64.exe安装（apt-cyg） setup-x86_64.exe已经是cygwin的包管理器，所以其它包都可以通过它来安装。   别名是为了方便使用，设置只在当前的shell生效 alias cyg-get=”/cygdrive/d/path/to/c">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-26T14:47:11.226Z">
+<meta property="og:updated_time" content="2019-04-05T14:07:31.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="apt-cyg安装">
-<meta name="twitter:description" content="apt-cyg 因为使用在windows下使用cygwin，为了方便安装其它包，所以需要安装apt-cyg包管理器。  使用setup-x86_64.exe安装 setup-x86_64.exe已经是cygwin的包管理器，所以其它包都可以通过它来安装。  1234# 方便使用alias cyg-get=&quot;/cygdrive/d/path/to/cygwin/setup-x86_64.exe -q">
+<meta name="twitter:description" content="apt-cyg 因为使用在windows下使用cygwin，为了方便安装其它包，所以需要安装apt-cyg包管理器。  使用setup-x86_64.exe安装（apt-cyg） setup-x86_64.exe已经是cygwin的包管理器，所以其它包都可以通过它来安装。   别名是为了方便使用，设置只在当前的shell生效 alias cyg-get=”/cygdrive/d/path/to/c">
     
         <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
     
@@ -174,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#apt-cyg"><span class="post-toc-number">1.</span> <span class="post-toc-text">apt-cyg</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用setup-x86-64-exe安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用setup-x86_64.exe安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装wget"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装wget</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载apt-cyg"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">下载apt-cyg</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置镜像源"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">设置镜像源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装chere的package"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">安装chere的package</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#apt-cyg源码"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">apt-cyg源码</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#apt-cyg"><span class="post-toc-number">1.</span> <span class="post-toc-text">apt-cyg</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用setup-x86-64-exe安装（apt-cyg）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用setup-x86_64.exe安装（apt-cyg）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装wget"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装wget</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载apt-cyg"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">下载apt-cyg</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置镜像源"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">设置镜像源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装chere的package"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">安装chere的package</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#apt-cyg源码"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">apt-cyg源码</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -203,10 +203,10 @@
             <h1 id="apt-cyg"><a href="#apt-cyg" class="headerlink" title="apt-cyg"></a>apt-cyg</h1><blockquote>
 <p>因为使用在windows下使用<code>cygwin</code>，为了方便安装其它包，所以需要安装<code>apt-cyg</code>包管理器。</p>
 </blockquote>
-<h2 id="使用setup-x86-64-exe安装"><a href="#使用setup-x86-64-exe安装" class="headerlink" title="使用setup-x86_64.exe安装"></a>使用setup-x86_64.exe安装</h2><blockquote>
+<h2 id="使用setup-x86-64-exe安装（apt-cyg）"><a href="#使用setup-x86-64-exe安装（apt-cyg）" class="headerlink" title="使用setup-x86_64.exe安装（apt-cyg）"></a>使用setup-x86_64.exe安装（apt-cyg）</h2><blockquote>
 <p><code>setup-x86_64.exe</code>已经是<code>cygwin</code>的包管理器，所以其它包都可以通过它来安装。</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 方便使用</span></span><br><span class="line">alias cyg-get="/cygdrive/d/path/to/cygwin/setup-x86_64.exe -q -P"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 建议使用ftp://sourceware.org/pub/cygwin镜像比较快</span></span><br><span class="line">cyg-get wget</span><br></pre></td></tr></table></figure>
+<p> <del>别名是为了方便使用，设置只在当前的shell生效</del><br> <del>alias cyg-get=”/cygdrive/d/path/to/cygwin/setup-x86_64.exe -q -P”</del><br> <del>建议使用<a href="ftp://sourceware.org/pub/cygwin镜像比较快" target="_blank" rel="noopener">ftp://sourceware.org/pub/cygwin镜像比较快</a></del><br> <del><a href="http://mirrors.163.com/cygwin/" target="_blank" rel="noopener">http://mirrors.163.com/cygwin/</a></del><br><del>cyg-get wget</del></p>
 <h2 id="安装wget"><a href="#安装wget" class="headerlink" title="安装wget"></a>安装wget</h2><blockquote>
 <p>使用<code>apt-cyg</code>需要先安装<code>wget</code></p>
 </blockquote>
@@ -231,7 +231,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-09-26T14:47:11.226Z" itemprop="dateUpdated">2018-09-26 22:47:11</time>
+    最后更新时间：<time datetime="2019-04-05T14:07:31.746Z" itemprop="dateUpdated">2019-04-05 22:07:31</time>
 </span><br>
 
 
