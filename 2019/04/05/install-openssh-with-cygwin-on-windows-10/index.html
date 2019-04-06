@@ -21,23 +21,23 @@
     
     
     <meta name="keywords" content="openssh,cygwin">
-    <meta name="description" content="windows 10使用cygwin安装openssh服务端 install-openssh-with-cygwin-on-windows-10  安装openssh和openssl假设你已经安装了cygwin，使用cygwin安装openssh和openssl详情看最后的参考资料. how-to-get-ssh-command-line-access-to-windows-7-using-cyg">
+    <meta name="description" content="windows 10使用cygwin安装openssh服务端 install-openssh-with-cygwin-on-windows-10  本来windows10上已经有内置的openssh，我可能爱折腾不愿意使用内置的，所以使用cygwin重新安装了一个ssh服务. 安装步骤总结 安装cygwin 使用管理员权限运行cygwin安装openssh和openssl ssh-host-con">
 <meta name="keywords" content="openssh,cygwin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows 10使用cygwin安装openssh服务端">
 <meta property="og:url" content="https://betgar.github.io/2019/04/05/install-openssh-with-cygwin-on-windows-10/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="windows 10使用cygwin安装openssh服务端 install-openssh-with-cygwin-on-windows-10  安装openssh和openssl假设你已经安装了cygwin，使用cygwin安装openssh和openssl详情看最后的参考资料. how-to-get-ssh-command-line-access-to-windows-7-using-cyg">
+<meta property="og:description" content="windows 10使用cygwin安装openssh服务端 install-openssh-with-cygwin-on-windows-10  本来windows10上已经有内置的openssh，我可能爱折腾不愿意使用内置的，所以使用cygwin重新安装了一个ssh服务. 安装步骤总结 安装cygwin 使用管理员权限运行cygwin安装openssh和openssl ssh-host-con">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://betgar.github.io/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/sshd-service-installed-error.png">
 <meta property="og:image" content="https://betgar.github.io/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/windows10-build-in-openssh.png">
 <meta property="og:image" content="https://betgar.github.io/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/ssh-host-config.png">
 <meta property="og:image" content="https://betgar.github.io/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/sshd-as-service-ntsec.png">
 <meta property="og:image" content="https://betgar.github.io/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/config-user-name-password.png">
-<meta property="og:updated_time" content="2019-04-05T14:46:52.842Z">
+<meta property="og:updated_time" content="2019-04-06T01:56:44.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows 10使用cygwin安装openssh服务端">
-<meta name="twitter:description" content="windows 10使用cygwin安装openssh服务端 install-openssh-with-cygwin-on-windows-10  安装openssh和openssl假设你已经安装了cygwin，使用cygwin安装openssh和openssl详情看最后的参考资料. how-to-get-ssh-command-line-access-to-windows-7-using-cyg">
+<meta name="twitter:description" content="windows 10使用cygwin安装openssh服务端 install-openssh-with-cygwin-on-windows-10  本来windows10上已经有内置的openssh，我可能爱折腾不愿意使用内置的，所以使用cygwin重新安装了一个ssh服务. 安装步骤总结 安装cygwin 使用管理员权限运行cygwin安装openssh和openssl ssh-host-con">
 <meta name="twitter:image" content="https://betgar.github.io/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/sshd-service-installed-error.png">
     
         <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
@@ -180,7 +180,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#windows-10使用cygwin安装openssh服务端"><span class="post-toc-number">1.</span> <span class="post-toc-text">windows 10使用cygwin安装openssh服务端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装openssh和openssl"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装openssh和openssl</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动服务"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">启动服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#windows-10使用cygwin安装openssh服务端"><span class="post-toc-number">1.</span> <span class="post-toc-text">windows 10使用cygwin安装openssh服务端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装步骤总结"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装步骤总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#cygwin安装openssh和openssl"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">cygwin安装openssh和openssl</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修复sshd-service-is-already-installed"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">修复sshd service is already installed.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改默认的sshd服务名"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">修改默认的sshd服务名</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动服务"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">启动服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ssh-user-config"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">ssh-user-config</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#卸载ssh服务"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">卸载ssh服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重装ssh重新设置权限"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">重装ssh重新设置权限</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -209,10 +209,27 @@
             <h1 id="windows-10使用cygwin安装openssh服务端"><a href="#windows-10使用cygwin安装openssh服务端" class="headerlink" title="windows 10使用cygwin安装openssh服务端"></a>windows 10使用cygwin安装openssh服务端</h1><blockquote>
 <p>install-openssh-with-cygwin-on-windows-10</p>
 </blockquote>
-<h2 id="安装openssh和openssl"><a href="#安装openssh和openssl" class="headerlink" title="安装openssh和openssl"></a>安装openssh和openssl</h2><p>假设你已经安装了<code>cygwin</code>，使用cygwin安装openssh和openssl详情看最后的参考资料.</p>
-<p><a href="https://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/" target="_blank" rel="noopener">how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/</a></p>
+<p>本来windows10上已经有内置的<code>openssh</code>，我可能爱折腾不愿意使用内置的，所以使用<code>cygwin</code>重新安装了一个ssh服务.</p>
+<h2 id="安装步骤总结"><a href="#安装步骤总结" class="headerlink" title="安装步骤总结"></a>安装步骤总结</h2><ol>
+<li>安装cygwin</li>
+<li>使用<strong>管理员权限</strong>运行cygwin安装<code>openssh</code>和<code>openssl</code></li>
+<li>ssh-host-config命令开始配置ssh</li>
+<li>windows10内置的<code>sshd</code>和<code>ssh-host-config</code>默认的服务名冲突解决</li>
+<li>一系列ssh-host-config配置，包括daemon名称 <code>ntsec</code>和创建默认的<code>cyg_server</code>来运行<code>sshd</code>服务</li>
+<li>ssh-user-config生成用户的密钥（非必须，可以使用密码登陆，用户就是windows的正常用户）</li>
+<li>启动服务<code>net start cygsshd</code></li>
+<li>使用putty登陆localhost测试</li>
+<li>卸载<code>ssh</code></li>
+<li>重新安装<code>ssh</code></li>
+</ol>
 <blockquote>
-<p><strong>sshd service is already installed.</strong></p>
+<p>注意：cygwin使用的是windows的用户和权限，所以默认<code>/etc/</code>下是没用<code>passwd</code>和<code>group</code>等文件的，不要太惊讶。</p>
+<p>开始我也没用搞明白，而且<code>ssh-host-config</code>中创建一个<code>cyg_server</code>用户是真实的windows账户，但是需要<strong>组策略</strong>才能够看到，这个用户用来启动<code>sshd</code>服务的，而且不能用来登陆windows，因为是一个令牌用户，在<strong>组策略&gt;计算机配置&gt;windows配置&gt;安全设置&gt;本地策略&gt;用户权限分配&gt; 创建一个令牌对象</strong>中看到。</p>
+</blockquote>
+<h2 id="cygwin安装openssh和openssl"><a href="#cygwin安装openssh和openssl" class="headerlink" title="cygwin安装openssh和openssl"></a>cygwin安装openssh和openssl</h2><p>假设你已经安装了<code>cygwin</code>，使用cygwin安装openssh和openssl详情看参考:</p>
+<p><a href="https://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/" target="_blank" rel="noopener">how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/</a></p>
+<h3 id="修复sshd-service-is-already-installed"><a href="#修复sshd-service-is-already-installed" class="headerlink" title="修复sshd service is already installed."></a>修复sshd service is already installed.</h3><blockquote>
+<p>警告：<strong>sshd service is already installed.</strong></p>
 </blockquote>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -222,17 +239,36 @@
                 <div class="image-caption">sshd-service-installed-error</div>
             </figure>
 <p><img src="/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/windows10-build-in-openssh.png" alt="windows10-build-in-openssh"></p>
+<blockquote>
 <p>出现sshd service is already installed.的问题是因为windows 10内置了一个openssh，造成了冲突，现在只需要修改cygwin安装的openssh中的默认的sshd服务名称。</p>
-<p>路径: <code>C:/cygwin64/bin/sshd-host-config</code> (32位的有所区别，找不到用everything搜索一下啊)</p>
-<p>修改: service_name=sshd 为 service_name=cygsshd</p>
+</blockquote>
+<h3 id="修改默认的sshd服务名"><a href="#修改默认的sshd服务名" class="headerlink" title="修改默认的sshd服务名"></a>修改默认的sshd服务名</h3><p>路径: <code>C:/cygwin64/bin/sshd-host-config</code> (32位的有所区别，找不到用everything搜索一下啊)</p>
+<p>修改: service_name=sshd 为 service_name=cygsshd   (cygsshd自定义的)</p>
 <p>修改完之后重新执行<code>ssh-host-config</code>,上面的问题解决.</p>
 <p>下面是运行中的截图.</p>
 <p><img src="/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/ssh-host-config.png" alt="ssh-host-config"></p>
 <p><img src="/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/sshd-as-service-ntsec.png" alt="sshd-as-service-ntsec"></p>
+<p>建议使用默认的<code>cyg_server</code>，没用必要重新自定义，我当时也是好奇，搞得走了很多弯路。</p>
 <p><img src="/img/2019-04-05-install-openssh-with-cygwin-on-windows-10/config-user-name-password.png" alt="config-user-name-password"></p>
-<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net start cygsshd  <span class="comment"># cygsshd是自定义的service_name</span></span><br><span class="line"><span class="comment"># 或者使用cygwin运行</span></span><br><span class="line">cygrunsrv -S cygsshd</span><br></pre></td></tr></table></figure>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><blockquote>
+<p>也可以重启一下系统，服务会自动启动</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net start cygsshd  <span class="comment"># cygsshd是自定义的service_name</span></span><br><span class="line"><span class="comment"># 或者使用cygwin运行</span></span><br><span class="line">cygrunsrv -S cygsshd</span><br></pre></td></tr></table></figure>
+<h2 id="ssh-user-config"><a href="#ssh-user-config" class="headerlink" title="ssh-user-config"></a>ssh-user-config</h2><blockquote>
+<p>选择生成用户的<code>RSA</code>口令就行了，<code>RSA</code>比较常用，其它的不是很常用。</p>
+</blockquote>
+<h2 id="卸载ssh服务"><a href="#卸载ssh服务" class="headerlink" title="卸载ssh服务"></a>卸载ssh服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除sshd服务, sshd时默认的服务名，如果你定义了，输入你的服务名</span></span><br><span class="line">cygrunsrv --stop sshd</span><br><span class="line">cygrunsrv --remove sshd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete any sshd or related users (such as cyg_server) from /etc/passwd</span></span><br><span class="line"><span class="comment">#   (use your favorite editor)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Delete any sshd or related users (such as cyg_server) from the system</span></span><br><span class="line"><span class="comment"># 这里删除的是windows上的用户</span></span><br><span class="line">net user sshd /delete</span><br><span class="line"><span class="comment"># 如果ssh-host-config配置过程中没用使用cyg_server，请替换为你自定义的名字</span></span><br><span class="line">net user cyg_server /delete</span><br></pre></td></tr></table></figure>
+<h2 id="重装ssh重新设置权限"><a href="#重装ssh重新设置权限" class="headerlink" title="重装ssh重新设置权限"></a>重装ssh重新设置权限</h2><blockquote>
+<p>如果设置权限不行，删除sshd.log和empty文件夹.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">chown &lt;USERNAME&gt; /var/<span class="built_in">log</span>/sshd.log</span><br><span class="line">chown -R &lt;USERNAME&gt; /var/empty</span><br><span class="line">chown &lt;USERNAME&gt; /etc/ssh*</span><br><span class="line">chmod 755 /var/empty</span><br><span class="line">chmod 644 /var/<span class="built_in">log</span>/sshd.log</span><br></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://docs.oracle.com/cd/E24628_01/install.121/e22624/preinstall_req_cygwin_ssh.htm#EMBSC243" target="_blank" rel="noopener">Installing Cygwin and Starting the SSH Daemon</a></p>
 <p><a href="https://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/" target="_blank" rel="noopener">how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/</a></p>
+<p><a href="https://microtechnology-services.github.io/2016/04/29/cygwin-sshd-on-windows-domain.html" target="_blank" rel="noopener">cygwin-sshd-on-windows-domain</a></p>
+<p><a href="https://mike42.me/blog/how-to-regenerate-ssh-client-keys" target="_blank" rel="noopener">how-to-regenerate-ssh-client-keys</a></p>
+<p><a href="https://cygwin.com/cygwin-ug-net/mkpasswd.html" target="_blank" rel="noopener">mkpasswd</a></p>
+<p><a href="https://cygwin.com/cygwin-ug-net/mkgroup.html" target="_blank" rel="noopener">mkgroup</a></p>
+<p><a href="https://superuser.com/questions/110726/how-to-uninstall-reinstall-cygwin-to-use-the-sshd" target="_blank" rel="noopener">how-to-uninstall-reinstall-cygwin-to-use-the-sshd</a></p>
 
         </div>
 
@@ -241,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-04-05T14:46:52.842Z" itemprop="dateUpdated">2019-04-05 22:46:52</time>
+    最后更新时间：<time datetime="2019-04-06T01:56:44.443Z" itemprop="dateUpdated">2019-04-06 09:56:44</time>
 </span><br>
 
 
