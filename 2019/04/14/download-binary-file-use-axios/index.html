@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>axios实现文件下载功能 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="axios">
+    <meta name="description" content="axios实现文件下载功能 在开发中遇到了需要实现文件下载的功能，起初以为只用&amp;lt;a&amp;gt;标签就能搞定，&amp;lt;a&amp;gt;标签确实能够搞定常见的场景。但是像导出或者在header里面添加了特殊字段的时候，使用&amp;lt;a&amp;gt;标签就搞不定了，又不想去使用原生XMLHttpRequest，因为又一堆的兼容性需求（技术能力不够ε=ε=ε=┏(゜ロ゜;)┛，有现成的兼容方案为啥要自己造轮子呢，说不">
+<meta name="keywords" content="axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios实现文件下载功能">
+<meta property="og:url" content="https://betgar.github.io/2019/04/14/download-binary-file-use-axios/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="axios实现文件下载功能 在开发中遇到了需要实现文件下载的功能，起初以为只用&amp;lt;a&amp;gt;标签就能搞定，&amp;lt;a&amp;gt;标签确实能够搞定常见的场景。但是像导出或者在header里面添加了特殊字段的时候，使用&amp;lt;a&amp;gt;标签就搞不定了，又不想去使用原生XMLHttpRequest，因为又一堆的兼容性需求（技术能力不够ε=ε=ε=┏(゜ロ゜;)┛，有现成的兼容方案为啥要自己造轮子呢，说不">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-14T02:54:37.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="axios实现文件下载功能">
+<meta name="twitter:description" content="axios实现文件下载功能 在开发中遇到了需要实现文件下载的功能，起初以为只用&amp;lt;a&amp;gt;标签就能搞定，&amp;lt;a&amp;gt;标签确实能够搞定常见的场景。但是像导出或者在header里面添加了特殊字段的时候，使用&amp;lt;a&amp;gt;标签就搞不定了，又不想去使用原生XMLHttpRequest，因为又一堆的兼容性需求（技术能力不够ε=ε=ε=┏(゜ロ゜;)┛，有现成的兼容方案为啥要自己造轮子呢，说不">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">axios实现文件下载功能</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">axios实现文件下载功能</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-14T10:30:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/axios/">axios</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#axios实现文件下载功能"><span class="post-toc-number">1.</span> <span class="post-toc-text">axios实现文件下载功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ajax无法下载文件的原因"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Ajax无法下载文件的原因</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XMLHttpRequest-2-0新增的数据类型Blob"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">XMLHttpRequest 2.0新增的数据类型Blob</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件下载实现"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">文件下载实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#response-header前提条件"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">response header前提条件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lt-a-gt-标签的直接下载"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">&lt;a&gt;标签的直接下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于axios的实现"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">基于axios的实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-download-binary-file-use-axios"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">axios实现文件下载功能</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-14 18:30:00" datetime="2019-04-14T10:30:00.000Z"  itemprop="datePublished">2019-04-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/axios/">axios</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="axios实现文件下载功能"><a href="#axios实现文件下载功能" class="headerlink" title="axios实现文件下载功能"></a><code>axios</code>实现文件下载功能</h1><blockquote>
+<p>在开发中遇到了需要实现文件下载的功能，起初以为只用<code>&lt;a&gt;</code>标签就能搞定，<code>&lt;a&gt;</code>标签确实能够搞定常见的场景。但是像<strong>导出</strong>或者在<code>header</code>里面添加了特殊字段的时候，使用<code>&lt;a&gt;</code>标签就搞不定了，又不想去使用原生<code>XMLHttpRequest</code>，因为又一堆的兼容性需求（技术能力不够ε=ε=ε=┏(゜ロ゜;)┛，有现成的兼容方案为啥要自己造轮子呢，说不定还爆胎&gt;逃666），所以萌生基于<code>Axios</code>封装。</p>
+</blockquote>
+<h2 id="Ajax无法下载文件的原因"><a href="#Ajax无法下载文件的原因" class="headerlink" title="Ajax无法下载文件的原因"></a>Ajax无法下载文件的原因</h2><p>浏览器的GET(frame、a)和POST(form)请求具有如下特点：</p>
+<ul>
+<li>response会交由浏览器处理</li>
+<li>response内容可以为二进制文件、字符串等</li>
+</ul>
+<p>Ajax请求具有如下特点：</p>
+<ul>
+<li>response会交由Javascript处理</li>
+<li>response内容仅可以为字符串</li>
+</ul>
+<p>Ajax本身设计的目标就是用来获取<strong>文本数据</strong>的，而不是用来搞二进制的。</p>
+<h2 id="XMLHttpRequest-2-0新增的数据类型Blob"><a href="#XMLHttpRequest-2-0新增的数据类型Blob" class="headerlink" title="XMLHttpRequest 2.0新增的数据类型Blob"></a><code>XMLHttpRequest 2.0</code>新增的数据类型<code>Blob</code></h2><blockquote>
+<p>看张老师的文章 <a href="https://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/" target="_blank" rel="noopener">理解DOMString、Document、FormData、Blob、File、ArrayBuffer数据类型
+</a></p>
+</blockquote>
+<p>有了<code>Blob</code>类型之后，JavaScript处理二进制进一步增强，可以说以后想怎样就怎样（废话）。</p>
+<h2 id="文件下载实现"><a href="#文件下载实现" class="headerlink" title="文件下载实现"></a>文件下载实现</h2><h3 id="response-header前提条件"><a href="#response-header前提条件" class="headerlink" title="response header前提条件"></a>response header前提条件</h3><blockquote>
+<p>服务端返回的头部需要设置</p>
+<p>Content-Disposition: “attachment; filename=xxxx.docx;”</p>
+</blockquote>
+<h3 id="lt-a-gt-标签的直接下载"><a href="#lt-a-gt-标签的直接下载" class="headerlink" title="&lt;a&gt;标签的直接下载"></a><code>&lt;a&gt;</code>标签的直接下载</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * downloadByUrl</span></span><br><span class="line"><span class="comment"> * @param config - 配置参数</span></span><br><span class="line"><span class="comment"> * @param config.url - 地址</span></span><br><span class="line"><span class="comment"> * @param config.params - querystring参数.</span></span><br><span class="line"><span class="comment"> * @param filename 文件名称,包括扩展名部分(不一定生效)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @description</span></span><br><span class="line"><span class="comment"> * 原理是使用&lt;a&gt;的href和download属性，所以filename不一定会生效, 浏览器机制问题.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @see https://zhuanlan.zhihu.com/p/58888918</span></span><br><span class="line"><span class="comment"> * @see https://github.com/kennethjiang/js-file-download</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">downloadByUrl</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">config: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    url: <span class="built_in">string</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">    params: <span class="built_in">any</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;,</span></span></span><br><span class="line">  filename = ''</span><br><span class="line">): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> tempLink = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">  tempLink.style.display = <span class="string">'none'</span>;</span><br><span class="line">  tempLink.href =</span><br><span class="line">    config.url + qs.stringify(config.params, &#123; addQueryPrefix: <span class="literal">true</span> &#125;);</span><br><span class="line">  tempLink.setAttribute(<span class="string">'download'</span>, filename);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> tempLink.download === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    tempLink.setAttribute(<span class="string">'target'</span>, <span class="string">'_blank'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(tempLink);</span><br><span class="line">  tempLink.click();</span><br><span class="line">  <span class="built_in">document</span>.body.removeChild(tempLink);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>主要是使用了<code>js-file-download</code>的代码，进行了简单的封装，而且去除了对<code>Blob</code>的依赖，主要为了兼容低版本的浏览器。同时使用了<code>qs</code>对<code>querystring</code>参数进行了简单的处理。</p>
+</blockquote>
+<h3 id="基于axios的实现"><a href="#基于axios的实现" class="headerlink" title="基于axios的实现"></a>基于<code>axios</code>的实现</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios, &#123; AxiosResponse, AxiosRequestConfig &#125; <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line"><span class="keyword">import</span> fileDownload <span class="keyword">from</span> <span class="string">'js-file-download'</span>;</span><br><span class="line"><span class="keyword">import</span> logger <span class="keyword">from</span> <span class="string">'js-logger'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 提取文件名.</span></span><br><span class="line"><span class="comment"> * @param response axios的response</span></span><br><span class="line"><span class="comment"> * @description 从reponse header的content-disposition中提取文件名.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> extractFilenameFromResponseHeader = (response: AxiosResponse): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// content-disposition: "attachment; filename=xxxx.docx;"</span></span><br><span class="line">  <span class="keyword">const</span> contentDisposition = response.headers[<span class="string">'content-disposition'</span>];</span><br><span class="line">  <span class="keyword">const</span> patt = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'filename=([^;]+\\.[^\\.;]+);*'</span>);</span><br><span class="line">  <span class="keyword">const</span> result = patt.exec(contentDisposition) <span class="keyword">as</span> RegExpExecArray;</span><br><span class="line">  <span class="keyword">let</span> filename = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (result) &#123;</span><br><span class="line">    filename = result.length &gt; <span class="number">0</span> ? result[<span class="number">1</span>] : <span class="string">''</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 解码之前尝试去除空格和双引号</span></span><br><span class="line">  <span class="comment">// content-disposition: "attachment; filename=\"xxxx.docx\";"</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(filename.trim().replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'"'</span>, <span class="string">'g'</span>), <span class="string">''</span>));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> axiosInstance = axios.create(&#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment">	可以传递公共默认的axios配置，但是注意reponse interceptor中默认把reponse.data作为JSON解析的情况</span></span><br><span class="line"><span class="comment">*/</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://www.zhihu.com/question/263323250</span></span><br><span class="line"><span class="comment">// https://github.com/axios/axios/issues/815#issuecomment-340972365</span></span><br><span class="line"><span class="keyword">const</span> downloadByAxios = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  config: AxiosRequestConfig,</span></span></span><br><span class="line">  filename = ''</span><br><span class="line">): <span class="built_in">Promise</span>&lt;<span class="built_in">any</span> | AxiosResponse&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> response = <span class="keyword">await</span> axiosInstance(&#123;</span><br><span class="line">    ...config,</span><br><span class="line">    responseType: <span class="string">'blob'</span>, <span class="comment">// 指定类型</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> resBlob = response.data; <span class="comment">// &lt;--- store the blob if it is</span></span><br><span class="line">  <span class="keyword">let</span> respData = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果确定接口response.data是二进制，所以请求失败时是JSON.</span></span><br><span class="line">  <span class="comment">// 这里只对response.data做JSON的尝试解析</span></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> respText = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">      reader.addEventListener(<span class="string">'abort'</span>, reject);</span><br><span class="line">      reader.addEventListener(<span class="string">'error'</span>, reject);</span><br><span class="line">      reader.addEventListener(<span class="string">'loadend'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(reader.result <span class="keyword">as</span> <span class="built_in">string</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">      reader.readAsText(resBlob);</span><br><span class="line">    &#125;);</span><br><span class="line">    respData = <span class="built_in">JSON</span>.parse(respText <span class="keyword">as</span> <span class="built_in">string</span>); <span class="comment">// &lt;--- try to parse as json evantually</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="comment">// ignore</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果response.data能够确定是二进制，则respData = null说明请求成功</span></span><br><span class="line">  <span class="comment">// 否则 respData !== null说明请求失败</span></span><br><span class="line">  <span class="keyword">if</span> (respData <span class="keyword">as</span> ResponseData) &#123;</span><br><span class="line">    logger.error(respData);</span><br><span class="line">      </span><br><span class="line">    <span class="comment">// 方便调用者有进一步的 then().catch()处理</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(&#123;</span><br><span class="line">      ...respData,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 触发浏览器下载</span></span><br><span class="line">    <span class="comment">// 如果没有传递filename尝试从Content-Disposition提取</span></span><br><span class="line">    fileDownload(resBlob, filename || extractFilenameFromResponseHeader(</span><br><span class="line">      response</span><br><span class="line">    ));</span><br><span class="line">    <span class="comment">// 方便调用者有进一步的 then().catch()处理</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(&#123;</span><br><span class="line">      ...response,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码大部分都是参考这个<a href="https://github.com/axios/axios/issues/815#issuecomment-340972365" target="_blank" rel="noopener">issue</a>实现的，只有少部分的个人代码。</p>
+</blockquote>
+<p>基于<code>axios</code>实现的功能：</p>
+<ol>
+<li>可以使用<code>axios</code>的所有参数，不管请求是<code>GET</code>或者<code>POST</code></li>
+<li>解决了在<code>header</code>中添加额外的参数的需求</li>
+<li>可以指定<code>filename</code>，如果服务端没有设置<code>content-disposition</code>的情况</li>
+<li>返回<code>Promise</code>方便调用者进一步处理请求</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p>只能使用独立的<code>axios</code>实例，不能公用一个<code>axios</code></p>
+<blockquote>
+<p>本来想把<strong>下载功能</strong>使用<code>axios interceptor</code>拦截器实现，但是返回的<code>response.data</code>是<code>Blob</code>二进制，但是其它的<code>response interceptor</code>默认前提都是把<code>response.data</code>当作<code>JSON</code>处理，导致全部出现异常，所以把下载功能独立出来，更方便维护。</p>
+</blockquote>
+</li>
+<li>使用独立的<code>axios</code>实例，所以项目中的<code>axios</code>默认配置需要重新配置一遍</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition" target="_blank" rel="noopener">Content-Disposition</a></p>
+<p><a href="https://www.zhihu.com/question/263323250" target="_blank" rel="noopener">axios.js实现下载功能</a></p>
+<p><a href="https://github.com/axios/axios/issues/815#issuecomment-340972365" target="_blank" rel="noopener">axios.js #815实现</a></p>
+<p><a href="https://github.com/jimmywarting/StreamSaver.js" target="_blank" rel="noopener">StreamSaver</a></p>
+<p><a href="https://github.com/eligrey/FileSaver.js/" target="_blank" rel="noopener">FileSaver</a></p>
+<p><a href="https://github.com/kennethjiang/js-file-download" target="_blank" rel="noopener">js-file-download</a><br><a href="https://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/" target="_blank" rel="noopener">理解DOMString、Document、FormData、Blob、File、ArrayBuffer数据类型
+</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-04-14T02:54:37.587Z" itemprop="dateUpdated">2019-04-14 10:54:37</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/04/14/download-binary-file-use-axios/" target="_blank" rel="external">https://betgar.github.io/2019/04/14/download-binary-file-use-axios/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios/">axios</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/&title=《axios实现文件下载功能》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/&title=《axios实现文件下载功能》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios实现文件下载功能》 — 个人博客&url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/05/install-openssh-with-cygwin-on-windows-10/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">windows 10使用cygwin安装openssh服务端</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/&title=《axios实现文件下载功能》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/&title=《axios实现文件下载功能》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios实现文件下载功能》 — 个人博客&url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/04/14/download-binary-file-use-axios/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3awY4aMRAE0P3/nyZSTpF2IVXdNiHSmxMawOM3B9uq7q+v+Hr8vr7f+fP+49v1erT8N8nvVxceHh7eaOqvh3v2OYG9/u9mDtErwMPDw7vGe70ZJKR86ht8Pmc8PDy8T+C9nlxyP/k2IeHh4eH9L7z8X8lSnkwdDw8P75N5SRCQRwNtHJxsRdezFjw8PLyY1xbAPuHzxfoeHh4e3qKqniy7j8XVYurx8fDw8C7w8hao2ao7CzWSg3WxYeDh4eG9kZeHC3lMMDsi51vUDyPj4eHhHeW1xap86JZ9dosa1uLw8PDwYl47xVnIm4/cHqmH2TMeHh7eBV6+HCeH7KhBat22VWwMeHh4eGvefqFPXk073TaM+KG+h4eHh3eU10alt2GbDekvc8DDw8N7Iy8PXvdNWjMqHh4e3vt5da9BHCi04UUST9SbEx4eHt5R3maBbktWecTQPvfpHTw8PLxrvE2o2i76s8CibfY6lhnj4eHhBbWhzTG3XfTb5oBhvIuHh4d3lJcHpvnQs9cxzJ6Tzgg8PDy8o7w8kM3bsNqGgBacb0h4eHh4N3j5RJND8ybgaAtyB7IWPDw8vDUvKfm3pbI84DgVT+Dh4eHd5s0AbTPBqvwfv6ynT8TDw8O7wMvL/8kiPmssSMKL/BAfVfnw8PDw1rxZDJFsDHmYOwuI9wU8PDw8vJbXHqZnEcMmCJ7h8fDw8G7zTsWpj8XVth2s9jQ8PDy8Bax9fH50zstd7fjRq8fDw8O7wDsbRsyC1/a5bVMCHh4e3g3eZjOI2p5G8WuynUQRMB4eHt41Xrso54/Jo4fZgRgPDw/v83l5RtpOpY0bim4yPDw8vH/E20cSs6Nz/lw8PDy8d/LaQdsSVN4ccOq14uHh4d3j7QtRn9AicLi+h4eHh/cz7xd7SQMntbPfkAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
