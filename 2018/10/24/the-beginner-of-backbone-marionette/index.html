@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Backbone.marionette新手入门系列 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="backbone,marionette">
+    <meta name="description" content="Backbone.marionette新手入门系列 已经不用了，所以弃坑。  initialize(options, args...)1234567const MyObject = MnObject.extend(&amp;#123;  initialize(options, arg2) &amp;#123;    console.log(options.foo, this.getOption(&apos;foo&apos;), a">
+<meta name="keywords" content="backbone,marionette">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Backbone.marionette新手入门系列">
+<meta property="og:url" content="https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Backbone.marionette新手入门系列 已经不用了，所以弃坑。  initialize(options, args...)1234567const MyObject = MnObject.extend(&amp;#123;  initialize(options, arg2) &amp;#123;    console.log(options.foo, this.getOption(&apos;foo&apos;), a">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-05T00:41:39.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Backbone.marionette新手入门系列">
+<meta name="twitter:description" content="Backbone.marionette新手入门系列 已经不用了，所以弃坑。  initialize(options, args...)1234567const MyObject = MnObject.extend(&amp;#123;  initialize(options, arg2) &amp;#123;    console.log(options.foo, this.getOption(&apos;foo&apos;), a">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Backbone.marionette新手入门系列</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Backbone.marionette新手入门系列</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-24T10:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-10-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/backbone/">backbone</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Backbone-marionette新手入门系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">Backbone.marionette新手入门系列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#initialize-options-args"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">initialize(options, args...)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#extend"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">extend</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#triggerMethod-methodName-args"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">triggerMethod(methodName, args...)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindEvents-entity-events"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">bindEvents(entity, events)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unbindEvents-entity-hashMap"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">unbindEvents(entity, [hashMap])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindRequests-entity-hashMap"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">bindRequests(entity, hashMap)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unbindRequests-channel-hashMap"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">unbindRequests(channel, [hashMap])</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#39-request-name-39-39-replyHandler-39"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">{ &#39;request:name&#39;: &#39;replyHandler&#39; }</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#normalizeMethods-hashMap"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">normalizeMethods(hashMap)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#getOption-optionName"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">getOption(optionName)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Falsey-values"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Falsey values</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mergeOptions-options-props"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">mergeOptions(options, props)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#options"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">options</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Marionette-View"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">Marionette.View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#render"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">render</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#events"><span class="post-toc-number">1.11.2.</span> <span class="post-toc-text">events</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#triggers"><span class="post-toc-number">1.11.3.</span> <span class="post-toc-text">triggers</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ui"><span class="post-toc-number">1.11.4.</span> <span class="post-toc-text">ui</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-beginner-of-backbone-marionette"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Backbone.marionette新手入门系列</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-24 18:00:00" datetime="2018-10-24T10:00:00.000Z"  itemprop="datePublished">2018-10-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/backbone/">backbone</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Backbone-marionette新手入门系列"><a href="#Backbone-marionette新手入门系列" class="headerlink" title="Backbone.marionette新手入门系列"></a>Backbone.marionette新手入门系列</h1><blockquote>
+<p>已经不用了，所以弃坑。</p>
+</blockquote>
+<h3 id="initialize-options-args"><a href="#initialize-options-args" class="headerlink" title="initialize(options, args...)"></a><code>initialize(options, args...)</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyObject = MnObject.extend(&#123;</span><br><span class="line">  initialize(options, arg2) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(options.foo, <span class="keyword">this</span>.getOption(<span class="string">'foo'</span>), arg2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObject = <span class="keyword">new</span> MyObject(&#123; <span class="attr">foo</span>: <span class="string">'bar'</span> &#125;, <span class="string">'baz'</span>); <span class="comment">// logs "bar" "bar" "baz"</span></span><br></pre></td></tr></table></figure>
+<h3 id="extend"><a href="#extend" class="headerlink" title="extend"></a><code>extend</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Backbone.extend === _.extend</span></span><br><span class="line"><span class="keyword">const</span> view = <span class="keyword">new</span> MyView();</span><br></pre></td></tr></table></figure>
+<h2 id="triggerMethod-methodName-args"><a href="#triggerMethod-methodName-args" class="headerlink" title="triggerMethod(methodName, args...)"></a><code>triggerMethod(methodName, args...)</code></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyObject = MnObject.extend(&#123;</span><br><span class="line">  initialize()&#123;</span><br><span class="line">    <span class="keyword">this</span>.triggerMethod(<span class="string">'foo'</span>, <span class="string">'baz'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  onFoo(bar)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObj = <span class="keyword">new</span> MyObject(); <span class="comment">// console.log "baz"</span></span><br><span class="line"></span><br><span class="line">myObj.triggerMethod(<span class="string">'foo'</span>, <span class="string">'qux'</span>); <span class="comment">// console.log "qux"</span></span><br></pre></td></tr></table></figure>
+<h2 id="bindEvents-entity-events"><a href="#bindEvents-entity-events" class="headerlink" title="bindEvents(entity, events)"></a><code>bindEvents(entity, events)</code></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Radio <span class="keyword">from</span> <span class="string">'backbone.radio'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; View &#125; <span class="keyword">from</span> <span class="string">'backbone.marionette'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MyView = View.extend(&#123;</span><br><span class="line">  fooEvents: &#123;</span><br><span class="line">    <span class="string">'change:foo'</span>: <span class="string">'doSomething'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  initialize()&#123;</span><br><span class="line">    <span class="keyword">this</span>.fooChannel = Radio.channel(<span class="string">'foo'</span>);</span><br><span class="line">    <span class="keyword">this</span>.bindEvents(<span class="keyword">this</span>.fooChannel, <span class="keyword">this</span>.fooEvents);</span><br><span class="line">  &#125;,</span><br><span class="line">  doSomething()&#123;</span><br><span class="line">    <span class="comment">// the "change:foo" event was fired from the radio channel</span></span><br><span class="line">    <span class="comment">// respond to it appropriately, here.</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="unbindEvents-entity-hashMap"><a href="#unbindEvents-entity-hashMap" class="headerlink" title="unbindEvents(entity, [hashMap])"></a><code>unbindEvents(entity, [hashMap])</code></h2><h2 id="bindRequests-entity-hashMap"><a href="#bindRequests-entity-hashMap" class="headerlink" title="bindRequests(entity, hashMap)"></a><code>bindRequests(entity, hashMap)</code></h2><blockquote>
+<p><code>bindRequests</code>:应该叫<code>bindReply</code>更贴切，绑定的是响应处理函数</p>
+<p><code>hashMap</code> =&gt; <code>{ &#39;request:name&#39;: &#39;replyHandler&#39; }</code></p>
+</blockquote>
+<h2 id="unbindRequests-channel-hashMap"><a href="#unbindRequests-channel-hashMap" class="headerlink" title="unbindRequests(channel, [hashMap])"></a><code>unbindRequests(channel, [hashMap])</code></h2><blockquote>
+<h3 id="39-request-name-39-39-replyHandler-39"><a href="#39-request-name-39-39-replyHandler-39" class="headerlink" title="{ &#39;request:name&#39;: &#39;replyHandler&#39; }"></a><code>{ &#39;request:name&#39;: &#39;replyHandler&#39; }</code></h3></blockquote>
+<h2 id="normalizeMethods-hashMap"><a href="#normalizeMethods-hashMap" class="headerlink" title="normalizeMethods(hashMap)"></a><code>normalizeMethods(hashMap)</code></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hash = &#123;</span><br><span class="line">      <span class="string">'action:one'</span>: <span class="string">'handleActionOne'</span>, <span class="comment">// This will become a reference to `this.handleActionOne`</span></span><br><span class="line">      <span class="string">'action:two'</span>: <span class="keyword">this</span>.handleActionTwo</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.normalizedHash = <span class="keyword">this</span>.normalizeMethods(hash);</span><br></pre></td></tr></table></figure>
+<h2 id="getOption-optionName"><a href="#getOption-optionName" class="headerlink" title="getOption(optionName)"></a><code>getOption(optionName)</code></h2><blockquote>
+<p>获取定义在<code>instance</code>上的<code>option</code>，如果<code>instance</code>没有，则优雅降级从<code>option</code>上查找。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> View = View.extend(&#123;</span><br><span class="line">  classVal: <span class="string">'class value'</span>,</span><br><span class="line">  initialize()&#123;</span><br><span class="line">    <span class="keyword">this</span>.instanceVal = <span class="string">'instance value'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> view = <span class="keyword">new</span> View(&#123; <span class="attr">optVal</span>: <span class="string">'option value'</span> &#125;);</span><br><span class="line"></span><br><span class="line">view.getOption(<span class="string">'instanceVal'</span>); <span class="comment">// instance value</span></span><br><span class="line">view.getOption(<span class="string">'classVal'</span>); <span class="comment">// class value</span></span><br><span class="line">view.getOption(<span class="string">'optVal'</span>); <span class="comment">// option value</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> view2 = <span class="keyword">new</span> View(&#123; <span class="attr">instanceVal</span>: <span class="string">'foo'</span>, <span class="attr">classVal</span>: <span class="string">'bar'</span>, <span class="attr">optVal</span>: <span class="string">'baz'</span> &#125;);</span><br><span class="line"></span><br><span class="line">view.getOption(<span class="string">'instanceVal'</span>); <span class="comment">// foo</span></span><br><span class="line">view.getOption(<span class="string">'classVal'</span>); <span class="comment">// bar</span></span><br><span class="line">view.getOption(<span class="string">'optVal'</span>); <span class="comment">// baz</span></span><br></pre></td></tr></table></figure>
+<h2 id="Falsey-values"><a href="#Falsey-values" class="headerlink" title="Falsey values"></a>Falsey values</h2><blockquote>
+<p><code>getOption</code>将返回任何<code>falsey values</code>而不是<code>undefined</code>，如果<code>getOption</code>在<code>options</code>中无法获取属性，将会直接从<code>instance</code>实例中读取。</p>
+</blockquote>
+<h2 id="mergeOptions-options-props"><a href="#mergeOptions-options-props" class="headerlink" title="mergeOptions(options, props)"></a><code>mergeOptions(options, props)</code></h2><blockquote>
+<p>把<code>options</code>中的<code>props</code>中的属性合并到<code>instances实例上</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyObject = MnObject.extend(&#123;</span><br><span class="line">  initialize(options) &#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">this</span>.mergeOptions(options, [<span class="string">'model'</span>, <span class="string">'something'</span>]);</span><br><span class="line">    <span class="comment">// this.model and this.something will now be available</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObject = <span class="keyword">new</span> MyObject(&#123;</span><br><span class="line">  model: <span class="keyword">new</span> Backbone.Model(),</span><br><span class="line">  something: <span class="string">'test'</span>,</span><br><span class="line">  another: <span class="string">'value'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(myObject.model);</span><br><span class="line"><span class="built_in">console</span>.log(myObject.something);</span><br><span class="line"><span class="built_in">console</span>.log(myObject.getOption(<span class="string">'another'</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="options"><a href="#options" class="headerlink" title="options"></a><code>options</code></h2><blockquote>
+<p><code>initialize</code>中的<code>options</code>和对象<code>instance</code>实例化的<code>options</code>一样，所以在<code>initialize</code>中使用<code>options</code>，有必要使用<code>getOption</code>获取.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyObject = MnObject.extend(&#123;</span><br><span class="line">  options: &#123;</span><br><span class="line">    foo: <span class="string">'bar'</span>,</span><br><span class="line">    another: <span class="string">'thing'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  initialize(options) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(options.foo) <span class="comment">// undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.getOption(<span class="string">'foo'</span>)) <span class="comment">// 'bar'</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.getOption(<span class="string">'another'</span>)) <span class="comment">// 'value'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObject = <span class="keyword">new</span> MyObject(&#123;</span><br><span class="line">  another: <span class="string">'value'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Marionette-View"><a href="#Marionette-View" class="headerlink" title="Marionette.View"></a>Marionette.View</h2><blockquote>
+<p>属性：</p>
+<p> <code>el</code>,  <code>id</code>, <code>tagName</code>,<code>attributes</code>,<code>className</code></p>
+<p><code>model</code>, <code>modelEvents</code>, <code>collection</code>, <code>collectionEvents</code></p>
+<p><code>events</code>, <code>triggers</code></p>
+<p> <code>template</code>, <code>templateContext</code></p>
+<p><code>childViewEventPrefix</code>,<code>childViewEvents</code>, <code>childViewTriggers</code></p>
+<p><code>behaviors</code>,  <code>ui</code></p>
+<p><code>regionClass</code>, <code>regions</code></p>
+<p>注意：</p>
+<p>因为所有的<code>events</code>都在<code>el</code>上代理，所以如果<code>events</code>中的<code>selector</code>和<code>childViewEvents</code>中的<code>selector</code>相同时，<code>events</code>中的<code>handle</code>能够同时响应<code>events</code>和<code>childViewEvents</code>中触发的事件，解决这个问题很简单，在<code>childViewEvents</code>的<code>handler</code>中<strong>阻止事件冒泡传播</strong></p>
+</blockquote>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><blockquote>
+<p><code>Marionette.View.render</code>不能被<code>override</code>重写，只能通过<code>before:render</code></p>
+</blockquote>
+<h3 id="events"><a href="#events" class="headerlink" title="events"></a><code>events</code></h3><blockquote>
+<p><code>Backbone</code>用来绑定<code>DOM</code>事件</p>
+</blockquote>
+<h3 id="triggers"><a href="#triggers" class="headerlink" title="triggers"></a><code>triggers</code></h3><blockquote>
+<p>转换<code>DOM</code>事件=&gt;<code>Marionette Event</code>，就是把<code>DOM Event</code>变为<strong>通用的发布订阅事件</strong>，这样外部对象就和<strong>具体的DOM结构解耦</strong></p>
+<p>场景适用：<code>childViewEvents</code> =&gt; <code>parentView</code>主要是解决父子<code>view</code>之间的<strong>事件传递</strong>.</p>
+<p>作用：类似<code>Backbone.Model</code>对象，自身定义了很多<strong>Entity Event</strong>，<code>entity event</code>会在<code>model</code>的属性变化时触发；而<code>triggers</code>中定义的就是<strong>DOM事件</strong>到<strong>Class Event</strong>的一个映射关系，<strong>所以handler</strong>，可以是<code>view</code>内部（和<code>events</code>效果一样），或者<strong>外部其它的Marionette对象</strong>也可以处理。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MyView = View.extend(&#123;</span><br><span class="line">  triggers: &#123;</span><br><span class="line">    <span class="string">'click a'</span>: <span class="string">'click:link'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  onClickLink(view, event) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Show the modal'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以手动触发</span></span><br><span class="line">MyView.triggerMethod(<span class="string">'click a'</span>); <span class="comment">// onClickLink</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>childViewEvents</code> </p>
+</blockquote>
+<h3 id="ui"><a href="#ui" class="headerlink" title="ui"></a><code>ui</code></h3><blockquote>
+<p>就是<code>query</code>出<code>view context</code>渲染之后的范围内<code>DOM Element</code>（this.$(selector)）</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-05-05T00:41:39.063Z" itemprop="dateUpdated">2019-05-05 08:41:39</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/10/24/the-beginner-of-backbone-marionette/" target="_blank" rel="external">https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backbone/">backbone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/marionette/">marionette</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/&title=《Backbone.marionette新手入门系列》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/&title=《Backbone.marionette新手入门系列》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Backbone.marionette新手入门系列》 — 个人博客&url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/13/vue2-typescript-action-prepare/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Vue2+TypeScript实践准备</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/09/how-to-use-jquery-validation/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">jQuery Validation使用总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/&title=《Backbone.marionette新手入门系列》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/&title=《Backbone.marionette新手入门系列》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Backbone.marionette新手入门系列》 — 个人博客&url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/10/24/the-beginner-of-backbone-marionette/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3aMXbjMAwFQN//0kmbYiP/D5BZF6PKz5JJDgsBBvh6xdfXj2tz97fr+cmfd183Ljw8PLzF0tuJn6d//qZdersePDw8vNu8ZLh26c/blASYdjvw8PDwPpO3SXlz6mwuPDw8vM/kPX+zea3PRsPDw8P7X7xNoWG23M3dK7UWPDw8vJiXd5E+5/OV/h4eHh7euquev3BP7fGmCfePX+Hh4eFd4O1LA20pNi/gtrP8OjIeHh7eUd7smOnmoEAbYGYFCDw8PLy/5BWNpbIpNUuOZ9v0an+Gh4eHV9YEktd9EiqSEU4Fg3w9eHh4eGd5bdLcFgtmv0rCUh338PDw8C7wZo2oWZq+T76j8gQeHh7eBV6Rd4/CQL41bZqel0vw8PDwzvKSQTftsX2JdnY0AQ8PD+8eLynjbtLlWYEjX0m0HXh4eHjXeLOG1tnS7SyEvFkDHh4e3lFeGxLy0sOmDBE1t/bHrfDw8PDWvOcwkJQb9k2sGfhN6wsPDw/vKG/WXtok37MSbft9VGvBw8PDG/G+4qtoOJWF19kmRoEKDw8P7xpvE1Xy8kFSwB2eGns+dIWHh4d3lJe34WchJN+gWTCI2nJ4eHh4R3nJUYA8MMy26VQnq95LPDw8vBEvSXnbptfmkNamEBy1wfDw8PAO8dom/abwOmMMDw3g4eHhXeblCWt7N0+dZyl4cegKDw8P7yjvFDL53AakvFTxJqXGw8PDW/M2za393RmjmBEPDw/vAm82dDtoe6BqH3Jem53Dw8PDC3hJMMg/J2XcNkVeBRs8PDy8a7z9NHkra38Mq0jQ8fDw8D6AN3vp5+GnTdPfrAQPDw/vA3j58/lx1RZcBBI8PDy8a7x8mrb08LyI/Pl8m/Dw8PBu82Z/+Gev+FnqfOrwAR4eHt6a9w3nQ5xx4Drj9gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
