@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="git">
-    <meta name="description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-branch-prompt &amp;#123;  local branch=`git-">
+    <meta name="description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  修改bash的配置 ~/.bash_profile 或者~/.bashrc  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-b">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell上显示当前git分支">
 <meta property="og:url" content="https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-branch-prompt &amp;#123;  local branch=`git-">
+<meta property="og:description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  修改bash的配置 ~/.bash_profile 或者~/.bashrc  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-b">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-07T03:35:28.325Z">
+<meta property="og:updated_time" content="2019-05-07T04:40:12.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell上显示当前git分支">
-<meta name="twitter:description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-branch-prompt &amp;#123;  local branch=`git-">
+<meta name="twitter:description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  修改bash的配置 ~/.bash_profile 或者~/.bashrc  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-b">
     
         <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
     
@@ -48,7 +48,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,49 +68,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank" >
+              <a href="https://github.com/betgar" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank" >
+              <a href="https://weibo.com/u/2296734915" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -174,18 +174,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shell上显示当前git分支"><span class="post-toc-number">1.</span> <span class="post-toc-text">shell上显示当前git分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原版"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">原版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改版"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">修改版</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shell上显示当前git分支"><span class="post-toc-number">1.</span> <span class="post-toc-text">shell上显示当前git分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改bash的配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改bash的配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原版"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">原版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改版"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">修改版</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-terminal-prompt-display-what-branch-you-are-currently-on"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-terminal-prompt-display-what-branch-you-are-currently-on" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">shell上显示当前git分支</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z"  itemprop="datePublished">2019-04-29</time>
+            <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z" itemprop="datePublished">2019-04-29</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
@@ -193,7 +192,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -203,8 +202,15 @@
             <h1 id="shell上显示当前git分支"><a href="#shell上显示当前git分支" class="headerlink" title="shell上显示当前git分支"></a>shell上显示当前git分支</h1><blockquote>
 <p>在当前终端上显示当前所在的分支，能够提供极大的便利。</p>
 </blockquote>
+<h2 id="修改bash的配置"><a href="#修改bash的配置" class="headerlink" title="修改bash的配置"></a>修改<code>bash</code>的配置</h2><blockquote>
+<p><code>~/.bash_profile</code> 或者<code>~/.bashrc</code></p>
+</blockquote>
 <h3 id="原版"><a href="#原版" class="headerlink" title="原版"></a>原版</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> git-branch-name &#123;</span><br><span class="line">  git symbolic-ref HEAD 2&gt;/dev/null | cut -d<span class="string">"/"</span> -f 3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> git-branch-prompt &#123;</span><br><span class="line">  <span class="built_in">local</span> branch=`git-branch-name`</span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$branch</span> ]; <span class="keyword">then</span> <span class="built_in">printf</span> <span class="string">" [%s]"</span> <span class="variable">$branch</span>; <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">PS1=<span class="string">"\u@\h \[\033[0;36m\]\W\[\033[0m\]\[\033[0;32m\]\$(git-branch-prompt)\[\033[0m\] \$ "</span></span><br></pre></td></tr></table></figure>
 <h3 id="修改版"><a href="#修改版" class="headerlink" title="修改版"></a>修改版</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># terminal-prompt-display-what-branch-you-are-currently-on</span></span><br><span class="line"><span class="keyword">function</span> git-branch-name &#123;</span><br><span class="line">  git symbolic-ref --short -q HEAD 2&gt;/dev/null</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> git-branch-prompt &#123;</span><br><span class="line">  <span class="built_in">local</span> branch=`git-branch-name`</span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$branch</span> ]; <span class="keyword">then</span> <span class="built_in">printf</span> <span class="string">" [%s]"</span> <span class="variable">$branch</span>; <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">PS1=<span class="string">"\u@\h \[\033[0;36m\]\W\[\033[0m\]\[\033[0;32m\]\$(git-branch-prompt)\[\033[0m\] \$ "</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把上面的脚步添加到shell配置文件中。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载一下配置文件，使之生效</span></span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile </span><br><span class="line"><span class="comment"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://thelucid.com/2008/12/02/git-setting-up-a-remote-repository-and-doing-an-initial-push/" target="_blank" rel="noopener">git-setting-up-a-remote-repository-and-doing-an-initial-push</a></p>
 <p><a href="https://www.jianshu.com/p/82783f76a868" target="_blank" rel="noopener">让 Shell 命令提示符显示 Git 分支名称</a></p>
 
@@ -215,7 +221,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-05-07T03:35:28.325Z" itemprop="dateUpdated">2019-05-07 11:35:28</time>
+    最后更新时间：<time datetime="2019-05-07T04:40:12.577Z" itemprop="dateUpdated">2019-05-07 12:40:12</time>
 </span><br>
 
 
@@ -359,10 +365,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

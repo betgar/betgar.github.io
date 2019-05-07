@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="Bootstrap 表单布局 bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构嵌套层次还有很多疑问。 所以又翻了一遍官网和资料，总结一下。 本文部分内容翻译自这里.  基本原则Bootstrap表单控件自动获得一些全局样式，如所有textual &amp;lt;input&amp;gt;，&amp;lt;textarea&amp;gt;以及&amp;lt;select&amp;gt;带类的元素.form-control的宽">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-26T14:47:11.226Z">
+<meta property="og:updated_time" content="2019-04-12T09:42:14.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bootstrap 表单布局">
 <meta name="twitter:description" content="Bootstrap 表单布局 bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构嵌套层次还有很多疑问。 所以又翻了一遍官网和资料，总结一下。 本文部分内容翻译自这里.  基本原则Bootstrap表单控件自动获得一些全局样式，如所有textual &amp;lt;input&amp;gt;，&amp;lt;textarea&amp;gt;以及&amp;lt;select&amp;gt;带类的元素.form-control的宽">
@@ -48,7 +48,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,49 +68,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank" >
+              <a href="https://github.com/betgar" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank" >
+              <a href="https://weibo.com/u/2296734915" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -174,18 +174,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bootstrap-表单布局"><span class="post-toc-number">1.</span> <span class="post-toc-text">Bootstrap 表单布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本原则"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">基本原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单垂直布局-vertical-form"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">表单垂直布局(vertical form)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单水平布局-horizontal-form"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">表单水平布局(horizontal form)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内联表单-inline-form"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">内联表单(inline form )</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态表单"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">静态表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单元素校验状态"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">表单元素校验状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bootstrap表格样式class"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">bootstrap表格样式class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单元素标签样式"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">表单元素标签样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单样式class"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">表单样式class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-inline"><span class="post-toc-number">1.6.2.1.</span> <span class="post-toc-text">.form-inline</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-horizontal"><span class="post-toc-number">1.6.2.2.</span> <span class="post-toc-text">.form-horizontal</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#control-label"><span class="post-toc-number">1.6.2.3.</span> <span class="post-toc-text">.control-label</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control"><span class="post-toc-number">1.6.2.4.</span> <span class="post-toc-text">.form-control</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control-static"><span class="post-toc-number">1.6.2.5.</span> <span class="post-toc-text">.form-control-static</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-group"><span class="post-toc-number">1.6.2.6.</span> <span class="post-toc-text">.form-group</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#input-group-input-groups-less"><span class="post-toc-number">1.6.2.7.</span> <span class="post-toc-text">.input-group (input-groups.less)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#radio和-checkbox"><span class="post-toc-number">1.6.2.8.</span> <span class="post-toc-text">.radio和.checkbox</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control的add-on系列"><span class="post-toc-number">1.6.2.9.</span> <span class="post-toc-text">form-control的add-on系列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#help-block"><span class="post-toc-number">1.6.2.10.</span> <span class="post-toc-text">.help-block</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lt-legend-gt-和-lt-fieldset-gt-的使用"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">&lt;legend&gt;和&lt;fieldset&gt;的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lt-legend-gt-的使用"><span class="post-toc-number">1.6.3.1.</span> <span class="post-toc-text">&lt;legend&gt;的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lt-fieldset-gt-使用"><span class="post-toc-number">1.6.3.2.</span> <span class="post-toc-text">&lt;fieldset&gt;使用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bootstrap-表单布局"><span class="post-toc-number">1.</span> <span class="post-toc-text">Bootstrap 表单布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本原则"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">基本原则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单垂直布局-vertical-form"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">表单垂直布局(vertical form)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单水平布局-horizontal-form"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">表单水平布局(horizontal form)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内联表单-inline-form"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">内联表单(inline form )</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">注意事项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#静态表单"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">静态表单</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#表单元素校验状态"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">表单元素校验状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bootstrap表格样式class"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">bootstrap表格样式class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单元素标签样式"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">表单元素标签样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表单样式class"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">表单样式class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-inline"><span class="post-toc-number">1.6.2.1.</span> <span class="post-toc-text">.form-inline</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-horizontal"><span class="post-toc-number">1.6.2.2.</span> <span class="post-toc-text">.form-horizontal</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#control-label"><span class="post-toc-number">1.6.2.3.</span> <span class="post-toc-text">.control-label</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control"><span class="post-toc-number">1.6.2.4.</span> <span class="post-toc-text">.form-control</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control-static"><span class="post-toc-number">1.6.2.5.</span> <span class="post-toc-text">.form-control-static</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-group"><span class="post-toc-number">1.6.2.6.</span> <span class="post-toc-text">.form-group</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#input-group-input-groups-less"><span class="post-toc-number">1.6.2.7.</span> <span class="post-toc-text">.input-group (input-groups.less)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#radio和-checkbox"><span class="post-toc-number">1.6.2.8.</span> <span class="post-toc-text">.radio和.checkbox</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#form-control的add-on系列"><span class="post-toc-number">1.6.2.9.</span> <span class="post-toc-text">form-control的add-on系列</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#help-block"><span class="post-toc-number">1.6.2.10.</span> <span class="post-toc-text">.help-block</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lt-legend-gt-和-lt-fieldset-gt-的使用"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">&lt;legend&gt;和&lt;fieldset&gt;的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lt-legend-gt-的使用"><span class="post-toc-number">1.6.3.1.</span> <span class="post-toc-text">&lt;legend&gt;的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lt-fieldset-gt-使用"><span class="post-toc-number">1.6.3.2.</span> <span class="post-toc-text">&lt;fieldset&gt;使用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-bootstrap-form-layout"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-bootstrap-form-layout" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Bootstrap 表单布局</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-07-23 19:00:00" datetime="2018-07-23T11:00:00.000Z"  itemprop="datePublished">2018-07-23</time>
+            <time class="post-time" title="2018-07-23 19:00:00" datetime="2018-07-23T11:00:00.000Z" itemprop="datePublished">2018-07-23</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
@@ -193,7 +192,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -354,7 +353,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-09-26T14:47:11.226Z" itemprop="dateUpdated">2018-09-26 22:47:11</time>
+    最后更新时间：<time datetime="2019-04-12T09:42:14.474Z" itemprop="dateUpdated">2019-04-12 17:42:14</time>
 </span><br>
 
 
@@ -505,10 +504,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
