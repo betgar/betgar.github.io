@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>shell上显示当前git分支 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="git">
+    <meta name="description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-branch-prompt &amp;#123;  local branch=`git-">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell上显示当前git分支">
+<meta property="og:url" content="https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-branch-prompt &amp;#123;  local branch=`git-">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-07T01:07:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell上显示当前git分支">
+<meta name="twitter:description" content="shell上显示当前git分支 在当前终端上显示当前所在的分支，能够提供极大的便利。  原版123456789function git-branch-name &amp;#123;  git symbolic-ref HEAD 2&amp;gt;/dev/null | cut -d&quot;/&quot; -f 3&amp;#125;function git-branch-prompt &amp;#123;  local branch=`git-">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">shell上显示当前git分支</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">shell上显示当前git分支</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-28T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-04-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#shell上显示当前git分支"><span class="post-toc-number">1.</span> <span class="post-toc-text">shell上显示当前git分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原版"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">原版</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改版"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">修改版</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-terminal-prompt-display-what-branch-you-are-currently-on" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">shell上显示当前git分支</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z" itemprop="datePublished">2019-04-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="shell上显示当前git分支"><a href="#shell上显示当前git分支" class="headerlink" title="shell上显示当前git分支"></a>shell上显示当前git分支</h1><blockquote>
+<p>在当前终端上显示当前所在的分支，能够提供极大的便利。</p>
+</blockquote>
+<h3 id="原版"><a href="#原版" class="headerlink" title="原版"></a>原版</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> git-branch-name &#123;</span><br><span class="line">  git symbolic-ref HEAD 2&gt;/dev/null | cut -d<span class="string">"/"</span> -f 3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> git-branch-prompt &#123;</span><br><span class="line">  <span class="built_in">local</span> branch=`git-branch-name`</span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$branch</span> ]; <span class="keyword">then</span> <span class="built_in">printf</span> <span class="string">" [%s]"</span> <span class="variable">$branch</span>; <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">PS1=<span class="string">"\u@\h \[\033[0;36m\]\W\[\033[0m\]\[\033[0;32m\]\$(git-branch-prompt)\[\033[0m\] \$ "</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改版"><a href="#修改版" class="headerlink" title="修改版"></a>修改版</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># terminal-prompt-display-what-branch-you-are-currently-on</span></span><br><span class="line"><span class="keyword">function</span> git-branch-name &#123;</span><br><span class="line">  git symbolic-ref --short -q HEAD 2&gt;/dev/null</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> git-branch-prompt &#123;</span><br><span class="line">  <span class="built_in">local</span> branch=`git-branch-name`</span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$branch</span> ]; <span class="keyword">then</span> <span class="built_in">printf</span> <span class="string">" [%s]"</span> <span class="variable">$branch</span>; <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line">PS1=<span class="string">"\u@\h \[\033[0;36m\]\W\[\033[0m\]\[\033[0;32m\]\$(git-branch-prompt)\[\033[0m\] \$ "</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://thelucid.com/2008/12/02/git-setting-up-a-remote-repository-and-doing-an-initial-push/" target="_blank" rel="noopener">git-setting-up-a-remote-repository-and-doing-an-initial-push</a></p>
+<p><a href="https://www.jianshu.com/p/82783f76a868" target="_blank" rel="noopener">让 Shell 命令提示符显示 Git 分支名称</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-05-07T01:07:21.000Z" itemprop="dateUpdated">2019-05-07 09:07:21</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" target="_blank" rel="external">https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/&title=《shell上显示当前git分支》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/&title=《shell上显示当前git分支》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shell上显示当前git分支》 — 个人博客&url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/14/download-binary-file-use-axios/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">axios实现文件下载功能</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/&title=《shell上显示当前git分支》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/&title=《shell上显示当前git分支》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shell上显示当前git分支》 — 个人博客&url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADM0lEQVR42u3awW7bQAwE0Pz/T7tA0VsbaYZ0AGv7dDLiWNq3PoxJ7tdXfL1+X9/95bt3r//n+il/3yFf29subGxs7IewX5dXcutkC66flawq2dDEgo2NjX0qexYnydJb/PWzZjGJjY2NjT0rEq6jqN3c6ztjY2NjY29aPEm8teXKu9pb2NjY2P8Puy0PkliaBU/b3vrxXho2Njb2x7PbQe8nv/7B+TY2Njb2R7Jf5ZUXIW3YtGPjPLT+ocDGxsY+iJ0sLmfMWj9JedO2q6J4w8bGxj6C3UbIrBHfjoTbcXI7qMbGxsY+iT2LkKRQyUe/efy044qbLwAbGxv7IPZs6Jv/9N/USbP4zEsabGxs7DPYm6VvDsrkw9rN2m5yGxsbG/sIdhsDbWGwaRLNxszDA5fY2NjYD2QnwdAuMW/i51vZNqFuQhQbGxv7UHbxsSDwZjHWFjztAaA/72JjY2MfxH5XOLUlSgtuRwKragwbGxv7Uew2nGa/5PcDg1kZ8+1rbGxs7IPYmxjY/CUvIX5uW7GxsbHPYO+bOLMBwHufWB85wsbGxj6anTeM8vBohwf7Iz43RQg2Njb2Qey8hZSPbNsHz9pMs0NF2NjY2GezZ6OC2dLzLWs3t94CbGxs7Iez80IiLxX2LaF8lDs8PIqNjY19HLv4wKLdswnCtjS6uTM2Njb2Qeyk5JiNdfMDQO2IIt8UbGxs7P+HnTf0N0VLu2X5F5AE29d+udjY2NgfzE6iJSlaZqVLO1reRNrNN4+NjY39QPZ+6ZvxQH6fNsCiIgQbGxv7IHZ7o3xZm0KivVv+LjY2NvZJ7KQYyMe3+fbNntjG7c12YGNjYx/BfpVX3gbaFDabqEvGDNjY2NjnsfODL5uGTjtsyNtPbzjjg42Njf1w9izAks1qi5nZ1ucbio2NjX0eex91m2icHeVpnzWLZGxsbOxnsdvQaser7eGeWYjWRQ42Njb2cezhlDiOqHbYkG9W3n7CxsbGxs7LiTxy2lLn+lnJlmFjY2Nj71v/my3ejCWGMwpsbGzsh7DbgmH1yPUYYPb1DHtp2NjY2B/P3gx63xtsecEzGw9jY2NjH8f+BfepGv5KQLQ9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
