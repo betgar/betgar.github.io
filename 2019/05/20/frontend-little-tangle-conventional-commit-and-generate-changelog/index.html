@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端小纠结--约定式提交和自动生成changelog | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="git,conventionalcommit">
+    <meta name="description" content="前端小纠结–约定式提交和自动生成changelog约定式提交 约定式提交：每次使用git commit 的时候都需要写commit message,如果message style是按照固定的模版格式书写，对于后期的维护和编写changelog都有巨大的好处。而且现在的很多自动生成changelog的工具，都是建立在约定式提交的基础之上。  约定式提交校验配置 约定式提交不需要任何的配置，只需要严格">
+<meta name="keywords" content="git,conventionalcommit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小纠结--约定式提交和自动生成changelog">
+<meta property="og:url" content="https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="前端小纠结–约定式提交和自动生成changelog约定式提交 约定式提交：每次使用git commit 的时候都需要写commit message,如果message style是按照固定的模版格式书写，对于后期的维护和编写changelog都有巨大的好处。而且现在的很多自动生成changelog的工具，都是建立在约定式提交的基础之上。  约定式提交校验配置 约定式提交不需要任何的配置，只需要严格">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/commitizen.jpg">
+<meta property="og:updated_time" content="2019-05-21T06:15:12.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端小纠结--约定式提交和自动生成changelog">
+<meta name="twitter:description" content="前端小纠结–约定式提交和自动生成changelog约定式提交 约定式提交：每次使用git commit 的时候都需要写commit message,如果message style是按照固定的模版格式书写，对于后期的维护和编写changelog都有巨大的好处。而且现在的很多自动生成changelog的工具，都是建立在约定式提交的基础之上。  约定式提交校验配置 约定式提交不需要任何的配置，只需要严格">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/commitizen.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端小纠结--约定式提交和自动生成changelog</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端小纠结--约定式提交和自动生成changelog</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-20T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–约定式提交和自动生成changelog"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–约定式提交和自动生成changelog</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#约定式提交"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">约定式提交</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#约定式提交校验配置"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">约定式提交校验配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#约定式提交工具"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">约定式提交工具</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#约定式提交格式校验"><span class="post-toc-number">1.1.1.2.</span> <span class="post-toc-text">约定式提交格式校验</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自动生成changelog"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">自动生成changelog</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#conventional-changelog-cli配置"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">conventional-changelog-cli配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#standard-version配置"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">standard-version配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#package-json中的scripts命令组织"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">package.json中的scripts命令组织</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-frontend-little-tangle-conventional-commit-and-generate-changelog"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端小纠结--约定式提交和自动生成changelog</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-20 08:00:00" datetime="2019-05-20T00:00:00.000Z"  itemprop="datePublished">2019-05-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前端小纠结–约定式提交和自动生成changelog"><a href="#前端小纠结–约定式提交和自动生成changelog" class="headerlink" title="前端小纠结–约定式提交和自动生成changelog"></a>前端小纠结–约定式提交和自动生成<code>changelog</code></h1><h2 id="约定式提交"><a href="#约定式提交" class="headerlink" title="约定式提交"></a>约定式提交</h2><blockquote>
+<p>约定式提交：每次使用<code>git commit</code> 的时候都需要写<code>commit message</code>,如果message style是按照固定的模版格式书写，对于后期的维护和编写<code>changelog</code>都有巨大的好处。<br>而且现在的很多自动生成<code>changelog</code>的工具，都是建立在<strong>约定式提交</strong>的基础之上。</p>
+</blockquote>
+<h3 id="约定式提交校验配置"><a href="#约定式提交校验配置" class="headerlink" title="约定式提交校验配置"></a>约定式提交校验配置</h3><blockquote>
+<p>约定式提交不需要任何的配置，只需要严格遵守其规范就可以了。<br>为了保证每次提交的<code>commit message</code>都是遵守<code>conventional commit spec</code>所以添加了校验配置.</p>
+</blockquote>
+<h4 id="约定式提交工具"><a href="#约定式提交工具" class="headerlink" title="约定式提交工具"></a>约定式提交工具</h4><blockquote>
+<p>约定式提交使用交互式提交工具（例如： <code>commitizen</code>），使用工具能够保证<code>约定式提交</code>个格式是满足规范的。</p>
+</blockquote>
+<ol>
+<li><p>推荐使用vs code 插件<a href="https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-commitizen" target="_blank" rel="noopener"><code>commitizen</code></a></p>
+</li>
+<li><p>命令行方式的<code>commitizen</code>配置(<code>vscode commitizen</code>和命令行方式任选其一即可)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev commitizen</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json配置</span></span><br><span class="line">&#123;</span><br><span class="line">    scripts: &#123;</span><br><span class="line">        <span class="string">"commit"</span>: <span class="string">"git-cz"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">npm run commit   <span class="comment"># 进入交互式, 如果commit message在console中换行，请使用'开始</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p><code>commitizen</code>的适配器<code>cz-conventional-changelog</code></p>
+<blockquote>
+<p><code>commitizen</code>只是一个提交的工具，只有添加了约定格式的适配器才能按照固定格式进行交互式提交，<br>否则就和普通的<code>git commit</code>一样了。（还有其他适配器可选，请参考官方文档）<br>不同的适配器，提供的约定标准有差异。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建议安装npx这个神器 npm i npx -g</span></span><br><span class="line">npx commitizen init cz-conventional-changelog --save-dev --save-exact</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>commitizen</code>工具会在<code>package.json</code>中自动添加配置：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"config"</span>: &#123;</span><br><span class="line">        <span class="string">"commitizen"</span>: &#123;</span><br><span class="line">            <span class="comment">// "path": "cz-conventional-changelog" // 全局安装模式</span></span><br><span class="line">            <span class="string">"path"</span>: <span class="string">"./node_modules/cz-conventional-changelog"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>   <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/commitizen.jpg" alt="commitizen"></p>
+<h4 id="约定式提交格式校验"><a href="#约定式提交格式校验" class="headerlink" title="约定式提交格式校验"></a>约定式提交格式校验</h4><blockquote>
+<p>为了防止出现不满足格式要求的<code>commit message</code>出现，还是需要添加上必要的格式校验.</p>
+</blockquote>
+<ol>
+<li><p><code>commitlint</code>校验约定式提交格式</p>
+<blockquote>
+<p><code>commitlint</code>是在<code>commit message</code>之前进行校验格式，格式不对不进行提交。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install --save-dev @commitlint/config-conventional @commitlint/cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加配置文件commitlint.config.js,工程根目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"module.exports = &#123;extends: ['@commitlint/config-conventional']&#125;"</span> &gt; commitlint.config.js</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p><code>husky</code>配置<code>git hooks</code></p>
+<blockquote>
+<p><a href="https://github.com/typicode/husky" target="_blank" rel="noopener">husky官网</a>   <a href="https://github.com/typicode/husky/blob/master/DOCS.md" target="_blank" rel="noopener">husky配置</a></p>
+<p>有了<code>git hooks</code>我们可以做很多提交之前的验证。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm i husky --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json 配置</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">"husky"</span>: &#123;</span><br><span class="line">    <span class="string">"hooks"</span>: &#123;</span><br><span class="line">      <span class="string">"commit-msg"</span>: <span class="string">"commitlint -E HUSKY_GIT_PARAMS"</span>, <span class="comment">// 配合commitlint使用</span></span><br><span class="line">      <span class="comment">// "pre-commit": "lint-staged" // 配置lint-staged</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><p><code>lint-staged</code>配置(可选)</p>
+<blockquote>
+<p><a href="https://github.com/okonet/lint-staged" target="_blank" rel="noopener">lint-staged</a></p>
+<p><code>list-staged</code>主要配合<code>linter</code>用来格式化代码（统一的代码风格），这部是<strong>可选</strong>的。</p>
+<p><code>lint-staged</code>是用来让格式化工具只<code>lint</code>需要提交的文件，其它文件忽略，这样能够提高效率。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i lint-staged --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json 配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"lint-staged"</span>: &#123;</span><br><span class="line">        <span class="string">"src/**/*.&#123;js,ts,css,vue,tsx,jsx&#125;"</span>: [</span><br><span class="line">            <span class="string">"vue-cli-service lint"</span>, <span class="comment">// npm run lint</span></span><br><span class="line">            <span class="string">"git add"</span></span><br><span class="line">        ]</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自动生成changelog"><a href="#自动生成changelog" class="headerlink" title="自动生成changelog"></a>自动生成<code>changelog</code></h2><blockquote>
+<p>自动生成<code>changelog</code>是建立在约定式提交的基础上。</p>
+</blockquote>
+<p>自动生成<code>changelog</code>有两种方式：</p>
+<ol>
+<li><p><code>conventional-changelog-cli</code>生成<code>changelog</code></p>
+</li>
+<li><p><code>standard-version</code>生成<code>changelog</code></p>
+<blockquote>
+<p><code>standard-version</code>帮你做了自动打tag，自动生成<code>changelog</code>等过程.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="conventional-changelog-cli配置"><a href="#conventional-changelog-cli配置" class="headerlink" title="conventional-changelog-cli配置"></a><code>conventional-changelog-cli</code>配置</h3><blockquote>
+<p>在约定式提交的基础上来自动生成<code>changelog</code>，工具类库开发，推荐直接使用<code>standard-version</code>，高度集成了所有东西。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install conventional-changelog-cli --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本使用，其它参数参考官方网站</span></span><br><span class="line">conventional-changelog -p angular -i CHANGELOG.md -s -r 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json配置</span></span><br><span class="line">&#123;</span><br><span class="line">    scripts: &#123;</span><br><span class="line">        <span class="string">"changelog"</span>: <span class="string">"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 &amp;&amp; git add CHANGELOG.md"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用</span></span><br><span class="line">npm run changelog</span><br></pre></td></tr></table></figure>
+<h3 id="standard-version配置"><a href="#standard-version配置" class="headerlink" title="standard-version配置"></a><code>standard-version</code>配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm install standard-version --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json 配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"scripts"</span>: &#123;</span><br><span class="line">        <span class="string">"release"</span>: <span class="string">"standard-version"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// standard-version 好多配置看官方文档（可选）</span></span><br><span class="line">    <span class="string">"standard-version"</span>: &#123;</span><br><span class="line">        <span class="comment">// 可以配置不需要的环节</span></span><br><span class="line">        <span class="string">"skip"</span>: &#123;</span><br><span class="line">           <span class="comment">// bump, changelog, commit, tag</span></span><br><span class="line">          <span class="string">"tag"</span>: <span class="literal">true</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 项目根目录下使用，自行安装npx 模块</span></span><br><span class="line"><span class="comment"># npm i npx -g </span></span><br><span class="line">npx standard-version --release-as major</span><br><span class="line">npx standard-version --release-as minor</span><br><span class="line">npx standard-version --release-as patch</span><br><span class="line"></span><br><span class="line">npx standard-version --prerelease alpha</span><br><span class="line">npx standard-version --prerelease beta</span><br><span class="line">npx standard-version --prerelease rc</span><br><span class="line"></span><br><span class="line">npm run release -- -r minor</span><br><span class="line">npm run release -- -p beta</span><br></pre></td></tr></table></figure>
+<h2 id="package-json中的scripts命令组织"><a href="#package-json中的scripts命令组织" class="headerlink" title="package.json中的scripts命令组织"></a><code>package.json</code>中的<strong>scripts</strong>命令组织</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    scripts: &#123;</span><br><span class="line">        <span class="string">"commit"</span>: <span class="string">"git-cz"</span>,</span><br><span class="line">        <span class="string">"release"</span>: <span class="string">"standard-version"</span>,</span><br><span class="line">         <span class="string">"changelog"</span>: <span class="string">"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 &amp;&amp; git add CHANGELOG.md"</span>,</span><br><span class="line">        <span class="string">"release:major"</span>: <span class="string">"standard-version -r major -n,</span></span><br><span class="line"><span class="string">        "</span>release:minor<span class="string">": "</span>standard-version -r minor -n,</span><br><span class="line">        <span class="string">"release:patch"</span>: <span class="string">"standard-version -r patch -n"</span>,</span><br><span class="line">        <span class="string">"prerelease:alpha"</span>: <span class="string">"standard-version -p alpha -n,</span></span><br><span class="line"><span class="string">        "</span>prerelease:beta<span class="string">": "</span>standard-version -p beta -n,</span><br><span class="line">        <span class="string">"prerelease:rc"</span>: <span class="string">"standard-version -p rc -n"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.conventionalcommits.org/" target="_blank" rel="noopener">约定式提交规范</a></p>
+<p><a href="http://www.imziv.com/blog/article/read.htm?id=91" target="_blank" rel="noopener">git commit 、CHANGELOG 和版本发布的标准自动化</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">Commit message 和 Change log 编写指南</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-05-21T06:15:12.009Z" itemprop="dateUpdated">2019-05-21 14:15:12</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/" target="_blank" rel="external">https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/conventionalcommit/">conventionalcommit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/&title=《前端小纠结--约定式提交和自动生成changelog》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/&title=《前端小纠结--约定式提交和自动生成changelog》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--约定式提交和自动生成changelog》 — 个人博客&url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/05/21/frontend-little-tangle-integrate-git-flow-and-standard-version/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">前端小纠结--集成gitflow和standard-version使用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">shell上显示当前git分支</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/&title=《前端小纠结--约定式提交和自动生成changelog》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/&title=《前端小纠结--约定式提交和自动生成changelog》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--约定式提交和自动生成changelog》 — 个人博客&url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIklEQVR42u3aQZIiOwwEUO5/6Z6Iv/qLATKl6gnKPK86Gij7iYWQ5McjXj//rdev/v89P09W8qnkmfnZVgsbGxv7Juyfl6s90OsnvA7Es71mwXqzFzY2NvZx7GT7ZMv90XNestfT/2NjY2N/JbsNSk7KS6AklWJjY2NjJxtc1QbKj56EBhsbG/ub2bOWUNHEWTSGZoG+rJeGjY2N/fHsTZL4tL9/cb6NjY2N/ZHsfULKG0/tVZ799aCne2FjY2MfxM6Pe9U4dlaEvD7PsEWFjY2NfRz7N5LNJoizZlBRomBjY2Mfwc5/uLf/z2E5ezYY+Mt5sLGxsY9j5730zcg2/1Rb5LQZChsbG/t72HlbJwlQy87HzHkQH5vNsLGxsT+SfdVQtqVumkdXJUhsbGzsk9h5E2dWfuQHbZPirLWEjY2NfRK7HQnM2vez9NaOE5IzvJmKYGNjY9+Q/e9HsLMyYxNibGxs7LPZbdO/vaDTtp82qagoeLCxsbGPY+dN/7zFs7mC07aK6nEvNjY29nHsZNw7u8TTpsA8fO3Z3pQi2NjY2Ddn5z/0r20Vta9e9mVgY2NjH8TelxDXBmW27+z52NjY2CexN2/dN4/aFv8ssUUubGxs7Buy89FsOypoU1QbgjwoxZUdbGxs7Nuy243bwXBCnTWzkhWNB7CxsbFvzp6NafPQzJLTI155+KJpNjY2Nvat2MM2+qKomA1084KnDiI2Njb2Qey8CEkKifyqZT5CmA0t8jNgY2Nj35HdHqU93Cz95IFr21LY2NjYZ7Pbxn3eMJpdrGmDXgwwsLGxsQ9iz37izwKRH32ze1GBYWNjYx/Bzg+0ae7nhUebAtvnYGNjY5/KnjWAZu/ZN48uWNjY2NjHsfP1ewXGfiBRt5OwsbGxj2DPUt2+/GhHv7PAzfbFxsbGviM7v16ZFAbtkHiWCNsRNTY2NvY3sGeAJGFsUtqmzfTmU9jY2NhfyZ4depO68i+jbiphY2NjfzE7HyRs0t4m9FFDChsbG/s49gwwC1Ne8LRpMnk+NjY29nnsdtDbHu6qJJQANkUONjY29g3ZfwDNl95yVt7GRgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
