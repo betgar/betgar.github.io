@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="Backbone.marionette新手入门系列 已经不用了，所以弃坑。  initialize(options, args...)1234567const MyObject = MnObject.extend(&amp;#123;  initialize(options, arg2) &amp;#123;    console.log(options.foo, this.getOption(&apos;foo&apos;), a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T00:41:39.063Z">
+<meta property="og:updated_time" content="2019-05-07T01:30:01.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Backbone.marionette新手入门系列">
 <meta name="twitter:description" content="Backbone.marionette新手入门系列 已经不用了，所以弃坑。  initialize(options, args...)1234567const MyObject = MnObject.extend(&amp;#123;  initialize(options, arg2) &amp;#123;    console.log(options.foo, this.getOption(&apos;foo&apos;), a">
@@ -48,7 +48,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,49 +68,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank" >
+              <a href="https://github.com/betgar" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank" >
+              <a href="https://weibo.com/u/2296734915" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -174,18 +174,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Backbone-marionette新手入门系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">Backbone.marionette新手入门系列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#initialize-options-args"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">initialize(options, args...)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#extend"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">extend</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#triggerMethod-methodName-args"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">triggerMethod(methodName, args...)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindEvents-entity-events"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">bindEvents(entity, events)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unbindEvents-entity-hashMap"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">unbindEvents(entity, [hashMap])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindRequests-entity-hashMap"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">bindRequests(entity, hashMap)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unbindRequests-channel-hashMap"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">unbindRequests(channel, [hashMap])</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#39-request-name-39-39-replyHandler-39"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">{ &#39;request:name&#39;: &#39;replyHandler&#39; }</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#normalizeMethods-hashMap"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">normalizeMethods(hashMap)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#getOption-optionName"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">getOption(optionName)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Falsey-values"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Falsey values</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mergeOptions-options-props"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">mergeOptions(options, props)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#options"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">options</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Marionette-View"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">Marionette.View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#render"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">render</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#events"><span class="post-toc-number">1.11.2.</span> <span class="post-toc-text">events</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#triggers"><span class="post-toc-number">1.11.3.</span> <span class="post-toc-text">triggers</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ui"><span class="post-toc-number">1.11.4.</span> <span class="post-toc-text">ui</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Backbone-marionette新手入门系列"><span class="post-toc-number">1.</span> <span class="post-toc-text">Backbone.marionette新手入门系列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#initialize-options-args"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">initialize(options, args...)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#extend"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">extend</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#triggerMethod-methodName-args"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">triggerMethod(methodName, args...)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindEvents-entity-events"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">bindEvents(entity, events)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unbindEvents-entity-hashMap"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">unbindEvents(entity, [hashMap])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#bindRequests-entity-hashMap"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">bindRequests(entity, hashMap)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unbindRequests-channel-hashMap"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">unbindRequests(channel, [hashMap])</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#39-request-name-39-39-replyHandler-39"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">{ &#39;request:name&#39;: &#39;replyHandler&#39; }</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#normalizeMethods-hashMap"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">normalizeMethods(hashMap)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#getOption-optionName"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">getOption(optionName)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Falsey-values"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Falsey values</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mergeOptions-options-props"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">mergeOptions(options, props)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#options"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">options</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Marionette-View"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">Marionette.View</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#render"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">render</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#events"><span class="post-toc-number">1.11.2.</span> <span class="post-toc-text">events</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#triggers"><span class="post-toc-number">1.11.3.</span> <span class="post-toc-text">triggers</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ui"><span class="post-toc-number">1.11.4.</span> <span class="post-toc-text">ui</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-the-beginner-of-backbone-marionette"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-the-beginner-of-backbone-marionette" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Backbone.marionette新手入门系列</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-10-24 18:00:00" datetime="2018-10-24T10:00:00.000Z"  itemprop="datePublished">2018-10-24</time>
+            <time class="post-time" title="2018-10-24 18:00:00" datetime="2018-10-24T10:00:00.000Z" itemprop="datePublished">2018-10-24</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/backbone/">backbone</a></li></ul>
@@ -193,7 +192,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -267,7 +266,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-05-05T00:41:39.063Z" itemprop="dateUpdated">2019-05-05 08:41:39</time>
+    最后更新时间：<time datetime="2019-05-07T01:30:01.852Z" itemprop="dateUpdated">2019-05-07 09:30:01</time>
 </span><br>
 
 
@@ -418,10 +417,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
