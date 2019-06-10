@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>nvs使用的注意事项 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="node,nvs">
+    <meta name="description" content="nvs使用的注意事项 在使用nvs之前一直使用的是nvm windows这款工具，用着也挺爽的，前不久看到科普文，所以也想试试，试了之后在windows上翻车了，所以这里记录一下。先看科普文：使用 nvs 管理本地 Node.js 版本  windows下安装 推荐cmd手动安装步骤  git bash环境配置1234# ~/.bashrc 添加下面的环境配置# 根据你安装的路径选择$Progra">
+<meta name="keywords" content="node,nvs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nvs使用的注意事项">
+<meta property="og:url" content="https://betgar.github.io/2019/06/06/nvs-usage-considerations/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="nvs使用的注意事项 在使用nvs之前一直使用的是nvm windows这款工具，用着也挺爽的，前不久看到科普文，所以也想试试，试了之后在windows上翻车了，所以这里记录一下。先看科普文：使用 nvs 管理本地 Node.js 版本  windows下安装 推荐cmd手动安装步骤  git bash环境配置1234# ~/.bashrc 添加下面的环境配置# 根据你安装的路径选择$Progra">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-10T02:43:18.079Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nvs使用的注意事项">
+<meta name="twitter:description" content="nvs使用的注意事项 在使用nvs之前一直使用的是nvm windows这款工具，用着也挺爽的，前不久看到科普文，所以也想试试，试了之后在windows上翻车了，所以这里记录一下。先看科普文：使用 nvs 管理本地 Node.js 版本  windows下安装 推荐cmd手动安装步骤  git bash环境配置1234# ~/.bashrc 添加下面的环境配置# 根据你安装的路径选择$Progra">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">nvs使用的注意事项</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">nvs使用的注意事项</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-05T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/nvs/">nvs</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nvs使用的注意事项"><span class="post-toc-number">1.</span> <span class="post-toc-text">nvs使用的注意事项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#windows下安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">windows下安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-bash环境配置"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">git bash环境配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-bash中nvs报错找不到命令"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">git bash中nvs报错找不到命令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvs和npm命令不生效"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">nvs和npm命令不生效</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#共用npm全局模块"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">共用npm全局模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cmd和power-shell下添加全局模块环境变量"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">cmd和power shell下添加全局模块环境变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-nvs-usage-considerations"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">nvs使用的注意事项</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-06 00:00:00" datetime="2019-06-05T16:00:00.000Z"  itemprop="datePublished">2019-06-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/nvs/">nvs</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="nvs使用的注意事项"><a href="#nvs使用的注意事项" class="headerlink" title="nvs使用的注意事项"></a><code>nvs</code>使用的注意事项</h1><blockquote>
+<p>在使用<code>nvs</code>之前一直使用的是<a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="noopener"><code>nvm windows</code></a>这款工具，用着也挺爽的，前不久看到科普文，所以也想试试，试了之后在<code>windows</code>上翻车了，所以这里记录一下。先看<a href="https://zhuanlan.zhihu.com/p/63403762" target="_blank" rel="noopener">科普文：使用 nvs 管理本地 Node.js 版本</a></p>
+</blockquote>
+<h2 id="windows下安装"><a href="#windows下安装" class="headerlink" title="windows下安装"></a><code>windows</code>下安装</h2><blockquote>
+<p><a href="https://github.com/jasongin/nvs/blob/master/doc/SETUP.md#manual-setup---command-prompt" target="_blank" rel="noopener">推荐cmd手动安装步骤</a></p>
+</blockquote>
+<h3 id="git-bash环境配置"><a href="#git-bash环境配置" class="headerlink" title="git bash环境配置"></a>git bash环境配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/.bashrc 添加下面的环境配置</span></span><br><span class="line"><span class="comment"># 根据你安装的路径选择$ProgramData 或者 $LOCALAPPDATA</span></span><br><span class="line"><span class="built_in">export</span> NVS_HOME=<span class="variable">$LOCALAPPDATA</span>/nvs</span><br><span class="line">. <span class="variable">$NVS_HOME</span>/nvs.sh</span><br></pre></td></tr></table></figure>
+<h3 id="git-bash中nvs报错找不到命令"><a href="#git-bash中nvs报错找不到命令" class="headerlink" title="git bash中nvs报错找不到命令"></a>git bash中<code>nvs</code>报错找不到命令</h3><blockquote>
+<p><code>nvs v1.5.1</code>使用<code>MSI</code>或者<code>choco install nvs</code>安装之后可以正常使用，但是会缺失<code>nvs.sh</code>，如果你在<code>git bash</code>下使用<code>nvs</code>会出现找不到命令，后续版本会修复这个问题。<a href="https://github.com/jasongin/nvs/blob/master/doc/SETUP.md#manual-setup---command-prompt" target="_blank" rel="noopener">推荐cmd手动安装步骤</a>则没有这个问题。</p>
+</blockquote>
+<h3 id="nvs和npm命令不生效"><a href="#nvs和npm命令不生效" class="headerlink" title="nvs和npm命令不生效"></a><code>nvs</code>和<code>npm</code>命令不生效</h3><blockquote>
+<p>安装之后在新的终端窗口中<code>nvs</code>和<code>npm</code>不生效时，注意注销重新登录，或者重新启动一次系统。</p>
+</blockquote>
+<p><strong>注意：</strong> 尤其是第一次使用<code>nvs link</code>之后，发现<code>node</code>和<code>npm</code>不会生效，最好注销重新登录。</p>
+<h2 id="共用npm全局模块"><a href="#共用npm全局模块" class="headerlink" title="共用npm全局模块"></a>共用<code>npm</code>全局模块</h2><blockquote>
+<p>首先不建议大家跨版本公用全局模块，除非你知道你在干什么。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/63403762" target="_blank" rel="noopener">科普文：使用 nvs 管理本地 Node.js 版本</a>  这里有介绍怎么设置。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用git bash创建</span></span><br><span class="line">mkdir -p ~/.npm-global</span><br><span class="line">npm config <span class="built_in">set</span> prefix ~/.npm-global</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .bashrc中添加全局模块的路径</span></span><br><span class="line"><span class="comment"># 注意~/.npm-global/   不是~/.npm-global/bin</span></span><br><span class="line"><span class="comment"># windows 10下没有bin文件夹，所以最好检查下。。。</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH=~/.npm-global/:<span class="variable">$PATH</span>"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> (<code>nvs v1.5.1</code>)</p>
+<ol>
+<li>注意检查全局模块的配置路径，是否正确（坑）</li>
+</ol>
+<h3 id="cmd和power-shell下添加全局模块环境变量"><a href="#cmd和power-shell下添加全局模块环境变量" class="headerlink" title="cmd和power shell下添加全局模块环境变量"></a><code>cmd</code>和<code>power shell</code>下添加全局模块环境变量</h3><blockquote>
+<p>通过以上的配置在<code>git bash</code>下，全局安装的<code>npm</code>模块工作的很正常，但是在<code>cmd</code>或者<code>power shell</code>会发现找不到命令，尝试过添加到<strong>系统变量</strong>，但是依然不生效，最后提个issues，<a href="https://github.com/jasongin/nvs/issues/137#issuecomment-499944995" target="_blank" rel="noopener">官方给了解决方案</a>。</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置完如果不生效，新开一个命令行窗口尝试（如果不行，注销重新登录）</span></span><br><span class="line">setx PATH <span class="string">"%PATH%;%USERPROFILE%\.npm-global"</span></span><br></pre></td></tr></table></figure>
+<p>设置之后：<code>cmder</code>, <code>cmd</code> , <code>powershell</code>, <code>cygwin</code>通通生效了</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li><code>nvs use</code> 是改变当前<code>shell</code>窗口的<code>node</code>版本，不是全局环境（nvm的区别）</li>
+<li><code>nvs link</code>是改变全局环境的<code>node</code>版本</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/63403762" target="_blank" rel="noopener">科普文：使用 nvs 管理本地 Node.js 版本</a></p>
+<p><a href="https://ukn.me/cong-nvm-qian-yi-dao-nvs.html" target="_blank" rel="noopener">从 nvm 迁移到 nvs</a></p>
+<p><a href="https://github.com/cmderdev/cmder/issues/565" target="_blank" rel="noopener">cmder using  .bashrc</a></p>
+<p><a href="https://github.com/jasongin/nvs/blob/master/doc/VSCODE.md" target="_blank" rel="noopener">VS Code Support - Node Version Switcher</a></p>
+<p><a href="https://github.com/xizhibei/blog/issues/38" target="_blank" rel="noopener">xizhibei Node Version Manager </a></p>
+<p><a href="https://github.com/jasongin/nvs/issues/137" target="_blank" rel="noopener">Windows: when use npm prefix share global modules fails</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx" target="_blank" rel="noopener">setx</a></p>
+<p><a href="https://ss64.com/nt/setx.html" target="_blank" rel="noopener">ss64 setx</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-10T02:43:18.079Z" itemprop="dateUpdated">2019-06-10 10:43:18</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/06/06/nvs-usage-considerations/" target="_blank" rel="external">https://betgar.github.io/2019/06/06/nvs-usage-considerations/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nvs/">nvs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/&title=《nvs使用的注意事项》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/&title=《nvs使用的注意事项》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/06/nvs-usage-considerations/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nvs使用的注意事项》 — 个人博客&url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/21/frontend-little-tangle-integrate-git-flow-and-standard-version/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">前端小纠结--集成gitflow和standard-version使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/&title=《nvs使用的注意事项》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/&title=《nvs使用的注意事项》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/06/nvs-usage-considerations/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nvs使用的注意事项》 — 个人博客&url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/06/nvs-usage-considerations/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aUY6DMAxFUfa/aWYBVTr32RQpzuWrQojkMJLHsX1d+Lo/Lv7k5/OrN5D3ty4ZMmRsy7i/XuSZp2DpujJkyDiNsVq+9ptsLl3rnz3LkCFDBkjXngrZMmTIkPEUg283XUWGDBkyOodYsnCtGvbqWVyGDBkbMnjV/f3fP+lvyJAhYytGJwjyQJwW2uJdyZAhYzSjU0oj20qjYm0/MmTImM3gAxDf7/NiHHkP/zRoMRkyZGzOQAX3sJRfe38tJV2uK0OGjHEMfrAk26q1JNNE8+pvRYYMGZswag1CUlbja6XvLPZgZciQsS2DF9T4qFZt/ILcKQZfGTJkbM5IE75++awzXrYMvjJkyBjNqDUMamUyHtBr/wZkyJBxAoO3EjksLcylLYRi10KGDBlbMXjCxw+ZTxXvgqRQhgwZxzDIAmmNK2UXhzxkyJBxACM9xKYFNbLp1liGDBkyRjP4oEPnTornaeLybyJDhoyhjE6CyLfVeT8KuDJkyDiAwRM4Elh58vdA+ihDhowDGGnPk4xQ9A+oQRCXIUPGAYzaKFhnVILDgmkRGTJkjGPc4VVbMg3o8boyZMgYzeAXL8mln6mWGvIRDRkyZMxg1IIsD5cvBWsZMmQcwEibi/0QWUv7lkgZMmTIAONZvGCXNh5IGipDhgwZ6fG10xJIP5kMGTLOYZDDZ62FkIbgYjiWIUPGaAYPl/xomm6ak1pNTRkyZOzH+AOlaLJQzmtpkwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
