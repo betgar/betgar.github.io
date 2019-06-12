@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端小纠结--Vue项目代码组织和风格约定 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="fe">
+    <meta name="description" content="前端小纠结–Vue项目代码组织和风格约定 风格约定但不限于代码风格，还有一些其他的默认约定。  代码组织和分层 代码组织是一个仁者见仁，智者见智的话题，没有银弹。不过不管怎么变化，指导思想还是不变的高内聚，低耦合。 强烈推荐两篇文章，能够拓宽你的视野，带你走向新高度。 用 Feature First 的方式管理前端项目复杂度  代码组织的优雅，模块化才能够做好。 分层 按照职能的不同进行不同维度进">
+<meta name="keywords" content="fe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小纠结--Vue项目代码组织和风格约定">
+<meta property="og:url" content="https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="前端小纠结–Vue项目代码组织和风格约定 风格约定但不限于代码风格，还有一些其他的默认约定。  代码组织和分层 代码组织是一个仁者见仁，智者见智的话题，没有银弹。不过不管怎么变化，指导思想还是不变的高内聚，低耦合。 强烈推荐两篇文章，能够拓宽你的视野，带你走向新高度。 用 Feature First 的方式管理前端项目复杂度  代码组织的优雅，模块化才能够做好。 分层 按照职能的不同进行不同维度进">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-12T08:40:34.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端小纠结--Vue项目代码组织和风格约定">
+<meta name="twitter:description" content="前端小纠结–Vue项目代码组织和风格约定 风格约定但不限于代码风格，还有一些其他的默认约定。  代码组织和分层 代码组织是一个仁者见仁，智者见智的话题，没有银弹。不过不管怎么变化，指导思想还是不变的高内聚，低耦合。 强烈推荐两篇文章，能够拓宽你的视野，带你走向新高度。 用 Feature First 的方式管理前端项目复杂度  代码组织的优雅，模块化才能够做好。 分层 按照职能的不同进行不同维度进">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端小纠结--Vue项目代码组织和风格约定</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端小纠结--Vue项目代码组织和风格约定</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-12T10:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–Vue项目代码组织和风格约定"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–Vue项目代码组织和风格约定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码组织和分层"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">代码组织和分层</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分层"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">分层</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件夹和文件命名"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">文件夹和文件命名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模块化原则"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">模块化原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#import和export原则"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">import和export原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#common模块"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">common模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#router模块"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">router模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块结构"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">模块结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#modules子模块"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">modules子模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RouteConfig风格约定"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">RouteConfig风格约定</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#store模块"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">store模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块结构-1"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">模块结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#modules子模块-1"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">modules子模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Store-module约定"><span class="post-toc-number">1.7.3.</span> <span class="post-toc-text">Store module约定</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#api模块"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">api模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块结构-2"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">模块结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#service-module约定"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">service module约定</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#i18n模块"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">i18n模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块结构-3"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">模块结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#语言文件组织"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">语言文件组织</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mock模块"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">mock模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模块结构-4"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">模块结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mock-module约定"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">mock module约定</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其它模块"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">其它模块</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-frontend-little-tangle-vue-project-code-organization-conventional-style-guideline"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端小纠结--Vue项目代码组织和风格约定</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-12 18:00:00" datetime="2019-06-12T10:00:00.000Z"  itemprop="datePublished">2019-06-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前端小纠结–Vue项目代码组织和风格约定"><a href="#前端小纠结–Vue项目代码组织和风格约定" class="headerlink" title="前端小纠结–Vue项目代码组织和风格约定"></a>前端小纠结–Vue项目代码组织和风格约定</h1><blockquote>
+<p><code>风格约定</code>但不限于<code>代码风格</code>，还有一些其他的<code>默认约定</code>。</p>
+</blockquote>
+<h2 id="代码组织和分层"><a href="#代码组织和分层" class="headerlink" title="代码组织和分层"></a>代码组织和分层</h2><blockquote>
+<p>代码组织是一个仁者见仁，智者见智的话题，没有<strong>银弹</strong>。不过不管怎么变化，指导思想还是不变的<strong>高内聚，低耦合</strong>。</p>
+<p>强烈推荐两篇文章，能够拓宽你的视野，带你走向新高度。</p>
+<p><a href="https://juejin.im/post/5cb00b1c6fb9a068a256b37c" target="_blank" rel="noopener">用 Feature First 的方式管理前端项目复杂度</a></p>
+</blockquote>
+<p><strong><em>代码组织的优雅，模块化才能够做好。</em></strong></p>
+<h3 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h3><blockquote>
+<p>按照<strong>职能的不同</strong>进行不同维度进行层级划分，层级划分之后，进行进一步的<strong>模块划分</strong>（原则上，每一个文件夹都是一个模块）</p>
+</blockquote>
+<h2 id="文件夹和文件命名"><a href="#文件夹和文件命名" class="headerlink" title="文件夹和文件命名"></a>文件夹和文件命名</h2><blockquote>
+<p>选择适合自己的风格。</p>
+</blockquote>
+<ol>
+<li><p>文件夹和文件都使用<strong>kebab-case</strong></p>
+<blockquote>
+<p><strong>kebab-case</strong>重度使用者可以选择这种。</p>
+</blockquote>
+</li>
+<li><p>文件夹使用<strong>kebab-case</strong>， 文件使用<strong>Pascal Case</strong></p>
+<blockquote>
+<p>建议使用这种。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">文件夹：event-bus</span><br><span class="line">文件：EventBus.ts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例外</p>
+<ul>
+<li>index文件不受上述约束</li>
+<li>工具自动生成的文件（自己考虑是否受约束）</li>
+</ul>
+</li>
+</ol>
+<h2 id="模块化原则"><a href="#模块化原则" class="headerlink" title="模块化原则"></a>模块化原则</h2><blockquote>
+<p>模块化代码首先要做到代码的分层、隔离、抽象。</p>
+<p>不同模块完成不同的职能，不同职能之间相互协作。</p>
+</blockquote>
+<ol>
+<li><p>每个模块保持一个入口和出口</p>
+<blockquote>
+<p>对于外部模块来说，尽量保证一个入口</p>
+<p>对于内部子模块来说，尽量保证一个出口</p>
+<p>如果按照<strong>文件夹</strong>作为模块界限，每个文件夹下都有一个出口（可以默认为index文件）</p>
+</blockquote>
+</li>
+<li><p>模块的入口名称默认index或者文件夹名字的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 例如： group文件夹</span><br><span class="line">group/</span><br><span class="line">|---index.ts   // A. 默认作为入口</span><br><span class="line">|---group.ts   // B. 也可以默认作为入口</span><br><span class="line"></span><br><span class="line">二者任选其一就好，A方案应该是大家默认的方案；B方案，检索代码的时候更方便</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="3">
+<li><p>模块内部分层</p>
+<blockquote>
+<p>模块内部还可以有<code>base</code>, <code>common</code>, <code>components</code>, <code>helper</code>,<code>utils</code>,<code>filter</code>,<code>config</code>等层级（词穷了…..）</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="import和export原则"><a href="#import和export原则" class="headerlink" title="import和export原则"></a><code>import</code>和<code>export</code>原则</h2><ol>
+<li><p><code>import</code>导入，指定到文件</p>
+<blockquote>
+<p>指定到文件能够提高编译打包的速度</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指定到index文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; Logger &#125; <span class="keyword">from</span> <span class="string">'./common/index'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="common模块"><a href="#common模块" class="headerlink" title="common模块"></a><code>common</code>模块</h2><blockquote>
+<p>独立文章说明。</p>
+</blockquote>
+<h2 id="router模块"><a href="#router模块" class="headerlink" title="router模块"></a><code>router</code>模块</h2><blockquote>
+<p><code>router</code>模块的风格约定。</p>
+</blockquote>
+<h3 id="模块结构"><a href="#模块结构" class="headerlink" title="模块结构"></a>模块结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">router</span><br><span class="line">├── helper</span><br><span class="line">│   ├── ImportRoute.ts</span><br><span class="line">│   └── RouteGenerator.ts</span><br><span class="line">├── modules</span><br><span class="line">│   ├── AboutRoutes.ts</span><br><span class="line">│   └── HomeRoutes.ts</span><br><span class="line">├── router.ts</span><br><span class="line">└── Routes.ts</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>helper: 帮助工具方法</p>
+</li>
+<li><p>modules: 不同的业务模块</p>
+</li>
+<li><p>router: vue-router初始化的地方，也是模块入口</p>
+</li>
+<li><p>Routes: <code>RouteConfig</code>的出口，其它模块都从这里获取<code>route</code>配置，从而达到解耦的目的，尤其是不同的<code>views</code>里面的路由跳转，使用<code>Routes</code>配置达到解耦的目的。</p>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; HomeRoute &#125; <span class="keyword">from</span> <span class="string">'Routes'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 跳转,这样没有硬编码任何的route信息，全部都是从Routes配置来，达到解耦的目的。</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(&#123;</span><br><span class="line">    name: HomeRoute.name</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="modules子模块"><a href="#modules子模块" class="headerlink" title="modules子模块"></a><code>modules</code>子模块</h3><blockquote>
+<p>文件名：<code>views</code>下文件夹名（模块名） + Routes结尾</p>
+<p><strong>modules下的文件，最好和views下文件夹一一对应，方便维护</strong>（对模块切分有较高的理解）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line">views</span><br><span class="line">├── group</span><br><span class="line">│   ├── xxx1.vue</span><br><span class="line">│   └── xxx2.vue</span><br><span class="line">├── report</span><br><span class="line">│   ├── xxx3.vue</span><br><span class="line">│   └── xxx4.vue</span><br><span class="line">├── Home.vue</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>modules</code>对应的就是</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line">router</span><br><span class="line">├── modules</span><br><span class="line">│   ├── GroupRoutes.ts</span><br><span class="line">|   ├── ReportRoutes.ts</span><br><span class="line">│   └── HomeRoutes.ts</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>导出模块配置：</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HomeRoutes.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HomeRoute = &#123;</span><br><span class="line">  path: <span class="string">'/'</span>,</span><br><span class="line">  name: <span class="string">'HomeRoute'</span>,</span><br><span class="line">  component: <span class="string">'Home'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 必须导出一个数组，因为是一个模块的配置信息，可能有多个配置，还可以进行配置层级关系</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [HomeRoute];</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 这只是个思路，具体的操作还要灵活运用。</p>
+<h3 id="RouteConfig风格约定"><a href="#RouteConfig风格约定" class="headerlink" title="RouteConfig风格约定"></a><code>RouteConfig</code>风格约定</h3><ol>
+<li><p><code>RouteConfig</code>变量名</p>
+<blockquote>
+<p><code>vue</code>文件名+Route结尾</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件Home.vue</span></span><br><span class="line"><span class="comment">// 变量名HomeRoute</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HomeRoute = &#123;</span><br><span class="line">  path: <span class="string">'/'</span>,</span><br><span class="line">  name: <span class="string">'HomeRoute'</span>,</span><br><span class="line">  component: <span class="string">'Home'</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p><code>name</code>属性</p>
+<blockquote>
+<p>和<code>RouteConfig</code>变量名保持一致</p>
+</blockquote>
+</li>
+<li><p><code>component</code>属性</p>
+<blockquote>
+<p>如果<strong>异步加载</strong>，<code>component</code>需要使用相对于<code>views</code>的<code>path</code>格式，因为在<code>ImportRoute</code>中统一处理。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ImportRoute.ts统一处理</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">importRoute</span>(<span class="params">file: <span class="built_in">string</span></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// @see https://github.com/webpack/webpack/issues/1949</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="comment">/* webpackChunkName: "chunk-[request][index]" */</span> <span class="string">'@/views/'</span> + file + <span class="string">'.vue'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p><code>path</code>属性</p>
+<blockquote>
+<p>没有最佳实践，最好使用<code>restful</code>风格约束</p>
+<p>如果使用<code>route.query</code>等之类的参数传递，<strong>面包屑导航</strong>很难处理。</p>
+</blockquote>
+</li>
+<li><p><code>meta</code>属性</p>
+<blockquote>
+<p>没有最佳实践，多数情况下有这么几个属性</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HomeRoute = &#123;</span><br><span class="line">  path: <span class="string">'/'</span>,</span><br><span class="line">  name: <span class="string">'HomeRoute'</span>,</span><br><span class="line">  component: <span class="string">'Home'</span>, <span class="comment">// component: () =&gt; import('@/views/Home.vue')</span></span><br><span class="line">  meta: &#123;</span><br><span class="line">      <span class="comment">// title的值可以为`i18n`的语言文件key，方便做国际化</span></span><br><span class="line">      title: <span class="string">'首页'</span>, <span class="comment">// 作为menu.title和breadcrumb.title备选</span></span><br><span class="line">      icon: <span class="string">''</span>, <span class="comment">// icon的class,作为menu.icon和breadcrumb.icon备选</span></span><br><span class="line">      menu: &#123;</span><br><span class="line">          title: <span class="string">'首页'</span>,</span><br><span class="line">          visible: <span class="literal">true</span>,</span><br><span class="line">          icon: <span class="string">''</span>,  <span class="comment">// icon的class</span></span><br><span class="line">      &#125;,</span><br><span class="line">      breadcrumb: &#123;</span><br><span class="line">          title: <span class="string">'路径名'</span>,</span><br><span class="line">          visible: <span class="literal">false</span>, <span class="comment">// 有的时候不需要在面包屑上渲染</span></span><br><span class="line">          icon: <span class="string">''</span>, <span class="comment">// icon的class</span></span><br><span class="line">      &#125;,</span><br><span class="line">      auth: &#123;</span><br><span class="line">          roles: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="6">
+<li><p><code>props</code>属性</p>
+<blockquote>
+<p><a href="https://router.vuejs.org/zh/guide/essentials/passing-props.html" target="_blank" rel="noopener">路由组件传参</a>，更多高级用法，请查看<a href="https://github.com/vuejs/vue-router/blob/dev/examples/route-props/app.js" target="_blank" rel="noopener">例子</a></p>
+<p>使用<code>props</code>方式把<code>components</code>和<code>$route</code>解耦，这样<code>components</code>既可以单独使用，也可以当作<strong>子组件使用</strong>，而且方便测试。</p>
+<p>特殊场景可以不使用<code>props</code>，例如本来就不是通用的组件，是需要组合在一起使用的父子组件，是可以和<code>route</code>耦合的。</p>
+</blockquote>
+<p><strong><em>如果 <code>props</code> 被设置为 <code>true</code>，<code>route.params</code> 将会被设置为组件属性。</em></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数式(动态)</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [&#123; </span><br><span class="line">        path: <span class="string">'/search'</span>, </span><br><span class="line">     	component: SearchUser, </span><br><span class="line">        <span class="comment">// route是SearchUser内部的this.$route</span></span><br><span class="line">     	props: <span class="function">(<span class="params">route</span>) =&gt;</span> (&#123; <span class="attr">query</span>: route.query.q &#125;) </span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 静态</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [&#123; </span><br><span class="line">        path: <span class="string">'/promotion/from-newsletter'</span>,</span><br><span class="line">        component: Promotion, </span><br><span class="line">        props: &#123; <span class="attr">newsletterPopup</span>: <span class="literal">false</span> &#125; </span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="store模块"><a href="#store模块" class="headerlink" title="store模块"></a><code>store</code>模块</h2><blockquote>
+<p><code>vue</code>应用的状态模块</p>
+</blockquote>
+<h3 id="模块结构-1"><a href="#模块结构-1" class="headerlink" title="模块结构"></a>模块结构</h3><blockquote>
+<p><a href="https://vuex.vuejs.org/zh/guide/structure.html" target="_blank" rel="noopener">参考官方文件结构</a></p>
+<p><a href="https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart" target="_blank" rel="noopener">官方购物车例子</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">store</span><br><span class="line">├── StoreTypes.ts       # actions mutations getters类型</span><br><span class="line">├── Actions.ts          # 根级别的 action</span><br><span class="line">├── Mutations.ts        # 根级别的 Mutations</span><br><span class="line">├── Getters.ts          # 根级别的 getters</span><br><span class="line">├── modules             # 模块</span><br><span class="line">│   ├── xxxStore.ts     # 子模块</span><br><span class="line">│   ├── SystemStore.ts  # SystemStore子模块</span><br><span class="line">├── index.ts            # 入口</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>index</code>： 作为入口</p>
+</li>
+<li><p><code>StoreTypes</code>作为类型的常量文件</p>
+<blockquote>
+<p><a href="https://vuex.vuejs.org/zh/guide/mutations.html#使用常量替代-mutation-事件类型" target="_blank" rel="noopener">参考使用常量替代-mutation-事件类型</a></p>
+<p>所以mutation和action的类型全部使用常量，方便其它模块和store模块的解耦。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="modules子模块-1"><a href="#modules子模块-1" class="headerlink" title="modules子模块"></a>modules子模块</h3><blockquote>
+<p>文件名：模块名 + Store结尾</p>
+<p><strong>modules下的业务store，最好和views下文件夹对应，方便维护</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 例子： </span><br><span class="line">LocaleStore.ts    # i18n模块</span><br><span class="line">LoginStore.ts     # 登录模块</span><br><span class="line">UserStore.ts      # 用户模块</span><br></pre></td></tr></table></figure>
+<h3 id="Store-module约定"><a href="#Store-module约定" class="headerlink" title="Store module约定"></a><code>Store module</code>约定</h3><blockquote>
+<p><a href="https://vuex.vuejs.org/zh/guide/modules.html" target="_blank" rel="noopener"> 参考Store Module</a></p>
+<p>主要约定<code>module</code>内部代码结构大致如下：</p>
+<p><code>SystemStore</code>为例：</p>
+</blockquote>
+<ul>
+<li><p>需要使用前缀的地方使用模块名作为前缀</p>
+<blockquote>
+<p>例子中<strong>模块名</strong>为<code>System</code></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><strong>约定声明大致顺序如下</strong>：除state部分外其他都是可选</p>
+</blockquote>
+<ul>
+<li>state声明（例如：<code>systemState</code>）</li>
+<li>getter types声明（可选，灵活运用）</li>
+<li>getters声明（可选, 灵活运用）</li>
+<li>mutation types 声明（可选）</li>
+<li>mutations声明（可选）</li>
+<li>action types声明（可选）</li>
+<li>actions声明（可选）</li>
+<li>store options导出</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子: SystemStore.ts</span></span><br><span class="line"><span class="comment">// 声明state</span></span><br><span class="line"><span class="keyword">const</span> systemState: SystemState = &#123;</span><br><span class="line">  initialized: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明GetterTypes </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SystemGetterTypes = &#123;</span><br><span class="line">  IS_SYSTEM_INITIALIZED: <span class="string">'IS_SYSTEM_INITIALIZED'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明getters</span></span><br><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line">    [SystemGetterTypes.IS_SYSTEM_INITIALIZED](state: SystemState, getters: <span class="built_in">any</span>, rootState: <span class="built_in">any</span>)&#123;</span><br><span class="line">    	<span class="keyword">return</span> state.initialized;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明MutationTypes</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SystemMutationTypes = &#123;</span><br><span class="line">  SYSTEM_SET_INITIALIZED: <span class="string">'SYSTEM_SET_INITIALIZED'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 声明mutations</span></span><br><span class="line"><span class="keyword">const</span> mutations: MutationTree&lt;SystemState&gt; = &#123;</span><br><span class="line">  [SystemMutationTypes.SYSTEM_SET_INITIALIZED]: (</span><br><span class="line">    state: SystemState,</span><br><span class="line">    payload: <span class="built_in">boolean</span></span><br><span class="line">  ) =&gt; &#123;</span><br><span class="line">    state.initialized = payload;</span><br><span class="line">    logger.log(<span class="string">'system-store.initialized: '</span> + payload);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明ActionTypes</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SystemActionTypes = &#123;</span><br><span class="line">  SYSTEM_UPDATE_INITIALIZED: <span class="string">'SYSTEM_UPDATE_INITIALIZED'</span>,</span><br><span class="line">  SYSTEM_RESET: <span class="string">'SYSTEM_RESET'</span>,</span><br><span class="line">  SYSTEM_INIT: <span class="string">'SYSTEM_INIT'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明actions</span></span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">  [SystemActionTypes.SYSTEM_UPDATE_INITIALIZED]: (</span><br><span class="line">    &#123; commit &#125;: ActionContext&lt;SystemState, <span class="built_in">any</span>&gt;,</span><br><span class="line">    initialized: <span class="built_in">boolean</span></span><br><span class="line">  ) =&gt; &#123;</span><br><span class="line">    commit(SystemMutationTypes.SYSTEM_SET_INITIALIZED, initialized);</span><br><span class="line">  &#125;,</span><br><span class="line">  [SystemActionTypes.SYSTEM_RESET]: (&#123;</span><br><span class="line">    commit,</span><br><span class="line">    dispatch,</span><br><span class="line">  &#125;: ActionContext&lt;SystemState, <span class="built_in">any</span>&gt;) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 清空所有使用store储存的数据.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  [SystemActionTypes.SYSTEM_INIT]: (</span><br><span class="line">    &#123; commit, dispatch &#125;: ActionContext&lt;SystemState, <span class="built_in">any</span>&gt;,</span><br><span class="line">    payload: &#123;</span><br><span class="line">      user: UserModel;</span><br><span class="line">      userCookie: UserCookie;</span><br><span class="line">    &#125;</span><br><span class="line">  ) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 初始化数据</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出storeOptions</span></span><br><span class="line"><span class="keyword">const</span> storeOptions = &#123;</span><br><span class="line">  state: systemState,</span><br><span class="line">  getters,</span><br><span class="line">  mutations,</span><br><span class="line">  actions,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> storeOptions;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：其中的action types, mutation types和  getter types 不强制要求，在<code>es6</code>环境中使用官方的<code>mapState</code>，<code>mapGetters</code>, <code>mapActions</code>, <code>mapMutations</code>工具函数更方便。</p>
+<h2 id="api模块"><a href="#api模块" class="headerlink" title="api模块"></a><code>api</code>模块</h2><blockquote>
+<p><code>api</code>模块是接口服务层，主要做一些对参数的转换处理，同时解耦其它业务层。</p>
+</blockquote>
+<h3 id="模块结构-2"><a href="#模块结构-2" class="headerlink" title="模块结构"></a>模块结构</h3><blockquote>
+<p>模块的大致参考结构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">api</span><br><span class="line">├── api.ts    # 入口</span><br><span class="line">└── modules   # 子模块</span><br><span class="line">    ├── DictionaryService.ts   # 具体的业务模块</span><br><span class="line">    ├── GroupService.ts</span><br><span class="line">    ├── HistoryService.ts</span><br></pre></td></tr></table></figure>
+<h3 id="service-module约定"><a href="#service-module约定" class="headerlink" title="service module约定"></a><code>service module</code>约定</h3><blockquote>
+<p>文件名：模块名 + Service结尾</p>
+<p><strong>modules下的业务service，和views下文件夹对应，方便维护</strong></p>
+<p>如果单个service文件对应的业务模块接口太多，可以使用文件夹来进一步分割。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例子：LoginService</span></span><br><span class="line"><span class="comment">// 声明url，导出url方便mock模块使用</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> GET_SIGN_IN = <span class="string">'/api/login'</span>;</span><br><span class="line"><span class="comment">// 声明service函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">signIn</span>(<span class="params">data: &#123;account: <span class="built_in">string</span>; pass: <span class="built_in">string</span>&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ajax(&#123;</span><br><span class="line">      url: GET_SIGN_IN,</span><br><span class="line">      data, </span><br><span class="line">      method: <span class="string">'post'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>URL前缀约定：</strong></p>
+<blockquote>
+<p>查询：使用<code>GET</code>作为前缀（特殊情况例外）</p>
+<p>更新：使用<code>UPDATE</code></p>
+<p>新增：使用<code>ADD</code></p>
+<p>删除：使用<code>DELETE</code></p>
+<p>其它：EXPORT，IMPORT，UPLOAD，DOWNLOAD等</p>
+</blockquote>
+<p><strong>service 函数</strong>名前缀约定：</p>
+<ul>
+<li>对于单个<strong>实体</strong>可以考虑使用get, add, update, delete作为前缀</li>
+</ul>
+<h2 id="i18n模块"><a href="#i18n模块" class="headerlink" title="i18n模块"></a><code>i18n</code>模块</h2><blockquote>
+<p>主要是建议下代码的分割的约定。</p>
+</blockquote>
+<h3 id="模块结构-3"><a href="#模块结构-3" class="headerlink" title="模块结构"></a>模块结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i18n</span><br><span class="line">├── i18n.ts</span><br><span class="line">├── index.d.ts</span><br><span class="line">└── locales</span><br><span class="line">    ├── en_US.js</span><br><span class="line">    ├── modules</span><br><span class="line">    │   └── actions</span><br><span class="line">    │       ├── en_US.js</span><br><span class="line">    │       └── zh_CN.js</span><br><span class="line">    └── zh_CN.js</span><br></pre></td></tr></table></figure>
+<h3 id="语言文件组织"><a href="#语言文件组织" class="headerlink" title="语言文件组织"></a>语言文件组织</h3><blockquote>
+<p>语言模块的组织，主要按照模块（文件夹层次）来组织，能够最小的减少冲突可能性。</p>
+</blockquote>
+<p><strong>语言文件约定：</strong></p>
+<ul>
+<li>方言文件放置在<code>locals</code>文件夹下</li>
+<li>文件以<strong>方言编码</strong>命名</li>
+</ul>
+<p>层级组织的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">views</span><br><span class="line">├── account</span><br><span class="line">│   ├── Account.vue</span><br><span class="line">│   ├── locales</span><br><span class="line">│   │   ├── en_US.js</span><br><span class="line">│   │   └── zh_CN.js</span><br><span class="line">│   └── XXX.vue</span><br><span class="line">├── feedback</span><br><span class="line">│   ├── locales</span><br><span class="line">│   │   ├── en_US.js</span><br><span class="line">│   │   └── zh_CN.js</span><br><span class="line">│   └── Suggestion.vue</span><br><span class="line">├── locales</span><br><span class="line">│   │   ├── en_US.js</span><br><span class="line">│   │   └── zh_CN.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// views/feedback/locales/zh_CN.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> feedbackModule = &#123;</span><br><span class="line">  <span class="comment">// 语言模块属性：模块名+module结尾</span></span><br><span class="line">  <span class="comment">// 可选的方式就是：严格按照文件夹层次来构造属性层级(缺点取属性值时太长，后期可以使用__dirname自动生成)</span></span><br><span class="line">  label: <span class="string">'您的意见:'</span>,</span><br><span class="line">    textarea: &#123;</span><br><span class="line">        placeholder: <span class="string">'请写下您的意见与建议, 500字符以内'</span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// views/locales/zh_CN.js</span></span><br><span class="line"><span class="keyword">import</span> feedbackModule <span class="keyword">from</span> <span class="string">'../feedback/locales/zh_CN.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 如果模块众多建议加上views  </span></span><br><span class="line">  <span class="comment">// views: &#123;</span></span><br><span class="line">  <span class="comment">//    ...feedbackModule,</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 如果模块少，直接</span></span><br><span class="line">  feedbackModule,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// i18n/locales/zh_CN.js</span></span><br><span class="line"><span class="keyword">import</span> viewsLocales <span class="keyword">from</span> <span class="string">'../../views/locales/zh_CN'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    ...viewsLocales</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mock模块"><a href="#mock模块" class="headerlink" title="mock模块"></a><code>mock</code>模块</h2><blockquote>
+<p>mock模块主要做些数据模拟的工作</p>
+</blockquote>
+<h3 id="模块结构-4"><a href="#模块结构-4" class="headerlink" title="模块结构"></a>模块结构</h3><blockquote>
+<p>子模块的大致参考结构</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mock</span><br><span class="line">├── mock.js   # 入口</span><br><span class="line">└── modules   # 子模块</span><br><span class="line">    ├── LoginMock.js   # 具体的业务模块</span><br></pre></td></tr></table></figure>
+<h3 id="mock-module约定"><a href="#mock-module约定" class="headerlink" title="mock module约定"></a><code>mock module</code>约定</h3><blockquote>
+<p>文件名：模块名 + mock结尾</p>
+<p><strong>modules下的mock文件，和<code>api</code>模块下文件对应，方便维护</strong></p>
+</blockquote>
+<p><strong>方法约定：</strong></p>
+<ul>
+<li><p><code>mock</code>模块方法和<code>service</code>请求方法对应</p>
+<blockquote>
+<p>例如：<code>LoginService</code>的<code>signIn</code> mock模块对应也叫<code>signIn</code></p>
+</blockquote>
+</li>
+<li><p><code>mock module</code>需要提供<code>setup</code>方法</p>
+<blockquote>
+<p>setup方法供外部统一调用，作为mock module的开关</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>例子：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LoginMock.js</span></span><br><span class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; genSuccessResult, genFailResult &#125; <span class="keyword">from</span> <span class="string">'./mock-utils'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; GET_SIGN_IN &#125; <span class="keyword">from</span> <span class="string">'../api/api'</span>;</span><br><span class="line"><span class="keyword">import</span> Cookies  <span class="keyword">from</span> <span class="string">'js-cookie'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> signIn = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    Cookies.set(<span class="string">'SESSIONID'</span>, <span class="string">'mock SESSIONID'</span>);</span><br><span class="line">    <span class="keyword">return</span> genSuccessResult(&#123;</span><br><span class="line">      msg: <span class="string">'登陆成功'</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">      </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  setup() &#123;</span><br><span class="line">      Mock.mock(GET_SIGN_IN, <span class="string">'post'</span>, signIn);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mock.js</span></span><br><span class="line"><span class="keyword">import</span> loginMocker <span class="keyword">from</span> <span class="string">'./modules/login'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> start = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  loginMocker.setup();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> mocker <span class="keyword">from</span> <span class="string">'./mock/mock'</span></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'development'</span>) &#123;</span><br><span class="line">  mocker.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其它模块"><a href="#其它模块" class="headerlink" title="其它模块"></a>其它模块</h2><blockquote>
+<p>其它模块如<code>filters</code>，<code>directives</code>,<code>test</code>目前没有总结，以后补充。</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-12T08:40:34.302Z" itemprop="dateUpdated">2019-06-12 16:40:34</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/" target="_blank" rel="external">https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/&title=《前端小纠结--Vue项目代码组织和风格约定》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/&title=《前端小纠结--Vue项目代码组织和风格约定》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--Vue项目代码组织和风格约定》 — 个人博客&url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/12/save-the-windows-spotlight/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">windows 10 锁屏壁纸保存方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/&title=《前端小纠结--Vue项目代码组织和风格约定》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/&title=《前端小纠结--Vue项目代码组织和风格约定》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--Vue项目代码组织和风格约定》 — 个人博客&url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAAD8klEQVR42u3aO3IbUQwEQN7/0nbiQIG5mgFAy0EzUlHc3YemqiB8Xq/49evLK3nn6/tff9ve7fkOyQlfn3jhwIEDB4441HchvQsyOdxzYM+hPnMnn8xjxIEDBw4ctxzPQX4i7SUhJSk/50i+SBw4cODA8e858sDaIqpIh+svDAcOHDhw/D8cbZpMAts8fXZ+HDhw4MDxaY5Z6609UMKUt/ySKD7YK8WBAwcOHJOqqh4L/Z8/f2S/AwcOHDhwlM24ZCkhT7ezpYf2/Vlcf67FgQMHDhxrjjwh5UtvV4OoPdYwLhw4cODAsebIm3d5kG2Db782lzcf63IOBw4cOHDEHHkrrYXYHLRN3sm10aALBw4cOHAccbQrBbOiLm/b5feZjZfeRoEDBw4cOI44ksuSBt9sRJSPjvZDqdXACQcOHDhwpJsJWXkTp9JZcm3XDmbrFMUYDAcOHDhwjDiuEtU+ld4uScyWJ3DgwIEDxxVHEvx+qJM3GWeF5YzjL4kWBw4cOHAccTw/ZgaUh9QWfrMh1jfjNBw4cODAsebID9SOndomYxJqnto3ozIcOHDgwLHnqEudIB3uS7XNOkL+rHrLAwcOHDhwPH4yaau1qS7hyA86C3W2coEDBw4cOK44Prf69lq88rWJ9rlvQXHgwIEDx5ojT7H5GsFs0SFpHbbNwdXXgwMHDhw4Fhz5GKkd6szun68s3N4fBw4cOHDsOTbrcbMSrr3/5h+CekCFAwcOHDjWHHlCzauesyFQ0Mjb1Kxvr8WBAwcOHAuOJMnthzrt4CdfWWjHTlEtiwMHDhw4FhybtYDk2n35N4PbtA5x4MCBA8eGY5bAnq/aN+w2ixfPSfSbWHDgwIEDxxHHbHEhGVnlCwpFLzMeYtWnxYEDBw4cpxxJWsrfny065Ck5T6tFgseBAwcOHGuOvH12myZnRdd+sJTA4cCBAweODUfysHzk067H3V5b/xXM5m84cODAgaNMsfuyLfntpjxr1xcKdBw4cODA8TGOPJjNwtysqEsai8NyDgcOHDhwHHEkSwAtSrt+t4G+ypU4cODAgeOKI0lg+ZrCbEQ0GyPld4uuxYEDBw4ca45NCTRrMiav2dpETvw8TsOBAwcOHBuOWSotVgTK8iz69spVjOKLwYEDBw4ca45Z8psVXXnAm4WG/f1x4MCBA8eeI2/5RcObuG3XJvIWZZhoceDAgQPHEUd7lPzx7bFmCw3t/w5vP48DBw4cOH6IIx//tOtus8WIzTodDhw4cOD4WY6rkVW7lDDra9bDMxw4cODAccSRpKvbBJkXfldl3vHYCQcOHDhwrBcakneSg16VZC3lVWMRBw4cOHC8+fk3MwaRA2pw2rsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
