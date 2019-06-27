@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
     
 
     
@@ -47,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu">
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -67,49 +67,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect active">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank">
+              <a href="https://github.com/betgar" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about">
+              <a href="/about"  >
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -166,10 +166,119 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-frontend-little-tangle-vue-project-code-organization-conventional-style-guideline" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-vscode-debug-configuration"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-12 18:00:00" datetime="2019-06-12T10:00:00.000Z" itemprop="datePublished">2019-06-12</time>
+        <time class="post-time" title="2019-06-26 12:00:00" datetime="2019-06-26T04:00:00.000Z"  itemprop="datePublished">2019-06-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vscode/">vscode</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/26/vscode-debug-configuration/">VS Code调试配置分享</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        VS Code调试配置分享
+这不是一篇科普文，只是一篇浏览器调试配置的分享（主要对准对准vs code调试）
+
+调试配置
+使用vs code插件debugger-for-chrome和debugger-for-edge(EdgeHTML&amp;Chromium)调试之前，会自动在工程下添加.vscode文件夹，里面的launch.json就是配置调试参数的位置。
+
+launch.json
+...
+    
+
+        <a href="/2019/06/26/vscode-debug-configuration/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-frontend-little-tangle-common-module-design"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-20 18:00:00" datetime="2019-06-20T10:00:00.000Z"  itemprop="datePublished">2019-06-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/06/20/frontend-little-tangle-common-module-design/">前端小纠结--common模块设计</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前端小纠结–common模块设计承接上一篇前端小纠结–Vue项目代码组织和风格约定
+
+common模块的单独拿出来说一下，因为common模块设计的好，可以跨项目使用，甚至在部署成自己的私有的package。
+common目标：主要是为了在第三方库之上做一层简单的封装，预置配置，做一层隔离，也可以在调用第三方组件时做一些埋点统一处理一些逻辑。
+
+设计原则
+不能有任何的业务逻辑
+不能耦合工程的...
+    
+
+        <a href="/2019/06/20/frontend-little-tangle-common-module-design/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-frontend-little-tangle-vue-project-code-organization-conventional-style-guideline"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-06-12 18:00:00" datetime="2019-06-12T10:00:00.000Z"  itemprop="datePublished">2019-06-12</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
@@ -222,10 +331,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-save-the-windows-spotlight" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-save-the-windows-spotlight"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-12 09:00:00" datetime="2019-06-12T01:00:00.000Z" itemprop="datePublished">2019-06-12</time>
+        <time class="post-time" title="2019-06-12 09:00:00" datetime="2019-06-12T01:00:00.000Z"  itemprop="datePublished">2019-06-12</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/windows/">windows</a></li></ul>
@@ -275,10 +385,11 @@ windows 锁屏壁纸功能叫做spotlight，其实壁纸都下载在本地电脑
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-nvs-usage-considerations" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-nvs-usage-considerations"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-06-06 00:00:00" datetime="2019-06-05T16:00:00.000Z" itemprop="datePublished">2019-06-06</time>
+        <time class="post-time" title="2019-06-06 00:00:00" datetime="2019-06-05T16:00:00.000Z"  itemprop="datePublished">2019-06-06</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/nvs/">nvs</a></li></ul></li></ul>
@@ -327,10 +438,11 @@ git bash环境配置1234# ~/.bashrc 添加下面的环境配置# 根据你安装
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-frontend-little-tangle-integrate-git-flow-and-standard-version" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-frontend-little-tangle-integrate-git-flow-and-standard-version"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-05-21 08:00:00" datetime="2019-05-21T00:00:00.000Z" itemprop="datePublished">2019-05-21</time>
+        <time class="post-time" title="2019-05-21 08:00:00" datetime="2019-05-21T00:00:00.000Z"  itemprop="datePublished">2019-05-21</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/">gitflow</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/fe/">fe</a></li></ul></li></ul>
@@ -383,10 +495,11 @@ git flow源自这篇文章a-successful-git-branching-model，大神！！！。
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-frontend-little-tangle-conventional-commit-and-generate-changelog" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-frontend-little-tangle-conventional-commit-and-generate-changelog"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-05-20 08:00:00" datetime="2019-05-20T00:00:00.000Z" itemprop="datePublished">2019-05-20</time>
+        <time class="post-time" title="2019-05-20 08:00:00" datetime="2019-05-20T00:00:00.000Z"  itemprop="datePublished">2019-05-20</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/fe/">fe</a></li></ul></li></ul>
@@ -433,10 +546,11 @@ git flow源自这篇文章a-successful-git-branching-model，大神！！！。
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-terminal-prompt-display-what-branch-you-are-currently-on" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-terminal-prompt-display-what-branch-you-are-currently-on"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z" itemprop="datePublished">2019-04-29</time>
+        <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z"  itemprop="datePublished">2019-04-29</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
@@ -485,10 +599,11 @@ git flow源自这篇文章a-successful-git-branching-model，大神！！！。
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-download-binary-file-use-axios" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-download-binary-file-use-axios"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-04-14 18:30:00" datetime="2019-04-14T10:30:00.000Z" itemprop="datePublished">2019-04-14</time>
+        <time class="post-time" title="2019-04-14 18:30:00" datetime="2019-04-14T10:30:00.000Z"  itemprop="datePublished">2019-04-14</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/axios/">axios</a></li></ul>
@@ -532,10 +647,11 @@ git flow源自这篇文章a-successful-git-branching-model，大神！！！。
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-install-openssh-with-cygwin-on-windows-10" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-install-openssh-with-cygwin-on-windows-10"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-04-05 09:00:00" datetime="2019-04-05T01:00:00.000Z" itemprop="datePublished">2019-04-05</time>
+        <time class="post-time" title="2019-04-05 09:00:00" datetime="2019-04-05T01:00:00.000Z"  itemprop="datePublished">2019-04-05</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/openssh/">openssh</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/openssh/cygwin/">cygwin</a></li></ul></li></ul>
@@ -584,113 +700,6 @@ ssh-host-...
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-allocation-swap-partition-on-deepin-linux" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-13 07:00:00" datetime="2019-03-12T23:00:00.000Z" itemprop="datePublished">2019-03-13</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/deepin/">deepin</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/13/allocation-swap-partition-on-deepin-linux/">deepin安装之后分配swap空间</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        deepin安装之后分配swap空间参考这里的文章做个记录
-增加swap文件作为空间，五步：
-
-第一步：成为超级用户；
-1sudo su
-
-第二步：在根目录生成swap文件,count设定块数,bs设定块大小,生成4G的swap代码如下
-1dd if=/dev/zero of=/swapfile count=4096 bs=1024k
-
-第三步：设置交换分区，注意路径和上面的of=/swap...
-    
-
-        <a href="/2019/03/13/allocation-swap-partition-on-deepin-linux/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deepin/">deepin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-deploy-private-npm-registry-verdaccio" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-03-09 11:00:00" datetime="2019-03-09T03:00:00.000Z" itemprop="datePublished">2019-03-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/verdaccio/">verdaccio</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/03/09/deploy-private-npm-registry-verdaccio/">npm私有仓库verdaccio的部署</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        verdaccio
-因为技术变革太快，注意知识的时效性。
-verdaccio是基于node开发的一个库，用来搭建私有的npm仓库。因为npm仓库大多数是公有的免费的，私有仓库或者企业版是收费的，在单位内部或者个人一些私有的模块需要托管的时候就需要自己搭建一个私有的仓库，而verdaccio就是选择之一，最便捷的一种。
-
-安装verdaccio
-参照官方文档，而且是中文版哟~~~。
-注意： n...
-    
-
-        <a href="/2019/03/09/deploy-private-npm-registry-verdaccio/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/verdaccio/">verdaccio</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
@@ -707,10 +716,10 @@ verdaccio是基于node开发的一个库，用来搭建私有的npm仓库。因�
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
     
 
     
@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521111135-support-hotfix.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521111047-support-minor.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521140451-sourcetree-git-flow.jpg">
-<meta property="og:updated_time" content="2019-06-14T08:29:44.250Z">
+<meta property="og:updated_time" content="2019-06-12T08:44:20.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端小纠结--集成gitflow和standard-version使用">
 <meta name="twitter:description" content="前端小纠结–集成gitflow和standard-version使用 请看上一篇前端小纠结–约定式提交和自动生成changelog  git flow工作流对比 Git工作流指南  git flow 介绍 git flow源自这篇文章a-successful-git-branching-model，大神！！！。 关于git flow的使用，请看以下链接，非常多的文章，写的非常好。  如何正确的使用">
@@ -61,7 +61,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -81,49 +81,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank">
+              <a href="https://github.com/betgar" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about">
+              <a href="/about"  >
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -187,17 +187,18 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–集成gitflow和standard-version使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–集成gitflow和standard-version使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow工作流对比"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">git flow工作流对比</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-flow-介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">git flow 介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow常用的分支"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">git flow常用的分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-Flow如何工作"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">git Flow如何工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#feature分支"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">feature分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#release分支"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">release分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hotfix分支"><span class="post-toc-number">1.1.2.3.</span> <span class="post-toc-text">hotfix分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#support分支"><span class="post-toc-number">1.1.2.4.</span> <span class="post-toc-text">support分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多版本hotfix修复"><span class="post-toc-number">1.1.2.5.</span> <span class="post-toc-text">多版本hotfix修复</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多版本的release"><span class="post-toc-number">1.1.2.6.</span> <span class="post-toc-text">多版本的release</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-flow工具的使用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">git flow工具的使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-flow和standard-version搭配使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">git flow和standard-version搭配使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow流程中standard-version使用"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">git flow流程中standard-version使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow和standard-version冲突的tag功能"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">git flow和standard-version冲突的tag功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#standard-version运行时机"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">standard-version运行时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#standard-version在git-flow不同流程阶段注意的问题"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">standard-version在git flow不同流程阶段注意的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建议"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">建议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–集成gitflow和standard-version使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–集成gitflow和standard-version使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow工作流对比"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">git flow工作流对比</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-flow-介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">git flow 介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow常用的分支"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">git flow常用的分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-Flow如何工作"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">git Flow如何工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#feature分支"><span class="post-toc-number">1.1.2.1.</span> <span class="post-toc-text">feature分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#release分支"><span class="post-toc-number">1.1.2.2.</span> <span class="post-toc-text">release分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hotfix分支"><span class="post-toc-number">1.1.2.3.</span> <span class="post-toc-text">hotfix分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#support分支"><span class="post-toc-number">1.1.2.4.</span> <span class="post-toc-text">support分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多版本hotfix修复"><span class="post-toc-number">1.1.2.5.</span> <span class="post-toc-text">多版本hotfix修复</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多版本的release"><span class="post-toc-number">1.1.2.6.</span> <span class="post-toc-text">多版本的release</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-flow工具的使用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">git flow工具的使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-flow和standard-version搭配使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">git flow和standard-version搭配使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow流程中standard-version使用"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">git flow流程中standard-version使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-flow和standard-version冲突的tag功能"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">git flow和standard-version冲突的tag功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#standard-version运行时机"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">standard-version运行时机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#standard-version在git-flow不同流程阶段注意的问题"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">standard-version在git flow不同流程阶段注意的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建议"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">建议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-frontend-little-tangle-integrate-git-flow-and-standard-version" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-frontend-little-tangle-integrate-git-flow-and-standard-version"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">前端小纠结--集成gitflow和standard-version使用</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-05-21 08:00:00" datetime="2019-05-21T00:00:00.000Z" itemprop="datePublished">2019-05-21</time>
+            <time class="post-time" title="2019-05-21 08:00:00" datetime="2019-05-21T00:00:00.000Z"  itemprop="datePublished">2019-05-21</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/">gitflow</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/fe/">fe</a></li></ul></li></ul>
@@ -205,7 +206,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -230,7 +231,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521102909-git-flow-nvie.png" alt="git-flow-nvie" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521102909-git-flow-nvie.png" alt="git-flow-nvie" title="">
                 </div>
                 <div class="image-caption">git-flow-nvie</div>
             </figure>
@@ -250,7 +251,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103213-git-workflow-release-cycle-1historical.png" alt="git-workflow-release-cycle-1historical" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103213-git-workflow-release-cycle-1historical.png" alt="git-workflow-release-cycle-1historical" title="">
                 </div>
                 <div class="image-caption">git-workflow-release-cycle-1historical</div>
             </figure>
@@ -261,14 +262,14 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103229-git-workflow-release-cycle-2feature.png" alt="git-workflow-release-cycle-2feature" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103229-git-workflow-release-cycle-2feature.png" alt="git-workflow-release-cycle-2feature" title="">
                 </div>
                 <div class="image-caption">git-workflow-release-cycle-2feature</div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105032-feature-branch.png" alt="feature-branch" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105032-feature-branch.png" alt="feature-branch" title="">
                 </div>
                 <div class="image-caption">feature-branch</div>
             </figure>
@@ -280,7 +281,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103240-git-workflow-release-cycle-3release.png" alt="git-workflow-release-cycle-3release" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103240-git-workflow-release-cycle-3release.png" alt="git-workflow-release-cycle-3release" title="">
                 </div>
                 <div class="image-caption">git-workflow-release-cycle-3release</div>
             </figure>
@@ -290,7 +291,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105209-minor-release.png" alt="minor-release" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105209-minor-release.png" alt="minor-release" title="">
                 </div>
                 <div class="image-caption">minor-release</div>
             </figure>
@@ -300,7 +301,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105223-major-release.png" alt="major-release" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105223-major-release.png" alt="major-release" title="">
                 </div>
                 <div class="image-caption">major-release</div>
             </figure>
@@ -311,7 +312,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103251-git-workflow-release-cycle-4maintenance.png" alt="git-workflow-release-cycle-4maintenance" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521103251-git-workflow-release-cycle-4maintenance.png" alt="git-workflow-release-cycle-4maintenance" title="">
                 </div>
                 <div class="image-caption">git-workflow-release-cycle-4maintenance</div>
             </figure>
@@ -321,7 +322,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105905-hotfix-branch.png" alt="hotfix-branch" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521105905-hotfix-branch.png" alt="hotfix-branch" title="">
                 </div>
                 <div class="image-caption">hotfix-branch</div>
             </figure>
@@ -331,7 +332,7 @@
 <h4 id="多版本hotfix修复"><a href="#多版本hotfix修复" class="headerlink" title="多版本hotfix修复"></a>多版本hotfix修复</h4><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521111135-support-hotfix.png" alt="support-hotfix" title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521111135-support-hotfix.png" alt="support-hotfix" title="">
                 </div>
                 <div class="image-caption">support-hotfix</div>
             </figure>
@@ -341,7 +342,7 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521111047-support-minor.png" alt title>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190521111047-support-minor.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
@@ -466,7 +467,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-06-14T08:29:44.250Z" itemprop="dateUpdated">2019-06-14 16:29:44</time>
+    最后更新时间：<time datetime="2019-06-12T08:44:20.520Z" itemprop="dateUpdated">2019-06-12 16:44:20</time>
 </span><br>
 
 
@@ -617,10 +618,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

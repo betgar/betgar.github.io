@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>VS Code调试配置分享 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vscode">
+    <meta name="description" content="VS Code调试配置分享 这不是一篇科普文，只是一篇浏览器调试配置的分享（主要对准对准vs code调试）  调试配置 使用vs code插件debugger-for-chrome和debugger-for-edge(EdgeHTML&amp;amp;Chromium)调试之前，会自动在工程下添加.vscode文件夹，里面的launch.json就是配置调试参数的位置。  launch.json 很多的">
+<meta name="keywords" content="vscode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS Code调试配置分享">
+<meta property="og:url" content="https://betgar.github.io/2019/06/26/vscode-debug-configuration/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="VS Code调试配置分享 这不是一篇科普文，只是一篇浏览器调试配置的分享（主要对准对准vs code调试）  调试配置 使用vs code插件debugger-for-chrome和debugger-for-edge(EdgeHTML&amp;amp;Chromium)调试之前，会自动在工程下添加.vscode文件夹，里面的launch.json就是配置调试参数的位置。  launch.json 很多的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-attach.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-for-chrome.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-for-edge-chromium.jpg">
+<meta property="og:updated_time" content="2019-06-26T08:58:39.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VS Code调试配置分享">
+<meta name="twitter:description" content="VS Code调试配置分享 这不是一篇科普文，只是一篇浏览器调试配置的分享（主要对准对准vs code调试）  调试配置 使用vs code插件debugger-for-chrome和debugger-for-edge(EdgeHTML&amp;amp;Chromium)调试之前，会自动在工程下添加.vscode文件夹，里面的launch.json就是配置调试参数的位置。  launch.json 很多的">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-attach.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VS Code调试配置分享</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">VS Code调试配置分享</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-26T04:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vscode/">vscode</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#VS-Code调试配置分享"><span class="post-toc-number">1.</span> <span class="post-toc-text">VS Code调试配置分享</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">调试配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#launch-json"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">launch.json</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#launch模式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">launch模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#attach模式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">attach模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#chrome配置"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">chrome配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Edge-Chromium"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">Edge(Chromium)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Microsoft-Edge-EdgeHTML"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">Microsoft Edge (EdgeHTML)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#个人建议"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">个人建议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vscode-debug-configuration"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VS Code调试配置分享</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-26 12:00:00" datetime="2019-06-26T04:00:00.000Z"  itemprop="datePublished">2019-06-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vscode/">vscode</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="VS-Code调试配置分享"><a href="#VS-Code调试配置分享" class="headerlink" title="VS Code调试配置分享"></a>VS Code调试配置分享</h1><blockquote>
+<p>这不是一篇科普文，只是一篇浏览器调试配置的分享（主要对准对准vs code调试）</p>
+</blockquote>
+<h2 id="调试配置"><a href="#调试配置" class="headerlink" title="调试配置"></a>调试配置</h2><blockquote>
+<p>使用vs code插件<a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome" target="_blank" rel="noopener">debugger-for-chrome</a>和<a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge" target="_blank" rel="noopener">debugger-for-edge(EdgeHTML&amp;Chromium)</a>调试之前，会自动在工程下添加<code>.vscode</code>文件夹，里面的<code>launch.json</code>就是配置调试参数的位置。</p>
+</blockquote>
+<h3 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a>launch.json</h3><blockquote>
+<p>很多的配置参数，具体看参考章节的<strong>nodejs-debugging</strong>和<strong>debugging-protocol</strong>。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">  <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">  <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">  <span class="string">"configurations"</span>: [</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"chrome"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: launch chrome"</span>,</span><br><span class="line">      <span class="string">"url"</span>: <span class="string">"http://localhost:8080"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"userDataDir"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"breakOnLoad"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"sourceMapPathOverrides"</span>: &#123;</span><br><span class="line">        <span class="string">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"chrome"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"attach"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: attach chrome"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"port"</span>: <span class="number">9222</span>,</span><br><span class="line">      <span class="string">"sourceMapPathOverrides"</span>: &#123;</span><br><span class="line">        <span class="string">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"edge"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: launch EdgeHTML"</span>,</span><br><span class="line">      <span class="string">"url"</span>: <span class="string">"http://localhost:8080"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"userDataDir"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"breakOnLoad"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"sourceMapPathOverrides"</span>: &#123;</span><br><span class="line">        <span class="string">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"edge"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"attach"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: attach EdgeHTML"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"port"</span>: <span class="number">2015</span>,</span><br><span class="line">      <span class="string">"sourceMapPathOverrides"</span>: &#123;</span><br><span class="line">        <span class="string">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"edge"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"attach"</span>,</span><br><span class="line">      <span class="string">"version"</span>: <span class="string">"dev"</span>, <span class="comment">// dev, beta, or canary</span></span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: attach Edge(Chromium)"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"port"</span>: <span class="number">9223</span>,</span><br><span class="line">      <span class="string">"sourceMapPathOverrides"</span>: &#123;</span><br><span class="line">        <span class="string">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"edge"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="string">"version"</span>: <span class="string">"dev"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: launch Edge(Chromium)"</span>,</span><br><span class="line">      <span class="string">"url"</span>: <span class="string">"http://localhost:8080"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"userDataDir"</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">"breakOnLoad"</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">"sourceMapPathOverrides"</span>: &#123;</span><br><span class="line">        <span class="string">"webpack:///./src/*"</span>: <span class="string">"$&#123;webRoot&#125;/*"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"firefox"</span>,</span><br><span class="line">      <span class="string">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">      <span class="string">"name"</span>: <span class="string">"vuejs: firefox"</span>,</span><br><span class="line">      <span class="string">"url"</span>: <span class="string">"http://localhost:8080"</span>,</span><br><span class="line">      <span class="string">"webRoot"</span>: <span class="string">"$&#123;workspaceFolder&#125;/src"</span>,</span><br><span class="line">      <span class="string">"pathMappings"</span>: [&#123; <span class="string">"url"</span>: <span class="string">"webpack:///src/"</span>, <span class="string">"path"</span>: <span class="string">"$&#123;webRoot&#125;/"</span> &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="launch模式"><a href="#launch模式" class="headerlink" title="launch模式"></a>launch模式</h2><blockquote>
+<p>launch模式就是重新打开一个浏览器实例（不是tab）。</p>
+</blockquote>
+<h2 id="attach模式"><a href="#attach模式" class="headerlink" title="attach模式"></a>attach模式</h2><blockquote>
+<p>attach模式，是附加到现在已经打开的浏览器调试端口上，所以需要你在已经打开的浏览器中访问<code>launch.json</code>中配置的网站地址。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-attach.jpg" alt="attach模式的tab窗口选择" title="">
+                </div>
+                <div class="image-caption">attach模式的tab窗口选择</div>
+            </figure>
+<h3 id="chrome配置"><a href="#chrome配置" class="headerlink" title="chrome配置"></a>chrome配置</h3><ul>
+<li>windows</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-for-chrome.jpg" alt="chrome配置远程调试端口" title="">
+                </div>
+                <div class="image-caption">chrome配置远程调试端口</div>
+            </figure>
+<ul>
+<li><p>mac</p>
+<blockquote>
+<p>终端执行: <code>/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222</code></p>
+</blockquote>
+</li>
+<li><p>Linux</p>
+<blockquote>
+<p>终端执行： <code>google-chrome --remote-debugging-port=9222</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Edge-Chromium"><a href="#Edge-Chromium" class="headerlink" title="Edge(Chromium)"></a>Edge(Chromium)</h3><ul>
+<li>windows</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/debugging-for-edge-chromium.jpg" alt="Edge(Chromium)调试端口配置"></p>
+<blockquote>
+<p>命令行：<code>msedge.exe --remote-debugging-port=2015</code></p>
+</blockquote>
+<ul>
+<li>mac和Liunx现在官方没说怎么调试…..</li>
+</ul>
+<h3 id="Microsoft-Edge-EdgeHTML"><a href="#Microsoft-Edge-EdgeHTML" class="headerlink" title="Microsoft Edge (EdgeHTML)"></a>Microsoft Edge (EdgeHTML)</h3><ul>
+<li><p>windows</p>
+<blockquote>
+<p>命令行： <code>microsoftedge.exe --devtools-server-port=2015</code></p>
+<p>竟然不能快捷方式配置，不科学。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="个人建议"><a href="#个人建议" class="headerlink" title="个人建议"></a>个人建议</h2><blockquote>
+<p>个人建议平时开发，把端口配置到快捷方式，使用attach模式可以共享使用已经安装的浏览器插件。</p>
+</blockquote>
+<p>具体还有很多参数配置，可以参考官方文档。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome" target="_blank" rel="noopener">debugger-for-chrome</a></p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge" target="_blank" rel="noopener">debugger-for-edge</a></p>
+<p><a href="https://github.com/Microsoft/vscode-chrome-debug" target="_blank" rel="noopener">vscode-chrome-debug-github</a></p>
+<p><a href="https://github.com/Microsoft/vscode-recipes" target="_blank" rel="noopener">vscode-recipes</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/microsoft-edge/devtools-protocol-chromium" target="_blank" rel="noopener">devtools-protocol-chromium</a></p>
+<p><a href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-protocol/" target="_blank" rel="noopener">devtools-protocol-edge</a></p>
+<p><a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging" target="_blank" rel="noopener">nodejs-debugging</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-26T08:58:39.218Z" itemprop="dateUpdated">2019-06-26 16:58:39</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/06/26/vscode-debug-configuration/" target="_blank" rel="external">https://betgar.github.io/2019/06/26/vscode-debug-configuration/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/&title=《VS Code调试配置分享》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/&title=《VS Code调试配置分享》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/26/vscode-debug-configuration/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VS Code调试配置分享》 — 个人博客&url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/20/frontend-little-tangle-common-module-design/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">前端小纠结--common模块设计</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/&title=《VS Code调试配置分享》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/&title=《VS Code调试配置分享》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/26/vscode-debug-configuration/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VS Code调试配置分享》 — 个人博客&url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/26/vscode-debug-configuration/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aS45bMQwEQN//0hMge/t1k5IzAeqtDMMflRYi0eLrFT8/f5/2nc13898/8ODh4eGNlv7uefeZlpS8n6wh/zweHh7ebd7npbz9cvz5/b8MtxUPDw/vn/KSZeVHdts04+Hh4f2/vM/LbZGzQAQPDw/vN/DaIKBNUJOSkBSbi1kLHh4e3tGTOaF+8/XF+z08PDy8xa16funVXo/lLfvmwcPDw7vB24wF5Ed5MoKQ/37bvuPh4eHd4+Vfa0OBWeybdMhRyIuHh4d3jdeGofmIVVtC8tGr6HIODw8P7wJvc2HftsXtsd5udB344uHh4ZW8vBjMhgk2i5vFFkUPjoeHh3eUlze+7VG+uUhLSsvD/R4eHh7emteepbPevA0L9v+Fh4eH9x1eWwzaUDVpuzdDAw8bgYeHh3eUlzfHmyV+boJnV3FRGo2Hh4d3lNcudzZK1YbCSbsclRM8PDy8C7zNlVV70Of/st8yPDw8vO/wZu3ysItfHP35ZRgeHh7ebd6pK6g8aGg/2ZYQPDw8vHu82QVVG/JuhgbahhsPDw/vHq+FzaLepC2+skF4eHh4187edlmzQKHdiDbCwMPDw/sObzYW0BaPNhHZD13h4eHh3eMlP50vYj+etWEXkxF4eHh4C14ey24GrWZxw/7yDA8PD+82ryVt2O3oQBso1ykLHh4eXpcYvDbH9yyqyCOMPDh+CCPw8PDwDvF+yqcd0kpKRb6J+ft4eHh493iz6/l2tDQfC9iUls3wAR4eHl7La4tBHlLMBgXawvCw6Xh4eHjXeHnymV/hb1rkYQWbTWbh4eHhXePl0e0m8J2t/KGlxsPDw/tlvLaE5JHEZkgLDw8P7zbvVBAwO9zzsao6DsbDw8O7wJs1r7Ni0Dbl7TjCgcACDw8P7xPvDyWBpktu0znSAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

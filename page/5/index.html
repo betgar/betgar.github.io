@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
     
 
     
@@ -47,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu">
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -67,49 +67,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank">
+              <a href="https://github.com/betgar" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about">
+              <a href="/about"  >
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -166,10 +166,123 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-plsql-comment-style" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-how-to-use-utldtree"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-12-21 20:00:00" datetime="2017-12-21T12:00:00.000Z" itemprop="datePublished">2017-12-21</time>
+        <time class="post-time" title="2018-01-08 20:00:00" datetime="2018-01-08T12:00:00.000Z"  itemprop="datePublished">2018-01-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PLSQL/">PLSQL</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/01/08/how-to-use-utldtree/">NPM的正确使用姿势</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        utldtree
+utldtree.sql是Oracle 提供的一个分析依赖的sql文件。
+路径：%ORACLE_CLIENT%\RDBMS\ADMIN
+因为没有包含在数据库标准包中，所以需要自己手动在数据库中执行utldtree下。
+
+utldtree创建的objects:
+序列：deptree_seq
+12&gt; create sequence deptree_seq cache 20...
+    
+
+        <a href="/2018/01/08/how-to-use-utldtree/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PLSQL/">PLSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/utldtree/">utldtree</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-excel-function-concatenate"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-12-28 20:00:00" datetime="2017-12-28T12:00:00.000Z"  itemprop="datePublished">2017-12-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Excel/">Excel</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/12/28/excel-function-concatenate/">excel的concatenate函数</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Excel的concatenate函数
+Excel中的字符串连接函数，类似一些concat函数。
+限制：最多支持255个参数连接。
+注意：连接字符时，每一个字符当成一个元素看待。
+
+栗子：
+12// 连接单元格，B2,C2,D2内容CONCATENATE(B2,C2,D2)
+concatenate生成sql语句
+如果想把Excel，然后想导入数据库，这种方式比较方便。
+
+字符串和数字类型
+字...
+    
+
+        <a href="/2017/12/28/excel-function-concatenate/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Excel/">Excel</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-plsql-comment-style"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-12-21 20:00:00" datetime="2017-12-21T12:00:00.000Z"  itemprop="datePublished">2017-12-21</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PLSQL/">PLSQL</a></li></ul>
@@ -215,10 +328,11 @@ Document Style12345678910111213141516------------------  主题(大写)----  正
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-object-to-primitive-conversions-in-javascript" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-object-to-primitive-conversions-in-javascript"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-24 20:00:00" datetime="2017-11-24T12:00:00.000Z" itemprop="datePublished">2017-11-24</time>
+        <time class="post-time" title="2017-11-24 20:00:00" datetime="2017-11-24T12:00:00.000Z"  itemprop="datePublished">2017-11-24</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
@@ -264,10 +378,11 @@ Like most object-oriented programming languages, JavaScript provides built-in wa
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-how-to-use-oracle-reference" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-how-to-use-oracle-reference"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-23 20:00:00" datetime="2017-11-23T12:00:00.000Z" itemprop="datePublished">2017-11-23</time>
+        <time class="post-time" title="2017-11-23 20:00:00" datetime="2017-11-23T12:00:00.000Z"  itemprop="datePublished">2017-11-23</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle/">Oracle</a></li></ul>
@@ -314,10 +429,11 @@ Concept包含了 oracle 数据库里面的一些基本概念和原理, 比如 �
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-the-data-storage-module-of-jquery" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-the-data-storage-module-of-jquery"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-05-31 20:00:00" datetime="2017-05-31T12:00:00.000Z" itemprop="datePublished">2017-05-31</time>
+        <time class="post-time" title="2017-05-31 20:00:00" datetime="2017-05-31T12:00:00.000Z"  itemprop="datePublished">2017-05-31</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/">jQuery</a></li></ul>
@@ -364,10 +480,11 @@ Concept包含了 oracle 数据库里面的一些基本概念和原理, 比如 �
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-building-stateful-plugins-with-jquery-ui-widget" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-building-stateful-plugins-with-jquery-ui-widget"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-05-07 20:00:00" datetime="2017-05-07T12:00:00.000Z" itemprop="datePublished">2017-05-07</time>
+        <time class="post-time" title="2017-05-07 20:00:00" datetime="2017-05-07T12:00:00.000Z"  itemprop="datePublished">2017-05-07</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/jQuery/">jQuery</a></li></ul>
@@ -412,10 +529,11 @@ jQuery最好的设计在于两个方面，一是它的API，另外一个是它�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-query-oracle-table-locked" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-query-oracle-table-locked"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-04-18 20:00:00" datetime="2017-04-18T12:00:00.000Z" itemprop="datePublished">2017-04-18</time>
+        <time class="post-time" title="2017-04-18 20:00:00" datetime="2017-04-18T12:00:00.000Z"  itemprop="datePublished">2017-04-18</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle/">Oracle</a></li></ul>
@@ -461,10 +579,11 @@ jQuery最好的设计在于两个方面，一是它的API，另外一个是它�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-the-rules-of-badminton" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-the-rules-of-badminton"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-04-14 20:00:00" datetime="2017-04-14T12:00:00.000Z" itemprop="datePublished">2017-04-14</time>
+        <time class="post-time" title="2017-04-14 20:00:00" datetime="2017-04-14T12:00:00.000Z"  itemprop="datePublished">2017-04-14</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sports/">sports</a></li></ul>
@@ -518,10 +637,11 @@ jQuery最好的设计在于两个方面，一是它的API，另外一个是它�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-how-to-use-nbtstat-command-get-ip-address" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-how-to-use-nbtstat-command-get-ip-address"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-04-10 20:00:00" datetime="2017-04-10T12:00:00.000Z" itemprop="datePublished">2017-04-10</time>
+        <time class="post-time" title="2017-04-10 20:00:00" datetime="2017-04-10T12:00:00.000Z"  itemprop="datePublished">2017-04-10</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/cmd/">cmd</a></li></ul>
@@ -568,104 +688,6 @@ MAC : D43D7ED1CE05
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-a-history-of-unix-directory-structure" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-29 20:00:00" datetime="2017-03-29T12:00:00.000Z" itemprop="datePublished">2017-03-29</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/FHS/">FHS</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/29/a-history-of-unix-directory-structure/">UNIX文件系统的历史</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Filesystem Hierarchy Standard
-阮一峰译文
-Rob Landley原文
-On Tuesday 30 November 2010 15:58:00 David Collier wrote:
-
-I see that busybox spreads it’s links over these 4 directories.
-Is there a simple rule w...
-    
-
-        <a href="/2017/03/29/a-history-of-unix-directory-structure/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FHS/">FHS</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-the-linux-command-line-learn-note" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-29 20:00:00" datetime="2017-03-29T12:00:00.000Z" itemprop="datePublished">2017-03-29</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/29/the-linux-command-line-learn-note/">Linux命令学习笔记</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Linux命令学习笔记Linux系统目录结构123456789101112131415161718192021222324252627/-- # root |--bin	                # Essential command binaries |--boot                  # Static files of the boot loader |--dev	 ...
-    
-
-        <a href="/2017/03/29/the-linux-command-line-learn-note/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
@@ -682,10 +704,10 @@ Is there a simple rule w...
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

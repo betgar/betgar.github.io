@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端小纠结--common模块设计 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="fe">
+    <meta name="description" content="前端小纠结–common模块设计承接上一篇前端小纠结–Vue项目代码组织和风格约定  common模块的单独拿出来说一下，因为common模块设计的好，可以跨项目使用，甚至在部署成自己的私有的package。 common目标：主要是为了在第三方库之上做一层简单的封装，预置配置，做一层隔离，也可以在调用第三方组件时做一些埋点统一处理一些逻辑。  设计原则 不能有任何的业务逻辑 不能耦合工程的业务状">
+<meta name="keywords" content="fe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小纠结--common模块设计">
+<meta property="og:url" content="https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="前端小纠结–common模块设计承接上一篇前端小纠结–Vue项目代码组织和风格约定  common模块的单独拿出来说一下，因为common模块设计的好，可以跨项目使用，甚至在部署成自己的私有的package。 common目标：主要是为了在第三方库之上做一层简单的封装，预置配置，做一层隔离，也可以在调用第三方组件时做一些埋点统一处理一些逻辑。  设计原则 不能有任何的业务逻辑 不能耦合工程的业务状">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-27T00:01:09.260Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端小纠结--common模块设计">
+<meta name="twitter:description" content="前端小纠结–common模块设计承接上一篇前端小纠结–Vue项目代码组织和风格约定  common模块的单独拿出来说一下，因为common模块设计的好，可以跨项目使用，甚至在部署成自己的私有的package。 common目标：主要是为了在第三方库之上做一层简单的封装，预置配置，做一层隔离，也可以在调用第三方组件时做一些埋点统一处理一些逻辑。  设计原则 不能有任何的业务逻辑 不能耦合工程的业务状">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端小纠结--common模块设计</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端小纠结--common模块设计</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-20T10:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–common模块设计"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–common模块设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计原则"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">设计原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#common参考结构"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">common参考结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#封装实践示例"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">封装实践示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例：根据运行环境调整组件配置参数"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">示例：根据运行环境调整组件配置参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例：按需添加依赖"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">示例：按需添加依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#示例：装饰原有接口，增强功能"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">示例：装饰原有接口，增强功能</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-frontend-little-tangle-common-module-design"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端小纠结--common模块设计</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-20 18:00:00" datetime="2019-06-20T10:00:00.000Z"  itemprop="datePublished">2019-06-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前端小纠结–common模块设计"><a href="#前端小纠结–common模块设计" class="headerlink" title="前端小纠结–common模块设计"></a>前端小纠结–common模块设计</h1><p>承接上一篇<a href="https://betgar.github.io/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/">前端小纠结–Vue项目代码组织和风格约定</a></p>
+<blockquote>
+<p><code>common</code>模块的单独拿出来说一下，因为<code>common</code>模块设计的好，可以跨项目使用，甚至在部署成自己的私有的<code>package</code>。</p>
+<p><code>common</code>目标：主要是为了在<strong>第三方库</strong>之上做一层简单的封装，<strong>预置配置</strong>，做一层隔离，也可以在调用第三方组件时做一些<strong>埋点</strong>统一处理一些逻辑。</p>
+</blockquote>
+<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ol>
+<li>不能有任何的业务逻辑</li>
+<li>不能耦合工程的<strong>业务状态</strong></li>
+<li>不能依赖<strong>组件库</strong>，可以依赖独立的<code>UI</code>组件（例如: <code>nprogress</code>）</li>
+<li>可以依赖<code>vue</code>框架，不能依赖<code>router</code>实例和<code>vuex</code>实例组件（如果依赖就说明耦合业务）</li>
+</ol>
+<h3 id="common参考结构"><a href="#common参考结构" class="headerlink" title="common参考结构"></a><code>common</code>参考结构</h3><blockquote>
+<p>这个是我使用的<code>common</code>层的目录结构，仅供参考。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">src/common</span><br><span class="line">├── ajax</span><br><span class="line">│   ├── Ajax.ts</span><br><span class="line">│   ├── AjaxConfig.ts</span><br><span class="line">│   ├── AjaxUtils.ts</span><br><span class="line">│   ├── interceptors</span><br><span class="line">│   │   ├── BackendInterceptor.ts</span><br><span class="line">│   │   ├── CacheInterceptor.ts</span><br><span class="line">│   │   ├── Interceptors.ts</span><br><span class="line">│   │   └── LoadingInterceptor.ts</span><br><span class="line">│   └── transformer</span><br><span class="line">│       ├── RequestTransformer.ts</span><br><span class="line">│       ├── ResponseTransformer.ts</span><br><span class="line">│       └── Transformers.ts</span><br><span class="line">├── axios</span><br><span class="line">│   ├── axios.ts</span><br><span class="line">│   └── index.d.ts</span><br><span class="line">├── cookie</span><br><span class="line">│   └── Cookies.ts</span><br><span class="line">├── datetime</span><br><span class="line">│   └── Datetime.ts</span><br><span class="line">├── day</span><br><span class="line">│   └── day.ts</span><br><span class="line">├── downloader</span><br><span class="line">│   └── Downloader.ts</span><br><span class="line">├── event-bus</span><br><span class="line">│   ├── EventBus.ts</span><br><span class="line">│   └── index.d.ts</span><br><span class="line">├── http</span><br><span class="line">│   └── Http.ts</span><br><span class="line">├── index.ts</span><br><span class="line">├── localforage</span><br><span class="line">│   └── Localforage.ts</span><br><span class="line">├── logger</span><br><span class="line">│   └── Logger.ts</span><br><span class="line">├── numberal</span><br><span class="line">│   └── numberal.ts</span><br><span class="line">├── pager</span><br><span class="line">│   └── Pager.ts</span><br><span class="line">├── patterns</span><br><span class="line">│   ├── numeric.ts</span><br><span class="line">│   ├── patterns.ts</span><br><span class="line">│   └── strings.ts</span><br><span class="line">├── storage</span><br><span class="line">│   ├── index.d.ts</span><br><span class="line">│   └── Storage.ts</span><br><span class="line">├── text</span><br><span class="line">│   ├── formatter</span><br><span class="line">│   │   └── formatter.ts</span><br><span class="line">│   └── Text.ts</span><br><span class="line">├── token</span><br><span class="line">│   └── Token.ts</span><br><span class="line">├── utils</span><br><span class="line">│   └── Utils.ts</span><br><span class="line">└── validation</span><br><span class="line">    ├── email</span><br><span class="line">    │   └── EmailValidator.ts</span><br><span class="line">    ├── numeric</span><br><span class="line">    │   └── NumericValidator.ts</span><br><span class="line">    ├── phone</span><br><span class="line">    │   └── PhoneValidator.ts</span><br><span class="line">    └── Validation.ts</span><br></pre></td></tr></table></figure>
+<h2 id="封装实践示例"><a href="#封装实践示例" class="headerlink" title="封装实践示例"></a>封装实践示例</h2><h3 id="示例：根据运行环境调整组件配置参数"><a href="#示例：根据运行环境调整组件配置参数" class="headerlink" title="示例：根据运行环境调整组件配置参数"></a>示例：根据运行环境调整组件配置参数</h3><blockquote>
+<p>logger模块简单封装，根据部署环境调整日志级别。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Logger <span class="keyword">from</span> <span class="string">'js-logger'</span>;</span><br><span class="line"></span><br><span class="line">Logger.useDefaults();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以发送到日志服务器，自己搭建个sentry日志服务</span></span><br><span class="line"><span class="comment">// https://sentry.io/for/javascript/</span></span><br><span class="line">Logger.setHandler(<span class="function"><span class="keyword">function</span> (<span class="params">messages, context</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// Send messages to a custom logging endpoint for analysis.</span></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> Add some security? (nah, you worry too much! :P)</span></span><br><span class="line">	jQuery.post(<span class="string">'/logs'</span>, &#123; message: messages[<span class="number">0</span>], level: context.level &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调整日志级别</span></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">  Logger.setLevel(Logger.ERROR);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  Logger.setLevel(Logger.DEBUG);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Logger;</span><br></pre></td></tr></table></figure>
+<h3 id="示例：按需添加依赖"><a href="#示例：按需添加依赖" class="headerlink" title="示例：按需添加依赖"></a>示例：按需添加依赖</h3><blockquote>
+<p>示例按需添加：很多组件内部也分成多个子组件，而且都是可以按需添加</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// storejs</span></span><br><span class="line"><span class="keyword">const</span> store: StoreJsAPI = <span class="built_in">require</span>(<span class="string">'store/dist/store.modern.min'</span>);</span><br><span class="line"><span class="keyword">const</span> expirePlugin = <span class="built_in">require</span>(<span class="string">'store/plugins/expire'</span>);</span><br><span class="line"><span class="keyword">const</span> eventsPlugin = <span class="built_in">require</span>(<span class="string">'store/plugins/events'</span>);</span><br><span class="line"><span class="keyword">const</span> updatePlugin = <span class="built_in">require</span>(<span class="string">'store/plugins/update'</span>);</span><br><span class="line"><span class="comment">// const observePlugin = require('store/plugins/observe');</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加插件.</span></span><br><span class="line">store.addPlugin(expirePlugin);</span><br><span class="line">store.addPlugin(eventsPlugin);</span><br><span class="line">store.addPlugin(updatePlugin);</span><br><span class="line"><span class="comment">// store.addPlugin(observePlugin);</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+<h3 id="示例：装饰原有接口，增强功能"><a href="#示例：装饰原有接口，增强功能" class="headerlink" title="示例：装饰原有接口，增强功能"></a>示例：装饰原有接口，增强功能</h3><blockquote>
+<p><code>cookies</code>和<code>storage</code>这两个模块也做一些简单封装，可以做到，对写在客户端可见的数据进行<strong>编码加密</strong>，增强安全性，提高解析门槛。</p>
+</blockquote>
+<ol>
+<li><p>进行统一封装，自动加解密</p>
+</li>
+<li><p>封装<code>clear</code>和<code>remove</code>方法，添加白名单</p>
+<blockquote>
+<p>当退出网站或者关闭网页时，进行清理时可以排除白名单属性。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Cookies, &#123; CookieAttributes &#125; <span class="keyword">from</span> <span class="string">'js-cookie'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> NodeRSA = <span class="built_in">require</span>(<span class="string">'node-rsa'</span>);</span><br><span class="line"><span class="keyword">const</span> rsaKey = <span class="keyword">new</span> NodeRSA(&#123;b: <span class="number">512</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cookieGet = Cookies.get;</span><br><span class="line"><span class="keyword">const</span> cookieSet = Cookies.set;</span><br><span class="line"></span><br><span class="line"><span class="comment">// @ts-ignore</span></span><br><span class="line">Cookies.get = <span class="function"><span class="keyword">function</span> (<span class="params">key: <span class="built_in">string</span></span>): <span class="title">string</span> | <span class="title">undefined</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> rsaKey.decrypt(cookieGet(key), <span class="string">'base64'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cookies.set = <span class="function"><span class="keyword">function</span> (<span class="params">name: <span class="built_in">string</span>, value: <span class="built_in">any</span>, options?: CookieAttributes</span>) </span>&#123;</span><br><span class="line">  cookieSet(name, rsaKey.encrypt(value, <span class="string">'base64'</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> cookies = Cookies;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-27T00:01:09.260Z" itemprop="dateUpdated">2019-06-27 08:01:09</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/06/20/frontend-little-tangle-common-module-design/" target="_blank" rel="external">https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/&title=《前端小纠结--common模块设计》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/&title=《前端小纠结--common模块设计》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--common模块设计》 — 个人博客&url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/06/26/vscode-debug-configuration/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">VS Code调试配置分享</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/12/frontend-little-tangle-vue-project-code-organization-conventional-style-guideline/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">前端小纠结--Vue项目代码组织和风格约定</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/&title=《前端小纠结--common模块设计》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/&title=《前端小纠结--common模块设计》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--common模块设计》 — 个人博客&url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/20/frontend-little-tangle-common-module-design/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3awW7cMAwE0Pz/T6fXAm28M5S43QLPpyC7kfV8MJkRv77i6/u36/nTP7+Z/NXzOs93v3Dh4eHhHWz9eYvPW0kex0/sBJA/CDw8PLz38JLlnr9z/puk/LT7wcPDw/tkXtJMt8UgXxkPDw/vf+HlL/dZA/3cguPh4eH9W14exSYBRL7OLNpYyVrw8PDwFk6RPufnlfM9PDw8vONT9dkoQBvOtm10sVs8PDy8Bd4saEiCjNlRWRtwRPvEw8PDW+Dl0UA+tNrGtflxWhJA4OHh4e3xVoacRoB2WDYqG3h4eHhrvDb5bJvmZAwruUteKvDw8PD2eG0zfV5OZo/sJATBw8PD2+DlbeushOSba1/9w8kyPDw8vANeUhJms0x5ycmHBtpHg4eHh7fBy4+7kmi1vnE5aDUcL8DDw8O7yssb6JPYYhZD5ANbP66Dh4eHt8C7NXQ12/SsjuX7wcPDw3snrw1YZ4Fs25q3Qwl4eHh4G7zZ4Vbygm4D3JO2+0UYgYeHh7fMa6PY2ahBHtG2ZewvowN4eHh4C7x2IOAkCE42Nws+6qErPDw8vBHv5AU9OwwrgtdLpQIPDw9vg3crZp3FFrN2PIlO8PDw8PZ4s/GpthU+GTJoh67w8PDw3sM7GSm4FUwkBam+Ix4eHt5bePnS7cv9fEyhHjLAw8PDW+PlR0on7XVSJC4j8fDw8NZ4SWFoX8p3G+5ZW4+Hh4d3l/ddXueHWOfDCsUwFh4eHt4Cb7b0LBSYlZDZgVx94eHh4ZW8Nkhty0YOy4/EXowL4OHh4b2FN4sSZlFFG+/mYQQeHh7eJ/PamGB25Jbv7XJhwMPDw7vKS5Y+oSbgorTg4eHhrfFOIoZ80CoJeWePu5gpw8PDwzvmXfiHPygYyUM8GUS4cL6Hh4eH95r3CyZafYLcPuOdAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

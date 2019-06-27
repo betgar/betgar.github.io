@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
     
 
     
@@ -47,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu">
+    <aside id="menu"  >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -67,49 +67,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank">
+              <a href="https://github.com/betgar" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about">
+              <a href="/about"  >
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -166,10 +166,120 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-install-node-on-ubuntu" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-allocation-swap-partition-on-deepin-linux"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-02-26 00:00:00" datetime="2019-02-25T16:00:00.000Z" itemprop="datePublished">2019-02-26</time>
+        <time class="post-time" title="2019-03-13 07:00:00" datetime="2019-03-12T23:00:00.000Z"  itemprop="datePublished">2019-03-13</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/deepin/">deepin</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/13/allocation-swap-partition-on-deepin-linux/">deepin安装之后分配swap空间</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        deepin安装之后分配swap空间参考这里的文章做个记录
+增加swap文件作为空间，五步：
+
+第一步：成为超级用户；
+1sudo su
+
+第二步：在根目录生成swap文件,count设定块数,bs设定块大小,生成4G的swap代码如下
+1dd if=/dev/zero of=/swapfile count=4096 bs=1024k
+
+第三步：设置交换分区，注意路径和上面的of=/swap...
+    
+
+        <a href="/2019/03/13/allocation-swap-partition-on-deepin-linux/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deepin/">deepin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-deploy-private-npm-registry-verdaccio"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-09 11:00:00" datetime="2019-03-09T03:00:00.000Z"  itemprop="datePublished">2019-03-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/">npm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/npm/verdaccio/">verdaccio</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/09/deploy-private-npm-registry-verdaccio/">npm私有仓库verdaccio的部署</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        verdaccio
+因为技术变革太快，注意知识的时效性。
+verdaccio是基于node开发的一个库，用来搭建私有的npm仓库。因为npm仓库大多数是公有的免费的，私有仓库或者企业版是收费的，在单位内部或者个人一些私有的模块需要托管的时候就需要自己搭建一个私有的仓库，而verdaccio就是选择之一，最便捷的一种。
+
+安装verdaccio
+参照官方文档，而且是中文版哟~~~。
+注意： n...
+    
+
+        <a href="/2019/03/09/deploy-private-npm-registry-verdaccio/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/verdaccio/">verdaccio</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-install-node-on-ubuntu"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-02-26 00:00:00" datetime="2019-02-25T16:00:00.000Z"  itemprop="datePublished">2019-02-26</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/node/">node</a></li></ul></li></ul>
@@ -217,10 +327,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-vue2-typescript-action-prepare" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-vue2-typescript-action-prepare"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2019-02-13 00:00:00" datetime="2019-02-12T16:00:00.000Z" itemprop="datePublished">2019-02-13</time>
+        <time class="post-time" title="2019-02-13 00:00:00" datetime="2019-02-12T16:00:00.000Z"  itemprop="datePublished">2019-02-13</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/">Vue</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Vue/TypeScript/">TypeScript</a></li></ul></li></ul>
@@ -277,10 +388,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-the-beginner-of-backbone-marionette" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-the-beginner-of-backbone-marionette"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-10-24 18:00:00" datetime="2018-10-24T10:00:00.000Z" itemprop="datePublished">2018-10-24</time>
+        <time class="post-time" title="2018-10-24 18:00:00" datetime="2018-10-24T10:00:00.000Z"  itemprop="datePublished">2018-10-24</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/backbone/">backbone</a></li></ul>
@@ -326,10 +438,11 @@ initialize(options, args...)1234567const MyObject = MnObject.extend(&#123;  init
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-how-to-use-jquery-validation" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-how-to-use-jquery-validation"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-10-09 16:00:00" datetime="2018-10-09T08:00:00.000Z" itemprop="datePublished">2018-10-09</time>
+        <time class="post-time" title="2018-10-09 16:00:00" datetime="2018-10-09T08:00:00.000Z"  itemprop="datePublished">2018-10-09</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Validation/">Validation</a></li></ul>
@@ -378,10 +491,11 @@ jQuery.validator.defaults
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-the-quick-start-of-requirejs" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-the-quick-start-of-requirejs"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-09-12 00:00:00" datetime="2018-09-11T16:00:00.000Z" itemprop="datePublished">2018-09-12</time>
+        <time class="post-time" title="2018-09-12 00:00:00" datetime="2018-09-11T16:00:00.000Z"  itemprop="datePublished">2018-09-12</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/">requirejs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/AMD/">AMD</a></li></ul></li></ul>
@@ -432,10 +546,11 @@ AMD规范对loader，loader plugins， require有详细的规定。详情见 AMD
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-adminlte-theme-zh-cn-docs" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-adminlte-theme-zh-cn-docs"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-09-09 16:52:00" datetime="2018-09-09T08:52:00.000Z" itemprop="datePublished">2018-09-09</time>
+        <time class="post-time" title="2018-09-09 16:52:00" datetime="2018-09-09T08:52:00.000Z"  itemprop="datePublished">2018-09-09</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/adminlte/">adminlte</a></li></ul>
@@ -481,10 +596,11 @@ AMD规范对loader，loader plugins， require有详细的规定。详情见 AMD
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-AMD-best-practice" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-AMD-best-practice"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-08-03 17:00:00" datetime="2018-08-03T09:00:00.000Z" itemprop="datePublished">2018-08-03</time>
+        <time class="post-time" title="2018-08-03 17:00:00" datetime="2018-08-03T09:00:00.000Z"  itemprop="datePublished">2018-08-03</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/AMD/">AMD</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/AMD/requirejs/">requirejs</a></li></ul></li></ul>
@@ -553,10 +669,11 @@ AMD - Loader
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-perfect-full-page-background-image" class="article-card article-type-post" itemprop="blogPost">
+            <article id="post-perfect-full-page-background-image"
+  class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-26 21:30:00" datetime="2018-07-26T13:30:00.000Z" itemprop="datePublished">2018-07-26</time>
+        <time class="post-time" title="2018-07-26 21:30:00" datetime="2018-07-26T13:30:00.000Z"  itemprop="datePublished">2018-07-26</time>
 
         
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/layout/">layout</a></li></ul>
@@ -601,110 +718,6 @@ AMD - Loader
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-the-docs-of-bootstrap-validator" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-07-25 20:00:00" datetime="2018-07-25T12:00:00.000Z" itemprop="datePublished">2018-07-25</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/Validation/">Validation</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/25/the-docs-of-bootstrap-validator/">Bootstrap-validator的使用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Bootstrap-validator的使用
-翻译官方的文档。
-这个插件遵循Bootstrap核心jQuery插件提出的约定，所以一定要检查这些插件，以便更好地理解这个插件的目标和设计。 
-
-例子
-使用这个简单的插件为表单添加验证。 
-
-123456789101112131415161718192021222324252627282930313233343536373839404142434...
-    
-
-        <a href="/2018/07/25/the-docs-of-bootstrap-validator/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Validation/">Validation</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-bootstrap-form-layout" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-07-23 19:00:00" datetime="2018-07-23T11:00:00.000Z" itemprop="datePublished">2018-07-23</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Bootstrap/">Bootstrap</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/23/bootstrap-form-layout/">Bootstrap 表单布局</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Bootstrap 表单布局
-bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构嵌套层次还有很多疑问。
-所以又翻了一遍官网和资料，总结一下。
-本文部分内容翻译自这里.
-
-基本原则Bootstrap表单控件自动获得一些全局样式，如所有textual &lt;input&gt;，&lt;textarea&gt;以及&lt;select&gt;带类的元素.form-contro...
-    
-
-        <a href="/2018/07/23/bootstrap-form-layout/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
@@ -721,10 +734,10 @@ bootstrap已经使用很久了，但是对于表单布局，尤其是HTML结构�
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
