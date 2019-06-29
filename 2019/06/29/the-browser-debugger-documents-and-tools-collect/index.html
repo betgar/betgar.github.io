@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端小纠结--Browser&amp;WebView调试工具和文档整理 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vue,debug">
+    <meta name="description" content="前端小纠结–Browser&amp;amp;WebView调试工具和文档整理 为什么又这篇文章呢？因为最近在做IE 11的兼容性测试，の有生之年还会做IE 适配，我没想到。 期间遇到了一个小问题，没想到竟然没搞定。这么简单，我竟然搞不定…..我对自己的经验和技术水平产生了怀疑，所以决定整理一下，浏览器调试方面的工具和资料。  调试协议(devtools-protocol) 首先说我知道的，远程调试协议(d">
+<meta name="keywords" content="vue,debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小纠结--Browser&amp;WebView调试工具和文档整理">
+<meta property="og:url" content="https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="前端小纠结–Browser&amp;amp;WebView调试工具和文档整理 为什么又这篇文章呢？因为最近在做IE 11的兼容性测试，の有生之年还会做IE 适配，我没想到。 期间遇到了一个小问题，没想到竟然没搞定。这么简单，我竟然搞不定…..我对自己的经验和技术水平产生了怀疑，所以决定整理一下，浏览器调试方面的工具和资料。  调试协议(devtools-protocol) 首先说我知道的，远程调试协议(d">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629214222.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629173207.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629173406.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629215238.png">
+<meta property="og:updated_time" content="2019-06-29T13:53:05.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端小纠结--Browser&amp;WebView调试工具和文档整理">
+<meta name="twitter:description" content="前端小纠结–Browser&amp;amp;WebView调试工具和文档整理 为什么又这篇文章呢？因为最近在做IE 11的兼容性测试，の有生之年还会做IE 适配，我没想到。 期间遇到了一个小问题，没想到竟然没搞定。这么简单，我竟然搞不定…..我对自己的经验和技术水平产生了怀疑，所以决定整理一下，浏览器调试方面的工具和资料。  调试协议(devtools-protocol) 首先说我知道的，远程调试协议(d">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629214222.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端小纠结--Browser&amp;WebView调试工具和文档整理</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端小纠结--Browser&amp;WebView调试工具和文档整理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-29T01:20:00.000Z" itemprop="datePublished" class="page-time">
+  2019-06-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/debug/">debug</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–Browser-amp-WebView调试工具和文档整理"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–Browser&amp;WebView调试工具和文档整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调试协议-devtools-protocol"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">调试协议(devtools-protocol)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VS-Code-debugger-plugins"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">VS Code debugger plugins</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vscode官方列表"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">vscode官方列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Chrome"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Chrome</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Firefox"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Firefox</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IE"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">IE</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VS-Code调试IE-11尝试"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">VS Code调试IE 11尝试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-browser-debugger-documents-and-tools-collect"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端小纠结--Browser&WebView调试工具和文档整理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-29 09:20:00" datetime="2019-06-29T01:20:00.000Z"  itemprop="datePublished">2019-06-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/debug/">debug</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前端小纠结–Browser-amp-WebView调试工具和文档整理"><a href="#前端小纠结–Browser-amp-WebView调试工具和文档整理" class="headerlink" title="前端小纠结–Browser&amp;WebView调试工具和文档整理"></a>前端小纠结–Browser&amp;WebView调试工具和文档整理</h1><blockquote>
+<p>为什么又这篇文章呢？因为最近在做IE 11的兼容性测试，の有生之年还会做IE 适配，我没想到。</p>
+<p>期间遇到了一个小问题，没想到竟然没搞定。这么简单，我竟然搞不定…..我对自己的经验和技术水平产生了怀疑，所以决定整理一下，浏览器调试方面的工具和资料。</p>
+</blockquote>
+<h2 id="调试协议-devtools-protocol"><a href="#调试协议-devtools-protocol" class="headerlink" title="调试协议(devtools-protocol)"></a>调试协议(devtools-protocol)</h2><blockquote>
+<p>首先说我知道的，远程调试协议(devtools-protocol)很重要，因为只要浏览器或者<code>webview</code>实现了调试协议，我们不管用什么工具都可以方便的调试，好像目前这方面没有标准， 如果有大家告诉我，<code>chrome-devtools-protocol</code>做的最好。</p>
+</blockquote>
+<ul>
+<li><p><a href="https://chromedevtools.github.io/devtools-protocol/" target="_blank" rel="noopener">chrome-devtools-protocol</a></p>
+</li>
+<li><p><a href="https://github.com/WICG/devtools-protocol" target="_blank" rel="noopener">WICG-devtools-protocol</a></p>
+</li>
+<li><p><a href="https://remotedebug.org/" target="_blank" rel="noopener">remotedebug</a></p>
+<blockquote>
+<p>官网提供了很多不同浏览器调试协议的<a href="https://remotedebug.org/adaptors/" target="_blank" rel="noopener">Protocol Adaptors</a>和<a href="https://remotedebug.org/integrations/" target="_blank" rel="noopener">integrations</a>，可以在这里看到兼容性<a href="http://compatibility.remotedebug.org/" target="_blank" rel="noopener">compatibility</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="VS-Code-debugger-plugins"><a href="#VS-Code-debugger-plugins" class="headerlink" title="VS Code debugger plugins"></a>VS Code debugger plugins</h2><blockquote>
+<p>因为VS Code的流行，所以诞生了一个针对调试的debugger for xxx系列的插件。很多插件还是Microsoft自己开发的，微软YES.</p>
+</blockquote>
+<ul>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge" target="_blank" rel="noopener">Debugger-for-edge</a></p>
+<blockquote>
+<p>支持EdgeHTML和Chromium版本</p>
+</blockquote>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome" target="_blank" rel="noopener">Debugger-for-chrome</a></p>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-firefox-debug" target="_blank" rel="noopener">Debugger for Firefox</a></p>
+</li>
+<li><p><a href="https://github.com/RemoteDebug/remotedebug-ios-webkit-adapter" target="_blank" rel="noopener">ios-webkit-adapter-Safari</a></p>
+<blockquote>
+<p>RemoteDebug出品，微软在<a href="https://github.com/Microsoft/vscode-ios-web-debug" target="_blank" rel="noopener">vscode-ios-web-debug</a>上推荐.</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629214222.jpg" alt="RemoteDebug结构图"></p>
+</li>
+</ul>
+<h2 id="vscode官方列表"><a href="#vscode官方列表" class="headerlink" title="vscode官方列表"></a><a href="https://github.com/Microsoft/vscode-chrome-debug-core/blob/master/README.md" target="_blank" rel="noopener">vscode官方列表</a></h2><blockquote>
+<p>有一些已经过时，并且有推荐的替代的地址。</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/Microsoft/vscode-chrome-debug" target="_blank" rel="noopener">VS Code Chrome Debugger</a></li>
+<li><a href="https://github.com/Microsoft/vscode-ios-web-debug" target="_blank" rel="noopener">VS Code iOS Web Debugger</a></li>
+<li><a href="https://github.com/iradul/vscode-phantomjs-debug" target="_blank" rel="noopener">VS Code PhantomJS Debugger</a></li>
+<li><a href="https://github.com/Microsoft/vscode-node-debug2" target="_blank" rel="noopener">VS Code Node Debugger</a></li>
+<li><a href="https://github.com/Microsoft/vscode-edge-debug" target="_blank" rel="noopener">VS Code Edge Debugger</a></li>
+<li><a href="https://github.com/karikera/vscode-nwjs" target="_blank" rel="noopener">VS Code NWjs Debugger</a></li>
+<li><a href="https://github.com/Microsoft/vscode-cordova" target="_blank" rel="noopener">VS Code Cordova</a></li>
+<li><a href="https://github.com/NativeScript/nativescript-vscode-extension" target="_blank" rel="noopener">VS Code NativeScript debugger</a></li>
+<li>Visual Studio 2017 Update 2 Node.js Debugger</li>
+</ul>
+<h2 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h2><p>Chrome没啥介绍的调试工具官方做的最好，没有之一。</p>
+<h2 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h2><ul>
+<li><p><a href="https://getfirebug.com/releases/lite/1.2/" target="_blank" rel="noopener">firebug</a></p>
+<blockquote>
+<p>以前做的非常好的工具，以至于最后直接集成到firefox内部。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h2><blockquote>
+<p>介绍一个IE 11版本的，其它低于IE 11的我推荐你使用<code>google chrome frame</code>，虽然谷歌已经在2013停止维护了，但是对于低于IE 11的还是有很大的帮助的。微软官方提供的<a href="https://github.com/Microsoft/IEDiagnosticsAdapter/" target="_blank" rel="noopener">IEDiagnosticsAdapter</a>，虽然现在已经停止维护了，但是它最后更新在2015年，IE 11好像是2013年发布的（当时我在上大学…..），实现了<code>chrome-devtools-protocol v1.1</code>，我特意看了一下现在协议发展到<code>v1.3</code>，所以可以使用chrome devtools调试IE，本来很大希望，后来发现就是鸡肋，哎，聊胜于无了。</p>
+</blockquote>
+<p><strong>低于IE 11版本</strong></p>
+<ul>
+<li><a href="https://coderwall.com/p/az72jq/using-firebug-to-inspect-element-in-internet-explorer" target="_blank" rel="noopener">using-firebug-to-inspect-element-in-internet-explorer</a></li>
+<li><p><a href="https://www.my-debugbar.com/wiki/" target="_blank" rel="noopener">debugbar</a></p>
+</li>
+<li><p><a href="https://github.com/Microsoft/IEDiagnosticsAdapter/" target="_blank" rel="noopener">IEDiagnosticsAdapter</a></p>
+<blockquote>
+<p>官方的介绍工具的博客文章：<a href="https://blogs.msdn.microsoft.com/ie/2015/04/02/introducing-the-ie-diagnostics-adapter-for-third-party-developer-tools/" target="_blank" rel="noopener">introducing-the-ie-diagnostics-adapter-for-third-party-developer-tools</a></p>
+</blockquote>
+</li>
+</ul>
+<p>​        <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629173207.gif" alt="官方的介绍的gif"></p>
+<blockquote>
+<p>但是我亲自试了一下发现效果没这么好，查看DOM元素已经没有互动效果了，难道我的Chrome版本太高了？？？Chrome v75，可能Chrome版本太高，devtools协议版本较高，有机会找个低版本Chrome尝试下。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629173406.gif" alt="测试的结果" title="">
+                </div>
+                <div class="image-caption">测试的结果</div>
+            </figure>
+<h2 id="VS-Code调试IE-11尝试"><a href="#VS-Code调试IE-11尝试" class="headerlink" title="VS Code调试IE 11尝试"></a>VS Code调试IE 11尝试</h2><blockquote>
+<p>我思考，既然IE Diagnostics Adapter实现了devtools protocol v1.1，做了代理转发，debugger for chrome也是实现的devtools protocol ，我是否可以使用VS Code的debug模式，开启chrome attach模式试一下呢？</p>
+</blockquote>
+<p>思路：VS Code –&gt;debugger for chrome –&gt; attach port 9222 –&gt; IE Diagnostics Adapter –&gt; IE 11</p>
+<p>结论：VS Code 通过debugger for chrome的attach模式，成功链接。但是就成功一次，其余的尝试导致IE Diagnostics Adapter一直奔溃。虽然失败了，但是我还是很高兴，因为至少说明我的思路是正确的，解决问题的时候，思路（方向）最重要，要是方向搞错了，那可要浪费很多精力咯。:)</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>折腾了大半天，还是有点收获，最少收获了解决问题的思路和VS Code的debugger系列。希望这篇文章对还在和IE 11互相折磨的同行有点帮助。</p>
+</blockquote>
+<blockquote>
+<p>关注公众号，发现更多精彩内容。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190629215238.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://chromedevtools.github.io/devtools-protocol/" target="_blank" rel="noopener">chrome-devtools-protocol</a></p>
+<p><a href="https://remotedebug.org/" target="_blank" rel="noopener">remotedebug</a></p>
+<p><a href="https://github.com/Microsoft/vscode-chrome-debug-core/blob/master/README.md" target="_blank" rel="noopener">vscode-chrome-debug-core</a></p>
+<p><a href="https://github.com/WICG/devtools-protocol" target="_blank" rel="noopener">WICG-devtools-protocol</a></p>
+<p><a href="https://github.com/Microsoft/vscode-chrome-debug-core/blob/master/README.md" target="_blank" rel="noopener">vscode-chrome-debug-core</a></p>
+<p><a href="https://github.com/Microsoft/IEDiagnosticsAdapter/" target="_blank" rel="noopener">IEDiagnosticsAdapter</a></p>
+<p><a href="https://stackoverflow.com/questions/45241746/how-to-attach-vs-code-debugger-to-internet-explorer-11-for-javascript-html" target="_blank" rel="noopener">attach-vs-code-debugger-to-internet-explorer</a></p>
+<p><a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/" target="_blank" rel="noopener">ie-developer</a></p>
+<p><a href="https://stackoverflow.com/questions/45241746/how-to-attach-vs-code-debugger-to-internet-explorer-11-for-javascript-html" target="_blank" rel="noopener">how-to-attach-vs-code-debugger-to-internet-explorer-11</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-29T13:53:05.466Z" itemprop="dateUpdated">2019-06-29 21:53:05</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/06/29/the-browser-debugger-documents-and-tools-collect/" target="_blank" rel="external">https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/debug/">debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/&title=《前端小纠结--Browser&WebView调试工具和文档整理》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/&title=《前端小纠结--Browser&WebView调试工具和文档整理》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--Browser&WebView调试工具和文档整理》 — 个人博客&url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/27/vue-remote-devtools/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue-devtools在IE11中的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/&title=《前端小纠结--Browser&WebView调试工具和文档整理》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/&title=《前端小纠结--Browser&WebView调试工具和文档整理》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--Browser&WebView调试工具和文档整理》 — 个人博客&url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/06/29/the-browser-debugger-documents-and-tools-collect/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADPUlEQVR42u3a22rcQBAEUP//TzuQpwSz3qpuOVnNHj2ZgEc6EqTcl4+P+Pr8fX39+c9/eXTNTv56wqPTkrsML2xsbOybsJOHfvRAycPNfvfRi0tOiD4ANjY29nHsJFryUJnF3iwOhyGHjY2N/ZbstmCYBVVywgXlCjY2NvZbsvNSoX24PBT/W25jY2Njvzw7b9bkhcR+MHBV0wobGxv7bPYmJF7t538038bGxsZ+GfZneSUFRjIwyO/V3jc6GRsbG/sgdvLHfXvLqwqP/ZD4SbxhY2NjH8FuF2Jm6zt5qXBZMyj5ztjY2NgHsWfrL/uSIB8SJ0/7fdD+dQI2Njb2ceyfG+i2Lyhf9JmNe4t+GDY2NvZN2JvSoi0b8nC6duRct5awsbGxb8ue/bmfhEfbYGrjbTUkwMbGxr45ex8h7YPuB8D7IgcbGxv7fdibFnz9KPGZsxFCEWDY2NjYt2K35Ue+FrNf65m9rKJ1hY2NjX0Eux0AJIXEJsDaFzp7EmxsbOyT2EmD/qrG0KaF1JY6w8YZNjY29m3Z+bJLu5SzHzYkS0LJ5xl21LCxsbFvwm5HBZsratzn20ZBKD75JNjY2Ng3Z+f/9edrNG34ta87f9qH98XGxsY+iJ2PBDbN/TpL44Wh2WgBGxsb+yT2bHy7GR60sOQz5IPeesqBjY2N/fLstiTYLPTkaz2bz1Cfj42NjX1zdhJI7UJMXqjkzam27HkSrtjY2NgHsfcLN7NSZBaQeSOpeInY2NjYR7DzUevsNrPVnE2w1Ys72NjY2Ldlt62ivBnUBs++EMr/BRsbG/s8dj5qzVv/bSXUNvo3nwEbGxv7JPasxd+Cr33cWYMJGxsb+1T2bHybx8mm/Mh/dzgYwMbGxj6InTfW81bRLPzqhZurJtLY2NjYN2fn12YYnL+Iq0YRT2ovbGxs7CPYs+BpC4m2ud8u7vxg6GJjY2PfhD0LrTZsNsEze0Gr9MbGxsa+IfunQ2uTru1nSKIOGxsb+z3Z+6WZdlg76/NjY2NjY7erMLMCpr3XrJgZziWwsbGxb8hOwuD749rG0L7gyV/NwwDDxsbGPoLdBky+apPcsh0AzBZ9sLGxsQ9l/wIYc3fL/8AC5AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
