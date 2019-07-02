@@ -166,6 +166,54 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-svg-elements-default-focusable-in-ie11"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-02 12:00:00" datetime="2019-07-02T04:00:00.000Z"  itemprop="datePublished">2019-07-02</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/">ie</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/focus/">focus</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/02/svg-elements-default-focusable-in-ie11/">前端小纠结--IE11下SVG元素默认focusable=true</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        IE11下SVG元素默认focusable=true
+本来我也不太关注一些交互的问题，但是在处理IE11下的svg能够focus(就是tab时候能够获取焦点)时候，发现原来tabindex也是大坑。每一次兼容性问题背后，都是有相关问题的好几个标准，一个标准还有好几个版本，不同的时期的浏览器，实现的又有差异，只要有一个浏览器和其它浏览器行为不同，就会被定义为你有bug。PS: 最近搞兼容性好累...
+    
+
+        <a href="/2019/07/02/svg-elements-default-focusable-in-ie11/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/focus/">focus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ie/">ie</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-the-browser-debugger-documents-and-tools-collect"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -641,59 +689,6 @@ git flow源自这篇文章a-successful-git-branching-model，大神！！！。
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/conventionalcommit/">conventionalcommit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-terminal-prompt-display-what-branch-you-are-currently-on"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z"  itemprop="datePublished">2019-04-29</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/">shell上显示当前git分支</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        shell上显示当前git分支
-在当前终端上显示当前所在的分支，能够提供极大的便利。
-
-修改bash的配置
-~/.bash_profile 或者~/.bashrc
-
-原版123456789function git-branch-name &#123;  git symbolic-ref HEAD 2&gt;/dev/null | cut -d"/" -f 3&#125;function gi...
-    
-
-        <a href="/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 
     </div>
     

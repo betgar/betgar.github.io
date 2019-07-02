@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端小纠结--IE11下SVG元素默认focusable=true | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ie,focus">
+    <meta name="description" content="IE11下SVG元素默认focusable=true 本来我也不太关注一些交互的问题，但是在处理IE11下的svg能够focus(就是tab时候能够获取焦点)时候，发现原来tabindex也是大坑。每一次兼容性问题背后，都是有相关问题的好几个标准，一个标准还有好几个版本，不同的时期的浏览器，实现的又有差异，只要有一个浏览器和其它浏览器行为不同，就会被定义为你有bug。PS: 最近搞兼容性好累。">
+<meta name="keywords" content="ie,focus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小纠结--IE11下SVG元素默认focusable=true">
+<meta property="og:url" content="https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="IE11下SVG元素默认focusable=true 本来我也不太关注一些交互的问题，但是在处理IE11下的svg能够focus(就是tab时候能够获取焦点)时候，发现原来tabindex也是大坑。每一次兼容性问题背后，都是有相关问题的好几个标准，一个标准还有好几个版本，不同的时期的浏览器，实现的又有差异，只要有一个浏览器和其它浏览器行为不同，就会被定义为你有bug。PS: 最近搞兼容性好累。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190702125526-focusable-table.gif">
+<meta property="og:updated_time" content="2019-07-02T12:25:34.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端小纠结--IE11下SVG元素默认focusable=true">
+<meta name="twitter:description" content="IE11下SVG元素默认focusable=true 本来我也不太关注一些交互的问题，但是在处理IE11下的svg能够focus(就是tab时候能够获取焦点)时候，发现原来tabindex也是大坑。每一次兼容性问题背后，都是有相关问题的好几个标准，一个标准还有好几个版本，不同的时期的浏览器，实现的又有差异，只要有一个浏览器和其它浏览器行为不同，就会被定义为你有bug。PS: 最近搞兼容性好累。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190702125526-focusable-table.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端小纠结--IE11下SVG元素默认focusable=true</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端小纠结--IE11下SVG元素默认focusable=true</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-02T04:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/">ie</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/focus/">focus</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IE11下SVG元素默认focusable-true"><span class="post-toc-number">1.</span> <span class="post-toc-text">IE11下SVG元素默认focusable=true</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tabindex值的范围"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">tabindex值的范围</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#element的tabbable和focusable"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">element的tabbable和focusable</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#focusable和tabbable的相关解释"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">focusable和tabbable的相关解释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#focusable的兼容性表格"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">focusable的兼容性表格</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IE11下SVG元素默认可以focusable"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">IE11下SVG元素默认可以focusable</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题的原因"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">问题的原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">解决方案</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ant-design组件库"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">ant-design组件库</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">2.</span> <span class="post-toc-text">参考</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-svg-elements-default-focusable-in-ie11"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端小纠结--IE11下SVG元素默认focusable=true</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-02 12:00:00" datetime="2019-07-02T04:00:00.000Z"  itemprop="datePublished">2019-07-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/">ie</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/focus/">focus</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="IE11下SVG元素默认focusable-true"><a href="#IE11下SVG元素默认focusable-true" class="headerlink" title="IE11下SVG元素默认focusable=true"></a>IE11下SVG元素默认focusable=true</h1><blockquote>
+<p>本来我也不太关注一些交互的问题，但是在处理IE11下的svg能够focus(就是tab时候能够获取焦点)时候，发现原来tabindex也是大坑。每一次兼容性问题背后，都是有相关问题的好几个标准，一个标准还有好几个版本，不同的时期的浏览器，实现的又有差异，只要有一个浏览器和其它浏览器行为不同，就会被定义为你有bug。PS: 最近搞兼容性好累。</p>
+</blockquote>
+<h2 id="tabindex值的范围"><a href="#tabindex值的范围" class="headerlink" title="tabindex值的范围"></a>tabindex值的范围</h2><blockquote>
+<p>使用之前先看看这篇文章<a href="http://adrianroselli.com/2014/11/dont-use-tabindex-greater-than-0.html" target="_blank" rel="noopener">dont-use-tabindex-greater-than-0</a></p>
+<p>tabindex 的最大值不应超过 32767。如果没有指定，它的默认值为 -1。</p>
+<p>还有一个好玩的z-index属性，真可怕。</p>
+</blockquote>
+<p>具体取决于整数的值：</p>
+<ul>
+<li>tabindex=负值 (通常是tabindex=“-1”)，表示元素是可聚焦的，但是不能通过键盘导航来访问到该元素，用JS做页面小组件内部键盘导航的时候非常有用。</li>
+<li><code>tabindex=&quot;0&quot;</code> ，表示元素是可聚焦的，并且可以通过键盘导航来聚焦到该元素，它的相对顺序是当前处于的DOM结构来决定的。</li>
+<li>tabindex=正值，表示元素是可聚焦的，并且可以通过键盘导航来访问到该元素；它的相对顺序按照<strong>tabindex</strong> 的数值递增而滞后获焦。如果多个元素拥有相同的 <strong>tabindex</strong>，它们的相对顺序按照他们在当前DOM中的先后顺序决定。</li>
+</ul>
+<p>根据键盘序列导航的顺序，值为 <code>0</code> 、非法值、或者没有 <strong>tabindex</strong> 值的元素应该放置在 <strong>tabindex</strong> 值为正值的元素后面。</p>
+<h2 id="element的tabbable和focusable"><a href="#element的tabbable和focusable" class="headerlink" title="element的tabbable和focusable"></a>element的tabbable和focusable</h2><blockquote>
+<p>元素还分为focusable和非focusable，如果使用了tabindex就可以改变相关的行为，看参考链接的资料，这里做一下记录，方便以后回顾。</p>
+</blockquote>
+<h2 id="focusable和tabbable的相关解释"><a href="#focusable和tabbable的相关解释" class="headerlink" title="focusable和tabbable的相关解释"></a>focusable和tabbable的相关解释</h2><blockquote>
+<p>不翻译了，直接上链接<a href="https://allyjs.io/what-is-focusable.html" target="_blank" rel="noopener">what-is-focusable</a></p>
+</blockquote>
+<h3 id="focusable的兼容性表格"><a href="#focusable的兼容性表格" class="headerlink" title="focusable的兼容性表格"></a>focusable的兼容性表格</h3><blockquote>
+<p><a href="https://allyjs.io/data-tables/focusable.html" target="_blank" rel="noopener">兼容性表格</a>，看着兼容性表格还是比较喜人。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190702125526-focusable-table.gif" alt="focusable-table" title="">
+                </div>
+                <div class="image-caption">focusable-table</div>
+            </figure>
+<h2 id="IE11下SVG元素默认可以focusable"><a href="#IE11下SVG元素默认可以focusable" class="headerlink" title="IE11下SVG元素默认可以focusable"></a>IE11下SVG元素默认可以focusable</h2><blockquote>
+<p>IE11下有一个奇怪的现象，就是svg默认可以获取焦点(focus)，尤其是在登录界面，input前后有prefix和suffix时，尤其别扭。官方一直到<code>EdgeHTML</code>时代的某个版本才修复，看这里<a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8090208/" target="_blank" rel="noopener">microsoft-edge Support tabindex in SVG, don’t make every <svg> focusable by default</svg></a></p>
+</blockquote>
+<h3 id="问题的原因"><a href="#问题的原因" class="headerlink" title="问题的原因"></a>问题的原因</h3><blockquote>
+<p>IE 11下的svg元素默认是focusable的，也就是说其它浏览器svg元素默认是不能获取焦点的，这就造成了，当input有prefix和suffix的svg时，tab进行表单输入切换就很麻烦，被认为是bug。</p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">svg</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><blockquote>
+<p>解决方案也很简单</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">focusable</span>=<span class="string">"false"</span>&gt;</span><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果全局很多svg就很难受了，所以推荐使用<code>ally.js</code>解决。</p>
+</blockquote>
+<h2 id="ant-design组件库"><a href="#ant-design组件库" class="headerlink" title="ant-design组件库"></a>ant-design组件库</h2><blockquote>
+<p>因为工作中使用的是<code>ant-design-vue</code>所以顺便了解了下，发现</p>
+<p><code>ant-design</code>的已经解决了这个事情看<a href="https://github.com/ant-design/ant-design-icons/pull/54" target="_blank" rel="noopener"><strong>ant-design-icons</strong> Set svg default focusable=false</a> 这里。</p>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/medialize/ally.js" target="_blank" rel="noopener">ally.js - making accessibility simpler</a></p>
+<p><a href="https://allyjs.io/data-tables/focusable.html" target="_blank" rel="noopener">focusable table</a></p>
+<p><a href="https://allyjs.io/tests/focusable/test.html" target="_blank" rel="noopener">focusable-test</a></p>
+<p><a href="https://stackoverflow.com/questions/29393144/how-to-prevent-svg-elements-from-gaining-focus-with-tabs-in-ie11" target="_blank" rel="noopener">how-to-prevent-svg-elements-from-gaining-focus-with-tabs-in-ie11</a></p>
+<p><a href="https://stackoverflow.com/questions/18646111/disable-onfocus-event-for-svg-element" target="_blank" rel="noopener">disable-onfocus-event-for-svg-element</a></p>
+<p><a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/8090208/" target="_blank" rel="noopener">microsoft-edge Support tabindex in SVG, don’t make every <svg> focusable by default</svg></a></p>
+<p><a href="https://nemisj.com/focusable/" target="_blank" rel="noopener">Focus, tabIndex and behavior of browsers</a></p>
+<p><a href="https://github.com/ant-design/ant-design-icons/pull/54" target="_blank" rel="noopener"><strong>ant-design-icons</strong> Set svg default focusable=false</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex" target="_blank" rel="noopener">tabindex attributes</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-02T12:25:34.870Z" itemprop="dateUpdated">2019-07-02 20:25:34</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/07/02/svg-elements-default-focusable-in-ie11/" target="_blank" rel="external">https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/focus/">focus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ie/">ie</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/&title=《前端小纠结--IE11下SVG元素默认focusable=true》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/&title=《前端小纠结--IE11下SVG元素默认focusable=true》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--IE11下SVG元素默认focusable=true》 — 个人博客&url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/29/the-browser-debugger-documents-and-tools-collect/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">前端小纠结--Browser&amp;WebView调试工具和文档整理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/&title=《前端小纠结--IE11下SVG元素默认focusable=true》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/&title=《前端小纠结--IE11下SVG元素默认focusable=true》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--IE11下SVG元素默认focusable=true》 — 个人博客&url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/02/svg-elements-default-focusable-in-ie11/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACp0lEQVR42u3aUU7kQAwEUO5/afYCZKiyu2cH6eULDZD0C5LblPvrK76+4+vpd5++fvrk6btfNy48PDy8o0t/WsprxuvP2/vnL+KHO+Dh4eFd47UFPS/lSUFPNoNkk8DDw8P7ZF7STOek9ifx8PDw/hZvkwC0Dfp/2Bjw8PDwYl4eoSbLzZeVB8HXsxY8PDy8bkoVFfrP+frKfA8PDw/v6IGAp4K+P1jQttHFs/Dw8PAu8PKCe2q5pwZjxRPx8PDwrvE28UEeyLajrDwEebwnHh4e3gXePnS414i/Hm7VAS4eHh7emjcb3ufU9imnxmB4eHh4t3l5WHCq1d6QimEYHh4e3gVee/QqaWfbeGJT+os14+Hh4R3l5a3wqVHW63Z8dtzql+gWDw8P7wKv3R7qhPjoQaviFePh4eFd421uMQsp2k2lfSIeHh7eDd4srm1Dh/aAwiyMwMPDw3sPb9bmtuHsLLo9FYLg4eHhneW1x6fycp9HG/tWOzpThoeHh3eUly83CX/zn9nsXVFTjoeHh/cWXlLE282jDRFmg7cfPsfDw8O7wJsFCvth1SY4biNjPDw8vLO8pLDmm8QwMoij3vpPgoeHh3eZl/yT3wI2L2UWRuDh4eHd5rXIfAvJDwfMDg0UwzM8PDy8t/NmIULeHCevKYknhrsfHh4e3prXFuJN+W7DhTzCiE6W4eHh4V3jtUOyttyfHbn90lLj4eHhrXnf5ZUX6PzAVk6qD2Ph4eHhXeC1A6c2op3dYR/+DudpeHh4eOVsfVbW281jcywg3xjw8PDw3sObjZdOxbKnXscvMS4eHh7ex/A2jfhsVPbWjQEPDw/vcs+5CSNycBHa4uHh4V3jtY/ZHBeYvcrVxoCHh4d3lDeLVtuFzop7EmQcuPDw8PBS3j9GlqZL0sqQegAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
