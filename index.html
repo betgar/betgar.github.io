@@ -166,6 +166,110 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-the-event-layer-design"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-08 19:30:00" datetime="2019-07-08T11:30:00.000Z"  itemprop="datePublished">2019-07-08</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/vue/">vue</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/08/the-event-layer-design/">前端小纠结--Event Bus模块约定</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前端小纠结–Event Bus模块约定
+本文只是给一个针对某一类问题的处理思路。
+
+背景标题有点大，本文产生的背景是，因为在封装Axios的时候，对于服务端的异常或者需要根据业务上异常code，进行不同的处理逻辑。但是基于Axios做的封装作为跨项目、跨框架模块使用所以不能和具体的router或者store等模块耦合，所以使用Event Bus，在整个Web范围中来解耦各个组件。
+为什么使用...
+    
+
+        <a href="/2019/07/08/the-event-layer-design/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-ie11-lost-cookie-when-domain-is-localhost"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-07-03 08:00:00" datetime="2019-07-03T00:00:00.000Z"  itemprop="datePublished">2019-07-03</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/">ie</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/cookie/">cookie</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/">重新认识Cookie的限制</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        重新认识Cookie的限制
+背景是在使用vue-cli3开发模式启动的服务，登录成功服务端返回了信息，并且设置了cookie，但是在IE11下却无法找到服务端设置的cookie信息，自己代码中添加的cookie反而成功了。又是潜在的坑？
+
+vue-cli3使用development模式启动的配置
+vue.config.js配置
+
+12345678910111213141516module.e...
+    
+
+        <a href="/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ie/">ie</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-the-weird-input-event-in-ie11"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -586,116 +690,6 @@ windows 锁屏壁纸功能叫做spotlight，其实壁纸都下载在本地电脑
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-nvs-usage-considerations"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-06-06 00:00:00" datetime="2019-06-05T16:00:00.000Z"  itemprop="datePublished">2019-06-06</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/nvs/">nvs</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/06/06/nvs-usage-considerations/">nvs使用的注意事项</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        nvs使用的注意事项
-在使用nvs之前一直使用的是nvm windows这款工具，用着也挺爽的，前不久看到科普文，所以也想试试，试了之后在windows上翻车了，所以这里记录一下。先看科普文：使用 nvs 管理本地 Node.js 版本
-
-windows下安装
-推荐cmd手动安装步骤
-
-git bash环境配置1234# ~/.bashrc 添加下面的环境配置# 根据你安装的路径选择$Pro...
-    
-
-        <a href="/2019/06/06/nvs-usage-considerations/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nvs/">nvs</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-frontend-little-tangle-integrate-git-flow-and-standard-version"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-05-21 08:00:00" datetime="2019-05-21T00:00:00.000Z"  itemprop="datePublished">2019-05-21</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/">gitflow</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/fe/">fe</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/05/21/frontend-little-tangle-integrate-git-flow-and-standard-version/">前端小纠结--集成gitflow和standard-version使用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        前端小纠结–集成gitflow和standard-version使用
-请看上一篇前端小纠结–约定式提交和自动生成changelog
-
-git flow工作流对比
-Git工作流指南
-
-git flow 介绍
-git flow源自这篇文章a-successful-git-branching-model，大神！！！。
-关于git flow的使用，请看以下链接，非常多的文章，写的非常好。
-
-如何正确...
-    
-
-        <a href="/2019/05/21/frontend-little-tangle-integrate-git-flow-and-standard-version/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitflow/">gitflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/standard-version/">standard-version</a></li></ul>
 
     </div>
     

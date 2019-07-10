@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前端小纠结--Event Bus模块约定 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="fe,vue">
+    <meta name="description" content="前端小纠结–Event Bus模块约定 本文只是给一个针对某一类问题的处理思路。  背景标题有点大，本文产生的背景是，因为在封装Axios的时候，对于服务端的异常或者需要根据业务上异常code，进行不同的处理逻辑。但是基于Axios做的封装作为跨项目、跨框架模块使用所以不能和具体的router或者store等模块耦合，所以使用Event Bus，在整个Web范围中来解耦各个组件。 为什么使用Eve">
+<meta name="keywords" content="fe,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端小纠结--Event Bus模块约定">
+<meta property="og:url" content="https://betgar.github.io/2019/07/08/the-event-layer-design/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="前端小纠结–Event Bus模块约定 本文只是给一个针对某一类问题的处理思路。  背景标题有点大，本文产生的背景是，因为在封装Axios的时候，对于服务端的异常或者需要根据业务上异常code，进行不同的处理逻辑。但是基于Axios做的封装作为跨项目、跨框架模块使用所以不能和具体的router或者store等模块耦合，所以使用Event Bus，在整个Web范围中来解耦各个组件。 为什么使用Eve">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-10T00:06:57.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端小纠结--Event Bus模块约定">
+<meta name="twitter:description" content="前端小纠结–Event Bus模块约定 本文只是给一个针对某一类问题的处理思路。  背景标题有点大，本文产生的背景是，因为在封装Axios的时候，对于服务端的异常或者需要根据业务上异常code，进行不同的处理逻辑。但是基于Axios做的封装作为跨项目、跨框架模块使用所以不能和具体的router或者store等模块耦合，所以使用Event Bus，在整个Web范围中来解耦各个组件。 为什么使用Eve">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端小纠结--Event Bus模块约定</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前端小纠结--Event Bus模块约定</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-08T11:30:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/vue/">vue</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端小纠结–Event-Bus模块约定"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端小纠结–Event Bus模块约定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么使用Event-Bus？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">为什么使用Event Bus？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Event-Bus模块封装"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Event Bus模块封装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Event-Bus接口设计"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Event Bus接口设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BusEvent元数据模型设计"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">BusEvent元数据模型设计</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#封装实现"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">封装实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于Vue封装实现"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">基于Vue封装实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基于PubSubJS实现"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">基于PubSubJS实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Event相关约定"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Event相关约定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BusEvent-type类型约定"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">BusEvent#type类型约定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BusEvent-code范围约定"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">BusEvent#code范围约定</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#统一处理EventBus事件"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">统一处理EventBus事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-event-layer-design"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端小纠结--Event Bus模块约定</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-08 19:30:00" datetime="2019-07-08T11:30:00.000Z"  itemprop="datePublished">2019-07-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/vue/">vue</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前端小纠结–Event-Bus模块约定"><a href="#前端小纠结–Event-Bus模块约定" class="headerlink" title="前端小纠结–Event Bus模块约定"></a>前端小纠结–Event Bus模块约定</h1><blockquote>
+<p>本文只是给一个针对某一类问题的处理思路。</p>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>标题有点大，本文产生的背景是，因为在封装<code>Axios</code>的时候，对于服务端的异常或者需要根据业务上异常code，进行不同的处理逻辑。但是基于<code>Axios</code>做的封装作为<strong>跨项目、跨框架</strong>模块使用所以不能和具体的router或者store等模块耦合，所以使用<code>Event Bus</code>，在整个<code>Web</code>范围中来解耦各个组件。</p>
+<h2 id="为什么使用Event-Bus？"><a href="#为什么使用Event-Bus？" class="headerlink" title="为什么使用Event Bus？"></a>为什么使用Event Bus？</h2><blockquote>
+<p>Event Bus有特殊的使用场景，不止在view组件之间的通信使用；Event Bus设计作为整个SPA应用的事件（消息）投递层使用。</p>
+</blockquote>
+<ul>
+<li><p>模块通信</p>
+<blockquote>
+<p>解决模块之间的通信问题，view组件层面，父子组件、兄弟组件通信都可以使用event bus处理。</p>
+</blockquote>
+</li>
+<li><p>模块解耦</p>
+<blockquote>
+<p>storage change事件，cookie change事件，view组件的事件等，全部转换</p>
+<p>使用Event Bus来订阅和发布，这样就统一了整个应用不同模块之间的通信接口问题。</p>
+</blockquote>
+</li>
+<li><p>父子页面通信</p>
+<blockquote>
+<p><code>window.postMessage</code> + Event Bus</p>
+</blockquote>
+</li>
+<li><p>多页面通信</p>
+<blockquote>
+<p>storage change + Event Bus</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Event-Bus模块封装"><a href="#Event-Bus模块封装" class="headerlink" title="Event Bus模块封装"></a>Event Bus模块封装</h2><h3 id="Event-Bus接口设计"><a href="#Event-Bus接口设计" class="headerlink" title="Event Bus接口设计"></a>Event Bus接口设计</h3><blockquote>
+<p>参考<code>jQuery</code>和<code>Vue</code></p>
+</blockquote>
+<p>方法： <code>on</code>, <code>off</code>, <code>once</code>, <code>publish(可选trigger/dispatch/emit)</code></p>
+<ul>
+<li>如果你使用<code>vue</code>框架，就使用<code>Vue</code>对象或者使用<a href="https://github.com/ytftianwen/dynamic-vue-bus" target="_blank" rel="noopener">dynamic-vue-bus</a>包（其实也是包装了下Vue，实现自动destroy handler）。</li>
+<li>如果搞一个框架无关的，兼容性好的就基于<a href="https://github.com/mroderick/PubSubJS" target="_blank" rel="noopener"><code>PubSubJS</code></a> 封装。</li>
+</ul>
+<h3 id="BusEvent元数据模型设计"><a href="#BusEvent元数据模型设计" class="headerlink" title="BusEvent元数据模型设计"></a><code>BusEvent</code>元数据模型设计</h3><blockquote>
+<p>参考DOM中的Event对象</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 服务端返回的元数据模型(responeBody)</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> ResponseResult&lt;T = any&gt; &#123;</span><br><span class="line">  message: <span class="built_in">string</span>;</span><br><span class="line">  code: <span class="built_in">number</span>;</span><br><span class="line">  data: T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> BusEvent&lt;T = any&gt; <span class="keyword">extends</span> ResponseResult&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">type</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> BusEventHandler = <span class="function">(<span class="params">data: BusEvent</span>) =&gt;</span> <span class="built_in">any</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里的<code>message</code>是参考Error来设计的，因为当我们程序异常或者业务上异常时，就可以统一直接使用<code>new Error()</code>进行处理。</p>
+</blockquote>
+<h2 id="封装实现"><a href="#封装实现" class="headerlink" title="封装实现"></a>封装实现</h2><blockquote>
+<p>项目中实现选择一种即可。</p>
+</blockquote>
+<h3 id="基于Vue封装实现"><a href="#基于Vue封装实现" class="headerlink" title="基于Vue封装实现"></a>基于<code>Vue</code>封装实现</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> EventBus <span class="keyword">from</span> <span class="string">'dynamic-vue-bus'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; isFunction &#125; <span class="keyword">from</span> <span class="string">'lodash-es'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 基于Vue实现</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> VueBus = &#123;</span><br><span class="line">  originBus: EventBus,</span><br><span class="line">  on(topic: <span class="built_in">string</span> | <span class="built_in">string</span>[], handler: BusEventHandler): <span class="built_in">string</span>[] &#123;</span><br><span class="line">    <span class="comment">// @ts-ignore</span></span><br><span class="line">    <span class="keyword">this</span>.originBus.$on(topic, handler)</span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  off(topic: <span class="built_in">string</span> | <span class="built_in">string</span>[], handler?: <span class="built_in">any</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> length = <span class="built_in">arguments</span>.length;</span><br><span class="line">    <span class="keyword">switch</span> (length) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">this</span>.originBus.$off(topic);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">this</span>.originBus.$off(topic, handler);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">this</span>.originBus.$off();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  once(topic: <span class="built_in">string</span>, handler: BusEventHandler) &#123;</span><br><span class="line">    <span class="comment">// @ts-ignore</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.originBus.$once(topic, handler);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  publish(topic: <span class="built_in">string</span>, data: BusEvent) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.originBus.$emit(topic, data);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wsHandler</span>(<span class="params">evt: BusEvent</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(evt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> topic = <span class="string">'ws.100021'</span>;</span><br><span class="line">VueBus.on(topic, wsHandler);</span><br><span class="line"><span class="comment">// VueBus.once(topic, wsHandler);</span></span><br><span class="line"></span><br><span class="line">VueBus.publish(topic, &#123;</span><br><span class="line">   code: <span class="number">100021</span>,</span><br><span class="line">   type: <span class="string">'ws'</span>,</span><br><span class="line">   message: <span class="string">''</span>,</span><br><span class="line">   data: &#123;</span><br><span class="line">        result: [&#123;</span><br><span class="line">            id: <span class="number">1</span>,</span><br><span class="line">            name: <span class="string">'junna'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// VueBus.off();</span></span><br><span class="line">VueBus.off(topic);</span><br><span class="line"><span class="comment">// VueBus.off(topic, wsHandler);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用原生的Vue</span></span><br><span class="line"><span class="keyword">const</span> eventBus = PubSubBus.originBus;</span><br></pre></td></tr></table></figure>
+<h3 id="基于PubSubJS实现"><a href="#基于PubSubJS实现" class="headerlink" title="基于PubSubJS实现"></a>基于<code>PubSubJS</code>实现</h3><blockquote>
+<p>以下代码并没测试</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> PubSubBus = &#123;</span><br><span class="line">  originBus: PubSub,</span><br><span class="line">  on(topic: <span class="built_in">string</span> | <span class="built_in">string</span>[], handler: BusEventHandler): <span class="built_in">string</span>[] &#123;</span><br><span class="line">    <span class="keyword">if</span> (!topic) &#123;</span><br><span class="line">      <span class="keyword">return</span> [];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// @ts-ignore</span></span><br><span class="line">    <span class="keyword">let</span> events: <span class="built_in">string</span>[] = [].concat(topic);</span><br><span class="line">    <span class="keyword">return</span> events.map(<span class="function"><span class="params">evt</span> =&gt;</span></span><br><span class="line">      PubSub.subscribe(evt, <span class="function"><span class="params">()</span> =&gt;</span> (topic: <span class="built_in">string</span>, data: BusEvent) =&gt;</span><br><span class="line">        handler(data)</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 不兼容这种模式：PubSubBus.off('ws.001', handler);</span></span><br><span class="line"><span class="comment">   * 因为PubSubJS使用token来off这种操作</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  off(tokenOrHandler?: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">void</span> | <span class="built_in">string</span> | <span class="built_in">string</span>[]) &#123;</span><br><span class="line">    <span class="keyword">let</span> length = <span class="built_in">arguments</span>.length,</span><br><span class="line">      evts: <span class="built_in">string</span>[],</span><br><span class="line">      listener;</span><br><span class="line">    <span class="keyword">if</span> (length === <span class="number">0</span>) &#123;</span><br><span class="line">      PubSub.clearAllSubscriptions();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// PubSubBus.off(handler);</span></span><br><span class="line">      <span class="keyword">if</span> (isFunction(tokenOrHandler)) &#123;</span><br><span class="line">        PubSub.unsubscribe(listener);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// @ts-ignore</span></span><br><span class="line">        evts = [].concat(tokenOrHandler);</span><br><span class="line">        evts.forEach(<span class="function"><span class="params">evt</span> =&gt;</span> PubSub.unsubscribe(evt));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  once(topic: <span class="built_in">string</span>, handler: BusEventHandler) &#123;</span><br><span class="line">    <span class="comment">// @ts-ignore</span></span><br><span class="line">    <span class="keyword">return</span> PubSub.subscribeOnce(topic, handler);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  publish(topic: <span class="built_in">string</span>, data: BusEvent, sync = <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> sync ? PubSub.publishSync(topic, data) : PubSub.publish(topic, data);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用：</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">wsHandler</span>(<span class="params">evt: BusEvent</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(evt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> topic = <span class="string">'ws.100021'</span>;</span><br><span class="line"><span class="keyword">const</span> tokens: <span class="built_in">string</span>[] = PubSubBus.on(topic, wsHandler);</span><br><span class="line"><span class="comment">// PubSubBus.once(topic, wsHandler);</span></span><br><span class="line"></span><br><span class="line">PubSubBus.publish(topic, &#123;</span><br><span class="line">   code: <span class="number">100021</span>,</span><br><span class="line">   <span class="keyword">type</span>: <span class="string">'ws'</span>,</span><br><span class="line">   message: <span class="string">''</span>,</span><br><span class="line">   data: &#123;</span><br><span class="line">        result: [&#123;</span><br><span class="line">            id: <span class="number">1</span>,</span><br><span class="line">            name: <span class="string">'junna'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// PubSubBus.off();</span></span><br><span class="line">PubSubBus.off(topic);</span><br><span class="line"><span class="comment">// PubSubBus.off(tokens[0]); // 等价于VueBus.off(topic, wsHandler);</span></span><br><span class="line"><span class="comment">// PubSubBus.off(wsHandler); // 移除多个topic使用的同一个handler.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用原生的PubSubJS</span></span><br><span class="line"><span class="keyword">const</span> PubSub = PubSubBus.originBus;</span><br></pre></td></tr></table></figure>
+<h2 id="Event相关约定"><a href="#Event相关约定" class="headerlink" title="Event相关约定"></a>Event相关约定</h2><h3 id="BusEvent-type类型约定"><a href="#BusEvent-type类型约定" class="headerlink" title="BusEvent#type类型约定"></a><code>BusEvent#type</code>类型约定</h3><blockquote>
+<p>事件类型的约定参考：</p>
+<ul>
+<li><code>ws</code>： <code>WebSocket</code>事件</li>
+<li>storage: 储存事件, <code>sessionStorage</code>, <code>localStorage</code></li>
+<li>cs: cache storage</li>
+<li><code>ap</code>: application cache</li>
+<li>cookie: cookie事件</li>
+<li>biz: 业务事件</li>
+<li>system: 系统事件</li>
+<li><code>ui</code>: 界面</li>
+<li><code>cmp</code>： components事件</li>
+</ul>
+</blockquote>
+<h3 id="BusEvent-code范围约定"><a href="#BusEvent-code范围约定" class="headerlink" title="BusEvent#code范围约定"></a><code>BusEvent#code</code>范围约定</h3><blockquote>
+<p>code范围约定只是参考，因为这个约定需要和服务端小伙伴，甚至系统设计时规划决定。<br>（瞎写）</p>
+<ul>
+<li><code>ws</code>： 10000~19999</li>
+<li>storage: 20000~29999, <code>sessionStorage</code>: 22000~22999, <code>localStorage</code>: 23000~23999</li>
+<li>cs: 24000~24999</li>
+<li><code>ap</code>: 25000~25999</li>
+<li>cookie: 26000~26999</li>
+<li>biz: 30000~31000</li>
+<li>system: 40000~41000</li>
+<li><code>ui</code>: 42000~42999</li>
+<li><code>cmp</code>： 43000~44999</li>
+</ul>
+</blockquote>
+<h2 id="统一处理EventBus事件"><a href="#统一处理EventBus事件" class="headerlink" title="统一处理EventBus事件"></a>统一处理EventBus事件</h2><blockquote>
+<p>有了约定，就可以统一发布相关的事件</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模拟WebSocket的消息</span></span><br><span class="line"><span class="keyword">const</span> data = [&#123;</span><br><span class="line">   code: <span class="number">100021</span>,</span><br><span class="line">   <span class="keyword">type</span>: <span class="string">'ws'</span>,</span><br><span class="line">   message: <span class="string">''</span>,</span><br><span class="line">   data: &#123;</span><br><span class="line">        result: [&#123;</span><br><span class="line">            id: <span class="number">1</span>,</span><br><span class="line">            name: <span class="string">'junna'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,&#123;</span><br><span class="line">   code: <span class="number">100022</span>,</span><br><span class="line">   <span class="keyword">type</span>: <span class="string">'ws'</span>,</span><br><span class="line">   message: <span class="string">''</span>,</span><br><span class="line">   data: &#123;</span><br><span class="line">        result: [&#123;</span><br><span class="line">            id: <span class="number">1</span>,</span><br><span class="line">            name: <span class="string">'junna'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">data.forEach(<span class="function"><span class="params">event</span> =&gt;</span> PubSubBus.publish(<span class="string">`<span class="subst">$&#123;event.type&#125;</span>.<span class="subst">$&#123;event.code&#125;</span>`</span>), event));</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>通过对Event Bus的统一封装，对外提供统一的接口，统一整个SPA事件系统（非DOM层面），完成了模块之间的解耦。</p>
+</blockquote>
+<p>缺点：</p>
+<ul>
+<li>基于<code>Vue</code>封装实现的不支持<code>namespace</code></li>
+<li>基于<code>Vue</code>封装实现和<code>PubSubJS</code>接口参数和返回值有差异，所以选择一种即可</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://alligator.io/vuejs/global-event-bus/" target="_blank" rel="noopener">global-event-bus</a></p>
+<p><a href="https://github.com/mroderick/PubSubJS" target="_blank" rel="noopener">PubSubJS</a></p>
+<p><a href="https://github.com/ytftianwen/dynamic-vue-bus" target="_blank" rel="noopener">dynamic-vue-bus</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/39537979" target="_blank" rel="noopener">让在Vue中使用的EventBus也有生命周期</a></p>
+<p><a href="http://dev-test.nemikor.com/web-storage/support-test/" target="_blank" rel="noopener">Web Storage Support Test</a></p>
+<p><a href="https://www.html5rocks.com/en/tutorials/offline/quota-research/" target="_blank" rel="noopener">Working with quota on mobile browsers</a></p>
+<p><a href="https://demo.agektmr.com/storage/" target="_blank" rel="noopener">Browser Storage Abuser</a></p>
+<p><a href="https://github.com/agektmr/BrowserStorageAbuser" target="_blank" rel="noopener">BrowserStorageAbuser github</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-10T00:06:57.965Z" itemprop="dateUpdated">2019-07-10 08:06:57</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/07/08/the-event-layer-design/" target="_blank" rel="external">https://betgar.github.io/2019/07/08/the-event-layer-design/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/08/the-event-layer-design/&title=《前端小纠结--Event Bus模块约定》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/08/the-event-layer-design/&title=《前端小纠结--Event Bus模块约定》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/08/the-event-layer-design/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--Event Bus模块约定》 — 个人博客&url=https://betgar.github.io/2019/07/08/the-event-layer-design/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/08/the-event-layer-design/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">重新认识Cookie的限制</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/08/the-event-layer-design/&title=《前端小纠结--Event Bus模块约定》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/08/the-event-layer-design/&title=《前端小纠结--Event Bus模块约定》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/08/the-event-layer-design/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端小纠结--Event Bus模块约定》 — 个人博客&url=https://betgar.github.io/2019/07/08/the-event-layer-design/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/08/the-event-layer-design/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQW7jMBAEQP//0851A0Pa7qEcQFTxFCSKxPJhrB7O6xWv98f69/dH13xe//lfR095fWNhYGDclpE8vgUk988/puQOGBgYT2AcVbB80+ebO7/z+bPO94aBgYFxfs2sZCcLAwMDY51xVWLOiy8GBgZGW/jOW2N5DL6qhYeBgbE3Y1YW/+bnr5xvYGBg3IoxC5azo83kFfM9WhgYGHsz8gLXbrTdbhuPMTAwnsaYHVLmEXcl6NYvixgYGNsx8kZ8WzS/QTr8KwYGxtaMWcFNNnQeSmfHmRd/b2BgYNyKkQ835ICWlAMOYRgYGJsy2he7tkTmIxTtQAYGBsbTGC1p1sRvAclH+SuLY2BgbMpo56zyBtmscXZxxMXAwNiIsV5G89I8GxerxywwMDA2YiQtsPZh+WHAyrAFBgbGcxhJUyxv8efsa8MwBgbGcxj1yecooLbRt54WwcDA2I7RRsc2vuavlUs7wcDA2JqRl8ikiT8bP22HLaKuIQYGxsMYV4XY2dBYEX0xMDAew8jD7WzkaxaJiwkRDAyMrRn5a19+n/yaC+6PgYGxKeNdrrYQz8bLaioGBsbWjNkxZ05aHzXLgy4GBsbejNmAV1s02xLcfkAYGBhPYLRjEwmyPRxdKf0YGBgYeQNuJb4m9/lPIsfAwMAoY+dsW/nA2QXfGxgYGLditIcBsxZbEk1njTwMDIy9GXl0XG+lta+GbenHwMDYjvEDdPWTYYCGrDUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

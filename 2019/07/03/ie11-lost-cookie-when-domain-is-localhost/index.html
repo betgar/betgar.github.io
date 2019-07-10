@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>重新认识Cookie的限制 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="cookie,ie">
+    <meta name="description" content="重新认识Cookie的限制 背景是在使用vue-cli3开发模式启动的服务，登录成功服务端返回了信息，并且设置了cookie，但是在IE11下却无法找到服务端设置的cookie信息，自己代码中添加的cookie反而成功了。又是潜在的坑？  vue-cli3使用development模式启动的配置 vue.config.js配置  12345678910111213141516module.expo">
+<meta name="keywords" content="cookie,ie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重新认识Cookie的限制">
+<meta property="og:url" content="https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="重新认识Cookie的限制 背景是在使用vue-cli3开发模式启动的服务，登录成功服务端返回了信息，并且设置了cookie，但是在IE11下却无法找到服务端设置的cookie信息，自己代码中添加的cookie反而成功了。又是潜在的坑？  vue-cli3使用development模式启动的配置 vue.config.js配置  12345678910111213141516module.expo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705170758.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705170642-chrome-setting-startup.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705174243-caniuse-cookie-samesite.jpg">
+<meta property="og:updated_time" content="2019-07-10T00:07:06.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重新认识Cookie的限制">
+<meta name="twitter:description" content="重新认识Cookie的限制 背景是在使用vue-cli3开发模式启动的服务，登录成功服务端返回了信息，并且设置了cookie，但是在IE11下却无法找到服务端设置的cookie信息，自己代码中添加的cookie反而成功了。又是潜在的坑？  vue-cli3使用development模式启动的配置 vue.config.js配置  12345678910111213141516module.expo">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705170758.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">重新认识Cookie的限制</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">重新认识Cookie的限制</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-03T00:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/">ie</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/cookie/">cookie</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#重新认识Cookie的限制"><span class="post-toc-number">1.</span> <span class="post-toc-text">重新认识Cookie的限制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue-cli3使用development模式启动的配置"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">vue-cli3使用development模式启动的配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原因"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">原因</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">解决方案</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重新认识cookie的限制"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">重新认识cookie的限制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cookie属性值和属性名称编码"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">cookie属性值和属性名称编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IE下cookie的path不能包含文件名"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">IE下cookie的path不能包含文件名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么我的-Cookie-被删除"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">为什么我的 Cookie 被删除?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置两个同名的-Cookie-吗"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">设置两个同名的 Cookie 吗?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cookie不会被删除的情况"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">cookie不会被删除的情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#会话期Cookie"><span class="post-toc-number">1.4.5.1.</span> <span class="post-toc-text">会话期Cookie</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#持久性Cookie"><span class="post-toc-number">1.4.5.2.</span> <span class="post-toc-text">持久性Cookie</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cookie的Secure和HttpOnly属性"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">cookie的Secure和HttpOnly属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#判断当前页面是否启用cookie"><span class="post-toc-number">1.4.7.</span> <span class="post-toc-text">判断当前页面是否启用cookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cookie-SameSite属性"><span class="post-toc-number">1.4.8.</span> <span class="post-toc-text">Cookie SameSite属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ie11-lost-cookie-when-domain-is-localhost"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">重新认识Cookie的限制</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-03 08:00:00" datetime="2019-07-03T00:00:00.000Z"  itemprop="datePublished">2019-07-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/">ie</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ie/cookie/">cookie</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="重新认识Cookie的限制"><a href="#重新认识Cookie的限制" class="headerlink" title="重新认识Cookie的限制"></a>重新认识Cookie的限制</h1><blockquote>
+<p>背景是在使用vue-cli3开发模式启动的服务，登录成功服务端返回了信息，并且设置了cookie，但是在IE11下却无法找到服务端设置的cookie信息，自己代码中添加的cookie反而成功了。又是潜在的坑？</p>
+</blockquote>
+<h2 id="vue-cli3使用development模式启动的配置"><a href="#vue-cli3使用development模式启动的配置" class="headerlink" title="vue-cli3使用development模式启动的配置"></a>vue-cli3使用development模式启动的配置</h2><blockquote>
+<p>vue.config.js配置</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'api.com'</span>, <span class="comment">// 开发环境</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">'^/api'</span>: <span class="string">'/api'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        cookieDomainRewrite: &#123;</span><br><span class="line">          <span class="string">'api.com'</span>: <span class="string">'localhost'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><blockquote>
+<p>原因就是<code>Set-Cookie</code>中的<code>Domain=localhost</code>的问题，因为规范规定domain必须是一个至少含有两个dot的，但是还不能是<code>ip</code>。其实呢，IE没错，错在自己不知道规范和套路。</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><blockquote>
+<p>修改<code>vue.config</code>的配置，重定向给null, false, ‘’, 或者localhost.cn (etc/hosts文件里面配置下)</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="string">'api.com'</span>, <span class="comment">// 开发环境</span></span><br><span class="line">        changeOrigin: <span class="literal">true</span>,</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          <span class="string">'^/api'</span>: <span class="string">'/api'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        cookieDomainRewrite: &#123;</span><br><span class="line">          <span class="string">'api.com'</span>: <span class="literal">null</span>, <span class="comment">// '' 或 null 或 false都行</span></span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="重新认识cookie的限制"><a href="#重新认识cookie的限制" class="headerlink" title="重新认识cookie的限制"></a>重新认识cookie的限制</h2><blockquote>
+<p>虽然cookie浏览器都支持，但是还是有一堆的潜规则。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705170758.jpg" alt="cookie的属性" title="">
+                </div>
+                <div class="image-caption">cookie的属性</div>
+            </figure>
+<h3 id="cookie属性值和属性名称编码"><a href="#cookie属性值和属性名称编码" class="headerlink" title="cookie属性值和属性名称编码"></a>cookie属性值和属性名称编码</h3><blockquote>
+<p>所有在 cookie 名称或 cookie 值中不允许的特殊字符都使用百分比编码对每个字符的 UTF-8 十六进制等效项进行编码。<br>Cookie 名称或 Cookie 值中允许并且仍然编码的唯一字符是百分比字符,它将转义以将百分比输入解释为文本。</p>
+</blockquote>
+<h3 id="IE下cookie的path不能包含文件名"><a href="#IE下cookie的path不能包含文件名" class="headerlink" title="IE下cookie的path不能包含文件名"></a>IE下cookie的path不能包含文件名</h3><p><a href="http://blogs.msdn.com/b/ieinternals/archive/2009/08/20/wininet-ie-cookie-internals-faq.aspx" target="_blank" rel="noopener">http://blogs.msdn.com/b/ieinternals/archive/2009/08/20/wininet-ie-cookie-internals-faq.aspx</a><br>Q8: Are there any limits to the HTML DOM document.cookie property?</p>
+<blockquote>
+<p>由于基础 WinINET InternetGetCookie 实现中存在一个模糊的 bug,IE 的文档.cookie 如果使用包含文件名的路径属性设置,则不会返回 Cookie。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: HTTPSet-PathCookie=PASS;path=/check.htm</span><br></pre></td></tr></table></figure>
+<p>这个cookie不会出现在document.cookie中，但是HTTP requests还是会附带上。</p>
+<h3 id="为什么我的-Cookie-被删除"><a href="#为什么我的-Cookie-被删除" class="headerlink" title="为什么我的 Cookie 被删除?"></a>为什么我的 Cookie 被删除?</h3><p><a href="https://github.com/js-cookie/js-cookie/wiki/Frequently-Asked-Questions#why-are-my-cookies-being-deleted" target="_blank" rel="noopener">https://github.com/js-cookie/js-cookie/wiki/Frequently-Asked-Questions#why-are-my-cookies-being-deleted</a></p>
+<blockquote>
+<p>它们可能太大,或者同一域中的 Cookie 太多。</p>
+</blockquote>
+<p>根据<code>RFC 6265</code>,这是浏览器为 Cookie 实现的规范:</p>
+<p>实际的用户代理实现对它们可以存储的 Cookie 的数量和大小有限制。通用用户代理应提供以下每个最低功能:</p>
+<ul>
+<li>每个 Cookie 至少 4096 字节(以 Cookie 的名称、值和属性的长度之和来衡量)。</li>
+<li>每个域最多 50 个 Cookie。</li>
+<li>总共最多3000个cookie。</li>
+</ul>
+<p>不要超过 RFC 中规定的强制限制，这意味着浏览器可能会由于此大小限制而截断 Cookie。</p>
+<h3 id="设置两个同名的-Cookie-吗"><a href="#设置两个同名的-Cookie-吗" class="headerlink" title="设置两个同名的 Cookie 吗?"></a>设置两个同名的 Cookie 吗?</h3><p><a href="https://github.com/js-cookie/js-cookie/issues/226" target="_blank" rel="noopener">https://github.com/js-cookie/js-cookie/issues/226</a></p>
+<p>不可以，会有意想不到效果。</p>
+<h3 id="cookie不会被删除的情况"><a href="#cookie不会被删除的情况" class="headerlink" title="cookie不会被删除的情况"></a>cookie不会被删除的情况</h3><blockquote>
+<p>这个问题我真的遇到了，当时还很奇怪，又纠结了。</p>
+</blockquote>
+<h4 id="会话期Cookie"><a href="#会话期Cookie" class="headerlink" title="会话期Cookie"></a>会话期Cookie</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies#%E4%BC%9A%E8%AF%9D%E6%9C%9FCookie" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies#%E4%BC%9A%E8%AF%9D%E6%9C%9FCookie</a><br>会话期Cookie是最简单的Cookie：浏览器关闭之后它会被自动删除，也就是说它仅在会话期内有效。会话期Cookie不需要指定过期时间（Expires）或者有效期（Max-Age）。需要注意的是，有些浏览器提供了会话恢复功能，这种情况下即使关闭了浏览器，会话期Cookie也会被保留下来，就好像浏览器从来没有关闭一样。</p>
+<p><strong>注意</strong> ：如果你这样设置，会话期cookie也不会删除，所以前端一定要做好判断，这个坑我又踩了</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705170642-chrome-setting-startup.jpg" alt="Continue where you left off" title="">
+                </div>
+                <div class="image-caption">Continue where you left off</div>
+            </figure>
+<h4 id="持久性Cookie"><a href="#持久性Cookie" class="headerlink" title="持久性Cookie"></a>持久性Cookie</h4><p>和关闭浏览器便失效的会话期Cookie不同，持久性Cookie可以指定一个特定的过期时间（Expires）或有效期（Max-Age）。</p>
+<h3 id="cookie的Secure和HttpOnly属性"><a href="#cookie的Secure和HttpOnly属性" class="headerlink" title="cookie的Secure和HttpOnly属性"></a>cookie的Secure和HttpOnly属性</h3><blockquote>
+<p>标记为 Secure 的Cookie只应通过被HTTPS协议加密过的请求发送给服务端。<br>从 Chrome 52 和 Firefox 52 开始，不安全的站点（http:）无法使用Cookie的 Secure 标记。<br>HttpOnly 标记的Cookie，只能在HTTP request headers里面，JavaScript不能获取。</p>
+</blockquote>
+<h3 id="判断当前页面是否启用cookie"><a href="#判断当前页面是否启用cookie" class="headerlink" title="判断当前页面是否启用cookie"></a>判断当前页面是否启用cookie</h3><blockquote>
+<p>navigator.cookieEnabled 返回一个布尔值，来表示当前页面是否启用了 cookie。本属性为只读属性。</p>
+</blockquote>
+<h3 id="Cookie-SameSite属性"><a href="#Cookie-SameSite属性" class="headerlink" title="Cookie SameSite属性"></a>Cookie SameSite属性</h3><blockquote>
+<p><strong><em>如果所有现代浏览器默认SameSite=Strict，嘿嘿一堆应用会出问题。</em></strong><br>别人的文章<a href="https://mp.weixin.qq.com/s/4zVrM5bKlRhWER90iZjP-A" target="_blank" rel="noopener">Chrome默认启用Cookie Samesite属性</a></p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190705174243-caniuse-cookie-samesite.jpg" alt="cookie-samesite-attribute" title="">
+                </div>
+                <div class="image-caption">cookie-samesite-attribute</div>
+            </figure>
+<blockquote>
+<p>微软你有毛病，IE11还区分Windows版本，SameSite功能部分支持。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>没想到普遍支持的cookie，还有如此多的限制，恨自己的经验不足。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/a/56048266/10371129" target="_blank" rel="noopener">internet-explorer-11-wont-set-cookies-on-a-site</a></p>
+<p><a href="https://blogs.msdn.microsoft.com/ieinternals/2010/04/04/understanding-session-lifetime/" target="_blank" rel="noopener">understanding-session-lifetime/</a></p>
+<p><a href="https://curl.haxx.se/rfc/cookie_spec.html" target="_blank" rel="noopener">cookie_spec</a></p>
+<p><a href="https://stackoverflow.com/questions/1134290/cookies-on-localhost-with-explicit-domain/1188145#1188145" target="_blank" rel="noopener">cookies-on-localhost-with-explicit-domain</a></p>
+<p><a href="https://stackoverflow.com/questions/1134290/cookies-on-localhost-with-explicit-domain/32210291#32210291" target="_blank" rel="noopener">cookie-domain</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">MDN_HTTP_Access_control_CORS</a></p>
+<p><a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener">阮一峰–跨域资源共享 CORS 详解</a></p>
+<p><a href="https://www.html5rocks.com/en/tutorials/cors/" target="_blank" rel="noopener">cors-tutorials</a></p>
+<p><a href="https://www.w3.org/TR/cors/#preflight-request" target="_blank" rel="noopener">preflight-request</a></p>
+<p><a href="https://segmentfault.com/a/1190000011145364" target="_blank" rel="noopener">前端常见跨域方案</a></p>
+<p><a href="https://majing.io/posts/10000010111185" target="_blank" rel="noopener">Spring mvc解决跨域请求：Response to preflight request doesn’t pass access control check</a></p>
+<p><a href="https://github.com/hfpp2012/cors-tutorial" target="_blank" rel="noopener">什么是浏览器跨域，如何解决跨域问题，什么是 CORS？从入门到精通</a></p>
+<p><a href="https://mp.weixin.qq.com/s/4zVrM5bKlRhWER90iZjP-A" target="_blank" rel="noopener">Chrome默认启用Cookie Samesite属性</a></p>
+<p><a href="https://github.com/nodejitsu/node-http-proxy#options" target="_blank" rel="noopener">node-http-proxy#options</a></p>
+<p><a href="https://tools.ietf.org/html/rfc6265" target="_blank" rel="noopener">HTTP Cookie and Set-Cookie header fields</a></p>
+<p><a href="https://github.com/js-cookie/js-cookie" target="_blank" rel="noopener">js-cookie</a><br><a href="https://github.com/js-cookie/js-cookie/wiki/Frequently-Asked-Questions#why-are-my-cookies-being-deleted" target="_blank" rel="noopener">Frequently-Asked-Questions#why-are-my-cookies-being-deleted</a><br><a href="http://blogs.msdn.com/b/ieinternals/archive/2009/08/20/wininet-ie-cookie-internals-faq.aspx" target="_blank" rel="noopener">Internet Explorer Cookie Internals (FAQ)</a><br><a href="https://stackoverflow.com/a/10772420/10371129" target="_blank" rel="noopener">Chrome doesn’t delete session cookies</a><br><a href="https://juejin.im/post/5c8a33dcf265da2dc538fc7d" target="_blank" rel="noopener">【译】Cookie的SameSite属性</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-10T00:07:06.024Z" itemprop="dateUpdated">2019-07-10 08:07:06</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" target="_blank" rel="external">https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ie/">ie</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/&title=《重新认识Cookie的限制》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/&title=《重新认识Cookie的限制》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《重新认识Cookie的限制》 — 个人博客&url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/08/the-event-layer-design/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">前端小纠结--Event Bus模块约定</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/02/the-weird-input-event-in-ie11/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">自带“歧视性”的IE11 input事件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/&title=《重新认识Cookie的限制》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/&title=《重新认识Cookie的限制》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《重新认识Cookie的限制》 — 个人博客&url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/03/ie11-lost-cookie-when-domain-is-localhost/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3awWocQQwEUP//TyeQUyDecZXU7XXg7cksw0y/WWjJpf74iD+//nyev/n7+1fX//vJ7/bqmgMfPDw8vNHSZ48/9WraNSTX4+Hh4d3mPS9rVhheLbF9cW0hwcPDw/s5vOelJO3vc8Odf4OHh4f3v/ASfP7g53Y5/xsPDw/vXbxTrXB7h/wp17MWPDw8vJjXRrE/4e+L8z08PDy8xVS9LRjPY638+lOrxcPDw7vByyPafByVA2aNez1Cw8PDw7vAy0df+4i2HYPNfobo98TDw8Mb8U5t4jm+DYvzrf+LZhoPDw/vEK8NDp63+DZo2JSZuqXGw8PDO8TLR/Wz2GIz6MqDiaju4eHh4R3lJTdt2+VZCpKP2aL4Aw8PD+8ar2122806v+exHHqWbeDh4eHFvNnDNvFEfvhghvyk7uHh4eEd4m2GTHU0UJaNPBYZFgk8PDy8BS+PAPKG+MaRgln4i4eHh3eWd+rY040WuT3y9ck68fDw8L6FV9ST8ujALPjIx2nRyQg8PDy8Q7x2JDYrJMnwLAkmiswBDw8P7xqvDUzb0GHWRucF4OXrwMPDw7vGOxXatsOqzaGEuqXGw8PDO8qbRbT7RbQvq22s8fDw8G7w2ra1HUFtCkYbcHxR2PDw8PAu8/LC0Lbmp4Ze+YEtPDw8vO/h5Zv45tDAZuiVFBI8PDy8e7x8I86jgTaAyEtOe0ABDw8P7zavHX3tm/I8Dh6WIjw8PLyjvNmBqnYk1r6sNuZ4+aLx8PDwLvDaDXdzKGq26W/YeHh4ePd4s8NPeaNcDPjLgwJ4eHh47+W1m/Jmc89f5SxfiVJqPDw8vDfx2pIwa7Xz9v1wYcDDw8Nb89ogtQ1hbxwvwMPDw7vHy2+aD5/apW+GXvW0DQ8PD2/7H309AMtf0KmwIy8qeHh4eNd4vwHPgJKXNS7l4AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
