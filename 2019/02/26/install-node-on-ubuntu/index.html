@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="ubuntu(16.04)安装node环境 记录一下在Linux下安装Node环境的经过.  安装步骤更改ubuntu的镜像源（非必须） 因为 网络环境的限制 更改镜像源可以加快包的下载 12345678910111213&amp;gt; ## 要注意的是不同的版本对应的仓库是不同的。&amp;gt; &amp;gt; # 备份镜像源&amp;gt; sudo cp /etc/apt/sources.list /etc/apt/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-29T13:33:54.752Z">
+<meta property="og:updated_time" content="2019-07-10T23:56:28.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux环境安装node,部署verdaccio私有npm仓库">
 <meta name="twitter:description" content="ubuntu(16.04)安装node环境 记录一下在Linux下安装Node环境的经过.  安装步骤更改ubuntu的镜像源（非必须） 因为 网络环境的限制 更改镜像源可以加快包的下载 12345678910111213&amp;gt; ## 要注意的是不同的版本对应的仓库是不同的。&amp;gt; &amp;gt; # 备份镜像源&amp;gt; sudo cp /etc/apt/sources.list /etc/apt/">
@@ -214,7 +214,7 @@
 <h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装<code>node</code></h3><blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; nvm install node <span class="comment"># 最新版本</span></span><br><span class="line">&gt; nvm install 6.14.4 <span class="comment"># 具体版本</span></span><br><span class="line">&gt; nvm ls-remote <span class="comment"># 有哪些版本</span></span><br><span class="line">&gt; nvm use node <span class="comment"># 使用具体的哪个版本</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<h3 id="安装nrm"><a href="#安装nrm" class="headerlink" title="安装nrm"></a>安装<code>nrm</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g nrm</span><br></pre></td></tr></table></figure>
+<h3 id="安装nrm"><a href="#安装nrm" class="headerlink" title="安装nrm"></a>安装<code>nrm</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
 <h3 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装<code>python</code></h3><blockquote>
 <p>因为<code>node-gyp</code>模块只支持<code>python2.x</code>所以需要安装<code>python</code>，如果<code>linux</code>已经安装，可以使用<code>node-gyp</code>制定配置<code>python</code>地址。</p>
 </blockquote>
@@ -246,7 +246,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-06-29T13:33:54.752Z" itemprop="dateUpdated">2019-06-29 21:33:54</time>
+    最后更新时间：<time datetime="2019-07-10T23:56:28.190Z" itemprop="dateUpdated">2019-07-11 07:56:28</time>
 </span><br>
 
 
