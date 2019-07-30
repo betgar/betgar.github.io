@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>TypeScript 和 Babel 7 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="babel,typescript">
+    <meta name="description" content="TypeScript 和 Babel 7 作者：Daniel 日期：August 27th, 2018 原文：https://devblogs.microsoft.com/typescript/typescript-and-babel-7/  今天我们很高兴为Babel用户宣布一些特别的东西。一年前，我们开始着手发现用户在使用TypeScript时遇到的最大困难，我们发现Babel用户的一个共同问">
+<meta name="keywords" content="babel,typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript 和 Babel 7">
+<meta property="og:url" content="https://betgar.github.io/2019/07/29/typescript-and-babel-7/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="TypeScript 和 Babel 7 作者：Daniel 日期：August 27th, 2018 原文：https://devblogs.microsoft.com/typescript/typescript-and-babel-7/  今天我们很高兴为Babel用户宣布一些特别的东西。一年前，我们开始着手发现用户在使用TypeScript时遇到的最大困难，我们发现Babel用户的一个共同问">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-30T05:50:54.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript 和 Babel 7">
+<meta name="twitter:description" content="TypeScript 和 Babel 7 作者：Daniel 日期：August 27th, 2018 原文：https://devblogs.microsoft.com/typescript/typescript-and-babel-7/  今天我们很高兴为Babel用户宣布一些特别的东西。一年前，我们开始着手发现用户在使用TypeScript时遇到的最大困难，我们发现Babel用户的一个共同问">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript 和 Babel 7</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript 和 Babel 7</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-29T14:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/babel/">babel</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TypeScript-和-Babel-7"><span class="post-toc-number">1.</span> <span class="post-toc-text">TypeScript 和 Babel 7</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#我怎么使用它？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">我怎么使用它？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#这对我意味着什么？"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">这对我意味着什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意事项"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">注意事项</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接下来做什么？"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">接下来做什么？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#资源"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">资源</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-typescript-and-babel-7"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript 和 Babel 7</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-29 22:00:00" datetime="2019-07-29T14:00:00.000Z"  itemprop="datePublished">2019-07-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/babel/">babel</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="TypeScript-和-Babel-7"><a href="#TypeScript-和-Babel-7" class="headerlink" title="TypeScript 和 Babel 7"></a>TypeScript 和 Babel 7</h1><blockquote>
+<p>作者：Daniel</p>
+<p>日期：August 27th, 2018</p>
+<p>原文：<a href="https://devblogs.microsoft.com/typescript/typescript-and-babel-7/" target="_blank" rel="noopener">https://devblogs.microsoft.com/typescript/typescript-and-babel-7/</a></p>
+</blockquote>
+<p>今天我们很高兴为Babel用户宣布一些特别的东西。一年前，我们开始着手发现用户在使用TypeScript时遇到的最大困难，我们发现Babel用户的一个共同问题是尝试设置好TypeScript 太难了。 原因通常各不相同，但对于许多开发人员来说，重写已经正在使用的构建配置可能是一项艰巨的任务。<br>Babel是一个出色的工具，拥有一个充满活力的生态系统，通过将最新的JavaScript特性转换为旧的运行时和浏览器，为数百万开发人员提供服 但它不进行类型检查，我们的团队认为可以将这种体验带到另一个层次。 虽然TypeScript本身可以同时执行这两项操作，但我们希望在不强制用户从Babel切换的情况下更轻松地获得该体验。</p>
+<p>这就是为什么在过去的一年里我们与Babel团队合作，今天我们很高兴联合宣布Babel 7现在提供TypeScript支持！</p>
+<h2 id="我怎么使用它？"><a href="#我怎么使用它？" class="headerlink" title="我怎么使用它？"></a>我怎么使用它？</h2><p>如果你已经在使用Babel并且你从未尝试过TypeScript，那么现在是你的机会，因为它比以往更容易。 至少，您需要安装TypeScript插件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/preset-typescript</span><br></pre></td></tr></table></figure>
+<p>您可能还想获得TypeScript支持的其他ECMAScript特性：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/preset-typescript @babel/preset-env @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread</span><br></pre></td></tr></table></figure>
+<p>确保你的<code>.babelrc</code>中的presets和plugins配置正确：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "presets": [</span><br><span class="line">        "@babel/env",</span><br><span class="line">        "@babel/preset-typescript"</span><br><span class="line">    ],</span><br><span class="line">    "plugins": [</span><br><span class="line">        "@babel/proposal-class-properties",</span><br><span class="line">        "@babel/proposal-object-rest-spread"</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个使用<code>@babel/cli</code>编译的样例，你仅需要执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">babel ./src --out-dir lib --extensions ".ts,.tsx"</span><br></pre></td></tr></table></figure>
+<p>你的文件现在构建并生成到了<code>lib</code>文件夹中。</p>
+<p>使用<code>TypeScript</code>检查类型，需要创建一个<code>tsconfig.json</code>文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    // Target latest version of ECMAScript.</span><br><span class="line">    "target": "esnext",</span><br><span class="line">    // Search under node_modules for non-relative imports.</span><br><span class="line">    "moduleResolution": "node",</span><br><span class="line">    // Process &amp; infer types from .js files.</span><br><span class="line">    "allowJs": true,</span><br><span class="line">    // Don't emit; allow Babel to transform files.</span><br><span class="line">    "noEmit": true,</span><br><span class="line">    // Enable strictest settings like strictNullChecks &amp; noImplicitAny.</span><br><span class="line">    "strict": true,</span><br><span class="line">    // Disallow features that require cross-file information for emit.</span><br><span class="line">    "isolatedModules": true,</span><br><span class="line">    // Import non-ES modules as default imports.</span><br><span class="line">    "esModuleInterop": true</span><br><span class="line">  &#125;,</span><br><span class="line">  "include": [</span><br><span class="line">    <span class="string">"src"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后执行<code>tsc</code>，仅仅就是这样！<code>tsc</code>将会对你的<code>.ts</code>和<code>.tsx</code>进行类型检查</p>
+<p>随意添加–watch标志到任一工具，以便在任何变化时获得即时反馈。 <a href="https://github.com/Microsoft/TypeScript-Babel-Starter" target="_blank" rel="noopener">您可以在此示例存储库中查看如何设置更复杂的构建，该存储库与Webpack等工具集成</a>。<a href="https://babeljs.io/repl/#?babili=false&amp;browsers=&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=EQVwzgpgBGAuBOBLAxrYBuAUJxA7WE8AZgIbLQDCi8yANtAN6ZRTwkAmi4AXFLiAFsARoSwBfbERC5UiAPa4oJeBBIAKZLyo16ASihMWK2CHiKAsiVgALAHQAFAJJQAVFGS22ncK7cAmcSA&amp;debug=false&amp;forceAllTransforms=false&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=true&amp;fileSize=true&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=typescript%2Cenv&amp;prettier=false&amp;targets=&amp;version=7.0.0-beta.42&amp;envVersion=7.0.0-beta.42" target="_blank" rel="noopener"> 您也可以在Babel的在线REPL上使用TypeScript预设</a>。</p>
+<h2 id="这对我意味着什么？"><a href="#这对我意味着什么？" class="headerlink" title="这对我意味着什么？"></a>这对我意味着什么？</h2><p>使用TypeScript编译器仍然是构建TypeScript的首选方法。 虽然Babel可以接管编译/转换 - 执行诸如擦除类型和重写最新的ECMAScript功能以在较旧的运行时中工作 - 它没有内置类型检查，并且仍然需要使用TypeScript来实现这一点。 因此，即使Babel构建成功，您也可能需要使用TypeScript介入以捕获类型错误。 出于这个原因，我们认为tsc和compiler pipeline周围的工具仍然可以为大多数项目提供最好集成和一致的体验。</p>
+<p>因此，如果您已经在使用TypeScript，那么这对您来说可能没什么变化。 但是，如果您已经在使用Babel，或者对Babel生态系统感兴趣，并希望获得TypeScript的好处，例如捕获拼写错误，错误检查以及您可能在Visual Studio和Visual Studio等中看到的编辑体验 代码，这是给你的！</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>正如我们上面提到的，用户应该注意的第一件事是Babel不会对TypeScript代码执行类型检查;它只会转换你的代码，无论是否存在类型错误，它都会编译。虽然这意味着Babel不会像读取.d.ts文件那样做并确保你的类型兼容，但可能你会想要一些工具来做到这一点，所以你仍然需要TypeScript。这可以在后台作为单独的tsc –watch任务完成，也可以是构建中的lint / CI步骤的一部分。幸运的是，通过正确的编辑器支持，您甚至可以在保存之前发现大多数错误。</p>
+<p>其次，有些结构Babel 7没有正确的编译。具体来说，</p>
+<ul>
+<li>namespaces</li>
+<li>括号风格的类型断言/强制转换语法，当启用JSX时可以忽略它们。（即，如果打开JSX支持，写入<foo>  x即使在.ts文件中也不起作用，但您可以将<code>x as Foo</code>）。</foo></li>
+<li>跨多个声明的枚举（即枚举合并）</li>
+<li>遗留式导入/导出语法（即import foo = require（…）和export = foo）</li>
+</ul>
+<p>这些遗漏主要基于Babel的单文件发射架构中的技术限制。我们相信大多数用户会发现这种体验是完全可以接受的。要确保TypeScript可以调出其中的一些遗漏，您应该确保TypeScript使用–isolatedModules标志。</p>
+<h2 id="接下来做什么？"><a href="#接下来做什么？" class="headerlink" title="接下来做什么？"></a>接下来做什么？</h2><p>您可以在发布博客文章中阅读Babel方面的详细信息。 我们很高兴我们有机会与Babel团队的人们合作，如Henry Zhu，Andrew Levine，Logan Smyth，Daniel Tschinder，James Henry，Diogo Franco，Ivan Babak，NicolòRibaudo，Brian Ng和Vladimir Kurchatkin。 我们甚至有机会加速Babylon，Babel的解析器，并帮助调整James Henry在typescript-eslint-parser上的工作，该解析器现在支持Prettier’s TypeScript。 如果我们遗漏没有提到你，我们很抱歉，但我们很感激，我们感谢所有人们共同投入的帮助！</p>
+<p>我们的团队将为TypeScript插件的未来更新做出贡献，我们期待为所有TypeScript用户带来出色的体验。 展望未来，我们很乐意听到您对Babel中这种新TypeScript支持的反馈，以及我们如何使其更易于使用。 在Twitter上@typescriptlang或下面的评论中给我们一个声音。</p>
+<p>快乐的黑客！</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><blockquote>
+<p>Babel+TypeScript以及其它工具的配置参考</p>
+</blockquote>
+<p><a href="https://github.com/Microsoft/TypeScript-Babel-Starter" target="_blank" rel="noopener">TypeScript-Babel-Starter</a></p>
+<p><a href="https://github.com/a-tarasyuk/react-webpack-typescript-babel" target="_blank" rel="noopener">react-webpack-typescript-babel</a></p>
+<p><a href="https://github.com/a-tarasyuk/webpack-typescript-babel" target="_blank" rel="noopener">webpack-typescript-babel</a></p>
+<p><a href="https://github.com/xitu/gold-miner/blob/master/TODO1/typescript-with-babel-a-beautiful-marriage.md" target="_blank" rel="noopener">TypeScript With Babel: A Beautiful Marriage </a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-30T05:50:54.975Z" itemprop="dateUpdated">2019-07-30 13:50:54</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/07/29/typescript-and-babel-7/" target="_blank" rel="external">https://betgar.github.io/2019/07/29/typescript-and-babel-7/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/&title=《TypeScript 和 Babel 7》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/&title=《TypeScript 和 Babel 7》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/29/typescript-and-babel-7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript 和 Babel 7》 — 个人博客&url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/30/babel6-loose-mode/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Babel 6 松散模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/15/babel-plugin-preset-default-configration/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">babel的配置的默认套路</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/&title=《TypeScript 和 Babel 7》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/&title=《TypeScript 和 Babel 7》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/29/typescript-and-babel-7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript 和 Babel 7》 — 个人博客&url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/29/typescript-and-babel-7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS1LDMBAFQO5/adhCpRze09gUltsrijiW2ouJ5vPxEV+f367X/7/e83odfStZ5bQLAwPjtoxk+WRbLfX96u2rwcDAeALjKIId3XO0ZMJLYPneMDAwMJKFJ6EzB2NgYGC0ATd5wjxVxsDAwGiT2HzrbTr6p7k4BgbGDRl5KPz7vy/pb2BgYNyKsRYEJ9RJq+BwVxgYGFsz8gCXl+/bYlx76DxcBQMDY1PGWpNy0rxMwnQNw8DA2JrRlvjfwybPb0t+v6yLgYGxHSM5zOVFsXzk6/39dQMAAwNja0ZOaoNpW0Q7aycYGBg7Mdp0dD6i0R40o+CLgYHxAEaSjuYls/mgRvKyfnwLAwNja0Z+jGvDZf60tVLd4d4wMDA2ZZw2tREntHkDtVgXAwNjU0Y7JJpvbh6yi5eCgYGxNSNJGpPkM/m0PSDmbQYMDIwnMNqhiusYeVOh7nJgYGDcljEpdbWDEXmrsn4mBgbG1ox5AG030TYy85CNgYHxBMYaZq3lmTwhH8XAwMB4DqOuzMUBMUFOxj4wMDCew2gXO4u9Nt7xy9EQAwNjI8Znea1tt63q11QMDIytGWttzjzhbO/Pi3HtDwMGBsbdGVcsduFJFgMD48GMSaNxvsU2bcbAwMBYG4NoS/l1SE0ycgwMDIzymLgWapPnX/K7gYGB8e8ZbTOgRc6HNk7LxTEwMG7ImAxVzMtqa6svNjUxMDDux/gCuDYi4FOy85YAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
