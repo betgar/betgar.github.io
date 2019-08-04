@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Polyfill 方案的过去、现在和未来 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="babel">
+    <meta name="description" content="Polyfill 方案的过去、现在和未来 作者：sorrycc  日期：2019-01-29 01:31:04 原文地址: https://github.com/sorrycc/blog/issues/80 blog: https://gitissue.com/issues/5c4fe57daba98d5c7d6f4e2c  任何一个小知识点，深挖下去，也是非常有意思的。 什么是补丁？ A pol">
+<meta name="keywords" content="babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Polyfill 方案的过去、现在和未来">
+<meta property="og:url" content="https://betgar.github.io/2019/08/04/polyfill-passed-current-future/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Polyfill 方案的过去、现在和未来 作者：sorrycc  日期：2019-01-29 01:31:04 原文地址: https://github.com/sorrycc/blog/issues/80 blog: https://gitissue.com/issues/5c4fe57daba98d5c7d6f4e2c  任何一个小知识点，深挖下去，也是非常有意思的。 什么是补丁？ A pol">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://camo.githubusercontent.com/348c3453fc18218b9a60e6eb67821c83e1ec8bdf/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6b766d4e755778747758636e764f574f6c6f4d752e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/d8aae6399751c7cc33c634397162e0d3dfd3f31e/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6c6b7a4e70546878667a7565506a51736f586a792e706e67">
+<meta property="og:updated_time" content="2019-08-04T09:25:02.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Polyfill 方案的过去、现在和未来">
+<meta name="twitter:description" content="Polyfill 方案的过去、现在和未来 作者：sorrycc  日期：2019-01-29 01:31:04 原文地址: https://github.com/sorrycc/blog/issues/80 blog: https://gitissue.com/issues/5c4fe57daba98d5c7d6f4e2c  任何一个小知识点，深挖下去，也是非常有意思的。 什么是补丁？ A pol">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/348c3453fc18218b9a60e6eb67821c83e1ec8bdf/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6b766d4e755778747758636e764f574f6c6f4d752e706e67">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Polyfill 方案的过去、现在和未来</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Polyfill 方案的过去、现在和未来</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-04T11:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/babel/">babel</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Polyfill-方案的过去、现在和未来"><span class="post-toc-number">1.</span> <span class="post-toc-text">Polyfill 方案的过去、现在和未来</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是补丁？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是补丁？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#过去"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">过去</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shim-sham"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">shim + sham</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#babel-polyfill-js"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">babel-polyfill.js</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#现在"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">现在</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#babel-preset-env-useBuiltins-entry-targets"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">@babel/preset-env + useBuiltins: entry + targets</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#手动引入"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">手动引入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在线补丁，比如：polyfill-io"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">在线补丁，比如：polyfill.io</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#未来"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">未来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FAQ"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件应该包含补丁吗？比如-dva-里用了-Promise，是否应该把-Promise-打在-dva-的产出里？"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">组件应该包含补丁吗？比如 dva 里用了 Promise，是否应该把 Promise 打在 dva 的产出里？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#组件不包含补丁？那需要处理啥？"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">组件不包含补丁？那需要处理啥？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#core-js-library-or-core-js-modules？"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">core-js/library or core-js/modules？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非-core-js-里的特性，如何打补丁？"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">非 core-js 里的特性，如何打补丁？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-polyfill-passed-current-future"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Polyfill 方案的过去、现在和未来</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-04 19:00:00" datetime="2019-08-04T11:00:00.000Z"  itemprop="datePublished">2019-08-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/babel/">babel</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Polyfill-方案的过去、现在和未来"><a href="#Polyfill-方案的过去、现在和未来" class="headerlink" title="Polyfill 方案的过去、现在和未来"></a>Polyfill 方案的过去、现在和未来</h1><blockquote>
+<p>作者：sorrycc </p>
+<p>日期：2019-01-29 01:31:04</p>
+<p>原文地址: <a href="https://github.com/sorrycc/blog/issues/80" target="_blank" rel="noopener">https://github.com/sorrycc/blog/issues/80</a></p>
+<p>blog: <a href="https://gitissue.com/issues/5c4fe57daba98d5c7d6f4e2c" target="_blank" rel="noopener">https://gitissue.com/issues/5c4fe57daba98d5c7d6f4e2c</a></p>
+</blockquote>
+<p>任何一个小知识点，深挖下去，也是非常有意思的。</p>
+<h2 id="什么是补丁？"><a href="#什么是补丁？" class="headerlink" title="什么是补丁？"></a>什么是补丁？</h2><blockquote>
+<p>A polyfill, or polyfiller, is a piece of code (or plugin) that provides the technology that you, the developer, expect the browser to provide natively. Flattening the API landscape if you will.</p>
+</blockquote>
+<p>我们希望浏览器提供一些特性，但是没有，然后我们自己写一段代码来实现他，那这段代码就是补丁。</p>
+<p>比如 <a href="https://caniuse.com/#feat=promises" target="_blank" rel="noopener">IE11 不支持 Promise</a>，而我们又需要在项目里用到，写了这样的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  Promise.resolve(&apos;bar&apos;)</span><br><span class="line">    .then(function(foo) &#123;</span><br><span class="line">      document.write(foo);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这时在 IE 下运行就会报错了，</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://camo.githubusercontent.com/348c3453fc18218b9a60e6eb67821c83e1ec8bdf/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6b766d4e755778747758636e764f574f6c6f4d752e706e67" alt="img](https://camo.githubusercontent.com/348c3453fc18218b9a60e6eb67821c83e1ec8bdf/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6b766d4e755778747758636e764f574f6c6f4d752e706e67)" title="">
+                </div>
+                <div class="image-caption">img](https://camo.githubusercontent.com/348c3453fc18218b9a60e6eb67821c83e1ec8bdf/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6b766d4e755778747758636e764f574f6c6f4d752e706e67)</div>
+            </figure></p>
+<p>然后在此之前加上补丁，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  Promise.resolve(&apos;bar&apos;)</span><br><span class="line">    .then(function(foo) &#123;</span><br><span class="line">      document.write(foo);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>刷新浏览器，就可以正常运行了，</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://camo.githubusercontent.com/d8aae6399751c7cc33c634397162e0d3dfd3f31e/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6c6b7a4e70546878667a7565506a51736f586a792e706e67" alt="img](https://camo.githubusercontent.com/d8aae6399751c7cc33c634397162e0d3dfd3f31e/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6c6b7a4e70546878667a7565506a51736f586a792e706e67)" title="">
+                </div>
+                <div class="image-caption">img](https://camo.githubusercontent.com/d8aae6399751c7cc33c634397162e0d3dfd3f31e/68747470733a2f2f67772e616c697061796f626a656374732e636f6d2f7a6f732f726d73706f7274616c2f6c6b7a4e70546878667a7565506a51736f586a792e706e67)</div>
+            </figure></p>
+<h2 id="过去"><a href="#过去" class="headerlink" title="过去"></a>过去</h2><h3 id="shim-sham"><a href="#shim-sham" class="headerlink" title="shim + sham"></a>shim + sham</h3><p>如果你是一个 3 年陈 + 的前端，应该会有听说过 shim、sham、<a href="https://github.com/es-shims/es5-shim" target="_blank" rel="noopener">es5-shim</a> 和 <a href="https://github.com/es-shims/es6-shim" target="_blank" rel="noopener">es6-shim</a> 等等现在看起来很古老的补丁方式。</p>
+<p>那么，shim 和 sham 是啥？又有什么区别？</p>
+<ul>
+<li>shim 是<strong>能用</strong>的补丁</li>
+<li>sham 顾名思义，是假的意思，所以 sham 是一些<strong>假的方法</strong>，只能使用保证不出错，但不能用。至于为啥会有 sham，因为有些方法的低端浏览器里根本实现不了</li>
+</ul>
+<h3 id="babel-polyfill-js"><a href="#babel-polyfill-js" class="headerlink" title="babel-polyfill.js"></a>babel-polyfill.js</h3><p>在 shim 和 sham 之后，还有一种补丁方式是引入包含所有语言层补丁的 <code>babel-polyfill.js</code>。比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后就 es6、es7 特性随便写了。</p>
+<p>但缺点是，babel-polyfill 包含所有补丁，不管浏览器是否支持，也不管你的项目是否有用到，都全量引了，所以如果你的用户全都不差流量和带宽（比如内部应用），尽可以用这种方式。</p>
+<h2 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h2><p>现在还没有银弹，各种方案百花齐放。</p>
+<h3 id="babel-preset-env-useBuiltins-entry-targets"><a href="#babel-preset-env-useBuiltins-entry-targets" class="headerlink" title="@babel/preset-env + useBuiltins: entry + targets"></a>@babel/preset-env + useBuiltins: entry + targets</h3><p>babel-polyfill 包含所有补丁，那我只需要支持某些浏览器的某些版本，是否有办法只包含这些浏览器的补丁？这就是 <code>@babel/preset-env</code> + <code>useBuiltins: entry</code> + <code>targets</code> 配置的方案。</p>
+<p>我们先在入口文件里引入 <code>@babel/polyfill</code>，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'@babel/polyfill'</span>;</span><br></pre></td></tr></table></figure>
+<p>然后配置 .babelrc，添加 preset <code>@babel/preset-env</code>，并设置 <code>useBuiltIns</code> 和 <code>targets</code>，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [<span class="string">"@babel/env"</span>, &#123;</span><br><span class="line">      useBuiltIns: <span class="string">'entry'</span>,</span><br><span class="line">      targets: &#123; <span class="attr">chrome</span>: <span class="number">62</span> &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>useBuiltIns: entry</code> 的含义是找到入口文件里引入的 <code>@babel/polyfill</code>，并替换为 targets 浏览器/环境需要的补丁列表。</p>
+<p>替换后的内容，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"core-js/modules/es7.string.pad-start"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"core-js/modules/es7.string.pad-end"</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>这样就只会引入 chrome@62 及以上所需要的补丁，什么 Promise 之类的都不会再打包引入。</p>
+<blockquote>
+<p>是不是很好用？</p>
+</blockquote>
+<p>😄</p>
+<blockquote>
+<p>有什么问题？</p>
+</blockquote>
+<p>🤔</p>
+<p>细细想想，其实还有不少问题，</p>
+<ol>
+<li>特性列表是按浏览器整理的，那怎么知道哪些特性我用了，哪些没有用到，没有用到的部分也引入了是不是也是冗余？<code>@babel/preset-env</code> 有提供 <a href="https://babeljs.io/docs/en/next/babel-preset-env.html#exclude" target="_blank" rel="noopener">exclude</a> 的配置，如果我配置了 exclude，后面是否得小心翼翼地确保不要用到 exclude 掉的特性</li>
+<li>补丁是打包到静态文件的，如果我配置 targets 为 <code>chrome: 62, ie: 9</code>，那意味着 chrome 62 也得载入 ie 9 相关的补丁，这也是一份冗余</li>
+<li>我们是基于 core-js 打的补丁，所以只会包含 ecmascript 规范里的内容，其他比如说 dom 里的补丁，就不在此列，应该如何处理？</li>
+</ol>
+<h3 id="手动引入"><a href="#手动引入" class="headerlink" title="手动引入"></a>手动引入</h3><p>传统的手动打补丁方案虽然低效，但直观有用。有些非常在乎性能的场景，比如我们公司的部分无线 H5 业务，他们宁可牺牲效率也要追求性能。所以他们的补丁方案是手动引入 <a href="https://github.com/zloirock/core-js/tree/v2/modules" target="_blank" rel="noopener">core-js/modules</a> 下的文件，缺啥加啥就好。</p>
+<p>注意：</p>
+<ol>
+<li>core-js 目前用的是 v2 版本，不是 v3-beta</li>
+<li>补丁用的是 core-js/modules，而不是 <a href="https://github.com/zloirock/core-js/tree/v2/library" target="_blank" rel="noopener">core-js/library</a>。为啥？二者又有啥区别呢？</li>
+</ol>
+<h3 id="在线补丁，比如：polyfill-io"><a href="#在线补丁，比如：polyfill-io" class="headerlink" title="在线补丁，比如：polyfill.io"></a>在线补丁，比如：polyfill.io</h3><p>前面的手动引入解决的是特性列表的问题，有了特性列表，要做到按需下载，就需要用到在线的补丁服务了。目前最流行的应该就是 <a href="https://polyfill.io/" target="_blank" rel="noopener">polyfill.io</a>，提供的是 cdn 服务，有些站点在用，例如 <a href="https://spectrum.chat/。另外，polyfill.io" target="_blank" rel="noopener">https://spectrum.chat/。另外，polyfill.io</a> 还开源了 <a href="https://github.com/financial-times/polyfill-service" target="_blank" rel="noopener">polyfill-service</a> 供我们自己搭建使用。</p>
+<p>使用上，比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://polyfill.io/v3/polyfill.min.js?features=default%2CPromise"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在 Chrome@71 下的输出是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Disable minification (remove `.min` from URL path) for more info */</span></span><br></pre></td></tr></table></figure>
+<p>啥都没有，因为 Promsie 特性 Chrome@71 已经支持了。</p>
+<h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>关于补丁方案的未来，我觉得<strong>按需特性探测 + 在线补丁</strong>才是终极方案。</p>
+<p>按需特性探测保证特性的最小集；在线补丁做按需下载。</p>
+<p>按需特性探测可以用 <code>@babel/preset-env</code> 配上 <code>targets</code> 以及试验阶段的 <code>useBuiltIns: usage</code>，保障特性集的最小化。之所以说是未来，因为 JavaScript 的动态性，语法探测不太可能探测出所有特性，但上了 TypeScript 之后可能会好一些。另外，要注意一个前提是 node_modules 也需要走 babel 编译，不然 node_modules 下用到的特性会探测不出来。</p>
+<p>在线补丁可以用类似前面介绍的 <a href="https://polyfill.io/" target="_blank" rel="noopener">https://polyfill.io/</a> 提供的方案，让浏览器只下载必要的补丁，通常大公司用的话会部署一份到自己的 cdn 上。（阿里好像有团队部署了，但一时间想不起地址了。）</p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="组件应该包含补丁吗？比如-dva-里用了-Promise，是否应该把-Promise-打在-dva-的产出里？"><a href="#组件应该包含补丁吗？比如-dva-里用了-Promise，是否应该把-Promise-打在-dva-的产出里？" class="headerlink" title="组件应该包含补丁吗？比如 dva 里用了 Promise，是否应该把 Promise 打在 dva 的产出里？"></a>组件应该包含补丁吗？比如 dva 里用了 Promise，是否应该把 Promise 打在 dva 的产出里？</h3><p><strong>不应该。</strong> 比如项目了依赖了 a 和 b，a 和 b 都包含 Promise 的补丁，就会有冗余。所以组件不应该包含补丁，补丁应该由项目决定。</p>
+<h3 id="组件不包含补丁？那需要处理啥？"><a href="#组件不包含补丁？那需要处理啥？" class="headerlink" title="组件不包含补丁？那需要处理啥？"></a>组件不包含补丁？那需要处理啥？</h3><p>通常不需要做特殊处理，但是有些语言特性的实现会需要引入额外的 helper 方法。</p>
+<p>比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(&#123; ...a &#125;);</span><br></pre></td></tr></table></figure>
+<p>编译后是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_objectSpread</span>(<span class="params">target</span>) </span>&#123; <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123; <span class="keyword">var</span> source = <span class="built_in">arguments</span>[i] != <span class="literal">null</span> ? <span class="built_in">arguments</span>[i] : &#123;&#125;; <span class="keyword">var</span> ownKeys = <span class="built_in">Object</span>.keys(source); <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.getOwnPropertySymbols === <span class="string">'function'</span>) &#123; ownKeys = ownKeys.concat(<span class="built_in">Object</span>.getOwnPropertySymbols(source).filter(<span class="function"><span class="keyword">function</span> (<span class="params">sym</span>) </span>&#123; <span class="keyword">return</span> <span class="built_in">Object</span>.getOwnPropertyDescriptor(source, sym).enumerable; &#125;)); &#125; ownKeys.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">key</span>) </span>&#123; _defineProperty(target, key, source[key]); &#125;); &#125; <span class="keyword">return</span> target; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_defineProperty</span>(<span class="params">obj, key, value</span>) </span>&#123; <span class="keyword">if</span> (key <span class="keyword">in</span> obj) &#123; <span class="built_in">Object</span>.defineProperty(obj, key, &#123; <span class="attr">value</span>: value, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span>, <span class="attr">writable</span>: <span class="literal">true</span> &#125;); &#125; <span class="keyword">else</span> &#123; obj[key] = value; &#125; <span class="keyword">return</span> obj; &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(_objectSpread(&#123;&#125;, a));</span><br></pre></td></tr></table></figure>
+<p>然后我们会有很多文件，每个文件都引入一遍 helper 方法，会有很多冗余。所以我们通常会使用 <a href="https://babeljs.io/docs/en/next/babel-plugin-transform-runtime.html" target="_blank" rel="noopener">@babel/plugin-transform-runtime</a> 来复用这些 helper 方法。</p>
+<p>在 <code>.babelrc</code> 里配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"plugins"</span>: [</span><br><span class="line">    <span class="string">"@babel/transform-runtime"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _interopRequireDefault = <span class="built_in">require</span>(<span class="string">"@babel/runtime/helpers/interopRequireDefault"</span>);</span><br><span class="line"><span class="keyword">var</span> _objectSpread2 = _interopRequireDefault(<span class="built_in">require</span>(<span class="string">"@babel/runtime/helpers/objectSpread"</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log((<span class="number">0</span>, _objectSpread2.default)(&#123;&#125;, a));</span><br></pre></td></tr></table></figure>
+<p>所以，组件编译只要确保没有冗余的 helper 方法就好了。</p>
+<h3 id="core-js-library-or-core-js-modules？"><a href="#core-js-library-or-core-js-modules？" class="headerlink" title="core-js/library or core-js/modules？"></a>core-js/library or core-js/modules？</h3><p>core-js 提供了两种补丁方式。</p>
+<ol>
+<li><code>core-js/library</code>，通过 helper 方法的方式提供</li>
+<li><code>core-js/module</code>，通过覆盖全局变量的方式提供</li>
+</ol>
+<p>举个例子，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'@babel/polyfill'</span>;</span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'foo'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>.babelrc</code> 配：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [<span class="string">"@babel/env"</span>, &#123;</span><br><span class="line">    	<span class="string">"useBuiltIns"</span>: <span class="string">"entry"</span>,</span><br><span class="line">      <span class="string">"targets"</span>: &#123;</span><br><span class="line">        <span class="string">"ie"</span>: <span class="number">9</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译结果是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"core-js/modules/es6.promise"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"core-js/modules/es7.promise.finally"</span>);</span><br><span class="line"><span class="comment">// 此处省略数十个其他补丁...</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'foo'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后把文件内容换成：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import '@babel/polyfill';</span></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'foo'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>.babelrc</code> 配：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"plugins"</span>: [</span><br><span class="line">    [<span class="string">"@babel/transform-runtime"</span>, &#123;</span><br><span class="line">      <span class="string">"corejs"</span>: <span class="number">2</span></span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译结果是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _interopRequireDefault = <span class="built_in">require</span>(<span class="string">"@babel/runtime-corejs2/helpers/interopRequireDefault"</span>);</span><br><span class="line"><span class="keyword">var</span> _promise = _interopRequireDefault(<span class="built_in">require</span>(<span class="string">"@babel/runtime-corejs2/core-js/promise"</span>));</span><br><span class="line"></span><br><span class="line">_promise.default.resolve(<span class="string">'foo'</span>);</span><br></pre></td></tr></table></figure>
+<p>然后 <code>@babel/runtime-corejs2/core-js/promise</code> 的内容是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="built_in">require</span>(<span class="string">"core-js/library/fn/promise"</span>);</span><br></pre></td></tr></table></figure>
+<p>目前推荐是用 <code>core-js/modules</code>，因为 node_modules 不走 babel 编译，所以 <code>core-js/library</code> 的方式无法为依赖库提供补丁。</p>
+<h3 id="非-core-js-里的特性，如何打补丁？"><a href="#非-core-js-里的特性，如何打补丁？" class="headerlink" title="非 core-js 里的特性，如何打补丁？"></a>非 core-js 里的特性，如何打补丁？</h3><p>手动引入，比如 <a href="https://github.com/andyearnshaw/Intl.js/" target="_blank" rel="noopener">Intl.js</a>、URL 等。但是得小心有些规范后续加入 ecmascript 之后可能的冗余，比如 <a href="https://github.com/zloirock/core-js/pull/454" target="_blank" rel="noopener">URL</a>。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://2ality.com/2011/12/shim-vs-polyfill.html" target="_blank" rel="noopener">http://2ality.com/2011/12/shim-vs-polyfill.html</a></li>
+<li><a href="https://babeljs.io/docs/en/next/babel-preset-env.html" target="_blank" rel="noopener">https://babeljs.io/docs/en/next/babel-preset-env.html</a></li>
+<li><a href="https://github.com/zloirock/core-js/tree/v2" target="_blank" rel="noopener">https://github.com/zloirock/core-js/tree/v2</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-04T09:25:02.965Z" itemprop="dateUpdated">2019-08-04 17:25:02</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/08/04/polyfill-passed-current-future/" target="_blank" rel="external">https://betgar.github.io/2019/08/04/polyfill-passed-current-future/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/&title=《Polyfill 方案的过去、现在和未来》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/&title=《Polyfill 方案的过去、现在和未来》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Polyfill 方案的过去、现在和未来》 — 个人博客&url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/01/the-steps-of-configuration-typescript/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一步一步配置Typescript工程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/&title=《Polyfill 方案的过去、现在和未来》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/&title=《Polyfill 方案的过去、现在和未来》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Polyfill 方案的过去、现在和未来》 — 个人博客&url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/04/polyfill-passed-current-future/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aQY7jMAwEwPn/p3eBPQ0wmLiblLI5lE9B4FgqHkyF5NdXfP35d33//P36ec/PO2fPef38YxceHh7eaOu/XfmSCXW/q3zPeHh4eLd5s2SwTyT505IkgYeHh/dpvFPbze/Pj+94eHh4n8lLMLPyQZJ48PDw8D6N1/75T0KQJIAZ6UqtBQ8PDy/mzRpg//fz9f4eHh4e3qirnh9ziwNufFg/sFs8PDy8C7y2zZ8XXvNSbN5mmwUFDw8P7yyvHbeaLdM+P8c/BAIPDw/v7bx2022SyMOXJKfhPwY8PDy8BS8/Xrftsfww3Q5dPewNDw8P7zJv1oBvyxazFdvksVoMDw8Pb83bN/LzsmwNeB1oPDw8vGu89nFtIPIS7Wb44NcjNR4eHt5l3tnW/j5J5Afuh3ErPDw8vGu8dhPJnfm28kGBaF08PDy8a7zNWFXbmkqSRLtKVMbFw8PDu8DLm1JtO79NQnmaeTjE4+Hh4V3gbYYA9tT2oDwLHx4eHt4NXnLYzRtd+SZmYarxeHh4eBd4m0LtvpSQF3bzQDyUJ/Dw8PAWvDwB7P/d50MAmyYcHh4e3nt4m3Go/JW9GSwYBhcPDw/vAm/WXso/J9SWnQcaDw8P7wZvtqFTZdyk6LBq0eHh4eFd5uUv4lPLz8JUFDXw8PDwLvBONbraUYO89ZW3ux6GrvDw8PAO8dqSQft9PkaQB6JIY3h4eHhv4c1eynnZoshXo3LJQ8bDw8PDW/PqV23Q5t8cpveNt+GFh4eHV/LaV3ZyRN58kxcsot/i4eHhXeO1RYS2yLsp++apqxggwMPDw3sLLy8xnBrYygvHeHh4eJ/Ma0eszqaNesALDw8P7xovb3pt0kOCaQONh4eH935e2wCbbaUt2iZFkCv9PTw8PLxX+/kL2Scr8DoJN4AAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

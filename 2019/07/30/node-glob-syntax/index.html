@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>node-glob-syntax | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="node">
+    <meta name="description" content="Node glob语法 原文地址：https://github.com/isLishude/blog/issues/63  本文 由 Ivan Yan 翻译，“署名-非商用-相同方式共享”，意见反馈。 通过星号等 shell 所用的模式匹配文件。 这是一个 JavaScript 版本的 glob 实现。使用 minimatch 执行匹配操作。 译注：早期 Unix （第 1-6 版，1969-19">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-glob-syntax">
+<meta property="og:url" content="https://betgar.github.io/2019/07/30/node-glob-syntax/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Node glob语法 原文地址：https://github.com/isLishude/blog/issues/63  本文 由 Ivan Yan 翻译，“署名-非商用-相同方式共享”，意见反馈。 通过星号等 shell 所用的模式匹配文件。 这是一个 JavaScript 版本的 glob 实现。使用 minimatch 执行匹配操作。 译注：早期 Unix （第 1-6 版，1969-19">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-30T05:49:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node-glob-syntax">
+<meta name="twitter:description" content="Node glob语法 原文地址：https://github.com/isLishude/blog/issues/63  本文 由 Ivan Yan 翻译，“署名-非商用-相同方式共享”，意见反馈。 通过星号等 shell 所用的模式匹配文件。 这是一个 JavaScript 版本的 glob 实现。使用 minimatch 执行匹配操作。 译注：早期 Unix （第 1-6 版，1969-19">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">node-glob-syntax</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">node-glob-syntax</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-30T10:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Node-glob语法"><span class="post-toc-number">1.</span> <span class="post-toc-text">Node glob语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">用法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Glob-基础"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Glob 基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#点号"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">点号</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#匹配基本名"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">匹配基本名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#空集"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">空集</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其它参考"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">其它参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#glob-hasMagic-pattern-options"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">glob.hasMagic(pattern, [options])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#glob-pattern-options-cb"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">glob(pattern, [options], cb)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#glob-sync-pattern-options"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">glob.sync(pattern, [options])</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Class-glob-Glob"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Class: glob.Glob</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#new-glob-Glob-pattern-options-cb"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">new glob.Glob(pattern, [options], [cb])</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">事件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选项"><span class="post-toc-number">1.6.5.</span> <span class="post-toc-text">选项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#与其它-fnmatch-glob-实现的比较"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">与其它 fnmatch/glob 实现的比较</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释与排除"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">注释与排除</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Windows"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Windows</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#竞态条件"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">竞态条件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#贡献"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">贡献</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-node-glob-syntax"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">node-glob-syntax</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-30 18:00:00" datetime="2019-07-30T10:00:00.000Z"  itemprop="datePublished">2019-07-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Node-glob语法"><a href="#Node-glob语法" class="headerlink" title="Node glob语法"></a>Node glob语法</h1><blockquote>
+<p>原文地址：<a href="https://github.com/isLishude/blog/issues/63" target="_blank" rel="noopener">https://github.com/isLishude/blog/issues/63</a></p>
+</blockquote>
+<p><a href="https://github.com/isaacs/node-glob#readme" target="_blank" rel="noopener">本文</a> 由 <a href="http://yanxyz.net/" target="_blank" rel="noopener">Ivan Yan</a> 翻译，<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">“署名-非商用-相同方式共享”</a>，意见<a href="https://github.com/hongfanqie/node-glob/issues" target="_blank" rel="noopener">反馈</a>。</p>
+<p>通过星号等 shell 所用的模式匹配文件。</p>
+<p>这是一个 JavaScript 版本的 glob 实现。使用 <a href="https://github.com/isaacs/minimatch" target="_blank" rel="noopener">minimatch</a> 执行匹配操作。</p>
+<p>译注：早期 Unix （第 1-6 版，1969-1975）的命令行解释器依赖独立程序 <em>/etc/glob</em> 展开参数中的通配符。这个程序会展开通配符并把展开后的文件列表传给命令。它的名字是 “global command” 的简称。后来这个功能由工具函数 glob() 提供，被 shell 等程序使用。（译自 <a href="https://en.wikipedia.org/wiki/Glob_(programming" target="_blank" rel="noopener">WikiPedia</a>#Origin)。）</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>用 npm 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i glob</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> glob = <span class="built_in">require</span>(<span class="string">"glob"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// options 可选</span></span><br><span class="line">glob(<span class="string">"**/*.js"</span>, options, <span class="function"><span class="keyword">function</span> (<span class="params">er, files</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// files 是一个文件名数组。</span></span><br><span class="line">  <span class="comment">// 如果设置了选项 `nonull` 并且没有找到匹配，则 files 是 ["**/*.js"]</span></span><br><span class="line">  <span class="comment">// er 是一个错误对象或 null。</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Glob-基础"><a href="#Glob-基础" class="headerlink" title="Glob 基础"></a>Glob 基础</h2><p>“Globs” 是像这样的模式：用在命令行中的 <code>ls *.js</code>, 用在 <code>.gitignore</code> 文件中的 <code>build/*</code>。</p>
+<p>在解析路径中的模式前，先展开大括号部分。大括号部分以 <code>{</code> 开始，以 <code>}</code> 结束，里面是一个逗号分隔列表。大括号部分可以包含斜杠，例如 <code>a{/b/c,bcd}</code> 将展开为 <code>a/b/c</code> 与 <code>abcd</code>。</p>
+<p>译注：比如路径 “/foo/bar”, 其中 “foo” 与 “bar” 是路径片段(path portion)。</p>
+<p>下面这些字符在路径片段中有特别的意义：</p>
+<ul>
+<li><code>*</code> 匹配路径片段中零个或多个字符。</li>
+<li><code>?</code> 匹配一个字符。</li>
+<li><code>[...]</code> 匹配一个字符集合，类似于正则表达式的字符集合。如果第一个字符是 <code>!</code> 或 <code>^</code> 那么它匹配一个不在这个字符集合内的字符。</li>
+<li><code>!(pattern|pattern|pattern)</code> 匹配不匹配模式的文件。</li>
+<li><code>?(pattern|pattern|pattern)</code> 匹配这些模式零次或一次。</li>
+<li><code>+(pattern|pattern|pattern)</code> 匹配这些模式一次或多次。</li>
+<li><code>*(a|b|c)</code> 匹配这些模式零次或多次。</li>
+<li><code>@(pattern|pat*|pat?erN)</code> 匹配这些模式一次。</li>
+<li><code>**</code> 即 globstar 模式，如果这是单独的一个路径片断，则匹配零级或多级目录，但不会搜索符号链接目录。</li>
+</ul>
+<h3 id="点号"><a href="#点号" class="headerlink" title="点号"></a>点号</h3><p>如果文件或目录路径片段的第一个字符是点号（<code>.</code>），那么它将不匹配任何 glob，除非 glob 相应的路径片段的第一个字符也是 <code>.</code>。</p>
+<p>例如，<code>a/.*/c</code> 匹配 <code>a/.b/c</code>，但是 <code>a/*/c</code> 不匹配，因为 <code>*</code> 第一个字符不是 <code>.</code>。</p>
+<p>可以设置选项 <code>dot:true</code>，将 <code>.</code> 当作普通的字符。</p>
+<p>译注：点文件（dot file），名字以 <code>.</code> 开始，在 Unix 下是隐藏文件。即使使用 globstar 模式，<code>a/**/c</code> 也不会匹配 <code>a/.b/c</code>。</p>
+<h3 id="匹配基本名"><a href="#匹配基本名" class="headerlink" title="匹配基本名"></a>匹配基本名</h3><p>如果设置选项 <code>matchBase:true</code>，并且模式不包含斜杠，那么将搜索目录树下任意地方的匹配基本名（basename）的文件。例如 <code>*.js</code> 匹配 <code>test/simple/basic.js</code>。</p>
+<h3 id="空集"><a href="#空集" class="headerlink" title="空集"></a>空集</h3><p>如果没有找到匹配的文件，那么返回一个空的数组。这跟 shell 不同，shell 会返回模式。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> a*s*d*f</span><br><span class="line">a*s*d*f</span><br></pre></td></tr></table></figure>
+<p>想与 shell 一致，设置选项 <code>nonull:true</code>。</p>
+<h3 id="其它参考"><a href="#其它参考" class="headerlink" title="其它参考"></a>其它参考</h3><ul>
+<li><code>man sh</code></li>
+<li><code>man bash</code> (搜索 “Pattern Matching”)</li>
+<li><code>man 3 fnmatch</code></li>
+<li><code>man 5 gitignore</code></li>
+<li><a href="https://github.com/isaacs/minimatch" target="_blank" rel="noopener">minimatch 文档</a></li>
+</ul>
+<h2 id="glob-hasMagic-pattern-options"><a href="#glob-hasMagic-pattern-options" class="headerlink" title="glob.hasMagic(pattern, [options])"></a>glob.hasMagic(pattern, [options])</h2><p>如果模式包含特殊的字符则返回 <code>true</code>，否则返回 <code>false</code>。</p>
+<p>注意选项会影响结果。如果设置了选项 <code>noext:true</code>，则 <code>+(a|b)</code> 不会视为魔法模式。如果模式包含大括号展开式，比如 <code>a/{b/c,x/y}</code>，则认为是魔法的，除非设置了选项 <code>nobrace:true</code>。</p>
+<h2 id="glob-pattern-options-cb"><a href="#glob-pattern-options-cb" class="headerlink" title="glob(pattern, [options], cb)"></a>glob(pattern, [options], cb)</h2><ul>
+<li><code>pattern</code> <code>{String}</code> 待匹配的模式</li>
+<li><code>options</code> <code>{Object}</code></li>
+<li><code>cb {Function}</code><ul>
+<li><code>err</code> <code>{Error | null}</code></li>
+<li><code>matches</code> <code>{Array&lt;String&gt;}</code> 匹配模式的文件名</li>
+</ul>
+</li>
+</ul>
+<p>进行一个异步的 glob 搜索。</p>
+<h2 id="glob-sync-pattern-options"><a href="#glob-sync-pattern-options" class="headerlink" title="glob.sync(pattern, [options])"></a>glob.sync(pattern, [options])</h2><ul>
+<li><code>pattern</code> <code>{String}</code> 待匹配的模式</li>
+<li><code>options</code> <code>{Object}</code></li>
+<li>return: <code>{Array&lt;String&gt;}</code> 匹配模式的文件名</li>
+</ul>
+<p>进行一个同步的 glob 搜索。</p>
+<h2 id="Class-glob-Glob"><a href="#Class-glob-Glob" class="headerlink" title="Class: glob.Glob"></a>Class: glob.Glob</h2><p>实例化 <code>glob.Glob</code> 类，创建一个 Glob 对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Glob = require(&quot;glob&quot;).Glob</span><br><span class="line">var mg = new Glob(pattern, options, cb)</span><br></pre></td></tr></table></figure>
+<p>这是一个 EventEmitter 对象，立刻开始遍历文件系统搜索匹配。</p>
+<h3 id="new-glob-Glob-pattern-options-cb"><a href="#new-glob-Glob-pattern-options-cb" class="headerlink" title="new glob.Glob(pattern, [options], [cb])"></a>new glob.Glob(pattern, [options], [cb])</h3><ul>
+<li><p><code>pattern</code> <code>{String}</code> 待匹配的模式</p>
+</li>
+<li><p><code>options</code> <code>{Object}</code></p>
+</li>
+<li><p><code>cb {Function}</code></p>
+<p>当遇到错误或找到匹配时调用</p>
+<ul>
+<li><code>err</code> <code>{Error | null}</code></li>
+<li><code>matches</code> <code>{Array&lt;String&gt;}</code> 匹配模式的文件名</li>
+</ul>
+</li>
+</ul>
+<p>注意，如果设置了选项 <code>sync</code>，则匹配将立即添加到 <code>g.found</code>。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li><code>minimatch</code> glob 所用的 minimatch 对象。</li>
+<li><code>options</code> 传入的选项。</li>
+<li><code>aborted</code> 布尔值，当调用 <code>abort()</code> 时设为 true。取消之后不能继续 glob 搜索，不过可以通过重用 statCache 避免重复调用 syscall。</li>
+<li><code>cache</code> 缓存。每个字段都可以取下面的值：<ul>
+<li><code>false</code> - 路径不存在</li>
+<li><code>true</code> - 路径存在</li>
+<li><code>&#39;FILE&#39;</code> - 路径存在，并且不是目录</li>
+<li><code>&#39;DIR&#39;</code> - 路径存在，并且是目录</li>
+<li><code>[file, entries, ...]</code> - 路径存在, 并且是目录，数组值是 <code>fs.readdir</code> 的结果</li>
+</ul>
+</li>
+<li><code>statCache</code> 缓存 <code>fs.stat</code> 的结果，阻止多次读取同一路径的信息。</li>
+<li><code>symlinks</code> 记录哪些路径是符号链接，与 <code>**</code> 解析相关。</li>
+<li><code>realpathCache</code> 可选对象，传给 <code>fs.realpath</code>，以减少不必要的 syscall。它保存在 Glob 实例上，可以重用。</li>
+</ul>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><ul>
+<li><code>end</code> 当结束搜索匹配时触发此事件，包含所有的匹配。如果设置了选项 <code>nonull</code>，并且没有找到匹配，则 <code>matches</code> 包含原来的模式。匹配经过排序，除非设置了选项 <code>nosort</code>。</li>
+<li><code>match</code> 每当找到一个匹配时以这个匹配触发此事件，匹配没有去重，也没有解析为真实路径。</li>
+<li><code>error</code> 当遇到一个异常时, 或者在设置了 <code>options.strict</code> 的情况下遇到 fs 错误时触发此事件。</li>
+<li><code>abort</code> 当调用 <code>abort()</code> 时触发此事件。</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>pause</code> 暂停搜索。</li>
+<li><code>resume</code> 继续搜索。</li>
+<li><code>abort</code> 取消搜索。</li>
+</ul>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>所有可以传给 Minimatch 的选项也可以传给 Glob，选项会改变匹配行为。有些选项是新加的，有些选项是 glob 特定选项。</p>
+<p>所有选项默认是 false, 除非特别说明。</p>
+<p>所有选项也会添加给 Glob 对象。</p>
+<p>如果运行多个 <code>glob</code> 操作，可以将一个 Glob 对象作为 <code>options</code> 参数传递给后面的操作，以简化一些 <code>stat</code> 和 <code>readdir</code> 的调用。在最新的版本里，你可以传入共享的 <code>symlinks</code>, <code>statCache</code>, <code>realpathCache</code>, <code>cache</code> 选项，这样并行的 glob 操作将因为共享文件系统的信息而提速。</p>
+<ul>
+<li><code>cwd</code> String，搜索的工作目录，默认为 <code>process.cwd()</code>。</li>
+<li><code>root</code> String，以 <code>/</code> 开始的模式的挂载目录，默认为 <code>path.resolve(options.cwd, &quot;/&quot;)</code> (Unix 系统下为 <code>/</code>，Windows 系统下为 <code>C:\</code> 或其它磁盘根目录。)</li>
+<li><code>dot</code> 在常规匹配与 <code>globstar</code> 匹配中包含点文件。注意，<code>.</code> 在模式片断中始终匹配点文件。</li>
+<li><code>nomount</code> 以 <code>/</code> 开始的模式默认挂载到 root 选项设置的目录上，因而返回一个合法的文件系统路径。设置此选项禁止此行为。</li>
+<li><code>mark</code> 给匹配的目录添加一个 <code>/</code> 字符。注意这会调用 <code>stat</code>。</li>
+<li><code>nosort</code> 不排序结果。</li>
+<li><code>stat</code> stat 所有的结果。这多少会降低性能，完全没必要，除非认为 <code>readdir</code> 不能作为文件存在的可靠指示。</li>
+<li><code>silent</code> 当读取目录时遇到一个不常见的错误，将打印一条警告到 stderr。设置此选项可取消打印。</li>
+<li><code>strict</code> 当读取目录时遇到一个不常见的错误，进程将继续搜索其它匹配。设置此选项可抛出错误。</li>
+<li><code>cache</code> Object, 见上文。传入之前生成的缓存对象可以节省一些 fs 调用。</li>
+<li><code>statCache</code> Object, 匹配结果的文件系统信息的缓存，用来阻止不必要的 <code>stat</code> 调用。通常不需要设置此选项。不过如果知道文件系统在不同的 glob() 调用之间不会变化，可以将一个 glob() 调用的 statCache 传给另一个调用的选项（见下面“竞态条件”）。</li>
+<li><code>symlinks</code> Object, 已知的符号链接的缓存。可以传入一个之前生成的 <code>symlinks</code> 对象，在匹配 <code>**</code> 时节省 <code>lstat</code> 调用。</li>
+<li><code>sync</code> 废弃，可以用 <code>glob.sync(pattern, opts)</code>。</li>
+<li><code>nounique</code> 在有些情况下，大括号展开式会导致在结果里面同一文件出现多次。本实现默认阻止结果里面出现重复。此选项禁止此行为。</li>
+<li><code>nonull</code> 不返回空集，返回一个包含模式的集合，这是 glob(3) 的默认行为。</li>
+<li><code>debug</code> 启用 minimatch 和 glob 调试。</li>
+<li><code>nobrace</code> 不展开 <code>{a,b}</code> 和 <code>{1..3}</code> 这样的集合。</li>
+<li><code>noglobstar</code> 不支持 “globstar” 模式，这时 <code>**</code> 不匹配多级文件名，像普通的 <code>*</code> 一样对待。</li>
+<li><code>noext</code> 不支持 “extglob” 模式，比如 <code>+(a|b)</code>。</li>
+<li><code>nocase</code> 匹配不区分大小写。注意：在不区分大小写的系统里，默认匹配没有特殊字符的模式，因为 <code>stat</code> 和 <code>readdir</code> 不会抛出异常。</li>
+<li><code>matchBase</code> 如果模式不包含斜杠则匹配基名字。例如 <code>*.js</code> 将视为 <code>**/*.js</code>，匹配所有目录下的 js 文件。</li>
+<li><code>nodir</code> 不匹配目录，只匹配文件。注意如果只匹配目录，简单地在模式的末尾放一个 <code>/</code> 即可。</li>
+<li><code>ignore</code> 添加一个模式或一个 glob 模式数组，用来排除匹配。注意：<code>ignore</code> 模式<strong>始终</strong>认为 <code>dot:true</code>，不管其它的配置是怎样的。</li>
+<li><code>follow</code> 在展开 <code>**</code> 时追踪符号链接目录。注意这可能导致大量重复的引用（循环链接）。</li>
+<li><code>realpath</code> 在所有的结果上调用 <code>fs.realpath</code>，在不能解析符号链接的情况下，返回匹配文件的全路径，不过它常常是一个损坏的符号链接。</li>
+<li><code>absolute</code> 设为 true 时始终得到匹配文件的绝对地址。不同于 <code>realpath</code>，这同时影响 <code>match</code> 事件的返回值。</li>
+</ul>
+<h2 id="与其它-fnmatch-glob-实现的比较"><a href="#与其它-fnmatch-glob-实现的比较" class="headerlink" title="与其它 fnmatch/glob 实现的比较"></a>与其它 fnmatch/glob 实现的比较</h2><p>严格地兼容现实规范是值得追求的目标，不过 node-glob 与其它实现之间存在差异，并且是有意的。</p>
+<p>默认支持 <code>**</code>，除非设置了选项 <code>noglobstar</code>。这也是 bsdglob 和 bash 4.3 的方式。只有当 <code>**</code> 是单独的一个路径片段时它才有这种特殊意义。例如 <code>a/**/b</code> 匹配 <code>a/x/y/b</code>，但是 <code>a/**b</code> 不会。</p>
+<p>注意，<code>**</code> 不会搜索符号链接目录，尽管它们可能匹配模式的其它片断。这可以防止无限循环、重复等。</p>
+<p>如果转义的模式没有找到匹配，并且设置了选项 <code>nonull</code>，则 glob 原样返回模式，而不是转义后的模式。例如 <code>glob.match([], &quot;\\*a\\?&quot;)</code> 返回 <code>&quot;\\*a\\?&quot;</code> 而不是 <code>&quot;*a?&quot;</code>。默认的行为类似于在 bash 里设置 <code>nullglob</code> 选项，除了 bash 不会解析转义的模式。</p>
+<p>如果没有禁止展开大括号，则在解析 glob 的其它模式之前先展开它。例如 <code>+(a|{b),c)}</code>，在 bash 或 zsh 下面是无效的，在这儿会先展开为 <code>+(a|b)</code> 和 <code>+(a|c)</code>，再检查这两个模式的有效性。既然它们是有效的，则进行匹配。</p>
+<h3 id="注释与排除"><a href="#注释与排除" class="headerlink" title="注释与排除"></a>注释与排除</h3><p>在之前的版本中，如果模式以 <code>#</code> 开始则它是一个注释。标记为注释。如果模式以 <code>!</code> 开始则它是一个排除模式。</p>
+<p>v5 已经废弃了选项 <code>nonegate</code> 和 <code>nocomment</code>。v6 则删除了这两个选项。</p>
+<p>如果想排除某些文件，可以使用选项 <code>ignore</code> 。</p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p><strong>请在 glob 表达式里只使用斜杠。</strong></p>
+<p>译注：斜杠（forward-slashe “/“）是顺时针方向，反斜杠（backward-slashe “”）是逆时针方向。</p>
+<p>尽管 Windows 可以用 <code>/</code> 或 <code>\</code> 作为路径分隔符，但是本实现只使用 <code>/</code>。在 glob 表达式里必须只使用斜杠。反斜杠始终视为转义符，而不是路径分隔符。</p>
+<p>绝对路径模式比如 <code>/foo/*</code>，匹配结果挂载到选项 root 设置的目录上（使用 <code>path.join()</code>）。 在 Windows 下，在默认的情况下，<code>/foo/*</code> 可以匹配到 <code>C:\foo\bar.txt</code>（译注：此时 cwd 在 C 盘下）。</p>
+<h2 id="竞态条件"><a href="#竞态条件" class="headerlink" title="竞态条件"></a>竞态条件</h2><p>Glob 搜索本质上容易受竞态条件（race conditions）的影响，因为它建立在目录遍历等上面。</p>
+<p>因此，当 glob 搜索某个文件时它是存在的，然后在返回结果时它可能被删除或被修改。</p>
+<p>作为内部实现的一部分，为了降低系统开销，此实现缓存了所有的 stat 和 readdir 的结果。但是，这也导致它更加容易受竞态条件的影响，特别是在多个 glob 调用之间重用 cache 或 statCache 对象时。</p>
+<p>在面对快速的变化时，建议用户不要将 glob 结果作为文件系统状态的担保。对于绝大多数的操作，这绝不会是一个问题。</p>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>对程序行为的任何改变（包含补丁）必须同时提交测试。</p>
+<p>测试失败的或降低性能的补丁将被拒绝。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># to run tests</span></span><br><span class="line">npm <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># to re-generate test fixtures</span></span><br><span class="line">npm run <span class="built_in">test</span>-regen</span><br><span class="line"></span><br><span class="line"><span class="comment"># to benchmark against bash/zsh</span></span><br><span class="line">npm run bench</span><br><span class="line"></span><br><span class="line"><span class="comment"># to profile javascript</span></span><br><span class="line">npm run prof</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-07-30T05:49:55.000Z" itemprop="dateUpdated">2019-07-30 13:49:55</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/07/30/node-glob-syntax/" target="_blank" rel="external">https://betgar.github.io/2019/07/30/node-glob-syntax/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/30/node-glob-syntax/&title=《node-glob-syntax》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/30/node-glob-syntax/&title=《node-glob-syntax》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/30/node-glob-syntax/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-glob-syntax》 — 个人博客&url=https://betgar.github.io/2019/07/30/node-glob-syntax/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/30/node-glob-syntax/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/07/30/babel6-loose-mode/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Babel 6 松散模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/29/typescript-and-babel-7/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript 和 Babel 7</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/07/30/node-glob-syntax/&title=《node-glob-syntax》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/07/30/node-glob-syntax/&title=《node-glob-syntax》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/07/30/node-glob-syntax/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node-glob-syntax》 — 个人博客&url=https://betgar.github.io/2019/07/30/node-glob-syntax/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/07/30/node-glob-syntax/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQW4DMQgF0Nz/0um2UlX3A9NItp9XUTQZ+2WBwPB6xev9bSXPrJ9ff7/eZbQwMDC2ZbyX67cNfm6WHD1f+dkwMDDuYazD4vrVCSx523rfP86MgYGBEWz8VADFwMDAmDPmZWcv+GJgYGDkQXC9wSQof6gWx8DA2JAxD5H/9/lf+hsYGBhbMSZBcPI5v8iLToWBgXE0Iw9wvyVkeSMzaS2MzoOBgXEoozcekR96UugWYBgYGNcwqpfy1bIz/8uqSSQGBsYNjF7yV72Mq7YTCg0ADAyMoxl5GM1bjMnhJuBytouBgbE5Iy9Te5gkvFZHNJpxGgMDY1vGZxK4yYBFnoZiYGCcyuhtkDPy0Y083EfXbRgYGAcxqmMQveGJXjshfw8GBsbZjGoKWE3pJn9HoT7FwMC4hpGPfyVJXn591jt6NGyBgYFxBCMJc9XRscmhq6NmUeqLgYFxBKPcLHxo1KxwlZb0NzAwMC5g5AMQkyZBNfT3xjgwMDDOY1QHv6q8BDwvazEwMG5g5D/OBzJ6TYLq2AcGBsbNjCTgRhsU26I9JAYGxqmMd3HlhW4vvDapGBgYRzMmbc78m+rhkrDebGBgYGBsy6gG2WevzHrzEhgYGHcy8gu13vV9tQwuIzEwMDBa2WWviE1K3MJmGBgYVzLmyVy1qRCFewwMjAsY+dhWNdbNmwQP1+IYGBgbMvLScXLQXuL4cFMTAwNjP8YXmv+yUJ7lRmQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

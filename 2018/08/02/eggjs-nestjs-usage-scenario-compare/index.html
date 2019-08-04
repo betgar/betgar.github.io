@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>egg.js和nestjs使用场景对比 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="fe">
+    <meta name="description" content="egg.js和nestjs使用场景对比提醒大家：注意文章的时效性，毕竟不同的事件节点，框架成熟度不同。分享这篇文章主要是希望能够让大家认清框架的定位和应对的业务场景，框架没有好坏之分，只有是否适合自己。  原标题：关于nodejs-web框架的调研 作者：xingyuzhe 日期： Feb 25, 2018 原文： https://github.com/xingyuzhe/blog/issues/">
+<meta name="keywords" content="fe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="egg.js和nestjs使用场景对比">
+<meta property="og:url" content="https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="egg.js和nestjs使用场景对比提醒大家：注意文章的时效性，毕竟不同的事件节点，框架成熟度不同。分享这篇文章主要是希望能够让大家认清框架的定位和应对的业务场景，框架没有好坏之分，只有是否适合自己。  原标题：关于nodejs-web框架的调研 作者：xingyuzhe 日期： Feb 25, 2018 原文： https://github.com/xingyuzhe/blog/issues/">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/3498363/36649060-26c36ab8-1ad5-11e8-8c35-d1bb6f1c104e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/3498363/36660001-6e88cda2-1b11-11e8-9279-506031289ef1.png">
+<meta property="og:updated_time" content="2019-08-04T09:18:34.144Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="egg.js和nestjs使用场景对比">
+<meta name="twitter:description" content="egg.js和nestjs使用场景对比提醒大家：注意文章的时效性，毕竟不同的事件节点，框架成熟度不同。分享这篇文章主要是希望能够让大家认清框架的定位和应对的业务场景，框架没有好坏之分，只有是否适合自己。  原标题：关于nodejs-web框架的调研 作者：xingyuzhe 日期： Feb 25, 2018 原文： https://github.com/xingyuzhe/blog/issues/">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/3498363/36649060-26c36ab8-1ad5-11e8-8c35-d1bb6f1c104e.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">egg.js和nestjs使用场景对比</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">egg.js和nestjs使用场景对比</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-02T10:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-08-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#egg-js和nestjs使用场景对比"><span class="post-toc-number">1.</span> <span class="post-toc-text">egg.js和nestjs使用场景对比</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eggjs"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">eggjs</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nestjs"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">nestjs</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关资料"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">相关资料</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-eggjs-nestjs-usage-scenario-compare"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">egg.js和nestjs使用场景对比</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-02 18:00:00" datetime="2018-08-02T10:00:00.000Z"  itemprop="datePublished">2018-08-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="egg-js和nestjs使用场景对比"><a href="#egg-js和nestjs使用场景对比" class="headerlink" title="egg.js和nestjs使用场景对比"></a>egg.js和nestjs使用场景对比</h1><p><strong>提醒大家：注意文章的时效性，毕竟不同的事件节点，框架成熟度不同。分享这篇文章主要是希望能够让大家认清框架的定位和应对的业务场景，框架没有好坏之分，只有是否适合自己。</strong></p>
+<blockquote>
+<p>原标题：关于nodejs-web框架的调研</p>
+<p>作者：xingyuzhe</p>
+<p>日期： Feb 25, 2018</p>
+<p>原文： <a href="https://github.com/xingyuzhe/blog/issues/1" target="_blank" rel="noopener">https://github.com/xingyuzhe/blog/issues/1</a></p>
+</blockquote>
+<p>以下内容其实是补漏, 算是对1月份一点工作的总结。</p>
+<p>加入了新团队, 初次接触, 粗略的查看了一些项目(nodejs server端), 发现存在<a href="https://github.com/xingyuzhe/blog/issues/5" target="_blank" rel="noopener">几个</a>问题:</p>
+<p>对于新成立的团队，存在以上问题可以理解， 本次是讨论和解决第一个问题。</p>
+<p>对于集团范围内而言，同种技术存在多种不同规范和框架很正常, 但是对于一个几十人的团队而言, 资源有限，还是集中力量统一一下效率高些, 有鉴于此， 觉得做一个种子项目比较合适: 一个企业定制框架, 共同维护, 同步更新, 信息共享和沉淀最佳实践。</p>
+<p>跟领导聊了一下， 总结了一下当前状态团队对于这块内容的一些主观诉求:</p>
+<ol>
+<li>框架实现够简单, 团队能全面掌控, 低风险。</li>
+<li>给新手从基础开始学习的机会, 就是希望除了满足业务需求之外, 团队也能得到成长。</li>
+<li>一个企业基础框架应满足的基本要求: 约束规范、扩展机制、安全、高效业务开发</li>
+<li>最终还是希望能沉淀出一套自己的轮子</li>
+</ol>
+<p>根据上面的要求, 筛选出了<a href="https://eggjs.org/" target="_blank" rel="noopener">eggjs</a>和<a href="https://nestjs.com/" target="_blank" rel="noopener">nestjs</a>2个web框架, 其中nestjs是团队一部分同学比较喜欢和尝试使用了的。</p>
+<p>首先从外层信息做些调查。</p>
+<p>我通读了eggjs和nestjs的文档，查阅了一些资料, 简单对比如下:</p>
+<table>
+<thead>
+<tr>
+<th>–</th>
+<th>eggjs</th>
+<th>nestjs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>github stars</td>
+<td>7014</td>
+<td>4291</td>
+</tr>
+<tr>
+<td>github forks</td>
+<td>720</td>
+<td>250</td>
+</tr>
+<tr>
+<td>gitHub dependents</td>
+<td>1591/305</td>
+<td>0/0</td>
+</tr>
+<tr>
+<td>npm search results</td>
+<td>565</td>
+<td>53+</td>
+</tr>
+<tr>
+<td>github contributors</td>
+<td>101</td>
+<td>31</td>
+</tr>
+<tr>
+<td>github core contributors</td>
+<td>4(10+)</td>
+<td>1(2+)</td>
+</tr>
+<tr>
+<td>github releases</td>
+<td>49</td>
+<td>19</td>
+</tr>
+<tr>
+<td>github issues</td>
+<td>86/1416</td>
+<td>20/347</td>
+</tr>
+<tr>
+<td>基础框架依赖</td>
+<td>koa2</td>
+<td>express</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>业界良心</td>
+<td>一般</td>
+</tr>
+<tr>
+<td>核心原理</td>
+<td>载入-挂载</td>
+<td>模块容器-依赖注入(通过装饰器和元数据实现)</td>
+</tr>
+<tr>
+<td>核心理念</td>
+<td>微内核-插件机制</td>
+<td>组件树-装饰器-流程控制</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>eggjs的特点和解决的主要问题:</p>
+</blockquote>
+<ol>
+<li>通过载入代码-自动挂载代码到对象的方式解决了到处写import/require的问题, 不再需要手动维护模块之间的依赖关系, 核心就是一个loader, 虽然官方没有提及, 但是本人开下脑洞猜测, 这个模块的实现灵感有可能来自于坟头草已经一人高了的seajs, -_-, 这种挂载模式实现起来简单粗暴直接高效, 但是一个小问题就是在使用TS编写代码的时候, 会影响书写体验的流畅度, 毕竟不很OOP。</li>
+<li>微核心 + 插件机制(这个理念其实一直以来都是代码组织的核心手段, 本人在以前开发播放器和IM客户端这块时感同身受), 大部分功能通过插件实现, 从而剥离非核心生命周期功能代码, 达到解耦/降低思维负担的目的; 另外一点就是跨模块API调用比较自由没有限制, 这个地方带来便捷的同时也有可能需要一定约束。</li>
+<li>统一约束和规范, 对开发人员强约束, 保证不会出现千人千面的代码风格和设计。</li>
+<li>种子项目 + 渐进式开发, 可以沉淀出自己的插件和业务框架、最佳实践</li>
+<li>针对业务中遇到的常见问题基本都给出了解决方案, 插件丰富, 配套齐全</li>
+<li>内部实现了进程间管理和通信功能</li>
+<li>文档可是说是比较细致了, 基本把web这块涉及到的点都涵盖了, 仅仅通读文档对新手而言都会有不少收获</li>
+<li>核心开发者较多, 属于团队项目, 整体看来比较严谨</li>
+<li>沉淀时间较长, 正式发版2年, 实际发展了4年</li>
+<li>明确定义了agent和app模式, 也实现了schedule功能</li>
+</ol>
+<blockquote>
+<p> nestjs的特点和解决的主要问题:</p>
+</blockquote>
+<ol>
+<li>通过模块容器-依赖注入维护组件树的模式解决了到处写import/require的问题, 不再需要手动维护模块之间的依赖关系, 另外编码方式与java十分相似。</li>
+<li>组件树容器模式也达到了解耦效果, 实现方式上很大程度上受angular-module影响, 但是需要指定节点component的依赖关系, 跨模块调用严格依赖于声明. 其实这块功能github有独立的项目专做这个东西, 例如:<a href="http://inversify.io/" target="_blank" rel="noopener"> InversifyJS</a> | <a href="https://github.com/young-steveo/bottlejs" target="_blank" rel="noopener">bottlejs</a>, nestjs 自己实现了这个模块。</li>
+<li>统一约束和规范, 对开发人员强约束</li>
+<li>大量使用装饰器, 这个未支持的特性需要编译, 对代码阅读上可能会提高一些难度</li>
+<li>流程控制上比较细致, 提出了filter、pipe、guard、interceptor这些明确的概念, 虽然这些工作在正常开发时也会做, 但是明确提出来并制定规范还是很有必要的</li>
+<li>明确了Exception Layer的概念</li>
+<li>默认使用/推荐TS开发</li>
+<li>自带微服务实现</li>
+<li>自带swagger接口文档生成功能</li>
+<li>核心开发基本就作者一人, 属于个人项目, 提交记录比较难看, 前期的提交非常随便, 到后期才慢慢改善</li>
+<li>2017年1月立项, 2017年5月发布第一个正式版本, 尚需时日印证</li>
+</ol>
+<p>从上述情况来看, 2个框架都在123这几项做了工作, 完成了一个框架所应具备的基本诉求; 总体上看eggjs更加成熟和全面, 配套/生态相对完善的多, 低风险; nestjs则比较青涩和单一, 但是在组件树、流程控制、错误层级处理上有自己的特色, 理念上更加OOP,学习并吸收这些理念是很可取的, 但暂时不建议在核心产品线上投入使用。</p>
+<h3 id="eggjs"><a href="#eggjs" class="headerlink" title="eggjs"></a>eggjs</h3><p>详细阅读了核心相关代码, 粗略阅读了cluster等一些模块和插件的代码, 代码读起来总体比较流畅, 发现框架的核心实现非常简单明了:</p>
+<ul>
+<li><p>框架基础依赖一个非常独立的loader模块, 功能就是加载代码文件和挂载函数到指定对象。</p>
+</li>
+<li><p>框架本身核心类只有6个: koa本身的application, context, response, request, egg自身新增的controller, service 这2个类, 后续所有的挂载动作都在这几个类上面进行</p>
+</li>
+<li><p>框架明确了app, framework, plugin3个概念, 依赖方式大概是这样:</p>
+<p><img src="https://user-images.githubusercontent.com/3498363/36649060-26c36ab8-1ad5-11e8-8c35-d1bb6f1c104e.png" alt=""></p>
+</li>
+<li><p>框架启动的核心流程主要是这样:</p>
+<p><img src="https://user-images.githubusercontent.com/3498363/36660001-6e88cda2-1b11-11e8-9279-506031289ef1.png" alt=""></p>
+</li>
+</ul>
+<p>  由于eggjs自己实现了cluster, 自带进程管理和进程间通信功能, 所以egg自身部署时并不需要pm2这个工具, 官方文档上也对此做了<a href="https://eggjs.org/zh-cn/faq.html#进程管理为什么没有选型-pm2" target="_blank" rel="noopener">解释</a>。不过由于这块内容的引入(cluster还涉及到schedule、socket等功能)，给框架本身带来了大量额外的代码和逻辑, 总体提升了框架的复杂度。</p>
+<p>  但是有些时候由于某些原因并不希望直接使用框架提供的cluster解决方案, 另外我查看了下pm2的API, 也是有进程间通信的API的, 当然用起来可能没有自定义实现时那样自由, 也尚未听说该API有被广泛使用过, 不过, cluster相关的内容能否作为一个扩展包, 而不是强耦合进框架核心流程中? 这样框架本身更加简单纯洁, 或者更容易被接受一些?</p>
+<p>  为此尝试抽离了eggjs的核心代码, 目标是仅保留最最核心的代码(移除cluster等周边代码), 具备egg的扩展机制和能正常直接使用eggjs的周边插件, 结果最后只需要几百行代码, 很少几个文件即可完成。后续在此基础上整理了一个上层框架, 预想作为业务项目的基础框架使用，主要涉及以下一些方面:</p>
+<ol>
+<li>抽离eggjs的核心代码, 仅保留其插件机制和对应的约束规范</li>
+<li>集成常用扩展函数、中间件、插件</li>
+<li>集成多节点/进程下消息推送解决方案示例</li>
+<li><p>集成schedule定时任务模块</p>
+<p>之后花了点时间用这个上层框架开发了一个抽奖小项目, 开发体验还算流畅, 虽说是草量级项目, 不过也是五脏俱全, 作为example还挺适合。</p>
+</li>
+</ol>
+<h3 id="nestjs"><a href="#nestjs" class="headerlink" title="nestjs"></a>nestjs</h3><p>  粗略查看了下nestjs的源码, nestjs的核心其实就是一个IoC模块管理容器的实现, 这块内容的逻辑实现作者处理的还是相对复杂的多, 这里吐槽下作者的代码组织方式和略显随意的注释大量的接口引用和糟糕的历史提交记录…，真是额外提高了阅读的难度. TypeScript的加持和作者本人的光环也不能阻挡这一点。言归正传, 这里说下它的核心原理和流程。</p>
+<p>  要想理解nestjs的源码先要理解和掌握以下知识:</p>
+<ol>
+<li>ES6的proxy，reflect</li>
+<li>TypeScript的decorator</li>
+<li>inversion of control (IoC)的基本概念</li>
+<li>一定TypeScript基础.</li>
+<li>如何通过decorator和元数据实现依赖注入</li>
+</ol>
+<ul>
+<li>container类: 用于存储所有模块</li>
+<li>scanner类: 递归提取出所有模块并存储到容器中; 提取出模块间的关联关系和模块自身的各种类以及内部联系，并存储到模块中;</li>
+<li>module类: 存储自身的关联模块、组件、可注入类、控制器类</li>
+<li>injector类: 依赖注入的核心环节, 在所有模块的内容和关系都被扫描出后, 来创建实例,</li>
+<li><p>instanceLoader类: 使用Injector来加载模块的各种实例, 这个过程很复杂, 伴随递归和各种判断</p>
+<p>这个IoC容器实现的核心流程是这样:<br>scanner扫描所有module并提取关系存入module-&gt;module存入 container-&gt; injector创建实例(依赖注入)-&gt; instanceLoader加载实例</p>
+<p>我们再拿nestjs实现上面eggjs版本lottery的例子, 大概是这样:</p>
+<p>结合源码和实际开发体验来说:</p>
+</li>
+<li><p>eggjs框架本身的模块管理(扩展机制)非常简单, 复杂度主要在于cluster这块内容和为此配套的周边设施(命令行工具、调试工具)，但是这个复杂度是脱离于核心之外的东西。</p>
+</li>
+<li><p>nestjs的复杂度主要在于IoC模块管理器这块的实现上, 实际上这个东西理论上可以独立出来, 以此降低框架本身逻辑的复杂度。</p>
+<p>从总体上讲, eggjs相对成熟, 更贴合实际开发需求。 nestjs的优势就是在一些细节上的约束和控制以及理念上的新颖(仅相对node-web框架而言), 但是这些并不是核心诉求。</p>
+<p>另外eggjs团队做的工作内容相对于nestjs而言相当的多, 这些与人力、时间资源的投入是分不开的。</p>
+</li>
+</ul>
+<blockquote>
+<p>最后, 对于想要的新框架的处理结论已经有了:</p>
+</blockquote>
+<p>1 社区模式(节省资源)</p>
+<ul>
+<li>直接在eggjs基础上做一个上层框架, 吸收nestjs的一些优点, 作为插件/扩展内容去完善框架本身.</li>
+</ul>
+<p>2 造轮子模式</p>
+<ul>
+<li>eggjs插件机制 + nestjs流程控制 + component模式(可选) =&gt; 新轮子</li>
+</ul>
+<p>3 所应具备的特性</p>
+<ul>
+<li>约束规范</li>
+<li>沉淀/扩展模式</li>
+<li>模块依赖管理</li>
+<li>集成typescript开发环境</li>
+<li>集成API文档输出方案</li>
+<li>环境配置</li>
+<li>多节点/cluster解决方案<ul>
+<li>socket.io</li>
+<li>schedule</li>
+</ul>
+</li>
+<li>集成常用插件功能<ul>
+<li>logger</li>
+<li>cookie</li>
+<li>session</li>
+<li>security</li>
+<li>i18n</li>
+<li>redis</li>
+<li>sequelize</li>
+<li>multipart</li>
+<li>oauth</li>
+<li>onerror</li>
+<li>passport</li>
+<li>view</li>
+<li>role</li>
+<li>crypto</li>
+</ul>
+</li>
+<li>定义控制流/数据流约束规范<ul>
+<li>schema</li>
+<li>pipe</li>
+<li>interceptor</li>
+<li>guard</li>
+</ul>
+</li>
+<li>migration</li>
+<li>微服务</li>
+<li>错误分级</li>
+<li>监控</li>
+<li>测试用例/代码覆盖率</li>
+<li>调试</li>
+<li>压力测试</li>
+</ul>
+<p>补充:<br>随着各种工具的发展, 加上eggjs使用也有一段时日，最初一些模糊的预感变得清晰：<br>1 egg内置cluster模式带来的额外麻烦太多, 现在各种配套工具逐渐完善， 这个功能并没有什么用</p>
+<p>2 egg模块隔离度不够但矛盾的是有时候又有限制, 简单的说就是代码组织模式上作为框架不够好, 需要自行定制上层规范; egg的是plugin模式, 相对于nest的component模式还是不够用；</p>
+<p>3 egg的ts开发的流畅度差那么一点</p>
+<p>4 实际的项目, 需要各种配套设施、工具、系统的协作联合，框架只是一个组成部分, 就应该只做它应该做的事就可以了</p>
+<p>各有优劣, 诉求不一样, 选择就不一样:<br>1 eggjs: 短平快稳，上手极快, 文档完善，配套齐全, 能极大缩短工期。<br>2 nestjs: 有点追求, 复杂度高的协作项目, 核心诉求是代码组织模式的</p>
+<p>之前egg很好的满足了我们的诉求, 但是下一个项目, 会考虑使用nestjs或者自行开发框架(足够闲的话)。</p>
+<blockquote>
+<p>egg官方维护者atian25的评论：<a href="https://github.com/xingyuzhe/blog/issues/1#issuecomment-416619079" target="_blank" rel="noopener">点击详见</a></p>
+</blockquote>
+<p>补充下几点：</p>
+<ul>
+<li><p>Cluster 里面并没有 schedule</p>
+</li>
+<li><p>Socket 那个是为了实现高级的 IPC</p>
+</li>
+<li><p>Cluster 还是很建议使用的，如果有什么特殊的定制需求，何不如提下 RFC/ISSUE 大家讨论下</p>
+</li>
+<li><p>egg-core + egg-cluster 才成为 egg，你要是想定制，可以类似 egg-core + my-cluster(虽然不建议)</p>
+</li>
+<li><p>框架复杂度其实反而是降低了，因为 PM2 的代码比 egg-cluster 复杂多了</p>
+</li>
+<li><p>Egg 的定位是框架的框架，跟 thinkjs/sails/nest 这些是没法直接对比的，因为不是一个层面的概念。就像你只能对比 Express 和 Koa，而不能对比 nest 和 Koa，因为 nest 是在 Express 之上的封装。</p>
+<p>基于 Egg 封装的针对某个领域的上层框架，才能对比。譬如完全可以用官方的 TS 方案，再封装集成几个装饰器，成为一个上层框架。就可以拿来对比了。</p>
+</li>
+</ul>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="https://github.com/atian25/blog/issues/20" target="_blank" rel="noopener">Egg &amp; Node.js 从小工坊走向企业级开发</a></p>
+<p><a href="https://mp.weixin.qq.com/s/QI52VbaQfFOTZyNSfkHk0w" target="_blank" rel="noopener">选择JavaScript开源库时，你需要考虑这些问题</a></p>
+<p><a href="https://12factor.net/zh_cn/" target="_blank" rel="noopener">12个因素</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-04T09:18:34.144Z" itemprop="dateUpdated">2019-08-04 17:18:34</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2018/08/02/eggjs-nestjs-usage-scenario-compare/" target="_blank" rel="external">https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/&title=《egg.js和nestjs使用场景对比》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/&title=《egg.js和nestjs使用场景对比》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《egg.js和nestjs使用场景对比》 — 个人博客&url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/03/AMD-best-practice/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">AMD最佳实践(requirejs)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/26/perfect-full-page-background-image/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">自适应全背景图片布局</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/&title=《egg.js和nestjs使用场景对比》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/&title=《egg.js和nestjs使用场景对比》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《egg.js和nestjs使用场景对比》 — 个人博客&url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2018/08/02/eggjs-nestjs-usage-scenario-compare/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aS24jMQwFQN//0sk2A8TqR1LMeFG9MvyRVB2gyTzp9Yqvrx/Xz3fO30yu5LfnGS9ceHh4eIOln4d+N1nyafL6DHj3/fMtw8PDw9vjJcO9Gzp5/8x4WOJxPQ8WPDw8vA/g5b99x8iLQa+hx8PDw/tk3qQhnpDw8PDwPoFXjVCTZjovFdXfrmQteHh4eDEv30X6nNcr+3t4eHh44131/IE7WUTyuG+uFg8PD2+B14sG5pFuL8DtRRh4eHh4e7xzTFC9EfkI1YNc5eYbDw8Pb4GXN8f5p7dSgupGXTNTwcPDw4t51Qf3fOOqV0hGMQQeHh7eVV6vMOSN7OTWnMdpBsd4eHh4Y17SvPY2tCbN8WRL7J/x8fDw8BZ42w/0edPca80LVQUPDw+vxZu3s734oLcN1os88PDw8G7xqo3vpL2ePMpHFQ8PDw9vgdeLEiZBQzWMyIvQL1kLHh4e3gIvaWF7B0+rI89jjkIqjIeHh9fiJdPMj5AmEW0PXLg1eHh4eFd5yZTVljcvLb2MOV8hHh4e3gYvf0Anm1WT4HUShUTlAQ8PD2+Blx97ypvpvGWfb7aVwwg8PDy8Iq/6r35+sKAXB1dL0cMfBg8PD+9PeNVBq9RJAJGXBDw8PLw93qSZThbXO3CQz5sUHjw8PLxtXu+AVN6a3y0bUWnBw8PDW+P1wohqM90LkSfrxMPDw9vj5UFtXh7K7W/r0f9Q0vDw8PCu8r6KV7XhjmLWYlxbmB0PDw9vgTcZund86twW9w4QXNhIw8PDwyvyqs1xtRhUH9bVI1kPSDw8PLw13nya+Uba4qErPDw8vP/Kq4atvRY8OY4QhcJ4eHh4H8OrttG9ItGLP/Dw8PD+htebpnlaofXNUWHAw8PDu8rrRavzA1hzzOvWhYeHh5fyvgEliaZLhepskgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

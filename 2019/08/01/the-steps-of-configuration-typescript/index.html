@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>一步一步配置Typescript工程 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="typescript">
+    <meta name="description" content="一步一步配置Typescript工程 这里列举一下本工程配置的步骤，有兴趣可以了解。   README模板选择  README模板     LICENSE模板选择  CHOOSE LICENSE    项目初始化 初始化project 12345# 初始化仓库git init# 初始化package信息npm init  .gitignore gitignore在线生成  .editorconfi">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一步一步配置Typescript工程">
+<meta property="og:url" content="https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="一步一步配置Typescript工程 这里列举一下本工程配置的步骤，有兴趣可以了解。   README模板选择  README模板     LICENSE模板选择  CHOOSE LICENSE    项目初始化 初始化project 12345# 初始化仓库git init# 初始化package信息npm init  .gitignore gitignore在线生成  .editorconfi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190802100425-eslint-init.gif">
+<meta property="og:updated_time" content="2019-08-02T06:36:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一步一步配置Typescript工程">
+<meta name="twitter:description" content="一步一步配置Typescript工程 这里列举一下本工程配置的步骤，有兴趣可以了解。   README模板选择  README模板     LICENSE模板选择  CHOOSE LICENSE    项目初始化 初始化project 12345# 初始化仓库git init# 初始化package信息npm init  .gitignore gitignore在线生成  .editorconfi">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190802100425-eslint-init.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">一步一步配置Typescript工程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">一步一步配置Typescript工程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-01T05:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一步一步配置Typescript工程"><span class="post-toc-number">1.</span> <span class="post-toc-text">一步一步配置Typescript工程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#项目初始化"><span class="post-toc-number">2.</span> <span class="post-toc-text">项目初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Babel安装和配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">Babel安装和配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Babel配置"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Babel配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#eslint配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">eslint配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装eslint并初始化"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装eslint并初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装TypeScript解析器和插件"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">安装TypeScript解析器和插件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码风格-typescript-eslint-Prettier-airbnb"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">代码风格(typescript-eslint + Prettier + airbnb)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Prettier一起使用（可选）"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Prettier一起使用（可选）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#airbnb一起使用（可选）"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">airbnb一起使用（可选）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eslint的最终的配置"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">eslint的最终的配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TypeScript配置"><span class="post-toc-number">5.</span> <span class="post-toc-text">TypeScript配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tsconfig-json初始化"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">tsconfig.json初始化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#webpack"><span class="post-toc-number">6.</span> <span class="post-toc-text">webpack</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装webpack"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">安装webpack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置webpack"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">配置webpack</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#约定式提交"><span class="post-toc-number">7.</span> <span class="post-toc-text">约定式提交</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#commit-message-style校验"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">commit message style校验</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TODO"><span class="post-toc-number">8.</span> <span class="post-toc-text">TODO</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-steps-of-configuration-typescript"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">一步一步配置Typescript工程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-01 13:00:00" datetime="2019-08-01T05:00:00.000Z"  itemprop="datePublished">2019-08-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="一步一步配置Typescript工程"><a href="#一步一步配置Typescript工程" class="headerlink" title="一步一步配置Typescript工程"></a>一步一步配置Typescript工程</h2><blockquote>
+<p>这里列举一下本工程配置的步骤，有兴趣可以了解。</p>
+</blockquote>
+<ul>
+<li><p>README模板选择</p>
+<blockquote>
+<p><a href="https://gist.github.com/PurpleBooth/109311bb0361f32d87a2" target="_blank" rel="noopener">README模板</a></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>LICENSE模板选择</p>
+<blockquote>
+<p><a href="https://choosealicense.com/" target="_blank" rel="noopener">CHOOSE LICENSE</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><ul>
+<li><p>初始化project</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化仓库</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化package信息</span></span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>.gitignore</code></p>
+<p><a href="https://www.gitignore.io/" target="_blank" rel="noopener">gitignore在线生成</a></p>
+</li>
+<li><p><code>.editorconfig</code></p>
+<p><a href="https://editorconfig.org/" target="_blank" rel="noopener">EditorConfig网站</a></p>
+</li>
+<li><p><code>.browserlistrc</code>目标环境<br><a href="https://browsersl.ist/" target="_blank" rel="noopener">在线生成及查看浏览器覆盖情况</a></p>
+</li>
+</ul>
+<h2 id="Babel安装和配置"><a href="#Babel安装和配置" class="headerlink" title="Babel安装和配置"></a>Babel安装和配置</h2><blockquote>
+<p>Babel的相关文档链接</p>
+</blockquote>
+<p><a href="https://babeljs.io/docs/en/presets" target="_blank" rel="noopener">babel presets文档</a></p>
+<p><a href="https://babeljs.io/docs/en/babel-polyfill" target="_blank" rel="noopener">babel-polyfill文档</a></p>
+<p><a href="https://babeljs.io/docs/en/config-files" target="_blank" rel="noopener">babel config文档</a></p>
+<p><a href="https://babeljs.io/docs/en/plugins#experimental" target="_blank" rel="noopener">babel proposal文档</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>安装Babel</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev @babel/core @babel/cli @babel/preset-env @babel/preset-typescript</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装proposal</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装polyfill<blockquote>
+<p><code>@babel/polyfill</code>在<code>babel v7.4.0</code> 之后为deprecated</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果需要polyfill</span></span><br><span class="line"><span class="comment"># 注意：core-js版本, babel 7.4.0之后@babel/polyfill过时，默认依赖core-js@2版本，也可以指定3</span></span><br><span class="line">npm i @babel/polyfill core-js</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果之前在entry这么引入polyfill</span></span><br><span class="line"><span class="comment">// before</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"@babel/polyfill"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在替换为这种方式（core-js@3）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"core-js/stable"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"regenerator-runtime/runtime"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Babel配置"><a href="#Babel配置" class="headerlink" title="Babel配置"></a>Babel配置</h3><blockquote>
+<p>仅供参考，你可以自己自定义</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// babel.config.js</span></span><br><span class="line"><span class="comment">// targets推荐使用.browserslistrc替换</span></span><br><span class="line"><span class="keyword">const</span> presets = [</span><br><span class="line">  [</span><br><span class="line">    <span class="string">'@babel/preset-env'</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      useBuiltIns: <span class="string">'usage'</span>,</span><br><span class="line">      corejs: <span class="number">3</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="string">'@babel/preset-typescript'</span>,</span><br><span class="line">  ],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> plugins = [</span><br><span class="line">  <span class="string">'@babel/plugin-proposal-class-properties'</span>,</span><br><span class="line">  <span class="string">'@babel/plugin-proposal-object-rest-spread'</span>,</span><br><span class="line">];</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  presets,</span><br><span class="line">  plugins,</span><br><span class="line">  exclude: [</span><br><span class="line">    <span class="string">'src/**/*.spec.(js|ts)'</span>,</span><br><span class="line">    <span class="string">'src/**/*.test.(js|ts)'</span>,</span><br><span class="line">  ],</span><br><span class="line">  comments: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="eslint配置"><a href="#eslint配置" class="headerlink" title="eslint配置"></a>eslint配置</h2><h3 id="安装eslint并初始化"><a href="#安装eslint并初始化" class="headerlink" title="安装eslint并初始化"></a>安装eslint并初始化</h3><blockquote>
+<p>因为TypeScript官方团队选择支持eslint，所以以后还是选择eslint玩吧。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm i -D eslint</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成默认的配置，因为格式化是ts，默认先不选代码风格</span></span><br><span class="line">npx eslint --init</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>  <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190802100425-eslint-init.gif" alt=""></p>
+<h3 id="安装TypeScript解析器和插件"><a href="#安装TypeScript解析器和插件" class="headerlink" title="安装TypeScript解析器和插件"></a>安装TypeScript解析器和插件</h3><blockquote>
+<p>typescript-eslint<br>因为eslint的解析器不认识TypeScript，所以这里需要替换掉默认的parser<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># @typescript-eslint/parser</span></span><br><span class="line">npm i --save-dev typescript @typescript-eslint/parser</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="代码风格-typescript-eslint-Prettier-airbnb"><a href="#代码风格-typescript-eslint-Prettier-airbnb" class="headerlink" title="代码风格(typescript-eslint + Prettier + airbnb)"></a>代码风格(typescript-eslint + Prettier + airbnb)</h3><p><a href="https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin" target="_blank" rel="noopener">@typescript-eslint/eslint-plugin文档</a></p>
+<p><a href="https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules" target="_blank" rel="noopener"> @typescript-eslint/eslint-plugin支持的规则</a></p>
+<p><a href="https://github.com/AlloyTeam/eslint-config-alloy" target="_blank" rel="noopener">建议以后选择eslint-config-alloy</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装@typescript-eslint/eslint-plugin</span></span><br><span class="line">npm i --save-dev @typescript-eslint/eslint-plugin</span><br></pre></td></tr></table></figure>
+<h3 id="Prettier一起使用（可选）"><a href="#Prettier一起使用（可选）" class="headerlink" title="Prettier一起使用（可选）"></a>Prettier一起使用（可选）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev eslint-config-prettier</span><br></pre></td></tr></table></figure>
+<h3 id="airbnb一起使用（可选）"><a href="#airbnb一起使用（可选）" class="headerlink" title="airbnb一起使用（可选）"></a>airbnb一起使用（可选）</h3><blockquote>
+<p><a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb" target="_blank" rel="noopener">eslint-config-airbnb文档</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意：官方文档要求npm 5+</span></span><br><span class="line">npx install-peerdeps --dev eslint-config-airbnb</span><br></pre></td></tr></table></figure>
+<h3 id="eslint的最终的配置"><a href="#eslint的最终的配置" class="headerlink" title="eslint的最终的配置"></a>eslint的最终的配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">	parser: <span class="string">'@typescript-eslint/parser'</span>, <span class="comment">// 解析器</span></span><br><span class="line">	plugins: [<span class="string">'@typescript-eslint'</span>],</span><br><span class="line">	extends: [</span><br><span class="line">		<span class="string">'airbnb'</span>,</span><br><span class="line">		<span class="string">'plugin:@typescript-eslint/recommended'</span>,</span><br><span class="line">		<span class="string">'prettier'</span>,</span><br><span class="line">		<span class="string">'prettier/@typescript-eslint'</span>,</span><br><span class="line">	],</span><br><span class="line">	env: &#123;</span><br><span class="line">		browser: <span class="literal">true</span>,</span><br><span class="line">		es6: <span class="literal">true</span>,</span><br><span class="line">		node: <span class="literal">true</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	globals: &#123;</span><br><span class="line">		Atomics: <span class="string">'readonly'</span>,</span><br><span class="line">		SharedArrayBuffer: <span class="string">'readonly'</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	parserOptions: &#123;</span><br><span class="line">		ecmaVersion: <span class="number">2018</span>,</span><br><span class="line">		sourceType: <span class="string">'module'</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	rules: &#123;</span><br><span class="line">    <span class="string">'@typescript-eslint/no-explicit-any'</span>: [<span class="string">'off'</span>],</span><br><span class="line">		<span class="string">'@typescript-eslint/no-var-requires'</span>: [<span class="string">'off'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>因为eslint默认识别.js结尾的文件，这里需要指定下文件后缀<br>eslint之后是文件夹, –ext参数才生效，如果是具体的正则表达式则匹配–ext被忽略<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>:&#123;</span><br><span class="line">     <span class="string">"lint"</span>: <span class="string">"eslint src --ext .js,.ts,.tsx,.jsx"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="TypeScript配置"><a href="#TypeScript配置" class="headerlink" title="TypeScript配置"></a>TypeScript配置</h2><blockquote>
+<p><a href="https://www.tslang.cn/docs/handbook/compiler-options.html" target="_blank" rel="noopener">编译器的options配置</a></p>
+</blockquote>
+<h3 id="tsconfig-json初始化"><a href="#tsconfig-json初始化" class="headerlink" title="tsconfig.json初始化"></a>tsconfig.json初始化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx tsc --init --declaration --allowSyntheticDefaultImports --target esnext --outDir dist</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>添加scripts命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"checktypes"</span>: <span class="string">"tsc --noEmit"</span>,</span><br><span class="line">    <span class="string">"checktypes:watch"</span>: <span class="string">"npm run checktype -- --watch"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"npm run build:types &amp;&amp; npm run build:js"</span>,</span><br><span class="line">    <span class="string">"build:types"</span>: <span class="string">"tsc --emitDeclarationOnly"</span>,</span><br><span class="line">    <span class="string">"build:js"</span>: <span class="string">"npx babel src --out-dir dist --source-maps inline --extensions .ts,.tsx"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>package.json指定声明文件入口<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 如果不指定默认查找project根目录的index.d.ts</span></span><br><span class="line">  <span class="string">"types"</span>: <span class="string">"dist/index.d"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack webpack-cli babel-loader</span><br></pre></td></tr></table></figure>
+<h3 id="配置webpack"><a href="#配置webpack" class="headerlink" title="配置webpack"></a>配置webpack</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: <span class="string">"production"</span>,</span><br><span class="line">	entry: <span class="string">'./src/index'</span>,</span><br><span class="line">	output: &#123;</span><br><span class="line">		path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">		filename: <span class="string">'app.bundle.js'</span></span><br><span class="line">	&#125;,</span><br><span class="line">	resolve: &#123;</span><br><span class="line">		extensions: [<span class="string">'.ts'</span>, <span class="string">'.tsx'</span>, <span class="string">'.js'</span>, <span class="string">'.json'</span>]</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="built_in">module</span>: &#123;</span><br><span class="line">		rules: [</span><br><span class="line">			&#123;</span><br><span class="line">				test: <span class="regexp">/\.(ts|js)x?$/</span>,</span><br><span class="line">				exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">				loader: <span class="string">'babel-loader'</span></span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"scripts"</span>:&#123;</span><br><span class="line">     <span class="string">"bundle"</span>: <span class="string">"webpack"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="约定式提交"><a href="#约定式提交" class="headerlink" title="约定式提交"></a>约定式提交</h2><p><a href="https://www.conventionalcommits.org/zh/v1.0.0-beta.4/" target="_blank" rel="noopener">Conventional Commits</a></p>
+<h3 id="commit-message-style校验"><a href="#commit-message-style校验" class="headerlink" title="commit message style校验"></a>commit message style校验</h3><ul>
+<li><p>commitlint安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @commitlint/config-conventional @commitlint/cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>commitlint配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"module.exports = &#123;extends: ['@commitlint/config-conventional']&#125;"</span> &gt; commitlint.config.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>husky和lint-staged安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">npm i husky lint-staged --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>husky配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json 配置</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="string">"husky"</span>: &#123;</span><br><span class="line">    <span class="string">"hooks"</span>: &#123;</span><br><span class="line">      <span class="string">"commit-msg"</span>: <span class="string">"commitlint -E HUSKY_GIT_PARAMS"</span>, <span class="comment">// 配合commitlint使用</span></span><br><span class="line">      <span class="string">"pre-commit"</span>: <span class="string">"lint-staged"</span> <span class="comment">// 配置lint-staged</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lint-staged配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"lint-staged"</span>: &#123;</span><br><span class="line">        <span class="string">"src/**/*.&#123;js,ts,tsx,jsx&#125;"</span>: [</span><br><span class="line">            <span class="string">"eslint src --fix --ext .ts,.js,.tsx,.jsx"</span>, <span class="comment">// npm run lint</span></span><br><span class="line">            <span class="string">"git add"</span></span><br><span class="line">        ]</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>  完成了大部分工程涉及的工具的配置，还有测试相关没有进行配置，以后有时间继续。</p>
+<ul>
+<li><p>[ ] jest</p>
+</li>
+<li><p>[ ] jest + typescript</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-02T06:36:02.000Z" itemprop="dateUpdated">2019-08-02 14:36:02</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/08/01/the-steps-of-configuration-typescript/" target="_blank" rel="external">https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/&title=《一步一步配置Typescript工程》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/&title=《一步一步配置Typescript工程》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一步一步配置Typescript工程》 — 个人博客&url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/08/04/polyfill-passed-current-future/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Polyfill 方案的过去、现在和未来</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/30/babel6-loose-mode/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Babel 6 松散模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/&title=《一步一步配置Typescript工程》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/&title=《一步一步配置Typescript工程》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《一步一步配置Typescript工程》 — 个人博客&url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/01/the-steps-of-configuration-typescript/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aS47jMAwFwNz/0j3bATK2H0kxnQHKKyPxR6UAIkPq9YqPn7+O90/ev7269/76q7e8nx8+8PDw8AZDv3r9HHM/3Ptn3l//MCo8PDy8NV7yuPw8Gdb9pOQB48GCh4eH9wW8aqqdL+7VhB4PDw/v/+L1FvekrFBNx/Hw8PB+i5cXEe6X7DyZnpd3D9da8PDw8GJe3kX6nvOV/h4eHh7euKueN8NOzW6vCXd5Fx4eHt4CLx9WUhqoflt9b2+ceHh4eGd5k+ZTdQNWUg6uTsrDOR4eHt5HeHm6nLegklbZJJBc/jx4eHh4a7xei6t6by94TIIQHh4e3h4vadX3WmK9cm0v2LyqvwweHh5ei5c3lqpB4mw6PmrF4eHh4R3l5SXUfFHO8dVprU4NHh4e3jYvGcq8iFAtbeT3Rnsi8PDw8BZ4eaKcLNnVYkdeYojCBh4eHt4Hefmgew2q/JreloJ/FCPw8PDwDvHyFDmvCvdKwHkzLG/j4eHh4W3w5gvxZPnuXZ8EJzw8PLw93qltWElSW31mXowoPBMPDw9vzMuLEfNlvdr+r7a7HjZd4eHh4R3i9dpOSQJdTYJ74SFqnuHh4eEt8ArN+OCTvIgwDwblKjUeHh7emFdNlKsJcbXkOt90hYeHh7fNm2Amxd/kXceabXh4eHjLvLxAcGpbVW/rQPm/Ah4eHt4CrxokJlPQm+LqvXh4eHif4U0eVC3Rnm2APaTUeHh4eId4P8XjfjryofdI+TPx8PDw9niTeJI3sapT0yv4Hg6XeHh4eOMyblJ06AHyADDaeoWHh4e3wOstyklIyJ/fi2aFBhgeHh7eL/HyBLp6Zb59oVAOxsPDw/sCXq+dnxd8k28LaToeHh7eGm/ymoSUFH+TYLBYa8HDw8M7068vFA56ASApEOeJ+6i/h4eHh/fM+wND8sU6EnOoZgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

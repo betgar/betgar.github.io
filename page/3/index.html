@@ -166,6 +166,167 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-frontend-little-tangle-integrate-git-flow-and-standard-version"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-05-21 08:00:00" datetime="2019-05-21T00:00:00.000Z"  itemprop="datePublished">2019-05-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/">gitflow</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/gitflow/fe/">fe</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/21/frontend-little-tangle-integrate-git-flow-and-standard-version/">前端小纠结--集成gitflow和standard-version使用</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前端小纠结–集成gitflow和standard-version使用
+请看上一篇前端小纠结–约定式提交和自动生成changelog
+
+git flow工作流对比
+Git工作流指南
+
+git flow 介绍
+git flow源自这篇文章a-successful-git-branching-model，大神！！！。
+关于git flow的使用，请看以下链接，非常多的文章，写的非常好。
+
+如何正确...
+    
+
+        <a href="/2019/05/21/frontend-little-tangle-integrate-git-flow-and-standard-version/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitflow/">gitflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/standard-version/">standard-version</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-frontend-little-tangle-conventional-commit-and-generate-changelog"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-05-20 08:00:00" datetime="2019-05-20T00:00:00.000Z"  itemprop="datePublished">2019-05-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/fe/">fe</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/">前端小纠结--约定式提交和自动生成changelog</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前端小纠结–约定式提交和自动生成changelog约定式提交
+约定式提交：每次使用git commit 的时候都需要写commit message,如果message style是按照固定的模版格式书写，对于后期的维护和编写changelog都有巨大的好处。而且现在的很多自动生成changelog的工具，都是建立在约定式提交的基础之上。
+
+约定式提交校验配置
+约定式提交不需要任何的配置，只需...
+    
+
+        <a href="/2019/05/20/frontend-little-tangle-conventional-commit-and-generate-changelog/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/conventionalcommit/">conventionalcommit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fe/">fe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-terminal-prompt-display-what-branch-you-are-currently-on"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-04-29 00:00:00" datetime="2019-04-28T16:00:00.000Z"  itemprop="datePublished">2019-04-29</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/">shell上显示当前git分支</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        shell上显示当前git分支
+在当前终端上显示当前所在的分支，能够提供极大的便利。
+
+修改bash的配置
+~/.bash_profile 或者~/.bashrc
+
+原版123456789function git-branch-name &#123;  git symbolic-ref HEAD 2&gt;/dev/null | cut -d"/" -f 3&#125;function gi...
+    
+
+        <a href="/2019/04/29/terminal-prompt-display-what-branch-you-are-currently-on/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-download-binary-file-use-axios"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -532,164 +693,6 @@ initialize(options, args...)1234567const MyObject = MnObject.extend(&#123;  init
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backbone/">backbone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/marionette/">marionette</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-how-to-use-jquery-validation"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-10-09 16:00:00" datetime="2018-10-09T08:00:00.000Z"  itemprop="datePublished">2018-10-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Validation/">Validation</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/10/09/how-to-use-jquery-validation/">jQuery Validation使用总结</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        jQuery Validation使用总结
-注意：表单元素必须含有name属性，不然jQuery validation不工作。
-
-options配置
-jQuery.validator.defaults
-
-1234567891011121314151617181920212223242526272829&#123;        debug : false,		messages: &#123;...
-    
-
-        <a href="/2018/10/09/how-to-use-jquery-validation/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Validation/">Validation</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-the-quick-start-of-requirejs"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-09-12 00:00:00" datetime="2018-09-11T16:00:00.000Z"  itemprop="datePublished">2018-09-12</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/">requirejs</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/requirejs/AMD/">AMD</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/09/12/the-quick-start-of-requirejs/">requirejs的快速入门</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        requirejs的快速入门
-阮一峰老师的入门系列。
-
-RequireJS和AMD规范
-Javascript模块化编程（一）：模块的写法
-Javascript模块化编程（二）：AMD规范
-Javascript模块化编程（三）：require.js的用法
-AMD规范
-AMD规范对loader，loader plugins， require有详细的规定。详情见 AMD 规范wiki，这里还有中文...
-    
-
-        <a href="/2018/09/12/the-quick-start-of-requirejs/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMD/">AMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requirejs/">requirejs</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-adminlte-theme-zh-cn-docs"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-09-09 16:52:00" datetime="2018-09-09T08:52:00.000Z"  itemprop="datePublished">2018-09-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/adminlte/">adminlte</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/09/09/adminlte-theme-zh-cn-docs/">adminlte-theme-zh-cn-docs</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        adminlte主题中文文档
-文件结构
-
-12345678910111213141516File Hierarchy of the Source Code Package      AdminLTE/      ├── dist/      │   ├── CSS/      │   ├── JS      │   ├── img      ├── build/      │   ├── l...
-    
-
-        <a href="/2018/09/09/adminlte-theme-zh-cn-docs/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/adminlte/">adminlte</a></li></ul>
 
     </div>
     
