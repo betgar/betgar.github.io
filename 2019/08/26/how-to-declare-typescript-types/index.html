@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>TypeScript类型声明书写 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="typescript">
+    <meta name="description" content="TypeScript类型声明书写 本文总结一下TypeScript类型声明的书写，很多时候写TypeScript不是问题，写类型就特别纠结，我总结下，我在使用TypeScript中遇到的问题。如果你遇到类型声明不会写的时候，多看看lodash的声明，因为lodash对数据进行各种变形操作，所以你能遇到的，都有参考示例。  基本类型12345678910// 变量const num: number">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript类型声明书写">
+<meta property="og:url" content="https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="TypeScript类型声明书写 本文总结一下TypeScript类型声明的书写，很多时候写TypeScript不是问题，写类型就特别纠结，我总结下，我在使用TypeScript中遇到的问题。如果你遇到类型声明不会写的时候，多看看lodash的声明，因为lodash对数据进行各种变形操作，所以你能遇到的，都有参考示例。  基本类型12345678910// 变量const num: number">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-28T04:51:55.248Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript类型声明书写">
+<meta name="twitter:description" content="TypeScript类型声明书写 本文总结一下TypeScript类型声明的书写，很多时候写TypeScript不是问题，写类型就特别纠结，我总结下，我在使用TypeScript中遇到的问题。如果你遇到类型声明不会写的时候，多看看lodash的声明，因为lodash对数据进行各种变形操作，所以你能遇到的，都有参考示例。  基本类型12345678910// 变量const num: number">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript类型声明书写</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript类型声明书写</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-26T11:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TypeScript类型声明书写"><span class="post-toc-number">1.</span> <span class="post-toc-text">TypeScript类型声明书写</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本类型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组的concat方法，返回类型为never-问题"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">数组的concat方法，返回类型为never[]问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#any、null、undefined、void类型"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">any、null、undefined、void类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#联合类型"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">联合类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#交叉类型"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">交叉类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元组-tuple"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">元组 tuple</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#type的作用"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">type的作用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实践中遇到的问题"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">实践中遇到的问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三方库没有提供声明d-ts文件"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">第三方库没有提供声明d.ts文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#全局变量"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">全局变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非JavaScript资源"><span class="post-toc-number">1.9.3.</span> <span class="post-toc-text">非JavaScript资源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制类型转换"><span class="post-toc-number">1.9.4.</span> <span class="post-toc-text">强制类型转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可选属性和默认属性"><span class="post-toc-number">1.9.5.</span> <span class="post-toc-text">可选属性和默认属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#独立函数怎么声明类型"><span class="post-toc-number">1.9.6.</span> <span class="post-toc-text">独立函数怎么声明类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引属性类型声明"><span class="post-toc-number">1.9.7.</span> <span class="post-toc-text">索引属性类型声明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态添加的属性声明"><span class="post-toc-number">1.9.8.</span> <span class="post-toc-text">动态添加的属性声明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#的使用"><span class="post-toc-number">1.9.9.</span> <span class="post-toc-text">!的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#this的使用"><span class="post-toc-number">1.9.10.</span> <span class="post-toc-text">this的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#声明合并（扩展Vue声明）"><span class="post-toc-number">1.9.11.</span> <span class="post-toc-text">声明合并（扩展Vue声明）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-how-to-declare-typescript-types"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript类型声明书写</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-26 19:00:00" datetime="2019-08-26T11:00:00.000Z"  itemprop="datePublished">2019-08-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="TypeScript类型声明书写"><a href="#TypeScript类型声明书写" class="headerlink" title="TypeScript类型声明书写"></a>TypeScript类型声明书写</h1><blockquote>
+<p>本文总结一下TypeScript类型声明的书写，很多时候写TypeScript不是问题，写类型就特别纠结，我总结下，我在使用TypeScript中遇到的问题。如果你遇到类型声明不会写的时候，多看看<code>lodash</code>的声明，因为<code>lodash</code>对数据进行各种变形操作，所以你能遇到的，都有参考示例。</p>
+</blockquote>
+<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量</span></span><br><span class="line"><span class="keyword">const</span> num: <span class="built_in">number</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> str: <span class="built_in">string</span> = <span class="string">'str'</span>;</span><br><span class="line"><span class="keyword">const</span> bool: <span class="built_in">boolean</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> nulls: <span class="literal">null</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">const</span> undefine: <span class="literal">undefined</span> = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">const</span> symbols: Symbol = Symbol(<span class="string">'symbal'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">any</span>: <span class="built_in">any</span> = <span class="string">'any types'</span>; <span class="comment">// typescript的any类型，相当于什么类型约束都没有</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组: 推荐使用T[]这种写法</span></span><br><span class="line"><span class="keyword">const</span> nums: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不推荐：Array&lt;T&gt;泛型写法，因为在JSX中不兼容，所以为了统一都使用T[]这种类型</span></span><br><span class="line"><span class="keyword">const</span> strs: <span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt; = [<span class="string">'s'</span>, <span class="string">'t'</span>, <span class="string">'r'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dates: <span class="built_in">Date</span>[] = [<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="keyword">new</span> <span class="built_in">Date</span>()];</span><br></pre></td></tr></table></figure>
+<h3 id="数组的concat方法，返回类型为never-问题"><a href="#数组的concat方法，返回类型为never-问题" class="headerlink" title="数组的concat方法，返回类型为never[]问题"></a>数组的concat方法，返回类型为never[]问题</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组concat方法的never问题</span></span><br><span class="line"><span class="comment">// 提示： Type 'string' is not assignable to type 'never'.</span></span><br><span class="line"><span class="keyword">const</span> arrNever: <span class="built_in">string</span>[] = [].concat([<span class="string">'s'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主要问题是：[]数组，ts无法根据上下文判断数组内部元素的类型</span></span><br><span class="line"><span class="comment">// @see https://github.com/Microsoft/TypeScript/issues/10479</span></span><br><span class="line"><span class="keyword">const</span> fixArrNever: <span class="built_in">string</span>[] = ([] <span class="keyword">as</span> <span class="built_in">string</span>[]).concat([<span class="string">'s'</span>]);</span><br></pre></td></tr></table></figure>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口是 TypeScript 的一个核心知识，它能合并众多类型声明至一个类型声明：</p>
+<p>而且接口可以用来声明：函数，类，对象等数据类型</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Name &#123;</span><br><span class="line">  first: <span class="built_in">string</span>;</span><br><span class="line">  second: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> username: Name = &#123;</span><br><span class="line">  first: <span class="string">'John'</span>,</span><br><span class="line">  second: <span class="string">'Doe'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="any、null、undefined、void类型"><a href="#any、null、undefined、void类型" class="headerlink" title="any、null、undefined、void类型"></a>any、null、undefined、void类型</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 特殊类型</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">any</span>: <span class="built_in">any</span> = <span class="string">'any types'</span>; <span class="comment">// typescript的any类型，相当于什么类型都没写</span></span><br><span class="line"><span class="keyword">let</span> nobody: <span class="built_in">any</span> = <span class="string">'nobody, but you'</span>;</span><br><span class="line">nobody = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> nulls: <span class="built_in">number</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> bool: <span class="built_in">boolean</span> = <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// void</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printUsername</span> (<span class="params">name: <span class="built_in">string</span></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h2><blockquote>
+<p>联合类型在<code>option bags</code>模式场景非常实用，使用  <strong>| </strong>来做标记</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">options</span>(<span class="params">opts: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    types?: <span class="built_in">string</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">    tag: <span class="built_in">string</span> | <span class="built_in">number</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="交叉类型"><a href="#交叉类型" class="headerlink" title="交叉类型"></a>交叉类型</h2><blockquote>
+<p>最典型的使用场景就是<strong>继承</strong>和<strong>mixin</strong>，或者copy等操作</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 交叉类型：如果以后遇到此种类型声明不会写，直接看Object.assign声明写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">$extend</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">first: T, second: U</span>): <span class="title">T</span> &amp; <span class="title">U</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(first, second); <span class="comment">// 示意而已</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组 tuple"></a>元组 tuple</h2><blockquote>
+<p>元组很少使用</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nameNumber: [<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ok</span></span><br><span class="line">nameNumber = [<span class="string">'Jenny'</span>, <span class="number">221345</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Error</span></span><br><span class="line"><span class="comment">// nameNumber = ['Jenny', '221345'];</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tuple: [<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br><span class="line">nameNumber = [<span class="string">'Jenny'</span>, <span class="number">322134</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> [usernameStr, uselessNum] = nameNumber;</span><br></pre></td></tr></table></figure>
+<h2 id="type的作用"><a href="#type的作用" class="headerlink" title="type的作用"></a>type的作用</h2><blockquote>
+<p>type用来创建新的类型，也可以重命名（别名）已有的类型，建议使用type创建简单类型，无嵌套的或者一层嵌套的类型，其它复杂的类型都应该使用interface, 结合implements ,extends实现。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> StrOrNum = <span class="built_in">string</span> | <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">let</span> sample: StrOrNum;</span><br><span class="line">sample = <span class="number">123</span>;</span><br><span class="line">sample = <span class="string">'123'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 会检查类型</span></span><br><span class="line">sample = <span class="literal">true</span>; <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+<h2 id="实践中遇到的问题"><a href="#实践中遇到的问题" class="headerlink" title="实践中遇到的问题"></a>实践中遇到的问题</h2><h3 id="第三方库没有提供声明d-ts文件"><a href="#第三方库没有提供声明d-ts文件" class="headerlink" title="第三方库没有提供声明d.ts文件"></a>第三方库没有提供声明d.ts文件</h3><blockquote>
+<p>如果第三方库没有提供声明文件，第一时间去微软官方的仓库<a href="https://github.com/borisyankov/DefinitelyTyped" target="_blank" rel="noopener">https://github.com/borisyankov/DefinitelyTyped</a>   查找，或者在<code>npmjs.com</code>上搜索<code>@types/依赖的模块名</code>大部分情况都可以找到。</p>
+</blockquote>
+<ul>
+<li><p>手动添加声明文件</p>
+<blockquote>
+<p>声明文件一般都是统一放置在types文件夹下</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例子： types/axios.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> 'axios'; // 这里的axios声明为any类型</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><blockquote>
+<p>例如一些库直接把在<code>window</code>上添加的全局变量</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// globals.d.ts</span></span><br><span class="line"><span class="comment">// 例子：jQuery，现实中jQuery是有.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">const</span> jQuery: <span class="built_in">any</span>;</span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">const</span> $: <span class="keyword">typeof</span> jQuery;</span><br></pre></td></tr></table></figure>
+<h3 id="非JavaScript资源"><a href="#非JavaScript资源" class="headerlink" title="非JavaScript资源"></a>非JavaScript资源</h3><blockquote>
+<p>在前端工程中，import很多非js资源，例如：css, html, 图片，vue, 这种ts无法识别的资源时，就需要告诉ts，怎么识别这些导入的资源的类型。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 看看vue怎么处理的：shims-vue.d.ts</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '*.vue' &#123;</span><br><span class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> Vue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// html</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> '*.html';</span><br><span class="line">// css</span><br><span class="line">declare <span class="keyword">module</span> '*.css';</span><br></pre></td></tr></table></figure>
+<h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><blockquote>
+<p>有时候遇到需要强制类型转换，尤其是对<code>联合类型</code>或者可选属性时。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种：使用&lt;&gt;括号</span></span><br><span class="line"><span class="keyword">const</span> convertArrType: <span class="built_in">string</span>[] = &lt;<span class="built_in">Array</span>&lt;<span class="built_in">string</span>&gt;&gt;[].concat([<span class="string">'s'</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种：使用as关键字</span></span><br><span class="line"><span class="keyword">const</span> fixArrNever: <span class="built_in">string</span>[] = ([] <span class="keyword">as</span> <span class="built_in">string</span>[]).concat([<span class="string">'s'</span>]);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>建议使用第二种，因为兼容<code>JSX</code>，第一种官方也不推荐了，虽然它是合法的。</p>
+</blockquote>
+<h3 id="可选属性和默认属性"><a href="#可选属性和默认属性" class="headerlink" title="可选属性和默认属性"></a>可选属性和默认属性</h3><blockquote>
+<p>API中提供的参数很多都有默认值，或者属性可选，怎么书写呢？</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Socket &#123;&#125;</span><br><span class="line"><span class="comment">// 联合类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> SocketType = <span class="string">'WebSocket'</span> | <span class="string">'SockJs'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> SocketOptions &#123;</span><br><span class="line">  <span class="keyword">type</span>: SocketType;</span><br><span class="line">  protocols?: <span class="built_in">string</span> | <span class="built_in">string</span>[]; <span class="comment">// 可选</span></span><br><span class="line">  pingMessage: <span class="built_in">string</span> | <span class="function">(<span class="params">(<span class="params"></span>) =&gt; <span class="built_in">string</span></span>); // 联合类型，可以为<span class="params">string</span>或者函数</span></span><br><span class="line"><span class="function">  <span class="params">pongMessage</span>: <span class="params">string</span> | (<span class="params">(<span class="params"></span>) =&gt; <span class="built_in">string</span></span>);</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">// 默认值</span></span><br><span class="line"><span class="function"><span class="params">export</span> <span class="params">function</span> <span class="params">eventHandler</span> = (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  evt: CloseEvent | MessageEvent | Event,</span></span></span><br><span class="line"><span class="function"><span class="params">  socket: Socket,</span></span></span><br><span class="line"><span class="function"><span class="params">  <span class="keyword">type</span> = 'WebSocket' <span class="comment">// 默认值</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span>) =&gt;</span> <span class="built_in">any</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="独立函数怎么声明类型"><a href="#独立函数怎么声明类型" class="headerlink" title="独立函数怎么声明类型"></a>独立函数怎么声明类型</h3><blockquote>
+<p>刚开始我也很纠结这个问题，我就是一个独立的函数，怎么声明类型呢？尤其是写<strong>事件处理函数</strong>的API时。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Socket &#123;&#125;</span><br><span class="line"><span class="comment">// 函数的声明方式</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> SocketEventHandler = (</span><br><span class="line">  evt: CloseEvent | MessageEvent | Event,</span><br><span class="line">  socket: Socket</span><br><span class="line">) =&gt; <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> eventHandler: SocketEventHandler = <span class="function">(<span class="params">evt, socket</span>) =&gt;</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可选参数和rest参数</span></span><br><span class="line"><span class="keyword">let</span> baz = <span class="function">(<span class="params">x = 1</span>) =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> foo = <span class="function">(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>) =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> bar = <span class="function">(<span class="params">x?: <span class="built_in">number</span>, y?: <span class="built_in">number</span></span>) =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> bas = <span class="function">(<span class="params">...args: <span class="built_in">number</span>[]</span>) =&gt;</span> &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="索引属性类型声明"><a href="#索引属性类型声明" class="headerlink" title="索引属性类型声明"></a>索引属性类型声明</h3><blockquote>
+<p>JavaScript中的对象都可以使用字符串索引直接取属性或者调用方法，TypeScript中也有相应的类型声明方法。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Hello = &#123;</span><br><span class="line">    hello: <span class="string">'world'</span>;</span><br><span class="line">    <span class="comment">// key只是一个形式属性名（类似形参一样）</span></span><br><span class="line">    [key: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> greeting: Hello = &#123;</span><br><span class="line">    hi: <span class="string">'morning'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greeting[<span class="string">'hi'</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="动态添加的属性声明"><a href="#动态添加的属性声明" class="headerlink" title="动态添加的属性声明"></a>动态添加的属性声明</h3><blockquote>
+<p>有的时候我们只声明了一个基本的类型结构，然后后续有扩展的情况 ，尤其时二次封装时的options。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> AxiosOptions &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> AjaxOptions = &#123;</span><br><span class="line">   axiosOptions: AxiosOptions;</span><br><span class="line">   <span class="comment">// 额外扩展的放入到单独的属性节点下 </span></span><br><span class="line">   extraOptions: &#123;</span><br><span class="line">       [prop: <span class="built_in">string</span>]: <span class="built_in">any</span></span><br><span class="line">   &#125;; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> AjaxOptions1 = &#123;</span><br><span class="line">  axiosOptions?: AxiosOptions;</span><br><span class="line">  <span class="comment">// 不要这样写，因为axiosOptions拼写错误时，ts不会提示</span></span><br><span class="line">  <span class="comment">// 尽量把后续扩展的属性，移动到独立的属性节点下</span></span><br><span class="line">  [prop: <span class="built_in">string</span>]: <span class="built_in">any</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ajaxOptions: AjaxOptions1 = &#123;</span><br><span class="line">  axiosOptions1: &#123;&#125;; <span class="comment">// 本意是axiosOptions，但是ts不会提示</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="的使用"><a href="#的使用" class="headerlink" title="!的使用"></a>!的使用</h3><blockquote>
+<p>! 标识符告诉ts编译器，声明的变量没有问题，再运行期不会报错。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> BaseSelect <span class="keyword">extends</span> Vue &#123;</span><br><span class="line">    options: <span class="built_in">string</span>[]; <span class="comment">// 这里会提示没有在constructor中初始化</span></span><br><span class="line">    </span><br><span class="line">    created() &#123;</span><br><span class="line">        <span class="keyword">this</span>.options = [<span class="string">'inited'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> BaseSelect <span class="keyword">extends</span> Vue &#123;</span><br><span class="line">    options!: <span class="built_in">string</span>[]; <span class="comment">// 使用 ! 告诉编译器，我知道自己在做什么</span></span><br><span class="line">    </span><br><span class="line">    created() &#123;</span><br><span class="line">        <span class="keyword">this</span>.options = [<span class="string">'inited'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="this的使用"><a href="#this的使用" class="headerlink" title="this的使用"></a>this的使用</h3><blockquote>
+<p>对于独立使用的函数，可以声明指定的调用上下文</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Handler &#123;</span><br><span class="line">    info: <span class="built_in">string</span>;</span><br><span class="line">    <span class="comment">// 声明指定的this上下文</span></span><br><span class="line">    onClickBad(<span class="keyword">this</span>: Handler, e: Event) &#123;</span><br><span class="line">        <span class="comment">// oops, used this here. using this callback would crash at runtime</span></span><br><span class="line">        <span class="keyword">this</span>.info = e.message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> h = <span class="keyword">new</span> Handler();</span><br><span class="line">uiElement.addClickListener(h.onClickBad); <span class="comment">// error!</span></span><br></pre></td></tr></table></figure>
+<h3 id="声明合并（扩展Vue声明）"><a href="#声明合并（扩展Vue声明）" class="headerlink" title="声明合并（扩展Vue声明）"></a>声明合并（扩展Vue声明）</h3><blockquote>
+<p>来看看使用场景，扩展vue，在vue上添加全局的属性。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue的声明在 vue/types/vue.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> 'vue/types/vue' &#123;</span><br><span class="line">  <span class="comment">// 相当于Vue.$eventBus</span></span><br><span class="line">  <span class="keyword">interface</span> Vue &#123;  </span><br><span class="line">    $eventBus: Vue;</span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="comment">// 相当于在Vue.prototype.$eventBus</span></span><br><span class="line">  <span class="keyword">interface</span> VueConstructor &#123;</span><br><span class="line">    $eventBus: Vue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p><code>TypeScript</code>声明还有很多高级的用法，目前我也没有用到那么多，在我纠结不会写声明的时候，我就会看看别人的声明文件时怎么写的。</p>
+</blockquote>
+<p><em>注意：尽量不要把<strong>解构</strong>和<strong>声明</strong>写在一起，可读性极差。</em></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Node &#123;</span><br><span class="line">  onNodeCheck(checkedKeys: <span class="built_in">any</span>, &#123; <span class="comment">// 解构</span></span><br><span class="line">      checked, checkedNodes, node, event,</span><br><span class="line">    &#125; : &#123; <span class="comment">// 声明</span></span><br><span class="line">      node: <span class="built_in">any</span>;</span><br><span class="line">      [key: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  ) &#123; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-28T04:51:55.248Z" itemprop="dateUpdated">2019-08-28 12:51:55</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/08/26/how-to-declare-typescript-types/" target="_blank" rel="external">https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/&title=《TypeScript类型声明书写》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/&title=《TypeScript类型声明书写》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript类型声明书写》 — 个人博客&url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/13/online-tools-collection/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在线工具收集</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/&title=《TypeScript类型声明书写》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/&title=《TypeScript类型声明书写》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript类型声明书写》 — 个人博客&url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/26/how-to-declare-typescript-types/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3awW6rQAwFUP7/p1+3T0oh93pmolQ6rKKGgA8L7Nq+rvj4d/h4vtf/f79OHHh4eHhbQ3895/Vmz2e+3mv2q7vznx8WHh4e3jleHkpy+ySs56vNkgQeHh7ed/Ly4Gah54kBDw8P76/wVorgNj20jxgPDw/vk7ykGdEW0zNw3grZ3GvBw8PDi3n5FOl7Ph+Z7+Hh4eEdWAhok0Qb0Cx53EaLh4eHd4CXB5GEvmvtYDaEuy3x8fDw8LbyklbC7DXdPpTk23qxAA8PD+8Arx0s5TdrlwaShmyeiq42t+Dh4eGNeM8XnTUp2hWBfNBVIPHw8PAO82YrU/mrPA86L6yHvWE8PDy8rbz1tuwsYbSJoRiA4eHh4W3itUXw7Py88douK7xJFXh4eHjHeG0boi1z26Zt3th9o8DDw8M7wFvBrPQBZtdZWcbCw8PD28ubNSPapmpytbaR8XwdPDw8vBO8pKRulwBmQ7JZEqrLaDw8PLwDNe2u1upsiNUuFrQrCHh4eHi7eHkCyF/Es7WAlfbEbYR4eHh4W3krC1Kz289GZXkzAg8PD+8zvLaAnpXabUndpqWimMbDw8Nb4M0asisF8Wx9KkkzeHh4eJ/nteOu5CU+SzmzNvEwB+Lh4eEt8NqRf/Jqbtez8oQ0jBYPDw9vE2/WgMjL6zzEvEwfJgM8PDy8rbx8wJ83UmeleZsSlpau8PDw8JZ57Q1m568sJdQHHh4e3gFYfuRti/a3s2jffIuHh4d3gDe7dBtoO+7a9RkPDw/vHC95oc8Sw+zRrLSSf4kWDw8P7xhv5YX+fIW8jTvLWm+GYXh4eHhfwGsHY236Sf4DKIp7PDw8vK/hrYeekFYazXh4eHineevBJb9dGV/NmhR4eHh4J3jtP/xJq7d9EEk7Y/NMDw8PD2/C+wHMfyvw11KqcAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
