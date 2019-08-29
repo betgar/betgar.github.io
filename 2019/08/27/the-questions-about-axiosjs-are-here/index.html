@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>axios.js的实战经验 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="axios">
+    <meta name="description" content="axios.js的实战经验 总结一下使用Axios.js的遇到的注意事项，如有不对欢迎指正。 本文不是一篇分析源码的文章，如果需要看源码解析看这里axios实例应用及源码剖析 - xhr篇 （走心教程）,写的非常不错。  axios.js的流程图 先放张图镇楼，后续的问题需要多看看这张图。">
+<meta name="keywords" content="axios">
+<meta property="og:type" content="article">
+<meta property="og:title" content="axios.js的实战经验">
+<meta property="og:url" content="https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="axios.js的实战经验 总结一下使用Axios.js的遇到的注意事项，如有不对欢迎指正。 本文不是一篇分析源码的文章，如果需要看源码解析看这里axios实例应用及源码剖析 - xhr篇 （走心教程）,写的非常不错。  axios.js的流程图 先放张图镇楼，后续的问题需要多看看这张图。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190828215657.jpg">
+<meta property="og:updated_time" content="2019-08-29T09:58:54.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="axios.js的实战经验">
+<meta name="twitter:description" content="axios.js的实战经验 总结一下使用Axios.js的遇到的注意事项，如有不对欢迎指正。 本文不是一篇分析源码的文章，如果需要看源码解析看这里axios实例应用及源码剖析 - xhr篇 （走心教程）,写的非常不错。  axios.js的流程图 先放张图镇楼，后续的问题需要多看看这张图。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190828215657.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">axios.js的实战经验</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">axios.js的实战经验</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-27T13:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/axios/">axios</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#axios-js的实战经验"><span class="post-toc-number">1.</span> <span class="post-toc-text">axios.js的实战经验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#axios-js的流程图"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">axios.js的流程图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#axios-js版本问题"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">axios.js版本问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#拦截器interceptor"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">拦截器interceptor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#interceptor的返回值类型"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">interceptor的返回值类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#interceptor的执行顺序"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">interceptor的执行顺序</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#transformer的使用"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">transformer的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内置的transformRequest和transformResponse"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">内置的transformRequest和transformResponse</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内置transformRequest和transformResponse被覆盖"><span class="post-toc-number">1.4.1.1.</span> <span class="post-toc-text">内置transformRequest和transformResponse被覆盖</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自动序列化data参数且修改Content-Type"><span class="post-toc-number">1.4.1.2.</span> <span class="post-toc-text">自动序列化data参数且修改Content-Type</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#transformer和interceptor的区别"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">transformer和interceptor的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#baseUrl配置"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">baseUrl配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二进制数据注意"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">二进制数据注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#axios-js相关资源"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">axios.js相关资源</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-the-questions-about-axiosjs-are-here"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">axios.js的实战经验</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-27 21:00:00" datetime="2019-08-27T13:00:00.000Z"  itemprop="datePublished">2019-08-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/axios/">axios</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="axios-js的实战经验"><a href="#axios-js的实战经验" class="headerlink" title="axios.js的实战经验"></a>axios.js的实战经验</h1><blockquote>
+<p>总结一下使用<code>Axios.js</code>的遇到的注意事项，如有不对欢迎指正。</p>
+<p>本文不是一篇分析源码的文章，如果需要看源码解析看这里<a href="https://github.com/ronffy/axios-tutorial" target="_blank" rel="noopener">axios实例应用及源码剖析 - xhr篇 （走心教程）</a>,写的非常不错。</p>
+</blockquote>
+<h2 id="axios-js的流程图"><a href="#axios-js的流程图" class="headerlink" title="axios.js的流程图"></a>axios.js的流程图</h2><blockquote>
+<p>先放张图镇楼，后续的问题需要多看看这张图。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/20190828215657.jpg" alt="来自走心教程" title="">
+                </div>
+                <div class="image-caption">来自走心教程</div>
+            </figure>
+<h2 id="axios-js版本问题"><a href="#axios-js版本问题" class="headerlink" title="axios.js版本问题"></a>axios.js版本问题</h2><blockquote>
+<p>之前没有注意官网说明，后来升级了版本发现报错，立刻把官网的文档翻了一下，发现<code>Semver</code>章节有描述，</p>
+<p>直到v1.0之前，当发布一个minor版本，就代表有breaking changes了。所以升级有危险啊！！！</p>
+</blockquote>
+<h2 id="拦截器interceptor"><a href="#拦截器interceptor" class="headerlink" title="拦截器interceptor"></a>拦截器interceptor</h2><blockquote>
+<p>拦截器是<code>axios.js</code>的核心了，就是有了拦截器做解耦，才能把代码组合的更优雅。</p>
+</blockquote>
+<h3 id="interceptor的返回值类型"><a href="#interceptor的返回值类型" class="headerlink" title="interceptor的返回值类型"></a>interceptor的返回值类型</h3><blockquote>
+<p>当初在写拦截器时发现，官方给的例子，interceptor的返回值既可以是普通的value值，又可以是Promise。当时就疑惑了，有啥区别？？？</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官方例子：</span></span><br><span class="line"><span class="comment">// Add a request interceptor</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something before request is sent</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with request error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add a response interceptor</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with response data</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with response error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/ronffy/axios-tutorial#源码分析-1" target="_blank" rel="noopener">具体细节看源码分析走心篇</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 源码里面就有一行代码</span></span><br><span class="line">promise = promise.then(chain.shift(), chain.shift());</span><br><span class="line"><span class="comment">// 其实把上面例子翻译一下就是这样的</span></span><br><span class="line"><span class="comment">// Add a request interceptor</span></span><br><span class="line">promise = promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something before request is sent</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with request error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add a response interceptor</span></span><br><span class="line">promise = promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with response data</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with response error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>是不是瞬间就明白了拦截器的return值，其实可以是普通的value值，或者Promise对象。</p>
+<p>返回<strong>Promise</strong>就有很多想法了，我们可以在拦截器<code>interceptor</code>中做<strong>异步操作</strong>，终于可以为所欲为了 :)。</p>
+</blockquote>
+<h3 id="interceptor的执行顺序"><a href="#interceptor的执行顺序" class="headerlink" title="interceptor的执行顺序"></a>interceptor的执行顺序</h3><blockquote>
+<p>这个问题呢，是我在使用过程中纠结的一个问题，我想做一个功能，就是当<code>Content-Type: application/x-www-form-urlencoded;charset=utf-8</code>时候，自动把<code>data</code>使用<code>qs.stringify</code>（后来知道这个功能其实使用<code>transformer</code>更合适）。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// axios/lib/core/Axios.js</span></span><br><span class="line"><span class="comment">// 核心逻辑就是这段</span></span><br><span class="line"><span class="keyword">var</span> chain = [dispatchRequest, <span class="literal">undefined</span>]; <span class="comment">// 正中间的是发送请求的拦截器</span></span><br><span class="line"><span class="keyword">var</span> promise = <span class="built_in">Promise</span>.resolve(config);</span><br><span class="line"></span><br><span class="line"><span class="comment">// request 拦截器unshift，添加到数组的头部</span></span><br><span class="line"><span class="keyword">this</span>.interceptors.request.forEach(<span class="function"><span class="keyword">function</span> <span class="title">unshiftRequestInterceptors</span>(<span class="params">interceptor</span>) </span>&#123;</span><br><span class="line">  chain.unshift(interceptor.fulfilled, interceptor.rejected);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// response 拦截器 push到数组尾部</span></span><br><span class="line"><span class="keyword">this</span>.interceptors.response.forEach(<span class="function"><span class="keyword">function</span> <span class="title">pushResponseInterceptors</span>(<span class="params">interceptor</span>) </span>&#123;</span><br><span class="line">  chain.push(interceptor.fulfilled, interceptor.rejected);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (chain.length) &#123;</span><br><span class="line">  <span class="comment">// 循环执行拦截器</span></span><br><span class="line">  promise = promise.then(chain.shift(), chain.shift());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上述代码其实就是做了两件事情：</p>
+</blockquote>
+<ul>
+<li><p>把拦截器放入数组chain中</p>
+<blockquote>
+<ol>
+<li><code>this.interceptors.request</code>拦截器是从<code>chain</code>的头部放入；<code>this.interceptors.request</code>其实也是数组，所以<code>request</code>数组中最后放入的interceptor却在chain数组的最前面，和<code>axios.interceptors.request.use</code>时候的顺序相反。</li>
+<li><code>this.interceptors.response</code>拦截器是放入<code>chain</code>的尾部，所以interceptor顺序和添加<code>axios.interceptors.response.use</code>时候的顺序相同</li>
+</ol>
+</blockquote>
+</li>
+<li><p>循环执行<code>chain</code>中的拦截器</p>
+<blockquote>
+<p><code>request</code>拦截器，最后添加的，最先执行</p>
+<p><code>response</code>拦截器，按照添加的顺序执行</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>注意：如果你的<strong>interceptors</strong> 之间顺序有<strong><em>先后依赖关系</em></strong>，需要特别注意。</p>
+</blockquote>
+<h2 id="transformer的使用"><a href="#transformer的使用" class="headerlink" title="transformer的使用"></a>transformer的使用</h2><blockquote>
+<p><code>transformRequest</code>和<code>transformResponse</code>都属于<code>Axios.js</code>的transformer，官方宣传的Automatic transforms for JSON data<br>就是通过<code>transformResponse</code>实现的。官方文档写的太简单了，没用写要注意的问题。</p>
+</blockquote>
+<h3 id="内置的transformRequest和transformResponse"><a href="#内置的transformRequest和transformResponse" class="headerlink" title="内置的transformRequest和transformResponse"></a>内置的transformRequest和transformResponse</h3><blockquote>
+<p>默认处理JSON<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// axios/lib/defaults.js</span></span><br><span class="line"><span class="keyword">var</span> defaults = &#123;</span><br><span class="line">  adapter: getDefaultAdapter(),</span><br><span class="line"></span><br><span class="line">  transformRequest: [<span class="function"><span class="keyword">function</span> <span class="title">transformRequest</span>(<span class="params">data, headers</span>) </span>&#123;</span><br><span class="line">    normalizeHeaderName(headers, <span class="string">'Content-Type'</span>);</span><br><span class="line">    <span class="keyword">if</span> (utils.isFormData(data) ||</span><br><span class="line">      utils.isArrayBuffer(data) ||</span><br><span class="line">      utils.isBuffer(data) ||</span><br><span class="line">      utils.isStream(data) ||</span><br><span class="line">      utils.isFile(data) ||</span><br><span class="line">      utils.isBlob(data)</span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (utils.isArrayBufferView(data)) &#123;</span><br><span class="line">      <span class="keyword">return</span> data.buffer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (utils.isURLSearchParams(data)) &#123;</span><br><span class="line">      setContentTypeIfUnset(headers, <span class="string">'application/x-www-form-urlencoded;charset=utf-8'</span>);</span><br><span class="line">      <span class="keyword">return</span> data.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (utils.isObject(data)) &#123;</span><br><span class="line">      setContentTypeIfUnset(headers, <span class="string">'application/json;charset=utf-8'</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;],</span><br><span class="line"></span><br><span class="line">  transformResponse: [<span class="function"><span class="keyword">function</span> <span class="title">transformResponse</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/*eslint no-param-reassign:0*/</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> data === <span class="string">'string'</span>) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        data = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123; <span class="comment">/* Ignore */</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// transformRequest</span></span><br><span class="line"><span class="keyword">if</span> (utils.isURLSearchParams(data)) &#123;</span><br><span class="line">  setContentTypeIfUnset(headers, <span class="string">'application/x-www-form-urlencoded;charset=utf-8'</span>);</span><br><span class="line">  <span class="keyword">return</span> data.toString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (utils.isObject(data)) &#123;</span><br><span class="line">  setContentTypeIfUnset(headers, <span class="string">'application/json;charset=utf-8'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果data是<code>URLSearchParams</code>类型，axios把<code>Content-Type</code>修改为<code>application/x-www-form-urlencoded;charset=utf-8</code>，且序列化data</li>
+<li>如果data是Object，axios把<code>Content-Type</code>修改为<code>application/json;charset=utf-8</code>，且序列化data</li>
+<li><code>transformResponse</code>默认尝试解析JSON</li>
+</ul>
+<h4 id="内置transformRequest和transformResponse被覆盖"><a href="#内置transformRequest和transformResponse被覆盖" class="headerlink" title="内置transformRequest和transformResponse被覆盖"></a>内置transformRequest和transformResponse被覆盖</h4><blockquote>
+<p>内置的<code>transformRequest</code>和<code>transformResponse</code>，很容易被覆盖，如果你不需要内置的那就很好办，如果你需要就需要注意下。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line"><span class="keyword">const</span> defaults = &#123; <span class="comment">// 需要把默认的添加回来</span></span><br><span class="line">  transformRequest： [].concat(axios.defaults.transformRequest, (data, headers) =&gt; &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="自动序列化data参数且修改Content-Type"><a href="#自动序列化data参数且修改Content-Type" class="headerlink" title="自动序列化data参数且修改Content-Type"></a>自动序列化data参数且修改<code>Content-Type</code></h4><blockquote>
+<p>注意<code>URLSearchParams</code>兼容性问题，如果兼容IE 11,使用<code>qs</code>处理下。</p>
+<ul>
+<li>如果data是URLSearchParams类型，axios把<code>Content-Type</code>修改为<code>application/x-www-form-urlencoded;charset=utf-8</code>，且序列化data</li>
+<li>如果data是Object，axios把<code>Content-Type</code>修改为<code>application/json;charset=utf-8</code>，且序列化data</li>
+</ul>
+</blockquote>
+<h3 id="transformer和interceptor的区别"><a href="#transformer和interceptor的区别" class="headerlink" title="transformer和interceptor的区别"></a>transformer和interceptor的区别</h3><blockquote>
+<p>transformer和interceptor都能在请求过程中发挥作用，有啥区别呢？</p>
+</blockquote>
+<p>区别：</p>
+<ol>
+<li>transformer和interceptor的执行的时机不同，看上图</li>
+<li>transformer主要针对data（虽然也能直接改变header，但是不建议）</li>
+<li>transformer只能同步，而interceptor可以执行异步操作</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">transformData</span>(<span class="params">data, headers, fns</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/*eslint no-param-reassign:0*/</span></span><br><span class="line">  utils.forEach(fns, <span class="function"><span class="keyword">function</span> <span class="title">transform</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    data = fn(data, headers);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="baseUrl配置"><a href="#baseUrl配置" class="headerlink" title="baseUrl配置"></a>baseUrl配置</h3><blockquote>
+<p>axios内部判断config.url，如果是绝对路径开始就不添加baseUrl，否则就添加</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// axios/lib/core/dispatchRequest.js</span></span><br><span class="line"><span class="comment">// Support baseURL config</span></span><br><span class="line"><span class="keyword">if</span> (config.baseURL &amp;&amp; !isAbsoluteURL(config.url)) &#123;</span><br><span class="line">  config.url = combineURLs(config.baseURL, config.url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二进制数据注意"><a href="#二进制数据注意" class="headerlink" title="二进制数据注意"></a>二进制数据注意</h3><blockquote>
+<p>如果你的<code>transformer</code>和<code>interceptor</code>对<code>data</code>有变形或者使用，一定要先判断二进制，不然容易导致报错。<br>推荐的做法就是，使用单独的<code>axios</code>实例处理<strong>二进制数据</strong>。<br>多个<code>axios</code>实例之间，注意共享<code>headers</code>部分(这个坑，我已经踩进去了)。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p>以上是本人使用<code>axios.js</code>过程中遇到的疑惑，然后通过查看源码的总结，如果对你有帮助，我会感到很荣幸。</p>
+</blockquote>
+<h2 id="axios-js相关资源"><a href="#axios-js相关资源" class="headerlink" title="axios.js相关资源"></a>axios.js相关资源</h2><p><a href="https://github.com/softonic/axios-retry" target="_blank" rel="noopener">axios-retry</a><br><a href="https://github.com/RasCarlito/axios-cache-adapter" target="_blank" rel="noopener">axios-cache-adapter</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-29T09:58:54.416Z" itemprop="dateUpdated">2019-08-29 17:58:54</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/08/27/the-questions-about-axiosjs-are-here/" target="_blank" rel="external">https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/axios/">axios</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/&title=《axios.js的实战经验》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/&title=《axios.js的实战经验》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios.js的实战经验》 — 个人博客&url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/26/how-to-declare-typescript-types/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript类型声明书写</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/&title=《axios.js的实战经验》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/&title=《axios.js的实战经验》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《axios.js的实战经验》 — 个人博客&url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/27/the-questions-about-axiosjs-are-here/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3awW7bMBAEUP//T6fXBqnkGa62dYGnU2BLFB8DkPQsX6/4+vpx/f751T35/e27Hr7w8PDwxl2/avrq2/yeK9jk/jdvxMPDw1vjXTV6//f9/fedThaDe959H/Dw8PA+h5dM3O1TyZKAh4eH9//y7hn5tN4OGR4eHt6n8dr4tU1Qk24lUchi1oKHh4cX8/KOfs7fK/U9PDw8vHFVPZ+m2+Vhso0ueouHh4e3wMsn3Dw+yJ/K3zvqJx4eHt6jvLNDpfNCV76BbiOJb+3g4eHhrfHyif5+yp5Hse1BhDfLBh4eHt4CLy/wzwOF/PjU/da8iCHw8PDw1nhtaT9/ZVuTamOOUe0ODw8Pb8CbTMeT7fhkSYjCCDw8PLwFXh6hnm2O75+9/3xefsPDw8Pb5p1tZ+eHCc4OWiVt4uHh4W3wzjavSWzRks7aLIYbDw8Pb413Fhnky0bS0cnxr8OsBQ8PD6/kJeHCZBLPg4/8gEIeZODh4eFt8NpaWbuEtBHtP/sf4uHh4R3x2qMAT0W6k2UmKpXh4eHhPcQ7O2B6th1vD8XO34iHh4e3x2sZxWoTUDfCjleSeeDh4eGNeclP/WRqbg+5tiW3Yujx8PDwlnnJJjj5PD+81Qa1dQiCh4eHt8A7Ky+1zbULw9mAnhXP8PDw8M54Z+Fpe4iqbXlSWnsgG8bDw8MreXkIO+9cO8T1coWHh4e3xmsLVG2k2xbV5tkCHh4e3gbvq7zyCDUPHSahxptv8fDw8BZ486bzRttn82F9YGnBw8PDK3mTxWA+cvkUn0cVeHh4eH+Hl+Sfk3vaqGIyQHh4eHifycu30fOSW963P9yPh4eH95G89hBq3k57hGtlYcDDw8MbhBH5QYHJ1vlsYbgE4+Hh4S3w2h/8CSzpRL6onG278fDw8BZ4vwBPXs8UiLRUdQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
