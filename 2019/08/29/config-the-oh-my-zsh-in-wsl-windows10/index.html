@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>wsl环境oh my zsh配置 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="wsl,zsh">
+    <meta name="description" content="wsl环境oh my zsh配置 最近折腾vs code的Remote-ssh功能，想用一个漂亮的terminal，就折腾了下oh my zsh，记录下方便以后查看。  修改mirror1234cd /etc/apt/# 备份sources.listcp /etc/apt/sources.list /etc/apt/sources.list_back 切换163镜像1234567891011121">
+<meta name="keywords" content="wsl,zsh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wsl环境oh my zsh配置">
+<meta property="og:url" content="https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="wsl环境oh my zsh配置 最近折腾vs code的Remote-ssh功能，想用一个漂亮的terminal，就折腾了下oh my zsh，记录下方便以后查看。  修改mirror1234cd /etc/apt/# 备份sources.listcp /etc/apt/sources.list /etc/apt/sources.list_back 切换163镜像1234567891011121">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-31T09:35:10.125Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wsl环境oh my zsh配置">
+<meta name="twitter:description" content="wsl环境oh my zsh配置 最近折腾vs code的Remote-ssh功能，想用一个漂亮的terminal，就折腾了下oh my zsh，记录下方便以后查看。  修改mirror1234cd /etc/apt/# 备份sources.listcp /etc/apt/sources.list /etc/apt/sources.list_back 切换163镜像1234567891011121">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">wsl环境oh my zsh配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">wsl环境oh my zsh配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-29T11:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-08-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/wsl/">wsl</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/wsl/zsh/">zsh</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#wsl环境oh-my-zsh配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">wsl环境oh my zsh配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改mirror"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">修改mirror</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#切换163镜像"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">切换163镜像</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#切换到aliyun"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">切换到aliyun</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#执行更新"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">执行更新</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#oh-my-zsh安装"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">oh my zsh安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装zsh"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">安装zsh</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#curl安装"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">curl安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置忽略user-hostname"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">配置忽略user@hostname</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置主题agnoster"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">配置主题agnoster</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主题agnoster需要的字体"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">主题agnoster需要的字体</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">参考资料</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-config-the-oh-my-zsh-in-wsl-windows10"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">wsl环境oh my zsh配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-29 19:00:00" datetime="2019-08-29T11:00:00.000Z"  itemprop="datePublished">2019-08-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/wsl/">wsl</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/wsl/zsh/">zsh</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="wsl环境oh-my-zsh配置"><a href="#wsl环境oh-my-zsh配置" class="headerlink" title="wsl环境oh my zsh配置"></a>wsl环境oh my zsh配置</h1><blockquote>
+<p>最近折腾vs code的Remote-ssh功能，想用一个漂亮的terminal，就折腾了下oh my zsh，记录下方便以后查看。</p>
+</blockquote>
+<h2 id="修改mirror"><a href="#修改mirror" class="headerlink" title="修改mirror"></a>修改mirror</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份sources.list</span></span><br><span class="line">cp /etc/apt/sources.list /etc/apt/sources.list_back</span><br></pre></td></tr></table></figure>
+<h3 id="切换163镜像"><a href="#切换163镜像" class="headerlink" title="切换163镜像"></a>切换163镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到163</span></span><br><span class="line">sudo vi change_mirror_to_163.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy这些内容到文本,保存退出</span></span><br><span class="line">Codename=$( (lsb_release -a)|awk <span class="string">'&#123;print $2&#125;'</span>|tail -n 1 )</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\</span></span><br><span class="line"><span class="string">deb http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span> main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-backports main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-proposed main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-security main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-updates main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span> main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-backports main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-proposed main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-security main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.163.com/ubuntu/ <span class="variable">$Codename</span>-updates main multiverse restricted universe "</span>&gt;sources.list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行上面的脚本</span></span><br><span class="line">sudo sh change_mirror_to_163.sh</span><br></pre></td></tr></table></figure>
+<h3 id="切换到aliyun"><a href="#切换到aliyun" class="headerlink" title="切换到aliyun"></a>切换到aliyun</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到aliyun</span></span><br><span class="line">sudo vi change_mirror_to_aliyun.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy这些内容到文本,保存退出</span></span><br><span class="line">Codename=$( (lsb_release -a)|awk <span class="string">'&#123;print $2&#125;'</span>|tail -n 1 )</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\</span></span><br><span class="line"><span class="string">deb http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span> main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-backports main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-proposed main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-security main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-updates main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span> main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-backports main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-proposed main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-security main multiverse restricted universe</span></span><br><span class="line"><span class="string">deb-src http://mirrors.aliyun.com/ubuntu/ <span class="variable">$Codename</span>-updates main multiverse restricted universe "</span>&gt;sources.list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行上面的脚本</span></span><br><span class="line">sudo sh change_mirror_to_aliyun.sh</span><br></pre></td></tr></table></figure>
+<h3 id="执行更新"><a href="#执行更新" class="headerlink" title="执行更新"></a>执行更新</h3><blockquote>
+<p>可以看到速度明显的改善</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="oh-my-zsh安装"><a href="#oh-my-zsh安装" class="headerlink" title="oh my zsh安装"></a>oh my zsh安装</h2><blockquote>
+<p>如果没用安装 zsh，请先安装zsh.</p>
+</blockquote>
+<h3 id="安装zsh"><a href="#安装zsh" class="headerlink" title="安装zsh"></a>安装zsh</h3><blockquote>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看本机有哪些shell</span></span><br><span class="line">cat /etc/shells  <span class="comment"># 显示当前用的shell:   echo $SHELL</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试zsh</span></span><br><span class="line">zsh --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果没用安装</span></span><br><span class="line">sudo apt update &amp;&amp; sudo apt upgrade</span><br><span class="line"><span class="comment"># sudo apt update &amp;&amp; sudo apt upgrade zsh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装zsh</span></span><br><span class="line">sudo apt install zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换shell</span></span><br><span class="line">chsh -s $(<span class="built_in">which</span> zsh)</span><br></pre></td></tr></table></figure>
+<h3 id="curl安装"><a href="#curl安装" class="headerlink" title="curl安装"></a>curl安装</h3><blockquote>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh#basic-installation" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh#basic-installation</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置忽略user-hostname"><a href="#配置忽略user-hostname" class="headerlink" title="配置忽略user@hostname"></a>配置忽略user@hostname</h3><blockquote>
+<p>参考：<a href="https://github.com/robbyrussell/oh-my-zsh/issues/2033" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh/issues/2033</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Context: user@hostname (who am I and <span class="built_in">where</span> am I)</span></span><br><span class="line">prompt_context() &#123;</span><br><span class="line">  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then</span><br><span class="line">    prompt_segment black default "%(!.%&#123;%F&#123;yellow&#125;%&#125;.)$DEFAULT_USER"</span><br><span class="line">  fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> DEFAULT_USER=desired_username</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 加载配置文件</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h3 id="配置主题agnoster"><a href="#配置主题agnoster" class="headerlink" title="配置主题agnoster"></a>配置主题agnoster</h3><blockquote>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh#selecting-a-theme" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh#selecting-a-theme</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改主题</span></span><br><span class="line">ZSH_THEME=<span class="string">"agnoster"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载配置文件</span></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<h3 id="主题agnoster需要的字体"><a href="#主题agnoster需要的字体" class="headerlink" title="主题agnoster需要的字体"></a>主题agnoster需要的字体</h3><blockquote>
+<p><a href="https://github.com/powerline/fonts" target="_blank" rel="noopener">https://github.com/powerline/fonts</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fonts-powerline</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>重新开启一个terminal来验证，是否成功切换到zsh</p>
+</blockquote>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://zhuanlan.zhihu.com/WindowsSubsystemForLinux" target="_blank" rel="noopener">WSL——Win10的Linux子系统</a></p>
+<p><a href="https://www.cnblogs.com/scotth/p/6533397.html" target="_blank" rel="noopener">ubuntu 修改资源镜像</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-31T09:35:10.125Z" itemprop="dateUpdated">2019-08-31 17:35:10</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" target="_blank" rel="external">https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wsl/">wsl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zsh/">zsh</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/&title=《wsl环境oh my zsh配置》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/&title=《wsl环境oh my zsh配置》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wsl环境oh my zsh配置》 — 个人博客&url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/27/the-questions-about-axiosjs-are-here/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">axios.js的实战经验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/&title=《wsl环境oh my zsh配置》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/&title=《wsl环境oh my zsh配置》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wsl环境oh my zsh配置》 — 个人博客&url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3a0W7CMAwFUP7/pzdpT5O2lms7hk06fUJA25wiJeY6j0d8fHwdj+Lx/ayfV/j56dV3rj49duDh4eG1BnF13A/u/pZXn+bUqzEkY8bDw8Pb5vWm9fuh3E/3yV3y8Vy+j4eHh/dWXjI15yVytYjHw8PD+4+8+SIxKb7x8PDw/hqvVyLfT9/JudWodzFrwcPDw4t5k1bWu14v9vfw8PDwBl31SdwwKb5PjRYPDw9vg1eNVntLRWEocfOssGDg4eHhLfDytlP+/fuYNVlUeovNkzHj4eHhjXl5gZt/p5cVTJaoy3Px8PDw1njJRFzF542x/O4HCmg8PDy8MS+vu3uh7aTR1dtY8OS/Ah4eHt4hXjVmTc6qPoIE1gx/8fDw8I7yqmXuZIrvPZo8Ah5l0nh4eHgtXjIdv/790c+Dh4eHt8DrnZY38vNtB9VCPA8s8PDw8M7ykkm5FzF8jI/JQ/ll0xUeHh7eIV41SJ00riatsl4jDQ8PD+81vMlGq8kiUZ3oe4sKHh4e3inepGXVu8K8hVZoj+Hh4eEd5fX+/CfLQ3WLVTX4iIpvPDw8vGVeNTJIML3r5+X1k0eDh4eHt8BLjsk0nSwk1WK9Olo8PDy8bV6vidUbXHUDwYGsGg8PD2+N12vn9wLfKGkeBBx4eHh4r+EVotI4LJgHDWUMHh4e3hovjxvyKTsvuCfXjzZp4eHh4a3xqhsIeiHFJHpoRs94eHh4R3nbt09K4byYLpf7eHh4eAu83koy3+o0Kc2PbbfCw8PDG4yhuvkpj2KbDf5ie+zJaPHw8PDWePkEXQ1SJ6/nywweHh7eX+BVm1u9bQS9rQa/3AUPDw/vrbx881MeCucleHXhwcPDw9vm9S6abNia3OVAcIyHh4e3wKs2wKpLyPxB7LXi8PDw8Iq8T1C3c6iArQa9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
