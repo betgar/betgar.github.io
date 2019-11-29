@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JSDoc使用TS声明文件提供智能提示 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="typescript">
+    <meta name="description" content="JSDoc使用TS声明文件提供智能提示 背景：最近做的内部使用的管理系统，使用es6 构建，之前一直使用typescript构建项目，感觉到写声明文件真的很烦很浪费时间。这次使用es6构建项目，发现效率更低，没有智能提示浪费的时间比写声明文件的多了好几倍。  VS Code对JavaScript项目的支持 VS Code编辑器通过jsconfig.js（ts项目是tsconfig.js）对Java">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSDoc使用TS声明文件提供智能提示">
+<meta property="og:url" content="https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="JSDoc使用TS声明文件提供智能提示 背景：最近做的内部使用的管理系统，使用es6 构建，之前一直使用typescript构建项目，感觉到写声明文件真的很烦很浪费时间。这次使用es6构建项目，发现效率更低，没有智能提示浪费的时间比写声明文件的多了好几倍。  VS Code对JavaScript项目的支持 VS Code编辑器通过jsconfig.js（ts项目是tsconfig.js）对Java">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/jsdoc-with-ts-demo-20191129144203.gif">
+<meta property="og:updated_time" content="2019-11-29T06:46:20.863Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSDoc使用TS声明文件提供智能提示">
+<meta name="twitter:description" content="JSDoc使用TS声明文件提供智能提示 背景：最近做的内部使用的管理系统，使用es6 构建，之前一直使用typescript构建项目，感觉到写声明文件真的很烦很浪费时间。这次使用es6构建项目，发现效率更低，没有智能提示浪费的时间比写声明文件的多了好几倍。  VS Code对JavaScript项目的支持 VS Code编辑器通过jsconfig.js（ts项目是tsconfig.js）对Java">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/jsdoc-with-ts-demo-20191129144203.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JSDoc使用TS声明文件提供智能提示</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JSDoc使用TS声明文件提供智能提示</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-29T09:20:00.000Z" itemprop="datePublished" class="page-time">
+  2019-11-29
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JSDoc使用TS声明文件提供智能提示"><span class="post-toc-number">1.</span> <span class="post-toc-text">JSDoc使用TS声明文件提供智能提示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VS-Code对JavaScript项目的支持"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">VS Code对JavaScript项目的支持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置项"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">配置项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#支持的jsdoc类型"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">支持的jsdoc类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用ts声明的方式书写jsdoc"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">使用ts声明的方式书写jsdoc</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#导入类型-import-types"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">导入类型(import types)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完整的例子"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">完整的例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-jsdoc-with-ts-declaration"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JSDoc使用TS声明文件提供智能提示</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-29 17:20:00" datetime="2019-11-29T09:20:00.000Z"  itemprop="datePublished">2019-11-29</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/typescript/">typescript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="JSDoc使用TS声明文件提供智能提示"><a href="#JSDoc使用TS声明文件提供智能提示" class="headerlink" title="JSDoc使用TS声明文件提供智能提示"></a>JSDoc使用TS声明文件提供智能提示</h1><blockquote>
+<p>背景：最近做的内部使用的管理系统，使用<code>es6</code> 构建，之前一直使用typescript构建项目，感觉到写声明文件真的很烦很浪费时间。这次使用<code>es6</code>构建项目，发现效率更低，没有智能提示浪费的时间比写声明文件的多了好几倍。</p>
+</blockquote>
+<h2 id="VS-Code对JavaScript项目的支持"><a href="#VS-Code对JavaScript项目的支持" class="headerlink" title="VS Code对JavaScript项目的支持"></a>VS Code对JavaScript项目的支持</h2><blockquote>
+<p>VS Code编辑器通过jsconfig.js（ts项目是tsconfig.js）对JavaScript项目提供支持<a href="https://www.tslang.cn/docs/handbook/type-checking-javascript-files.html" target="_blank" rel="noopener">type-checking-javascript-files</a></p>
+</blockquote>
+<h3 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根目录：jsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"moduleResolution"</span>: <span class="string">"node"</span>,</span><br><span class="line">    <span class="string">"module"</span>: <span class="string">"es2015"</span>,</span><br><span class="line">    <span class="string">"target"</span>: <span class="string">"es6"</span>,</span><br><span class="line">    <span class="string">"baseUrl"</span>: <span class="string">"."</span>,</span><br><span class="line">    <span class="string">"paths"</span>: &#123;</span><br><span class="line">      <span class="string">"@/*"</span>: [<span class="string">"src/*"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"exclude"</span>: [<span class="string">"node_modules"</span>, <span class="string">"dist"</span>],</span><br><span class="line">  <span class="string">"include"</span>: [<span class="string">"src/**/*"</span>, <span class="string">"types"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="支持的jsdoc类型"><a href="#支持的jsdoc类型" class="headerlink" title="支持的jsdoc类型"></a>支持的jsdoc类型</h3><blockquote>
+<p>请仔细阅读支持的jsdoc类型<a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#supported-jsdoc" target="_blank" rel="noopener">supported-jsdoc</a></p>
+</blockquote>
+<h3 id="使用ts声明的方式书写jsdoc"><a href="#使用ts声明的方式书写jsdoc" class="headerlink" title="使用ts声明的方式书写jsdoc"></a>使用ts声明的方式书写jsdoc</h3><blockquote>
+<p>copy官方例子</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type和类型转换，复杂的格式我还是喜欢写到d.ts文件里面</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @type &#123;number | string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> numberOrString = <span class="built_in">Math</span>.random() &lt; <span class="number">0.5</span> ? <span class="string">"hello"</span> : <span class="number">100</span>;</span><br><span class="line"><span class="keyword">var</span> typeAssertedNumber = <span class="comment">/** @type &#123;number&#125; */</span> (numberOrString)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @type &#123; &#123;id: number, name: string&#125; &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> user = &#123;</span><br><span class="line">  id: <span class="number">123</span>,</span><br><span class="line">  name: <span class="string">'张三'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @type &#123; (params: any) =&gt; Promise &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> fn = <span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">reslove, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="导入类型-import-types"><a href="#导入类型-import-types" class="headerlink" title="导入类型(import types)"></a>导入类型(import types)</h3><blockquote>
+<p>typescript支持在jsdoc的注释中导入ts declaration file的类型声明 <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#import-types" target="_blank" rel="noopener">import-types</a></p>
+</blockquote>
+<h3 id="完整的例子"><a href="#完整的例子" class="headerlink" title="完整的例子"></a>完整的例子</h3><blockquote>
+<p><a href="https://github.com/betgar/jsdoc-ts" target="_blank" rel="noopener">https://github.com/betgar/jsdoc-ts</a></p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/betgar/betgar.github.io/master/img/picgo/jsdoc-with-ts-demo-20191129144203.gif" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/types/index.d.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; AxiosPromise &#125; <span class="keyword">from</span> <span class="string">"axios"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">declare</span> <span class="keyword">interface</span> ResponseData&lt;T = any&gt; &#123;</span><br><span class="line">  code: <span class="built_in">number</span>;</span><br><span class="line">  message: <span class="built_in">string</span>;</span><br><span class="line">  data: T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 返回的数据格式.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> AjaxPromise&lt;T = any&gt;</span><br><span class="line">  <span class="keyword">extends</span> AxiosPromise&lt;ResponseData&lt;T&gt;&gt; &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span>  <span class="keyword">interface</span> LoginParams &#123;</span><br><span class="line">  account: <span class="built_in">string</span>;</span><br><span class="line">  password: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">interface</span> UserModel &#123;</span><br><span class="line">  account: <span class="built_in">string</span></span><br><span class="line">  nickname: <span class="built_in">string</span></span><br><span class="line">  id: <span class="built_in">string</span> | <span class="built_in">number</span></span><br><span class="line">  role: <span class="built_in">any</span></span><br><span class="line">  extraProps: <span class="built_in">any</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src\api\modules\LoginApi.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * login</span></span><br><span class="line"><span class="comment"> * @param &#123; import('@/types').LoginParams &#125; data</span></span><br><span class="line"><span class="comment"> * @return &#123; import('@/types').AjaxPromise&lt;import('@/types').UserModel&gt; &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Axios.post(<span class="string">'/api/login'</span>, data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// src\common\login\services\index.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * loginService</span></span><br><span class="line"><span class="comment"> * @param &#123; import('@/types').LoginParams &#125; data - 数据</span></span><br><span class="line"><span class="comment"> * @returns &#123; Promise&lt;import('@/types').UserModel&gt; &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">loginService</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 可以做一些参数的校验</span></span><br><span class="line">  <span class="comment">// 和其它services的组合</span></span><br><span class="line">  <span class="comment">// 数据结构的转换</span></span><br><span class="line">  <span class="keyword">return</span> login(data).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; <span class="attr">data</span>: &#123; <span class="attr">data</span>: user &#125; &#125; = res</span><br><span class="line">    <span class="built_in">console</span>.log(user)</span><br><span class="line">    <span class="built_in">console</span>.log(user.account)</span><br><span class="line">    <span class="keyword">return</span> loginTransformer.transformOne(user)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// src\main.js</span></span><br><span class="line"><span class="comment">// Vue中的调用</span></span><br><span class="line"><span class="keyword">const</span> rootVue = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  created () &#123;</span><br><span class="line">    loginService(&#123;</span><br><span class="line">      account: <span class="string">'123'</span>,</span><br><span class="line">      password: <span class="string">'1231'</span></span><br><span class="line">    &#125;).then(<span class="keyword">this</span>.$apiResolver).catch(<span class="keyword">this</span>.$apiRejecter)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.tslang.cn/docs/handbook/type-checking-javascript-files.html" target="_blank" rel="noopener">JavaScript文件类型检查</a></p>
+<p><a href="https://code.visualstudio.com/docs/languages/jsconfig" target="_blank" rel="noopener">jsconfig.json配置</a></p>
+<p><a href="https://code.visualstudio.com/docs/languages/javascript" target="_blank" rel="noopener">javascript in vs code </a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1444714" target="_blank" rel="noopener">检查JavaScript文件</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1444715" target="_blank" rel="noopener">TypeScript支持的JSDoc</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-11-29T06:46:20.863Z" itemprop="dateUpdated">2019-11-29 14:46:20</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2019/11/29/jsdoc-with-ts-declaration/" target="_blank" rel="external">https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/&title=《JSDoc使用TS声明文件提供智能提示》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/&title=《JSDoc使用TS声明文件提供智能提示》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JSDoc使用TS声明文件提供智能提示》 — 个人博客&url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">wsl环境oh my zsh配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/&title=《JSDoc使用TS声明文件提供智能提示》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/&title=《JSDoc使用TS声明文件提供智能提示》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JSDoc使用TS声明文件提供智能提示》 — 个人博客&url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2019/11/29/jsdoc-with-ts-declaration/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS3KEMAwFwLn/pck2VQnwJEMqiGaVYsjYPQthfT6f+Np2ru+fJk/+fH5vlc8dFwYGxmMZ2+G1t8DxRpO1jveQ7w0DA+M9jL0lk5BapSb/le8NAwMD4/iZHrIHxsDAwFhhrCSiefDFwMDAyAtqvU33EtRbcnEMDIwHMnph8W/+vqW/gYGB8SjGVrx6Afp4i9Xv/2VFDAyM0Yw8wK0fFvNDXm8/GBgYUxnXBtNqcps0QSMYBgbGaEZvyWqSmYTXfHTj5L2BgYExjpGEtt7gV36gzAcyologBgbGOMZKgb461FUonFXHLDAwMF7ASEr2eap51fhF80iKgYExjrG+0ZXDZbXQthvQMTAwRjOqrcf8INhj522G3RCMgYExjpEniuvNg2ortNAcxcDAeAGjeiCrhtf1t8HJHQwMjBcwCiliazziqsGv6GiIgYExlFFNLNeHJ3pHz10YBgbGaEbz4/jJZPCiF5ojNgYGxjjGyuhD3iRYGb8oD15gYGAMYvRKaVcF2bzZeRLuMTAwXsCoJpbVZmTeJKiuiIGB8TZGNaT2imUrxbXobIuBgTGIsRWvPJW96kdJWqoYGBizGb1gl391LzQnh85eyMbAwHguIw+yeXKbs68q7WFgYLyBUS5vxc3LHq8a+jEwMDCSsFgNlL1nTjJyDAwMjIWmQr6t4zu3vzcwMDD+MaPXDKi2CnrhO/pRMDAwRjPy1LF6p1f0v6otgYGBMYLxBfl+apjAd8SQAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
