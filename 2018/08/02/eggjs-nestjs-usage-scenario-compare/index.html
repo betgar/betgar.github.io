@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/3498363/36649060-26c36ab8-1ad5-11e8-8c35-d1bb6f1c104e.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/3498363/36660001-6e88cda2-1b11-11e8-9279-506031289ef1.png">
-<meta property="og:updated_time" content="2019-08-04T09:18:34.144Z">
+<meta property="og:updated_time" content="2020-03-12T03:37:06.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="egg.js和nestjs使用场景对比">
 <meta name="twitter:description" content="egg.js和nestjs使用场景对比提醒大家：注意文章的时效性，毕竟不同的事件节点，框架成熟度不同。分享这篇文章主要是希望能够让大家认清框架的定位和应对的业务场景，框架没有好坏之分，只有是否适合自己。  原标题：关于nodejs-web框架的调研 作者：xingyuzhe 日期： Feb 25, 2018 原文： https://github.com/xingyuzhe/blog/issues/">
@@ -51,7 +51,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -71,49 +71,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank" >
+              <a href="https://github.com/betgar" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank" >
+              <a href="https://weibo.com/u/2296734915" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -177,18 +177,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#egg-js和nestjs使用场景对比"><span class="post-toc-number">1.</span> <span class="post-toc-text">egg.js和nestjs使用场景对比</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eggjs"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">eggjs</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nestjs"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">nestjs</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关资料"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">相关资料</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#egg-js和nestjs使用场景对比"><span class="post-toc-number">1.</span> <span class="post-toc-text">egg.js和nestjs使用场景对比</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#eggjs"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">eggjs</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nestjs"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">nestjs</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关资料"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">相关资料</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-eggjs-nestjs-usage-scenario-compare"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-eggjs-nestjs-usage-scenario-compare" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">egg.js和nestjs使用场景对比</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-08-02 18:00:00" datetime="2018-08-02T10:00:00.000Z"  itemprop="datePublished">2018-08-02</time>
+            <time class="post-time" title="2018-08-02 18:00:00" datetime="2018-08-02T10:00:00.000Z" itemprop="datePublished">2018-08-02</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/fe/">fe</a></li></ul>
@@ -196,7 +195,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -334,10 +333,10 @@
 <li><p>框架本身核心类只有6个: koa本身的application, context, response, request, egg自身新增的controller, service 这2个类, 后续所有的挂载动作都在这几个类上面进行</p>
 </li>
 <li><p>框架明确了app, framework, plugin3个概念, 依赖方式大概是这样:</p>
-<p><img src="https://user-images.githubusercontent.com/3498363/36649060-26c36ab8-1ad5-11e8-8c35-d1bb6f1c104e.png" alt=""></p>
+<p><img src="https://user-images.githubusercontent.com/3498363/36649060-26c36ab8-1ad5-11e8-8c35-d1bb6f1c104e.png" alt></p>
 </li>
 <li><p>框架启动的核心流程主要是这样:</p>
-<p><img src="https://user-images.githubusercontent.com/3498363/36660001-6e88cda2-1b11-11e8-9279-506031289ef1.png" alt=""></p>
+<p><img src="https://user-images.githubusercontent.com/3498363/36660001-6e88cda2-1b11-11e8-9279-506031289ef1.png" alt></p>
 </li>
 </ul>
 <p>  由于eggjs自己实现了cluster, 自带进程管理和进程间通信功能, 所以egg自身部署时并不需要pm2这个工具, 官方文档上也对此做了<a href="https://eggjs.org/zh-cn/faq.html#进程管理为什么没有选型-pm2" target="_blank" rel="noopener">解释</a>。不过由于这块内容的引入(cluster还涉及到schedule、socket等功能)，给框架本身带来了大量额外的代码和逻辑, 总体提升了框架的复杂度。</p>
@@ -469,7 +468,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-08-04T09:18:34.144Z" itemprop="dateUpdated">2019-08-04 17:18:34</time>
+    最后更新时间：<time datetime="2020-03-12T03:37:06.928Z" itemprop="dateUpdated">2020-03-12 11:37:06</time>
 </span><br>
 
 
@@ -620,10 +619,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -637,7 +636,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>俊男 &copy; 2017 - 2019</span>
+        <p><span>俊男 &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

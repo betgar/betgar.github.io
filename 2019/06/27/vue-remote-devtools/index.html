@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="vue-devtools在IE11中的使用 IE下的调试一直都很头痛，本来vue官方没有提供ie下的开发工具插件，后来还是不死心去官网看了下，结果有了意外的收获。 vue官方独立的vue-devtools应用程序，可用于调试任何Vue应用程序，无论环境如何。 现在，您可以调试在移动浏览器，Safari，本机脚本等中打开的应用程序，而不仅仅是桌面chrome或firefox。  查看IE下Vue组件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-29T10:27:01.698Z">
+<meta property="og:updated_time" content="2020-03-12T03:37:06.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-devtools在IE11中的使用">
 <meta name="twitter:description" content="vue-devtools在IE11中的使用 IE下的调试一直都很头痛，本来vue官方没有提供ie下的开发工具插件，后来还是不死心去官网看了下，结果有了意外的收获。 vue官方独立的vue-devtools应用程序，可用于调试任何Vue应用程序，无论环境如何。 现在，您可以调试在移动浏览器，Safari，本机脚本等中打开的应用程序，而不仅仅是桌面chrome或firefox。  查看IE下Vue组件">
@@ -48,7 +48,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -68,49 +68,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 Home
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/betgar" target="_blank" >
+              <a href="https://github.com/betgar" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://weibo.com/u/2296734915" target="_blank" >
+              <a href="https://weibo.com/u/2296734915" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/about"  >
+              <a href="/about">
                 <i class="icon icon-lg icon-link"></i>
                 About
               </a>
@@ -185,7 +185,7 @@
     <div class="post-card">
         <h1 class="post-card-title">vue-devtools在IE11中的使用</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-06-27 19:00:00" datetime="2019-06-27T11:00:00.000Z"  itemprop="datePublished">2019-06-27</time>
+            <time class="post-time" title="2019-06-27 19:00:00" datetime="2019-06-27T11:00:00.000Z" itemprop="datePublished">2019-06-27</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/">vue</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/vue/debug/">debug</a></li></ul></li></ul>
@@ -193,7 +193,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -243,7 +243,7 @@
 <p>然后加：</p>
 <p><script src="http://localhost:8098"> </script><br>或者，如果要远程调试设备：<p></p>
 <p><script><br>  window .<strong> VUE_DEVTOOLS_HOST</strong> =’<your-local-ip>‘//默认值：localhost<br>  window .<strong> VUE_DEVTOOLS_PORT</strong> =’<devtools-port>‘//默认值：8098<br></script></p>
-<p><script src="http://<your-local-ip>:8098"></script><br>到您应用的<head>部分。 （在部署到生产之前不要忘记将其删除！）</head></p>
+<p><script src="http://<your-local-ip>:8098"></script><br>到您应用的<head><meta name="generator" content="Hexo 3.8.0">部分。 （在部署到生产之前不要忘记将其删除！）</head></p>
 <p><your-local-ip>通常如下所示：192.168.x.x.</your-local-ip></p>
 <h3 id="作为依赖安装"><a href="#作为依赖安装" class="headerlink" title="作为依赖安装"></a>作为依赖安装</h3><p>将程序包安装为项目依赖项后，运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/vue-devtools</span><br></pre></td></tr></table></figure>
@@ -292,7 +292,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-06-29T10:27:01.698Z" itemprop="dateUpdated">2019-06-29 18:27:01</time>
+    最后更新时间：<time datetime="2020-03-12T03:37:06.928Z" itemprop="dateUpdated">2020-03-12 11:37:06</time>
 </span><br>
 
 
@@ -443,10 +443,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -460,7 +460,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>俊男 &copy; 2017 - 2019</span>
+        <p><span>俊男 &copy; 2017 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

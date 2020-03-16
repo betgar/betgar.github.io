@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度操作系统deepin 15.11 安装微信新版本 | 个人博客 | 一个coder的成长记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="linux,deepin">
+    <meta name="description" content="深度操作系统deepin 15.11 安装微信新版本 微信客户端在深度系统15.11版本太低，不给登录的解决办法  环境信息12345678910111213141516查看命令：apt info deepin.com.wechat微信版本：Package: deepin.com.wechat:i386Version: 2.6.2.31deepin0查看命令：lsb_release -a# 如果没">
+<meta name="keywords" content="linux,deepin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度操作系统deepin 15.11 安装微信新版本">
+<meta property="og:url" content="https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="深度操作系统deepin 15.11 安装微信新版本 微信客户端在深度系统15.11版本太低，不给登录的解决办法  环境信息12345678910111213141516查看命令：apt info deepin.com.wechat微信版本：Package: deepin.com.wechat:i386Version: 2.6.2.31deepin0查看命令：lsb_release -a# 如果没">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-12T03:44:11.565Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度操作系统deepin 15.11 安装微信新版本">
+<meta name="twitter:description" content="深度操作系统deepin 15.11 安装微信新版本 微信客户端在深度系统15.11版本太低，不给登录的解决办法  环境信息12345678910111213141516查看命令：apt info deepin.com.wechat微信版本：Package: deepin.com.wechat:i386Version: 2.6.2.31deepin0查看命令：lsb_release -a# 如果没">
+    
+        <link rel="alternate" type="application/atom+xml" title="个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">俊男</h5>
+          <a href="mailto:betgar@163.com" title="betgar@163.com" class="mail">betgar@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/betgar" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/2296734915" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about">
+                <i class="icon icon-lg icon-link"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度操作系统deepin 15.11 安装微信新版本</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度操作系统deepin 15.11 安装微信新版本</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-12T11:00:00.000Z" itemprop="datePublished" class="page-time">
+  2020-03-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/deepin/">deepin</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#深度操作系统deepin-15-11-安装微信新版本"><span class="post-toc-number">1.</span> <span class="post-toc-text">深度操作系统deepin 15.11 安装微信新版本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境信息"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">环境信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装步骤"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#资料"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">资料</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-install-wechat-latest-version-on-deepin-15.11" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度操作系统deepin 15.11 安装微信新版本</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-12 19:00:00" datetime="2020-03-12T11:00:00.000Z" itemprop="datePublished">2020-03-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/deepin/">deepin</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="深度操作系统deepin-15-11-安装微信新版本"><a href="#深度操作系统deepin-15-11-安装微信新版本" class="headerlink" title="深度操作系统deepin 15.11 安装微信新版本"></a>深度操作系统deepin 15.11 安装微信新版本</h1><blockquote>
+<p>微信客户端在深度系统15.11版本太低，不给登录的解决办法</p>
+</blockquote>
+<h2 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">查看命令：apt info deepin.com.wechat</span><br><span class="line">微信版本：</span><br><span class="line">Package: deepin.com.wechat:i386</span><br><span class="line">Version: 2.6.2.31deepin0</span><br><span class="line"></span><br><span class="line">查看命令：lsb_release -a</span><br><span class="line"># 如果没有lsb_release,先安装lsb-core</span><br><span class="line">sudo apt install lsb-core</span><br><span class="line"></span><br><span class="line">深度系统：</span><br><span class="line">Distributor ID:	Deepin</span><br><span class="line">Description:	Deepin 15.11</span><br><span class="line">Release:	15.11</span><br><span class="line">Codename:	stable</span><br><span class="line"></span><br><span class="line">微信新版本：2.8.0.121</span><br></pre></td></tr></table></figure>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><blockquote>
+<p>如果已经安装并使用过，可以调过步骤1、2、</p>
+</blockquote>
+<ol>
+<li>先安装深度商店的微信客户端</li>
+</ol>
+<blockquote>
+<p>sudo apt install deepin.com.wechat</p>
+</blockquote>
+<ol start="2">
+<li><p>启动一次刚刚安装的微信客户端</p>
+</li>
+<li><p>现在新版本的微信客户端</p>
+<blockquote>
+<p><a href="https://pc.weixin.qq.com/" target="_blank" rel="noopener">https://pc.weixin.qq.com/</a></p>
+</blockquote>
+</li>
+<li><p>使用命令安装新版微信</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># WeChatSetup.exe是安装包的名称</span></span><br><span class="line"><span class="comment"># 如果提示WINEPREFIX需要绝对路径，修改成绝对路径</span></span><br><span class="line">env WINEPREFIX=~/.deepinwine/Deepin-WeChat/ deepin-wine WeChatSetup.exe</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后等着图形化的安装界面，一路下一步，就可以了</p>
+</li>
+</ol>
+<p>注意：</p>
+<p>问题：测试发现微信不支持双显示器的情况，双显示器情况下，会看不到微信的界面</p>
+<p>解决方法：启动微信时，修改显示模式为复制，启动之后，再修改回来</p>
+<ol>
+<li>设置 &gt; 显示&gt; 复制 </li>
+<li>启动微信，看到主界面</li>
+<li>设置 &gt; 显示 &gt; 扩展</li>
+</ol>
+<p>感谢网友提供的方法：<a href="https://bbs.deepin.org/forum.php?mod=viewthread&amp;tid=189623&amp;page=1#pid666765" target="_blank" rel="noopener">https://bbs.deepin.org/forum.php?mod=viewthread&amp;tid=189623&amp;page=1#pid666765</a></p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="https://wiki.deepin.org/wiki/Wine" target="_blank" rel="noopener">Wine</a></p>
+<p><a href="https://wiki.deepin.org/wiki/Deepin-wine" target="_blank" rel="noopener">Deepin-wine</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-12T03:44:11.565Z" itemprop="dateUpdated">2020-03-12 11:44:11</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2020/03/12/install-wechat-latest-version-on-deepin-15.11/" target="_blank" rel="external">https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://betgar.github.io">
+            <img src="/img/avatar.jpg" alt="俊男">
+            俊男
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deepin/">deepin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/&title=《深度操作系统deepin 15.11 安装微信新版本》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/&title=《深度操作系统deepin 15.11 安装微信新版本》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度操作系统deepin 15.11 安装微信新版本》 — 个人博客&url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/29/config-the-oh-my-zsh-in-wsl-windows10/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">wsl环境oh my zsh配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "kiGWA9mdoVtQlfGYA5uDBNX7-gzGzoHsz",
+            appKey: "dHCOdD0oEIjJd0cJoAHHN0y3",
+            avatar: "mm",
+            placeholder: "Just comment it",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>俊男 &copy; 2017 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/&title=《深度操作系统deepin 15.11 安装微信新版本》 — 个人博客&pic=https://betgar.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/&title=《深度操作系统deepin 15.11 安装微信新版本》 — 个人博客&source=各种技术加身的coder" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度操作系统deepin 15.11 安装微信新版本》 — 个人博客&url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/&via=https://betgar.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://betgar.github.io/2020/03/12/install-wechat-latest-version-on-deepin-15.11/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3ay27cQAwEQP//TyfXIIu1uskZP4DSaWHL0pQMaLhNfnzEx5+X49+fvzv/9W+Tq727/rt7HTjw8PDw1ktPFvR6Tvs4Poflj+xhPXh4eHjXeMnlNp9zQLueBwseHh7ej+flRXALxsPDw/vtvPaWeQHdluN4eHh438VLwog8Tj0bRqzCETw8PLwLvLyL9HM+X+nv4eHh4a276vnLvb1C29Ya3gsPDw/vAu9UibwJcE+d+bY0x8PDw/ty3iZInUUSbUTy8HDx8PDwjvL2TaY2PN0U8a93ebg7Hh4e3gVefsvZKMCsaM7bYFHZjYeHh3eBlxTT+5bYPmLI14aHh4f3Nby8gN4jZ1vOKkTGw8PDO8rbwE41sZIiPl/tsf8bHh4e3qebQQuYjWTNNphZSIGHh4d3m5fHB5vIYBi5zgp9PDw8vAu85PXdBgT7sHg2hvUQRuDh4eFd490ouGfRbfJQokeMh4eHd5SXt68S3mwjyV/9NRIPDw/vAm/TrGrDi3yAYD9DFe2BeHh4eGte3nbaNKvyxc0ab3h4eHi3eUnpnAQEbWmet8raNTx8Y8DDw8Nb85LINf9tvpHsh7SKrwF4eHh4R3mn2lftWMB+4CDaQvDw8PAu8NrtYTYmlQQQs8K6zlrw8PDwDvHaVn0bFrTleL5tDMcF8PDw8C7w8uBgFjHso97i0eDh4eFd47VtrVlDK2+5nQom8PDw8M7yZgVufs5mCKDt470dusLDw8M7ymtfuO2QwSzMnRX0B/YTPDw8vJg3e9Hnr+/2Zb2JKh46e3h4eHhHee1t2iu07bRjQ1d4eHh4P4CXl8Kzoat2iKEPrvHw8PC+k9c+iORxzEYE3q4QDw8P7xovv01b2ibleFte5yEFHh4e3g3e5gt/u3m08W69DZzNM/Dw8PD+P/4CbuM1ysoMmosAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
